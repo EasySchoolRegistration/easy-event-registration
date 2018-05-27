@@ -1,0 +1,532 @@
+.eer-theme-vienna-honey-swing {
+  font-family: "museo-sans-1", "museo-sans-2", sans-serif;
+  @font-face {
+    font-family: museo-sans-1;
+    src: url(https://use.typekit.net/af/e8555b/00000000000000000000e803/27/l?subset_id=2&fvd=n5&v=3) format("woff2"), url(https://use.typekit.net/af/e8555b/00000000000000000000e803/27/d?subset_id=2&fvd=n5&v=3) format("woff"), url(https://use.typekit.net/af/e8555b/00000000000000000000e803/27/a?subset_id=2&fvd=n5&v=3) format("opentype");
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: museo-sans-1;
+    src: url(https://use.typekit.net/af/f0b84c/00000000000000000000e804/27/l?subset_id=2&fvd=i5&v=3) format("woff2"), url(https://use.typekit.net/af/f0b84c/00000000000000000000e804/27/d?subset_id=2&fvd=i5&v=3) format("woff"), url(https://use.typekit.net/af/f0b84c/00000000000000000000e804/27/a?subset_id=2&fvd=i5&v=3) format("opentype");
+    font-weight: 500;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: museo-sans-1;
+    src: url(https://use.typekit.net/af/a7301e/00000000000000000000e807/27/l?subset_id=2&fvd=n9&v=3) format("woff2"), url(https://use.typekit.net/af/a7301e/00000000000000000000e807/27/d?subset_id=2&fvd=n9&v=3) format("woff"), url(https://use.typekit.net/af/a7301e/00000000000000000000e807/27/a?subset_id=2&fvd=n9&v=3) format("opentype");
+    font-weight: 900;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: museo-sans-1;
+    src: url(https://use.typekit.net/af/36b995/00000000000000000000e808/27/l?subset_id=2&fvd=i9&v=3) format("woff2"), url(https://use.typekit.net/af/36b995/00000000000000000000e808/27/d?subset_id=2&fvd=i9&v=3) format("woff"), url(https://use.typekit.net/af/36b995/00000000000000000000e808/27/a?subset_id=2&fvd=i9&v=3) format("opentype");
+    font-weight: 900;
+    font-style: italic;
+  }
+
+  &.eer-tickets {
+    max-width: 700px;
+    margin: 0 auto;
+
+    .eer-ticket {
+      background: #3a3759 url("https://viennahoneyswing.com/wp/wp-content/themes/pro-child/images/concrete-wall.png");
+      max-width: 215px;
+
+      @media (max-width: 768px) {
+        max-width: 100%;
+        height: 110px;
+      }
+
+      br {
+        display: none;
+      }
+      &:nth-child(1) {
+        .eer-ticket-title {
+          background-image: url("../img/logo-full.svg");
+          background-size: 94px;
+        }
+        .eer-ticket-add {
+          background: url('../img/add-1.svg') repeat scroll 0 0 / cover transparent;
+        }
+      }
+      &:nth-child(2) {
+        .eer-ticket-title {
+          background-image: url("../img/logo-party.svg");
+          background-size: 94px;
+        }
+        .eer-ticket-add {
+          background: url('../img/add-2.svg') repeat scroll 0 0 / cover transparent;
+        }
+      }
+      &:nth-child(3) {
+        background-color: #2a2a4e;
+        .eer-ticket-title {
+          background-image: url("../img/logo-taster.svg");
+          background-size: 94px;
+        }
+        .eer-ticket-add {
+          background: url('../img/add-3.svg') repeat scroll 0 0 / cover transparent;
+        }
+      }
+
+      .eer-ticket-title {
+        background-size: 94px;
+        height: 94px;
+        color: transparent;
+        position: absolute;
+        top: -62px;
+        width: 100%;
+        left: 0;
+        background-position: center center;
+        background-repeat: no-repeat;
+
+        @media (max-width: 768px) {
+          background-position-x: 0;
+          top: 0;
+          height: 110px;
+          margin: 0;
+          left: -17px;
+        }
+      }
+      .eer-ticket-price {
+        display: none;
+      }
+      .eer-ticket-content {
+        text-align: center;
+        .cardText {
+          font-size: 15.12px;
+          font-weight: bold;
+          padding-top: 40px;
+          font-family: "museo-sans-1", "museo-sans-2", sans-serif;
+
+          @media (max-width: 768px) {
+            display: none;
+          }
+
+          span {
+            width: 100%;
+            display: block;
+          }
+        }
+        h2 {
+          font-family: 'LunchBox-Regular' !important;
+          color: #ac9696;
+          font-weight: 300 !important;
+          letter-spacing: 0.01em;
+          margin-top: 40px;
+          margin-bottom: 0px;
+          text-transform: uppercase;
+
+          @media (max-width: 768px) {
+            margin-top: 27px;
+          }
+
+          &.cardPrice {
+            color: #ff472d;
+            margin: 0;
+            @media (max-width: 768px) {
+              margin: 0;
+            }
+
+            &:before, &:after {
+              content: " •••••• ";
+              color: #ffcb2d;
+              font-size: 0.5em;
+              letter-spacing: 0.15em;
+              position: relative;
+              top: -5px;
+            }
+          }
+        }
+        @media (max-width: 768px) {
+          h3 {
+            display: none;
+          }
+        }
+      }
+      &.eer-ticket-remove {
+        button.eer-ticket-add {
+          -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+          cursor: default;
+        }
+      }
+      .eer-ticket-body-wraper {
+        position: relative;
+        height: 450px !important;
+        padding: 0;
+        width: 100%;
+        float: left;
+
+        @media (max-width: 768px) {
+          height: 110px !important;
+        }
+
+        .eer-ticket-body {
+          color: #fff;
+          padding: 0;
+
+          button.eer-ticket-add {
+            position: absolute;
+            bottom: -38px;
+            left: 50%;
+            margin-left: -40px;
+            height: 80px;
+            width: 80px;
+            border: none;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 10px;
+            font-size: 20px;
+            color: white;
+            outline: 0;
+            border: 0;
+            box-shadow: none;
+
+            @media (max-width: 768px) {
+              right: -11px;
+              top: 50%;
+              margin-top: -40px;
+              left: auto;
+              bottom: auto;
+              margin-left: 0;
+            }
+
+            i {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &.eer-sold {
+        .eer-ticket-body-wraper {
+          background-color: #7a8d91;
+        }
+      }
+    }
+
+    .eer-form-tickets-header {
+      border-bottom: 1px dashed #000;
+
+      .eer-column-header {
+        padding: 8px 0;
+        font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 11px;
+        line-height: 11px;
+        color: #000;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  button.eer-ticket-remove {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 40px;
+    width: 40px;
+    border: none;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 10px;
+    padding: 0;
+    outline: none;
+    background: url("../img/remove.svg") no-repeat center center;
+
+    i {
+      display: none;
+    }
+  }
+  .eer-final-price {
+    border-top: 1px dashed #000;
+    font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  .eer-ticket-to-buy {
+    font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-top: 1px dashed #000;
+
+    &:first-child {
+      border-top: 0;
+    }
+    input[type=number] {
+      background: none;
+      border: 1px solid #ccc;
+    }
+    .eer-ticket-title, .eer-price {
+      line-height: 60px;
+    }
+    .eer-number-of-tickets {
+      margin-top: 10px;
+    }
+    .eer-partner {
+      width: 100%;
+
+      .eer-info-row {
+        padding: 0 10px;
+
+        .eer-dancing-as {
+          float: right;
+
+          label {
+            padding: 0 20px;
+
+            input {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.eer-ticket-shop-form {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+
+    .eer-user-form {
+
+      .eer-row {
+        .eer-form-group {
+          font-family: "museo-sans-1", "museo-sans-2", sans-serif;
+          label {
+            font-size: 13px;
+            color: #AC9696;
+            text-align: left;
+            font-weight: 500;
+            text-transform: none;
+          }
+          .eer-form-control {
+            background-color: #3A3759;
+            border: 0;
+            box-shadow: none;
+            font-size: 13px;
+            color: #61C8DA;
+            text-align: left;
+            font-weight: 500;
+
+            &::placeholder {
+              font-size: 13px;
+              color: #61C8DA;
+              text-align: left;
+              font-weight: 500;
+            }
+          }
+        }
+        &.eer-form-checkbox {
+          .eer-form-group {
+            label {
+              height: 40px;
+              text-align: left;
+              padding-left: 50px;
+              font-size: 16px;
+              line-height: 40px;
+            }
+          }
+        }
+      }
+    }
+    input.btn {
+      color: #FFCB2D;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 900;
+      background: url('../img/button.svg') no-repeat scroll 0 0 transparent;
+      width: 117px;
+      height: 46px;
+      margin: 0 auto;
+      display: block;
+    }
+    .eer-form-tickets-header {
+      display: none;
+    }
+  }
+}
+
+/* -------------- Styles added by Birgit on Site ------------------*/
+/* BUTTONS TICKET ADD*/
+
+button.eer-ticket-add {}
+
+/* ----------------------- Overall Font Size  ----------------------*/
+
+div.eer-form-tickets {
+  font-size: 16px;
+}
+
+
+/* ----------------------- Hide ::placeholder a bit more ----------------------*/
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:#1f1e45;
+  opacity:  0.2;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:#1f1e45;
+  opacity:  0.2;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:#1f1e45;
+  opacity:   0.2;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:#1f1e45;
+  opacity:  0.2;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+  color:#1f1e45;
+  opacity:  0.2;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+  color:#1f1e45;
+  opacity:  0.2;
+}
+
+/* Price of single Ticket */
+
+div.eer-ticket-title.eer-column {
+  font-family: 'LunchBox-Regular';
+  font-size: 2em;
+  text-align: left;
+  padding-left: 45px;
+  width: 50%;
+}
+
+div.eer-column.eer-price-column {
+  font-family: 'LunchBox-Regular';
+  font-size: 2em;
+  text-align: right !important;
+}
+
+.eer-form-tickets .eer-ticket-to-buy .eer-column {
+  text-align:  left;
+}
+
+select.eer-info-row-input.eer-levels {
+  width: 45% !important;
+}
+
+div.eer-info-row-input.eer-dancing-as {
+  float: right !important;
+}
+
+.eer-theme-vienna-honey-swing .eer-ticket-to-buy .eer-partner .eer-info-row .eer-dancing-as label {
+  display: inherit !important;
+}
+
+div.eer-info-row {
+  text-align: left !important;
+  border-top: 1px solid rgba(113, 107, 125, 0.5);
+  padding-top: 10px !important;
+}
+/* FINAL Price */
+
+.eer-theme-vienna-honey-swing .eer-final-price {
+  color: #ff472d;
+  font-family: 'LunchBox-Regular';
+  font-size: 2em;
+  text-align: left;
+  padding-left: 0px;
+  border-bottom: 2px solid rgba(113, 107, 125, 1);
+  border-top: 2px solid rgba(113, 107, 125, 1);
+}
+
+.eer-final-price .eer-final-price-label {
+  text-align: left;
+  width: 50%;
+}
+
+.eer-final-price .eer-final-price-value {
+  text-align: right;
+}
+/* MOBILE -------------------------------------------*/
+
+@media (max-width: 768px) {
+  div.eer-ticket-title.eer-column {
+    font-family: 'LunchBox-Regular';
+    font-size: 1.5em;
+    text-align: left !important;
+    padding-left: 60px;
+    width: 70% !important;
+  }
+  .eer-form-tickets .eer-ticket-to-buy .eer-column {
+    text-align: left;
+  }
+  .eer-form-tickets .eer-ticket-to-buy .eer-column.eer-price-column {
+    display: inherit;
+    font-size: 1.5em;
+    width: 30% !important;
+  }
+  select.eer-info-row-input.eer-levels {
+    width: 100% !important;
+  }
+  .eer-form-tickets .eer-ticket-to-buy .eer-column.eer-partner .eer-info-row .eer-info-row-label,
+  .eer-form-tickets .eer-ticket-to-buy .eer-column.eer-partner .eer-info-row .eer-info-row-input {
+    width: 100%;
+  }
+}
+/* Checkbox Form control */
+
+input.eer-form-control {
+  margin: 0px !important;
+}
+
+.eer-theme-vienna-honey-swing.eer-ticket-shop-form .eer-user-form .eer-form-checkbox .eer-form-group .eer-form-control {
+  height: 20px;
+  border-radius: 0;
+  color: #000;
+  letter-spacing: 1px;
+  text-transform: none;
+  font-weight: 400;
+  font-size: 16px !important;
+  resize: none;
+  display: block;
+  background-color: #fff;
+  border: 1px solid #121921;
+  font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: none;
+}
+
+
+.eer-theme-vienna-honey-swing select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+
+  background: url('../img/arrow_down.svg') no-repeat ;
+  background-color: #3A3759;
+  background-position: right 13px center;
+  background-size: auto;
+  text-indent: 0.01px;
+  text-overflow: "";
+  font-size: 16px;
+
+
+}
+.eer-theme-vienna-honey-swing select::-ms-expand {
+  display: none;
+}
+
+/* SEND BUTTON */
+
+input.btn.btn-default {
+  border: 0px;
+  text-shadow: none;
+  box-shadow: none;
+  border-radius: none;
+}
+.eer-final-price-description {
+  color: #999999;
+  width: 100%;
+  display: inline-block;
+  font-size: 18px;
+}

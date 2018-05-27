@@ -1,1 +1,2 @@
-# easy-event-registration
+# Easy Event Registration
+
