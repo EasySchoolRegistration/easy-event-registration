@@ -28,7 +28,7 @@ class EER_Payment
 	{
 		global $wpdb;
 
-		return $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}eer_events_payments WHERE id = %d", [$payment_id]), OBJECT);;
+		return $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}eer_events_payments WHERE id = %d", [$payment_id]), OBJECT);
 	}
 
 

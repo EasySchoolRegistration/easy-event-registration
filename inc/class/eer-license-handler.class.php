@@ -74,7 +74,7 @@ if (!class_exists('EER_License_Handler')) {
 		private function includes()
 		{
 			if (!class_exists('EER_SL_Plugin_Updater')) {
-				require_once EER_PLUGIN_PATH . '/inc/class/eer-sl-plugin-updater.class.php';;
+				require_once EER_PLUGIN_PATH . '/inc/class/eer-sl-plugin-updater.class.php';
 			}
 		}
 
