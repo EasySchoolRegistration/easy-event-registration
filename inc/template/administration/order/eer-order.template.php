@@ -4,19 +4,21 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Order {
+class EER_Template_Order
+{
 
 	const MENU_SLUG = 'eer_admin_order';
 
 
-	public static function print_content() {
-		$template_order_form  = new EER_Template_Order_Edit_Form();
+	public static function print_content()
+	{
+		$template_order_form = new EER_Template_Order_Edit_Form();
 		$subblock_orders_table = new EER_Subblock_Order_Table();
-		$template_all_events   = new EER_Template_All_Events_Select();
+		$template_all_events = new EER_Template_All_Events_Select();
 
 		$selected_event = $template_all_events->get_selected_event();
 
-		$user_can_edit          = current_user_can('eer_order_edit');
+		$user_can_edit = current_user_can('eer_order_edit');
 
 		if ($user_can_edit && isset($_POST['eer_order_edit_submit'])) {
 			$worker_order = new EER_Worker_Order();

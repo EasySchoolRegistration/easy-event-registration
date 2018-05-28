@@ -5,9 +5,11 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Sold_Ticket_Edit_Form {
+class EER_Template_Sold_Ticket_Edit_Form
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 		add_action('eer_sold_ticket_form_input', [get_called_class(), 'input_dancing_as']);
 		add_action('eer_sold_ticket_form_input', [get_called_class(), 'input_dancing_with']);
 		add_action('eer_sold_ticket_form_input', [get_called_class(), 'input_dancing_with_name']);
@@ -16,7 +18,8 @@ class EER_Template_Sold_Ticket_Edit_Form {
 	}
 
 
-	public function print_form() {
+	public function print_form()
+	{
 		?>
 		<div id="eer-edit-box" class="eer-edit-box">
 			<span class="close"><i class="fa fa-close"></i></span>
@@ -33,7 +36,8 @@ class EER_Template_Sold_Ticket_Edit_Form {
 	}
 
 
-	public static function input_dancing_as() {
+	public static function input_dancing_as()
+	{
 		?>
 		<tr>
 			<th><?php _e('Dancing as', 'easy-event-registration'); ?></th>
@@ -53,7 +57,8 @@ class EER_Template_Sold_Ticket_Edit_Form {
 	}
 
 
-	public static function input_dancing_with() {
+	public static function input_dancing_with()
+	{
 		?>
 		<tr>
 			<th><?php _e('Dancing with', 'easy-event-registration'); ?></th>
@@ -63,7 +68,8 @@ class EER_Template_Sold_Ticket_Edit_Form {
 	}
 
 
-	public static function input_dancing_with_name() {
+	public static function input_dancing_with_name()
+	{
 		?>
 		<tr>
 			<th><?php _e('Dancing with name', 'easy-event-registration'); ?></th>
@@ -73,7 +79,8 @@ class EER_Template_Sold_Ticket_Edit_Form {
 	}
 
 
-	public static function input_partner_email() {
+	public static function input_partner_email()
+	{
 		?>
 		<tr>
 			<th><?php _e('Partner email', 'easy-event-registration'); ?></th>
@@ -83,7 +90,8 @@ class EER_Template_Sold_Ticket_Edit_Form {
 	}
 
 
-	public static function input_submit() {
+	public static function input_submit()
+	{
 		?>
 		<tr>
 			<th></th>

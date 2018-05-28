@@ -54,7 +54,7 @@ class EER_Subblock_Template_Payment_Table
 					data-email="<?php echo $user_email; ?>"
 					data-to_pay="<?php echo $payment->to_pay; ?>"
 					data-payment="<?php echo $payment->payment; ?>"
-					data-event_id="<?php echo $payment->event_id?>"
+					data-event_id="<?php echo $payment->event_id ?>"
 				<?php } ?>
 			>
 				<td class="status"><?php echo $enum_payment->get_title($paid_status); ?></td>

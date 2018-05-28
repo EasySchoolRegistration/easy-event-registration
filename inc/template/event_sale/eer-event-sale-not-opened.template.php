@@ -4,9 +4,11 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Event_Sale_Not_Opened {
+class EER_Template_Event_Sale_Not_Opened
+{
 
-	public function print_content($event_id) {
+	public function print_content($event_id)
+	{
 		$event = EER()->event->get_event_data($event_id);
 
 		if (EER()->event->is_event_sale_not_opened_yet($event_id)) {

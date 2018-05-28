@@ -5,9 +5,11 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Payment_Edit_Form {
+class EER_Template_Payment_Edit_Form
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 		//add_action('eer_payment_form_input', [get_called_class(), 'input_event_id']);
 		add_action('eer_payment_form_input', [get_called_class(), 'input_payment_type']);
 		add_action('eer_payment_form_input', [get_called_class(), 'input_payment']);
@@ -17,7 +19,8 @@ class EER_Template_Payment_Edit_Form {
 	}
 
 
-	public function print_form() {
+	public function print_form()
+	{
 		?>
 		<div id="eer-edit-box" class="eer-edit-box">
 			<span class="close"><i class="fa fa-close"></i></span>
@@ -33,7 +36,8 @@ class EER_Template_Payment_Edit_Form {
 		<?php
 	}
 
-	public static function input_payment() {
+	public static function input_payment()
+	{
 		?>
 		<tr class="payment">
 			<th><?php _e('Payment', 'easy-event-registration') ?></th>
@@ -45,7 +49,8 @@ class EER_Template_Payment_Edit_Form {
 	}
 
 
-	public static function input_payment_type() {
+	public static function input_payment_type()
+	{
 		?>
 		<tr>
 			<th><?php _e('Payment type', 'easy-event-registration'); ?></th>
@@ -61,7 +66,8 @@ class EER_Template_Payment_Edit_Form {
 	}
 
 
-	public static function input_note() {
+	public static function input_note()
+	{
 		?>
 		<tr>
 			<th><?php _e('Note', 'easy-event-registration') ?></th>
@@ -71,17 +77,19 @@ class EER_Template_Payment_Edit_Form {
 	}
 
 
-	public static function input_email_confirmation() {
-			?>
-			<tr>
-				<th><?php _e('Send email confirmation', 'easy-event-registration') ?></th>
-				<td><input type="checkbox" name="eer_payment_email_confirmation" checked></td>
-			</tr>
-			<?php
+	public static function input_email_confirmation()
+	{
+		?>
+		<tr>
+			<th><?php _e('Send email confirmation', 'easy-event-registration') ?></th>
+			<td><input type="checkbox" name="eer_payment_email_confirmation" checked></td>
+		</tr>
+		<?php
 	}
 
 
-	public static function input_submit() {
+	public static function input_submit()
+	{
 		?>
 		<tr>
 			<th></th>

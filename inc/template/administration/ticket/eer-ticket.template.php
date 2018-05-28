@@ -4,11 +4,13 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Ticket {
+class EER_Template_Ticket
+{
 
 	const MENU_SLUG = 'eer_admin_ticket';
 
-	public static function print_content() {
+	public static function print_content()
+	{
 		if (isset($_POST['eer_ticket_submit'])) {
 			$worker_ticket = new EER_Worker_Ticket();
 			$worker_ticket->process_ticket($_POST);

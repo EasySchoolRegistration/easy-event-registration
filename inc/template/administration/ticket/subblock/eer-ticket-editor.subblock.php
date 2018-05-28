@@ -4,9 +4,11 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Subblock_Ticket_Editor {
+class EER_Subblock_Ticket_Editor
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 		add_action('eer_ticket_edit_form_input', [get_called_class(), 'input_title']);
 		add_action('eer_ticket_edit_form_input', [get_called_class(), 'input_event']);
 		add_action('eer_ticket_edit_form_input', [get_called_class(), 'input_price']);
@@ -22,12 +24,13 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
-	public function print_block() {
+	public function print_block()
+	{
 		$settings_tabs = EER()->ticket->eer_get_ticket_settings_tabs();
 		$settings_tabs = empty($settings_tabs) ? [] : $settings_tabs;
-		$active_tab    = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'currency';
-		$active_tab    = array_key_exists($active_tab, $settings_tabs) ? $active_tab : 'currency';
-		$sections      = EER()->ticket->eer_get_ticket_settings_sections();
+		$active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'currency';
+		$active_tab = array_key_exists($active_tab, $settings_tabs) ? $active_tab : 'currency';
+		$sections = EER()->ticket->eer_get_ticket_settings_sections();
 		?>
 		<div class="eer-edit-box">
 			<span class="close"><i class="fa fa-close"></i></span>
@@ -55,10 +58,10 @@ class EER_Subblock_Ticket_Editor {
 					?>
 				</ul>
 				<?php
-				$section_number             = 0;
+				$section_number = 0;
 				foreach ($sections as $section_id => $subsections) {
 					$number_of_sections = count($subsections);
-					$number             = 0;
+					$number = 0;
 					if ($number_of_sections > 0) {
 						?>
 					<div id="<?php echo $section_id; ?>" class="tab-pane<?php echo($section_number === 0 ? ' active' : '') ?>">
@@ -104,7 +107,8 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
-	public static function input_title() {
+	public static function input_title()
+	{
 		?>
 		<tr>
 			<th><?php _e('Title', 'easy-event-registration'); ?></th>
@@ -114,7 +118,8 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
-	public static function input_event() {
+	public static function input_event()
+	{
 		?>
 		<tr>
 			<th><?php _e('Event', 'easy-event-registration'); ?></th>
@@ -133,7 +138,8 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
-	public static function input_is_solo() {
+	public static function input_is_solo()
+	{
 		?>
 		<tr>
 			<th><?php _e('Is solo', 'easy-event-registration'); ?></th>
@@ -143,9 +149,10 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
-	private static function add_number($name, $key, $class = '', $hidden = false) {
+	private static function add_number($name, $key, $class = '', $hidden = false)
+	{
 		?>
-		<tr class="<?php echo $class; ?>" <?php echo ($hidden ? 'style="display:none;"' : ''); ?>>
+		<tr class="<?php echo $class; ?>" <?php echo($hidden ? 'style="display:none;"' : ''); ?>>
 			<th><?php _e($name, 'easy-event-registration'); ?></th>
 			<td><input id="<?php echo $key; ?>" type="number" name="<?php echo $key; ?>" value="0" class="eer-input"></td>
 		</tr>
@@ -153,22 +160,26 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
-	public static function input_max_leaders() {
+	public static function input_max_leaders()
+	{
 		self::add_number('Max leaders', 'max_leaders', 'max_leaders');
 	}
 
 
-	public static function input_max_followers() {
+	public static function input_max_followers()
+	{
 		self::add_number('Max followers', 'max_followers', 'max_followers');
 	}
 
 
-	public static function input_max_tickets() {
+	public static function input_max_tickets()
+	{
 		self::add_number('Max tickets', 'max_tickets', 'max_tickets', true);
 	}
 
 
-	public static function input_price() {
+	public static function input_price()
+	{
 		?>
 		<tr>
 			<th><?php _e('Price', 'easy-event-registration'); ?></th>
@@ -178,7 +189,8 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
-	public static function input_max_per_order() {
+	public static function input_max_per_order()
+	{
 		?>
 		<tr class="max_per_order">
 			<th><?php _e('Max per order', 'easy-event-registration'); ?></th>
@@ -188,7 +200,8 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
-	public static function input_sold_separately() {
+	public static function input_sold_separately()
+	{
 		?>
 		<tr>
 			<th><?php _e('Sold separately', 'easy-event-registration'); ?></th>
@@ -198,7 +211,8 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
-	public static function input_once_per_user() {
+	public static function input_once_per_user()
+	{
 		?>
 		<tr>
 			<th><?php _e('Once per user', 'easy-event-registration'); ?></th>
@@ -208,7 +222,8 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
-	public static function input_position() {
+	public static function input_position()
+	{
 		?>
 		<tr>
 			<th><?php _e('Position', 'easy-event-registration'); ?></th>
@@ -218,7 +233,8 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
-	public static function input_submit() {
+	public static function input_submit()
+	{
 		?>
 		<tr>
 			<th></th>
@@ -230,7 +246,8 @@ class EER_Subblock_Ticket_Editor {
 		<?php
 	}
 
-	public static function eer_print_tickets_settings_tab($section_id, $sub_section_id) {
+	public static function eer_print_tickets_settings_tab($section_id, $sub_section_id)
+	{
 		$model_settings = new EER_Models_Settings_Helper_Templater();
 		$model_settings->eer_print_settings_tab('ticket', EER()->ticket->eer_get_ticket_settings_fields_to_print($section_id, $sub_section_id));
 	}

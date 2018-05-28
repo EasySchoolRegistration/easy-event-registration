@@ -4,14 +4,16 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Enum_Order_Status {
+class EER_Enum_Order_Status
+{
 
 	const ORDERED = 0,
-		  DELETED = 1;
+		DELETED = 1;
 
 	public $items = [];
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->items = [
 			self::ORDERED => [
 				'title' => __('Ordered', 'easy-event-registration')
@@ -23,7 +25,8 @@ class EER_Enum_Order_Status {
 	}
 
 
-	public function get_title($key) {
+	public function get_title($key)
+	{
 		if (!isset($this->items[$key]['title'])) {
 			return NULL;
 		}

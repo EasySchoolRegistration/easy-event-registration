@@ -4,13 +4,15 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Subblock_Sold_Ticket_Table {
+class EER_Subblock_Sold_Ticket_Table
+{
 
-	public function print_block($event_id) {
+	public function print_block($event_id)
+	{
 		$sold_tickets = EER()->sold_ticket->eer_get_sold_tickets_by_event($event_id);
-		$tickets      = EER()->ticket->get_tickets_by_event($event_id);
+		$tickets = EER()->ticket->get_tickets_by_event($event_id);
 
-		$orders     = EER()->order->eer_get_orders_by_event($event_id);
+		$orders = EER()->order->eer_get_orders_by_event($event_id);
 		$event_data = EER()->event->get_event_data($event_id);
 
 		$partner_name_enabled = intval(EER()->event->eer_get_event_option($event_data, 'partner_name_enabled', -1)) === 1;
@@ -41,7 +43,7 @@ class EER_Subblock_Sold_Ticket_Table {
 			<tbody class="list">
 			<?php
 			$users_data = get_users(['fields' => ['ID', 'display_name', 'user_email']]);
-			$users      = [];
+			$users = [];
 			foreach ($users_data as $u) {
 				$users[$u->ID] = $u;
 			}
@@ -49,7 +51,7 @@ class EER_Subblock_Sold_Ticket_Table {
 				$order = isset($orders[$sold_ticket->order_id]) ? $orders[$sold_ticket->order_id] : null;
 
 				$ticket_id = $sold_ticket->ticket_id;
-				$levels    = isset($tickets[$ticket_id]->levels) ? $tickets[$ticket_id]->levels : [];
+				$levels = isset($tickets[$ticket_id]->levels) ? $tickets[$ticket_id]->levels : [];
 
 				?>
 				<tr class="eer-row eer-status-<?php echo $sold_ticket->status; ?>"
@@ -82,7 +84,7 @@ class EER_Subblock_Sold_Ticket_Table {
 					<td><?php if ($sold_ticket->partner_id) {
 							echo $users[$sold_ticket->partner_id]->display_name;
 						}; ?></td>
-					<td><?php echo (isset($sold_ticket->cp_position) ? $sold_ticket->cp_position : ''); ?></td>
+					<td><?php echo(isset($sold_ticket->cp_position) ? $sold_ticket->cp_position : ''); ?></td>
 				</tr>
 			<?php } ?>
 			</tbody>
@@ -91,7 +93,8 @@ class EER_Subblock_Sold_Ticket_Table {
 	}
 
 
-	private function print_action_box($id) {
+	private function print_action_box($id)
+	{
 		?>
 		<ul class="eer-actions-box dropdown-menu" data-id="<?php echo $id; ?>">
 			<li class="eer-action edit">

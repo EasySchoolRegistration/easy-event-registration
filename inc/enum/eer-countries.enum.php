@@ -1,10 +1,12 @@
 <?php
 
-class EER_Enum_Countries {
+class EER_Enum_Countries
+{
 
 	private $items = [];
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->items = [
 			'AF' => 'Afghanistan',
 			'AL' => 'Albania',
@@ -249,7 +251,8 @@ class EER_Enum_Countries {
 	}
 
 
-	public function eer_get_items() {
+	public function eer_get_items()
+	{
 		return $this->items;
 	}
 

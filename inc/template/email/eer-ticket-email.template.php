@@ -5,17 +5,20 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Ticket_Email {
+class EER_Template_Ticket_Email
+{
 
 	private $worker_email;
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->worker_email = new EER_Worker_Email();
 	}
 
 
-	public function send_email($order_id) {
-		$order        = EER()->order->eer_get_order($order_id);
+	public function send_email($order_id)
+	{
+		$order = EER()->order->eer_get_order($order_id);
 		$sold_tickets = EER()->sold_ticket->eer_get_confirmed_sold_tickets_by_order($order_id);
 
 		$event_data = EER()->event->get_event_data($order->event_id);
@@ -23,7 +26,7 @@ class EER_Template_Ticket_Email {
 		$user = get_user_by('ID', $order->user_id);
 
 		$subject = stripcslashes(EER()->event->eer_get_event_option($event_data, 'tickets_email_subject', ''));
-		$body    = stripcslashes(EER()->event->eer_get_event_option($event_data, 'tickets_email_body', null));
+		$body = stripcslashes(EER()->event->eer_get_event_option($event_data, 'tickets_email_body', null));
 
 		if (!empty($body)) {
 			$tags = EER()->tags->get_tags('email_tickets');

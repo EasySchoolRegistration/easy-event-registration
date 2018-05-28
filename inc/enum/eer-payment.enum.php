@@ -5,7 +5,8 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Enum_Payment {
+class EER_Enum_Payment
+{
 	const
 		NOT_PAID = 0, PAID = 1, OVER_PAID = 2, NOT_PAYING = 3, VOUCHER = 4, NOT_PAID_ALL = 5;
 
@@ -15,57 +16,62 @@ class EER_Enum_Payment {
 	/**
 	 * @codeCoverageIgnore
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 		$this->items = [
-			self::NOT_PAID     => [
-				'key'   => 'not_paid',
+			self::NOT_PAID => [
+				'key' => 'not_paid',
 				'title' => __('Not paid', 'easy-school-registration'),
 			],
-			self::PAID         => [
-				'key'   => 'paid',
+			self::PAID => [
+				'key' => 'paid',
 				'title' => __('Paid', 'easy-school-registration'),
 			],
-			self::OVER_PAID    => [
-				'key'   => 'over_paid',
+			self::OVER_PAID => [
+				'key' => 'over_paid',
 				'title' => __('Over paid', 'easy-school-registration'),
 			],
-			self::NOT_PAYING   => [
-				'key'   => 'not_paying',
+			self::NOT_PAYING => [
+				'key' => 'not_paying',
 				'title' => __('Not paying', 'easy-school-registration'),
 			],
-			self::VOUCHER      => [
-				'key'   => 'voucher',
+			self::VOUCHER => [
+				'key' => 'voucher',
 				'title' => __('Voucher', 'easy-school-registration'),
 			],
 			self::NOT_PAID_ALL => [
-				'key'   => 'not_paid_all',
+				'key' => 'not_paid_all',
 				'title' => __('Not paid all', 'easy-school-registration'),
 			],
 		];
 	}
 
 
-	public function getItems() {
+	public function getItems()
+	{
 		return $this->items;
 	}
 
 
-	public function getItem($key) {
+	public function getItem($key)
+	{
 		return $this->getItems()[$key];
 	}
 
 
-	public function get_title($key) {
+	public function get_title($key)
+	{
 		return $this->getItem($key)['title'];
 	}
 
 
-	public function get_status($user_payment) {
+	public function get_status($user_payment)
+	{
 		if ($user_payment !== null) {
-			if (!((boolean) $user_payment->is_paying)) {
+			if (!((boolean)$user_payment->is_paying)) {
 				return self::NOT_PAYING;
 			}
-			if ((boolean) $user_payment->is_voucher) {
+			if ((boolean)$user_payment->is_voucher) {
 				return self::VOUCHER;
 			}
 			if ($user_payment->payment !== null) {

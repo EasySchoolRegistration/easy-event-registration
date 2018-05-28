@@ -4,12 +4,14 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Fields {
+class EER_Fields
+{
 
 	private $fields;
 
 
-	public function add_field($key, $type, $required) {
+	public function add_field($key, $type, $required)
+	{
 		$this->fields[$key] = [
 			'type' => $type,
 			'required' => $required
@@ -20,14 +22,16 @@ class EER_Fields {
 	/**
 	 * @return object
 	 */
-	public function get_fields() {
-		return (object) $this->fields;
+	public function get_fields()
+	{
+		return (object)$this->fields;
 	}
 
-	public function sanitize($type, $value) {
+	public function sanitize($type, $value)
+	{
 		switch ($type) {
 			case 'int':
-				return (int) $value;
+				return (int)$value;
 			case 'boolean':
 				return filter_var($value, FILTER_VALIDATE_BOOLEAN);
 			case 'timestamp':
@@ -41,15 +45,18 @@ class EER_Fields {
 		}
 	}
 
-	public function eer_sanitize_event_settings($values) {
+	public function eer_sanitize_event_settings($values)
+	{
 		return $this->eer_sanitize_settings(EER()->event->eer_get_event_settings_fields(), $values);
 	}
 
-	public function eer_sanitize_ticket_settings($values) {
+	public function eer_sanitize_ticket_settings($values)
+	{
 		return $this->eer_sanitize_settings(EER()->ticket->eer_get_ticket_settings_fields(), $values);
 	}
 
-	private function eer_sanitize_settings($fields, $values) {
+	private function eer_sanitize_settings($fields, $values)
+	{
 		$ret = [];
 
 		foreach ($fields as $section_key => $sections) {
