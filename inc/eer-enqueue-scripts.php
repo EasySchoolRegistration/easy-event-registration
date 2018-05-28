@@ -41,6 +41,7 @@ class EER_Enqueue_Scripts
 		} else if (self::check_page_base(EER_Template_Order::MENU_SLUG) ||
 			self::check_page_base(EER_Template_Sold_Ticket::MENU_SLUG) ||
 			self::check_page_base(EER_Template_Payments::MENU_SLUG) ||
+			self::check_page_base(EER_Template_Payment_Emails::MENU_SLUG) ||
 			self::check_page_base(EER_Template_Tickets_In_Numbers::MENU_SLUG)) {
 			wp_enqueue_script('eer_admin_events_script', EER_PLUGIN_URL . 'inc/assets/admin/js/eer-production.js', ['jquery']);
 			self::eer_include_admin_scripts();
