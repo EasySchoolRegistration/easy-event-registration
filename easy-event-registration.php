@@ -52,11 +52,6 @@ if (!class_exists('Easy_Event_Registration')) {
 		public $event;
 
 		/**
-		 * @var EER_Event_Sale
-		 */
-		public $event_sale;
-
-		/**
 		 * @var EER_Fields
 		 */
 		public $fields;
@@ -149,7 +144,6 @@ if (!class_exists('Easy_Event_Registration')) {
 				self::$instance->dancing_as         = new EER_Enum_Dancing_As();
 				self::$instance->email              = new EER_Email();
 				self::$instance->event              = new EER_Event();
-				self::$instance->event_sale         = new EER_Event_Sale();
 				self::$instance->fields             = new EER_Fields();
 				self::$instance->model_settings     = new EER_Model_Settings();
 				self::$instance->order              = new EER_Order();
@@ -240,7 +234,6 @@ if (!class_exists('Easy_Event_Registration')) {
 			require_once EER_PLUGIN_PATH . '/inc/class/eer-ajax.class.php';
 			require_once EER_PLUGIN_PATH . '/inc/class/eer-currency.class.php';
 			require_once EER_PLUGIN_PATH . '/inc/class/eer-email.class.php';
-			require_once EER_PLUGIN_PATH . '/inc/class/eer-event-sale.class.php';
 			require_once EER_PLUGIN_PATH . '/inc/class/eer-fields.class.php';
 			require_once EER_PLUGIN_PATH . '/inc/class/eer-licence.class.php';
 			require_once EER_PLUGIN_PATH . '/inc/class/eer-license-handler.class.php';
@@ -329,7 +322,8 @@ if (!class_exists('Easy_Event_Registration')) {
 	}
 }
 
-$license_key = trim(EER()->settings->eer_get_option('license_key'));
+$license_key = EER()->settings->eer_get_option('license_key');
+$license_key = $license_key ? trim($license_key) : '';
 
 // setup the updater
 $edd_updater = new EER_SL_Plugin_Updater(EER_SL_STORE_URL, EER_PLUGIN_FILE, [
