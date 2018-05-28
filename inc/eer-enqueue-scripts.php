@@ -17,9 +17,6 @@ class EER_Enqueue_Scripts
 	private static function enqueue_web_style_scripts()
 	{
 		wp_enqueue_style('eer_web_style', EER_PLUGIN_URL . 'inc/assets/web/css/eer-web.css', [], EER_VERSION);
-		wp_enqueue_style('eer_theme_dark-blue-green_style', EER_PLUGIN_URL . 'inc/assets/web/themes/dark-blue-green/css/eer-dark-blue-green.css', [], EER_VERSION);
-
-		//wp_enqueue_style('eer_theme_style', EER_PLUGIN_URL . 'inc/assets/web/themes/vienna-honey-swing/css/eer-vienna-honey-swing.css', [], EER_VERSION);
 		wp_enqueue_style('eer_themify_icons_style', EER_PLUGIN_URL . 'libs/themify-icons/themify-icons.css', [], EER_VERSION);
 	}
 
@@ -35,16 +32,16 @@ class EER_Enqueue_Scripts
 	public static function add_admin_scripts()
 	{
 		if (self::check_page_base(EER_Template_Event::MENU_SLUG) ||
-		    self::check_page_base(EER_Template_Ticket::MENU_SLUG)) {
+			self::check_page_base(EER_Template_Ticket::MENU_SLUG)) {
 			wp_enqueue_script('eer_admin_events_script', EER_PLUGIN_URL . 'inc/assets/admin/js/eer-production.js', ['jquery', 'wp-color-picker']);
 			self::eer_include_admin_scripts();
 			self::eer_include_datatable_scripts();
-			wp_enqueue_script( 'tinymce' );
-			wp_enqueue_style( 'wp-color-picker' );
+			wp_enqueue_script('tinymce');
+			wp_enqueue_style('wp-color-picker');
 		} else if (self::check_page_base(EER_Template_Order::MENU_SLUG) ||
-		           self::check_page_base(EER_Template_Sold_Ticket::MENU_SLUG) ||
-		           self::check_page_base(EER_Template_Payments::MENU_SLUG) ||
-		           self::check_page_base(EER_Template_Tickets_In_Numbers::MENU_SLUG)) {
+			self::check_page_base(EER_Template_Sold_Ticket::MENU_SLUG) ||
+			self::check_page_base(EER_Template_Payments::MENU_SLUG) ||
+			self::check_page_base(EER_Template_Tickets_In_Numbers::MENU_SLUG)) {
 			wp_enqueue_script('eer_admin_events_script', EER_PLUGIN_URL . 'inc/assets/admin/js/eer-production.js', ['jquery']);
 			self::eer_include_admin_scripts();
 			self::eer_include_datatable_scripts();
@@ -74,7 +71,8 @@ class EER_Enqueue_Scripts
 		wp_enqueue_style('eer_admin_font_awesome_style', EER_PLUGIN_URL . 'libs/font-awesome/css/font-awesome.css');
 	}
 
-	private static function check_page_base($base_to_check) {
+	private static function check_page_base($base_to_check)
+	{
 		return strpos(get_current_screen()->base, $base_to_check) !== false;
 	}
 }

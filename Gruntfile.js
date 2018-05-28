@@ -9,8 +9,6 @@ module.exports = function(grunt) {
 				files: {
 					'./inc/assets/admin/css/eer-admin-settings.css': './assets/admin/scss/eer-admin-settings.scss',
 					'./inc/assets/web/css/eer-web.css': './assets/web/scss/eer-web.scss',
-                    './inc/assets/web/themes/dark-blue-green/css/eer-dark-blue-green.css': './assets/web/scss/themes/theme-dark-blue-green.scss',
-                    './inc/assets/web/themes/vienna-honey-swing/css/eer-vienna-honey-swing.css': './assets/web/scss/themes/theme-vienna-honey-swing.scss'
 				}
 			}
 		},

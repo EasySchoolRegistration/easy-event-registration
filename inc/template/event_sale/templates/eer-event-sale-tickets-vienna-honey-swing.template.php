@@ -14,7 +14,7 @@ class EER_Template_Event_Sale_Tickets_Vienna_Honey_Swing
 		if ($tickets) {
 			$ticket_width = 100 / count($tickets) - 2;
 			?>
-			<div class="eer-tickets eer-theme-dark-blue-green eer-clearfix">
+			<div class="eer-tickets eer-clearfix">
 				<?php
 				foreach ($tickets as $tisket_id => $ticket) {
 					$ticket_buy_enabled = EER()->ticket->is_ticket_buy_enabled($tisket_id, $ticket);

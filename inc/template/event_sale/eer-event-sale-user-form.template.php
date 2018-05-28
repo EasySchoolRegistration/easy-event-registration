@@ -11,7 +11,7 @@ class EER_Template_Event_Sale_User_Form
 	{
 		$event_data = EER()->event->get_event_data($event_id);
 		?>
-		<form id="eer-ticket-shop-form" class="eer-ticket-shop-form eer-theme-dark-blue-green"
+		<form id="eer-ticket-shop-form" class="eer-ticket-shop-form"
 		      data-no-tickets="<?php _e('At least one ticket is required to select.', 'easy-event-registration'); ?>">
 			<div class="eer-form-tickets-header eer-clearfix">
 				<div class="eer-column-header"><span><?php _e('Item', 'easy-event-registration'); ?></span></div>
