@@ -26,10 +26,10 @@ class EER_Ticket_Summary
 	 *
 	 * @return object
 	 */
-	public function eer_get_ticket_summary($ticket_id, $level_id = NULL)
+	public function eer_get_ticket_summary($ticket_id, $level_id = null)
 	{
 		global $wpdb;
-		if ($level_id) {
+		if ($level_id !== null) {
 			return $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d AND level_id =  %d", [intval($ticket_id), $level_id]));
 		} else {
 			return $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d", [intval($ticket_id)]));

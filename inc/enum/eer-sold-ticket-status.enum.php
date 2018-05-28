@@ -7,6 +7,8 @@ class EER_Enum_Sold_Ticket_Status
 		CONFIRMED = 1,
 		DELETED = 2;
 
+	private $items = [];
+
 	public function __construct()
 	{
 		$this->items = [

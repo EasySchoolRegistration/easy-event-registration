@@ -49,7 +49,7 @@ class EER_Email
 	 */
 	public function eer_send_order_confirmation_email($event_id, $tickets)
 	{
-		if ($tickets) {
+		if (!empty($tickets)) {
 			$this->template_order_confirmation_email->send_email($event_id, $tickets);
 		}
 	}

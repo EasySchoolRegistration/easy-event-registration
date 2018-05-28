@@ -115,7 +115,7 @@ class EER_Settings
 					$settings = $sections;
 				}
 
-				add_settings_section('eer_settings_' . $tab . '_' . $section, __return_null(), '__return_false', 'eer_settings_' . $tab . '_' . $section);
+				add_settings_section('eer_settings_' . $tab . '_' . $section, null, '__return_false', 'eer_settings_' . $tab . '_' . $section);
 
 				foreach ($settings as $option) {
 					// For backwards compatibility
