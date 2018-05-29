@@ -34,6 +34,7 @@ class EER_Database
 		include_once 'updates/eer-update.1.0.7.php';
 		include_once 'updates/eer-update.1.0.10.php';
 		include_once 'updates/eer-update.1.0.11.php';
+		include_once 'updates/eer-update.1.0.12.php';
 		update_option('eer_db_version', EER_VERSION);
 	}
 
@@ -99,6 +100,7 @@ class EER_Database
 			status int DEFAULT 0,
 			not_paying int(1) NOT NULL DEFAULT 0, 
 			inserted_datetime timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+			confirmation_email_sent_timestamp timestamp NULL DEFAULT NULL
 			PRIMARY KEY id (id),
 			FOREIGN KEY (order_id) REFERENCES {$wpdb->prefix}eer_events_orders(id) ON DELETE CASCADE
 		) $charset_collate;";

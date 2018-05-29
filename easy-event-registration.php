@@ -3,7 +3,7 @@
  * Plugin Name: Easy Event Registration
  * Plugin URI: http://easyschoolregistrations.com/
  * Description: System for Easy Event Registration
- * Version: 1.0.11
+ * Version: 1.0.12
  * Author: Zbyněk Nedoma
  * Author URI: http://easyschoolregistrations.com/
  * License: A "Slug" license name e.g. GPL12
@@ -201,7 +201,7 @@ if (!class_exists('Easy_Event_Registration')) {
 			global $wpdb;
 
 			define('EER_SLUG', 'eer');
-			define('EER_VERSION', '1.0.11');
+			define('EER_VERSION', '1.0.12');
 			// Plugin Root File.
 			if (!defined('EER_PLUGIN_FILE')) {
 				define('EER_PLUGIN_FILE', __FILE__);
@@ -210,6 +210,9 @@ if (!class_exists('Easy_Event_Registration')) {
 			// Plugin Name
 			if (!defined('EER_PLUGIN_NAME')) {
 				define('EER_PLUGIN_NAME', 'Easy Event Registration');
+			}
+			if (!defined('EER_PLUGIN_LICENSE_KEY')) {
+				define('EER_PLUGIN_LICENSE_KEY', 'be231c0b91c6e003810780167fc92694');
 			}
 
 			define('EER_PLUGIN_PATH', dirname(__FILE__));
@@ -316,6 +319,7 @@ if (!class_exists('Easy_Event_Registration')) {
 			require_once EER_PLUGIN_PATH . '/inc/worker/eer-event.worker.php';
 			require_once EER_PLUGIN_PATH . '/inc/worker/eer-order.worker.php';
 			require_once EER_PLUGIN_PATH . '/inc/worker/eer-payment.worker.php';
+			require_once EER_PLUGIN_PATH . '/inc/worker/eer-payment-email.worker.php';
 			require_once EER_PLUGIN_PATH . '/inc/worker/eer-sold-ticket.worker.php';
 			require_once EER_PLUGIN_PATH . '/inc/worker/eer-ticket.worker.php';
 			require_once EER_PLUGIN_PATH . '/inc/worker/eer-tickets-in-numbers.worker.php';
@@ -334,7 +338,7 @@ $license_key = trim(EER()->settings->eer_get_option('license_key'));
 // setup the updater
 $edd_updater = new EER_SL_Plugin_Updater(EER_SL_STORE_URL, EER_PLUGIN_FILE, [
 	'version'   => EER_VERSION,        // current version number
-	'license'   => $license_key,    // license key (used get_option above to retrieve from DB)
+	'license'   => EER_PLUGIN_LICENSE_KEY,    // license key (used get_option above to retrieve from DB)
 	'item_name' => 'Easy Event Registration',
 	//'item_id'   => 1358,    // id of this product in EER
 	'author'    => 'zbynek',  // author of this plugin
