@@ -5,27 +5,30 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Payment_Email {
+class EER_Template_Payment_Email
+{
 
 	private $worker_email;
 
 	private $worker_payment_email;
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->worker_email = new EER_Worker_Email();
 		$this->worker_payment_email = new EER_Worker_Payment_Email();
 	}
 
 
-	public function send_email($payment_id, $event_data) {
-		$payment    = EER()->payment->eer_get_payment($payment_id);
-		$order      = EER()->order->eer_get_order($payment->order_id);
+	public function send_email($payment_id, $event_data)
+	{
+		$payment = EER()->payment->eer_get_payment($payment_id);
+		$order = EER()->order->eer_get_order($payment->order_id);
 		$order_info = json_decode($order->order_info);
 
 		$user = get_user_by('ID', $order->user_id);
 
 		$subject = stripcslashes(EER()->event->eer_get_event_option($event_data, 'payment_reminder_email_subject', ''));
-		$body    = stripcslashes(EER()->event->eer_get_event_option($event_data, 'payment_reminder_email_body', null));
+		$body = stripcslashes(EER()->event->eer_get_event_option($event_data, 'payment_reminder_email_body', null));
 
 		if (!empty($body)) {
 			$tags = EER()->tags->get_tags('payment_reminder_email');

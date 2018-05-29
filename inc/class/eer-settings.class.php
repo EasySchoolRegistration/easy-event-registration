@@ -5,7 +5,8 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Settings {
+class EER_Settings
+{
 
 	/**
 	 * Retrieve the array of plugin settings
@@ -13,33 +14,35 @@ class EER_Settings {
 	 * @since 3
 	 * @return array
 	 */
-	public function eer_get_registered_settings() {
+	public function eer_get_registered_settings()
+	{
 		$eer_settings = [
 			/** General Settings */
-			'general'               => apply_filters('eer_settings_general', [
-				'main'     => [
-					'license_key'          => [
-						'id'      => 'license_key',
-						'name'    => __('License key', 'easy-event-registration'),
-						'type'    => 'text',
+			'general' => apply_filters('eer_settings_general', [
+				'main' => [
+					'license_key' => [
+						'id' => 'license_key',
+						'name' => __('License key', 'easy-event-registration'),
+						'type' => 'text',
 						'options' => 'small',
 					],
 					'eer_license_activate' => [
-						'id'   => 'eer_license_activate',
+						'id' => 'eer_license_activate',
 						'name' => __('Activate License', 'easy-event-registration'),
 						'type' => 'submit',
 					],
 				],
 			]),
-			'licenses'              => apply_filters('eer_settings_licenses', []),
-			'extensions'            => apply_filters('eer_settings_extensions', []),
+			'licenses' => apply_filters('eer_settings_licenses', []),
+			'extensions' => apply_filters('eer_settings_extensions', []),
 		];
 
 		return apply_filters('eer_registered_settings', $eer_settings);
 	}
 
 
-	public function eer_get_registered_settings_sections() {
+	public function eer_get_registered_settings_sections()
+	{
 
 		static $sections = false;
 
@@ -48,11 +51,11 @@ class EER_Settings {
 		}
 
 		$sections = [
-			'general'               => apply_filters('eer_settings_sections_general', [
-				'main'     => __('General', 'easy-event-registration'),
+			'general' => apply_filters('eer_settings_sections_general', [
+				'main' => __('General', 'easy-event-registration'),
 			]),
-			'licenses'              => apply_filters('eer_settings_sections_licenses', []),
-			'extensions'            => apply_filters('eer_settings_sections_extensions', []),
+			'licenses' => apply_filters('eer_settings_sections_licenses', []),
+			'extensions' => apply_filters('eer_settings_sections_extensions', []),
 		];
 
 		$sections = apply_filters('eer_settings_sections', $sections);
@@ -61,12 +64,13 @@ class EER_Settings {
 	}
 
 
-	public function eer_get_settings_tabs() {
+	public function eer_get_settings_tabs()
+	{
 
 		$settings = $this->eer_get_registered_settings();
 
-		$tabs                          = [];
-		$tabs['general']               = __('General', 'easy-event-registration');
+		$tabs = [];
+		$tabs['general'] = __('General', 'easy-event-registration');
 
 		if (!empty($settings['extensions'])) {
 			$tabs['extensions'] = __('Extensions', 'easy-event-registration');
@@ -79,9 +83,10 @@ class EER_Settings {
 	}
 
 
-	public function eer_get_settings_tab_sections($tab = false) {
+	public function eer_get_settings_tab_sections($tab = false)
+	{
 
-		$tabs     = false;
+		$tabs = false;
 		$sections = $this->eer_get_registered_settings_sections();
 
 		if ($tab && !empty($sections[$tab])) {
@@ -94,7 +99,8 @@ class EER_Settings {
 	}
 
 
-	public static function eer_register_settings() {
+	public static function eer_register_settings()
+	{
 		if (false == get_option('eer_settings')) {
 			add_option('eer_settings');
 		}
@@ -105,11 +111,11 @@ class EER_Settings {
 				// Check for backwards compatibility
 				$section_tabs = EER()->settings->eer_get_settings_tab_sections($tab);
 				if (!is_array($section_tabs) || !array_key_exists($section, $section_tabs)) {
-					$section  = 'main';
+					$section = 'main';
 					$settings = $sections;
 				}
 
-				add_settings_section('eer_settings_' . $tab . '_' . $section, __return_null(), '__return_false', 'eer_settings_' . $tab . '_' . $section);
+				add_settings_section('eer_settings_' . $tab . '_' . $section, null, '__return_false', 'eer_settings_' . $tab . '_' . $section);
 
 				foreach ($settings as $option) {
 					// For backwards compatibility
@@ -118,27 +124,27 @@ class EER_Settings {
 					}
 
 					$args = wp_parse_args($option, [
-						'section'       => $section,
-						'id'            => null,
-						'desc'          => '',
-						'name'          => '',
-						'size'          => null,
-						'options'       => '',
-						'std'           => '',
-						'min'           => null,
-						'max'           => null,
-						'step'          => null,
-						'chosen'        => null,
-						'multiple'      => null,
-						'placeholder'   => null,
-						'allow_blank'   => true,
-						'readonly'      => false,
-						'faux'          => false,
+						'section' => $section,
+						'id' => null,
+						'desc' => '',
+						'name' => '',
+						'size' => null,
+						'options' => '',
+						'std' => '',
+						'min' => null,
+						'max' => null,
+						'step' => null,
+						'chosen' => null,
+						'multiple' => null,
+						'placeholder' => null,
+						'allow_blank' => true,
+						'readonly' => false,
+						'faux' => false,
 						'tooltip_title' => false,
-						'tooltip_desc'  => false,
-						'field_class'   => '',
-						'prefix'        => 'eer_',
-						'template'      => 'EER_Template_Settings_Helper'
+						'tooltip_desc' => false,
+						'field_class' => '',
+						'prefix' => 'eer_',
+						'template' => 'EER_Template_Settings_Helper'
 					]);
 
 					$callback = $args['prefix'] . $args['type'] . '_callback';
@@ -152,7 +158,8 @@ class EER_Settings {
 	}
 
 
-	public function eer_get_option($key = '', $default = false) {
+	public function eer_get_option($key = '', $default = false)
+	{
 		global $eer_settings;
 		$value = !empty($eer_settings[$key]) ? $eer_settings[$key] : $default;
 		$value = apply_filters('eer_get_option', $value, $key, $default);
@@ -161,7 +168,8 @@ class EER_Settings {
 	}
 
 
-	public function eer_get_settings() {
+	public function eer_get_settings()
+	{
 
 		$settings = get_option('eer_settings');
 
@@ -173,7 +181,8 @@ class EER_Settings {
 	}
 
 
-	public static function eer_settings_sanitize($input = []) {
+	public static function eer_settings_sanitize($input = [])
+	{
 		global $eer_settings;
 
 		$input = $input ? $input : [];

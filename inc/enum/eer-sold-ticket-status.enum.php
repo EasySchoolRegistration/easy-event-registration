@@ -1,12 +1,16 @@
 <?php
 
-class EER_Enum_Sold_Ticket_Status {
+class EER_Enum_Sold_Ticket_Status
+{
 
 	const WAITING = 0,
-		  CONFIRMED = 1,
-		  DELETED = 2;
+		CONFIRMED = 1,
+		DELETED = 2;
 
-	public function __construct() {
+	private $items = [];
+
+	public function __construct()
+	{
 		$this->items = [
 			self::WAITING => [
 				'title' => __('Waiting', 'easy-event-registration')
@@ -21,7 +25,8 @@ class EER_Enum_Sold_Ticket_Status {
 	}
 
 
-	public function get_title($key) {
+	public function get_title($key)
+	{
 		if (!isset($this->items[$key]['title'])) {
 			return NULL;
 		}
@@ -29,7 +34,8 @@ class EER_Enum_Sold_Ticket_Status {
 		return $this->items[$key]['title'];
 	}
 
-	public function is_waiting($key) {
+	public function is_waiting($key)
+	{
 		return intval($key) === self::WAITING;
 	}
 

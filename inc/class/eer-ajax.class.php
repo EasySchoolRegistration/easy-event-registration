@@ -5,15 +5,18 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Ajax {
+class EER_Ajax
+{
 
-	public static function eer_process_order_callback() {
+	public static function eer_process_order_callback()
+	{
 		$worker_event_sale = new EER_Worker_Event_Sale();
 		wp_send_json($worker_event_sale->process_registration(json_decode(stripslashes($_POST['order_data']))), 200);
 	}
 
 
-	public static function eer_send_tickets_callback() {
+	public static function eer_send_tickets_callback()
+	{
 		if (isset($_POST['order_id'])) {
 			echo EER()->email->eer_send_tickets_email($_POST['order_id']);
 		}
@@ -23,7 +26,8 @@ class EER_Ajax {
 	}
 
 
-	public static function eer_remove_order_callback() {
+	public static function eer_remove_order_callback()
+	{
 		if (isset($_POST['order_id'])) {
 			$worker_ajax = new EER_Worker_Ajax();
 			echo $worker_ajax->remove_order($_POST['order_id']);
@@ -34,7 +38,8 @@ class EER_Ajax {
 	}
 
 
-	public static function eer_remove_sold_ticket_callback() {
+	public static function eer_remove_sold_ticket_callback()
+	{
 		if (isset($_POST['sold_ticket_id'])) {
 			$worker_ajax = new EER_Worker_Ajax();
 			echo $worker_ajax->remove_sold_ticket($_POST['sold_ticket_id']);
@@ -45,7 +50,8 @@ class EER_Ajax {
 	}
 
 
-	public static function eer_confirm_sold_ticket_callback() {
+	public static function eer_confirm_sold_ticket_callback()
+	{
 		if (isset($_POST['sold_ticket_id'])) {
 			$worker_ajax = new EER_Worker_Ajax();
 			echo $worker_ajax->confirm_sold_ticket($_POST['sold_ticket_id']);
@@ -56,7 +62,8 @@ class EER_Ajax {
 	}
 
 
-	public static function eer_edit_order_callback() {
+	public static function eer_edit_order_callback()
+	{
 		$data = $_POST;
 		if (isset($data['order_id'])) {
 			echo 1;
@@ -67,7 +74,8 @@ class EER_Ajax {
 	}
 
 
-	public static function eer_edit_sold_ticket_callback() {
+	public static function eer_edit_sold_ticket_callback()
+	{
 		$data = $_POST;
 		if (isset($data['sold_order_id'])) {
 			echo 1;
@@ -78,7 +86,8 @@ class EER_Ajax {
 	}
 
 
-	public static function eer_save_payment_callback() {
+	public static function eer_save_payment_callback()
+	{
 		$data = $_POST;
 		if (isset($data['order_id'])) {
 			$worker_ajax = new EER_Worker_Ajax();
@@ -90,7 +99,8 @@ class EER_Ajax {
 	}
 
 
-	public function eer_remove_sold_ticket_forever_callback() {
+	public function eer_remove_sold_ticket_forever_callback()
+	{
 		if (isset($_POST['sold_ticket_id'])) {
 			$worker_ajax = new EER_Worker_Ajax();
 
@@ -107,6 +117,7 @@ class EER_Ajax {
 	}
 
 }
+
 //Frontend
 add_action('wp_ajax_eer_process_order', ['EER_Ajax', 'eer_process_order_callback']);
 add_action('wp_ajax_nopriv_eer_process_order', ['EER_Ajax', 'eer_process_order_callback']);

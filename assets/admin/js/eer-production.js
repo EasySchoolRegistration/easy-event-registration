@@ -96,6 +96,7 @@ jQuery(function ($) {
 
 			$.each($(editBox).find("textarea"), function () {
 				var areaId = $(this).attr("id");
+                /** global: tinyMCE */
 				tinyMCE.execCommand("mceRemoveEditor", false, areaId);
 				if ($(row).data(areaId)) {
 					$("#" + areaId).val($(row).data(areaId).replace(/\\/g, ''));
@@ -133,6 +134,7 @@ jQuery(function ($) {
 
 			$.each($(editBox).find("textarea"), function () {
 				var areaId = $(this).attr("id");
+                /** global: tinyMCE */
 				tinyMCE.execCommand("mceRemoveEditor", false, areaId);
 				if ($(row).data(areaId)) {
 					$("#" + areaId).val($(row).data(areaId).replace(/\\"/g, "\""));
@@ -225,6 +227,7 @@ jQuery(function ($) {
 				"order_id": order.data("id")
 			};
 			// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+            /** global: eer_ajax_object */
 			$.post(eer_ajax_object.ajaxurl, data, function (response) {
 			});
 		}).on("click", ".eer-orders .eer-action.remove", function () {
@@ -237,6 +240,7 @@ jQuery(function ($) {
 					"order_id": order.data("id")
 				};
 				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+                /** global: eer_ajax_object */
 				$.post(eer_ajax_object.ajaxurl, data, function (response) {
 					if (response == 1) {
 						order.removeClass("eer-status-0").addClass("eer-status-1");
@@ -253,6 +257,7 @@ jQuery(function ($) {
 					"sold_ticket_id": sold_ticket.data("id")
 				};
 				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+                /** global: eer_ajax_object */
 				$.post(eer_ajax_object.ajaxurl, data, function (response) {
 					if (response == 1) {
 						sold_ticket.removeClass("eer-status-0").removeClass("eer-status-1").addClass("eer-status-2");
@@ -269,6 +274,7 @@ jQuery(function ($) {
                     "sold_ticket_id": sold_ticket.data("id")
                 };
                 // We can also pass the url value separately from ajaxurl for front end AJAX implementations
+                /** global: eer_ajax_object */
                 $.post(eer_ajax_object.ajaxurl, data, function (response) {
                     if (response == 1) {
                         sold_ticket.remove();
@@ -285,6 +291,7 @@ jQuery(function ($) {
 					"sold_ticket_id": sold_ticket.data("id")
 				};
 				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+                /** global: eer_ajax_object */
 				$.post(eer_ajax_object.ajaxurl, data, function (response) {
 					if (response == 1) {
 						sold_ticket.removeClass("eer-status-0").removeClass("eer-status-2").addClass("eer-status-1");

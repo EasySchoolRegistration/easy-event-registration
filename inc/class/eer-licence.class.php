@@ -5,7 +5,8 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-function eer_activate_license() {
+function eer_activate_license()
+{
 	// listen for our activate button to be clicked
 	if (isset($_POST['eer_license_activate'])) {
 		// run a quick security check
@@ -17,10 +18,10 @@ function eer_activate_license() {
 		// data to send in our API request
 		$api_params = [
 			'edd_action' => 'activate_license',
-			'license'    => $license,
+			'license' => $license,
 			'item_name' => EER_PLUGIN_NAME,
 			//'item_id'    => EER_SL_ITEM_ID, // The ID of the item in EER
-			'url'        => home_url()
+			'url' => home_url()
 		];
 		// Call the custom API.
 		$response = wp_remote_post(EER_SL_STORE_URL, ['timeout' => 15, 'sslverify' => false, 'body' => $api_params]);
@@ -72,7 +73,8 @@ function eer_activate_license() {
 
 add_action('admin_init', 'eer_activate_license');
 
-function eer_sample_admin_notices() {
+function eer_sample_admin_notices()
+{
 	if (isset($_GET['sl_activation']) && !empty($_GET['message'])) {
 		switch ($_GET['sl_activation']) {
 			case 'false':
@@ -97,7 +99,9 @@ function eer_sample_admin_notices() {
 
 add_action('admin_notices', 'eer_sample_admin_notices');
 
-function eer_version_in_header(){
+function eer_version_in_header()
+{
 	echo '<meta name="generator" content="Easy Event Registration v' . EER_VERSION . '" />' . "\n";
 }
-add_action( 'wp_head', 'eer_version_in_header' );
+
+add_action('wp_head', 'eer_version_in_header');

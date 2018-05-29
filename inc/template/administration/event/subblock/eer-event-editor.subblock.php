@@ -4,9 +4,11 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Subblock_Event_Editor {
+class EER_Subblock_Event_Editor
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 		add_action('eer_event_edit_form_input', [get_called_class(), 'input_title']);
 		add_action('eer_event_edit_form_input', [get_called_class(), 'input_sale_start']);
 		add_action('eer_event_edit_form_input', [get_called_class(), 'input_sale_end']);
@@ -14,12 +16,13 @@ class EER_Subblock_Event_Editor {
 	}
 
 
-	public function print_block() {
+	public function print_block()
+	{
 		$settings_tabs = EER()->event->eer_get_event_settings_tabs();
 		$settings_tabs = empty($settings_tabs) ? [] : $settings_tabs;
-		$active_tab    = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'event_general';
-		$active_tab    = array_key_exists($active_tab, $settings_tabs) ? $active_tab : 'event_general';
-		$sections      = EER()->event->eer_get_event_settings_sections();
+		$active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'event_general';
+		$active_tab = array_key_exists($active_tab, $settings_tabs) ? $active_tab : 'event_general';
+		$sections = EER()->event->eer_get_event_settings_sections();
 		?>
 		<div class="eer-edit-box">
 			<span class="close"><i class="fa fa-close"></i></span>
@@ -47,10 +50,10 @@ class EER_Subblock_Event_Editor {
 					?>
 				</ul>
 				<?php
-				$section_number             = 0;
+				$section_number = 0;
 				foreach ($sections as $section_id => $subsections) {
 					$number_of_sections = count($subsections);
-					$number             = 0;
+					$number = 0;
 					if ($number_of_sections > 0) {
 						?>
 					<div id="<?php echo $section_id; ?>" class="tab-pane<?php echo($section_number === 0 ? ' active' : '') ?>">
@@ -96,7 +99,8 @@ class EER_Subblock_Event_Editor {
 	}
 
 
-	public static function input_title() {
+	public static function input_title()
+	{
 		?>
 		<tr>
 			<th><?php _e('Title', 'easy-event-registration'); ?></th>
@@ -106,7 +110,8 @@ class EER_Subblock_Event_Editor {
 	}
 
 
-	public static function input_sale_start() {
+	public static function input_sale_start()
+	{
 		?>
 		<tr>
 			<th><?php _e('Start date and time of sale', 'easy-event-registration'); ?></th>
@@ -118,7 +123,8 @@ class EER_Subblock_Event_Editor {
 	}
 
 
-	public static function input_sale_end() {
+	public static function input_sale_end()
+	{
 		?>
 		<tr>
 			<th><?php _e('End date and time of sale', 'easy-event-registration'); ?></th>
@@ -130,7 +136,8 @@ class EER_Subblock_Event_Editor {
 	}
 
 
-	public static function input_submit() {
+	public static function input_submit()
+	{
 		?>
 		<tr>
 			<th></th>
@@ -142,7 +149,8 @@ class EER_Subblock_Event_Editor {
 		<?php
 	}
 
-	public static function eer_print_events_settings_tab($section_id, $sub_section_id) {
+	public static function eer_print_events_settings_tab($section_id, $sub_section_id)
+	{
 		$model_settings = new EER_Models_Settings_Helper_Templater();
 		$model_settings->eer_print_settings_tab('event', EER()->event->eer_get_event_settings_fields_to_print($section_id, $sub_section_id));
 	}

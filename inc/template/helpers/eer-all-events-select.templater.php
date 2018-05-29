@@ -5,9 +5,11 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_All_Events_Select {
+class EER_Template_All_Events_Select
+{
 
-	public function print_content($selected_event = null) {
+	public function print_content($selected_event = null)
+	{
 		$events = EER()->event->load_events_without_data();
 
 		if (!$selected_event) {
@@ -26,7 +28,7 @@ class EER_Template_All_Events_Select {
 				}
 				?>
 			</select>
-			<input type="submit" name="eer_choose_event_submit" class="page-title-action"  value="<?php _e('Select', 'easy-event-registration'); ?>">
+			<input type="submit" name="eer_choose_event_submit" class="page-title-action" value="<?php _e('Select', 'easy-event-registration'); ?>">
 		</form>
 		<?php
 	}
@@ -37,14 +39,15 @@ class EER_Template_All_Events_Select {
 	 *
 	 * @return int
 	 */
-	public function get_selected_event($events = []) {
+	public function get_selected_event($events = [])
+	{
 		if (isset($_POST['eer_choose_event_submit']) && isset($_POST['eer_event'])) {
 			return $_POST['eer_event'];
 		} else if ($events) {
 			return reset($events);
 		} else {
 			$events = EER()->event->load_events_without_data();
-			$event  = reset($events);
+			$event = reset($events);
 			if ($event) {
 				return $event->id;
 			}

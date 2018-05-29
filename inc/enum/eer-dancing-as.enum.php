@@ -5,39 +5,44 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Enum_Dancing_As {
+class EER_Enum_Dancing_As
+{
 	const
 		LEADER = 0, FOLLOWER = 1, SOLO = 2;
 
 	private $items = [];
 
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->items = [
-			self::LEADER   => [
+			self::LEADER => [
 				'title' => __('Leader', 'easy-event-registration'),
 			],
 			self::FOLLOWER => [
 				'title' => __('Follower', 'easy-event-registration'),
 			],
-			self::SOLO     => [
+			self::SOLO => [
 				'title' => __('Solo', 'easy-event-registration')
 			]
 		];
 	}
 
 
-	public function eer_get_items() {
+	public function eer_get_items()
+	{
 		return $this->items;
 	}
 
 
-	public function eer_get_item($key) {
+	public function eer_get_item($key)
+	{
 		return $this->eer_get_items()[$key];
 	}
 
 
-	public function eer_get_title($key) {
+	public function eer_get_title($key)
+	{
 		return $this->eer_get_item($key)['title'];
 	}
 
@@ -47,7 +52,8 @@ class EER_Enum_Dancing_As {
 	 *
 	 * @return bool
 	 */
-	public function eer_is_leader($key) {
+	public function eer_is_leader($key)
+	{
 		return $key == self::LEADER;
 	}
 
@@ -57,7 +63,8 @@ class EER_Enum_Dancing_As {
 	 *
 	 * @return bool
 	 */
-	public function eer_is_follower($key) {
+	public function eer_is_follower($key)
+	{
 		return $key == self::FOLLOWER;
 	}
 
@@ -68,7 +75,8 @@ class EER_Enum_Dancing_As {
 	 *
 	 * @return bool
 	 */
-	public function eer_is_leader_registration_enabled($ticket_id, $level_id = NULL) {
+	public function eer_is_leader_registration_enabled($ticket_id, $level_id = NULL)
+	{
 		global $wpdb;
 
 		if (is_null($level_id)) {
@@ -85,7 +93,8 @@ class EER_Enum_Dancing_As {
 	 *
 	 * @return bool
 	 */
-	public function eer_is_followers_registration_enabled($ticket_id, $level_id = NULL) {
+	public function eer_is_followers_registration_enabled($ticket_id, $level_id = NULL)
+	{
 		global $wpdb;
 
 		if (is_null($level_id)) {
@@ -102,7 +111,8 @@ class EER_Enum_Dancing_As {
 	 *
 	 * @return bool
 	 */
-	public function eer_is_solo_registration_enabled($ticket_id, $level_id = NULL) {
+	public function eer_is_solo_registration_enabled($ticket_id, $level_id = NULL)
+	{
 		global $wpdb;
 
 		if (is_null($level_id)) {

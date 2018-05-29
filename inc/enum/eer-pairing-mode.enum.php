@@ -5,7 +5,8 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Enum_Pairing_Mode {
+class EER_Enum_Pairing_Mode
+{
 	const
 		AUTOMATIC = 1, MANUAL = 2, CONFIRM_ALL = 3;
 
@@ -15,7 +16,8 @@ class EER_Enum_Pairing_Mode {
 	/**
 	 * @codeCoverageIgnore
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 		$this->items = [
 			self::AUTOMATIC => [
 				'title' => __('Automatic', 'easy-event-registration'),
@@ -33,12 +35,14 @@ class EER_Enum_Pairing_Mode {
 	}
 
 
-	public function get_items() {
+	public function get_items()
+	{
 		return $this->items;
 	}
 
 
-	public function get_items_for_settings() {
+	public function get_items_for_settings()
+	{
 		$return_items = [];
 		foreach ($this->get_items() as $key => $item) {
 			$return_items[$key] = $item['title'];
@@ -48,24 +52,29 @@ class EER_Enum_Pairing_Mode {
 	}
 
 
-	public function get_item($key) {
+	public function get_item($key)
+	{
 		return $this->get_items()[$key];
 	}
 
 
-	public function get_title($key) {
+	public function get_title($key)
+	{
 		return $this->get_item($key)['title'];
 	}
 
-	public function is_pairing_enabled($key) {
+	public function is_pairing_enabled($key)
+	{
 		return intval($key) === self::AUTOMATIC;
 	}
 
-	public function is_auto_confirmation_enabled($key) {
+	public function is_auto_confirmation_enabled($key)
+	{
 		return intval($key) === self::CONFIRM_ALL;
 	}
 
-	public function get_solo_ticket_default_status($key) {
+	public function get_solo_ticket_default_status($key)
+	{
 		return intval($key) === self::MANUAL ? EER_Enum_Sold_Ticket_Status::WAITING : EER_Enum_Sold_Ticket_Status::CONFIRMED;
 	}
 }

@@ -8,8 +8,6 @@ jQuery(function ($) {
 			}
 		}).css("height", max_height);
 
-		console.log(eer_ajax_object.ajaxurl);
-
 		/** global: ajaxurl */
 		$("body").on("click", ".eer-ticket:not(.eer-ticket-remove):not(.eer-sold) .eer-ticket-add", function (e) {
 			e.preventDefault();
@@ -169,6 +167,7 @@ jQuery(function ($) {
 					"order_data": order_data_json
 				};
 
+                /** global: eer_ajax_object */
 				$.post(eer_ajax_object.ajaxurl, data, function (response) {
 				}).done(function (response) {
 					if (response.hasOwnProperty("thank_you_text")) {

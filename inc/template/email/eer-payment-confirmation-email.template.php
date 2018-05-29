@@ -5,22 +5,25 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Payment_Confirmation_Email {
+class EER_Template_Payment_Confirmation_Email
+{
 
 	private $worker_email;
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->worker_email = new EER_Worker_Email();
 	}
 
 
-	public function send_email($order_id) {
-		$order      = EER()->order->eer_get_order($order_id);
+	public function send_email($order_id)
+	{
+		$order = EER()->order->eer_get_order($order_id);
 		$event_data = EER()->event->get_event_data($order->event_id);
 		$user = get_user_by('ID', $order->user_id);
 
 		$subject = stripcslashes(EER()->event->eer_get_event_option($event_data, 'payment_confirmation_email_subject', ''));
-		$body    = stripcslashes(EER()->event->eer_get_event_option($event_data, 'payment_confirmation_email_body', null));
+		$body = stripcslashes(EER()->event->eer_get_event_option($event_data, 'payment_confirmation_email_body', null));
 
 		if (!empty($body)) {
 			$tags = EER()->tags->get_tags('payment_confirmation_email');

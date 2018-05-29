@@ -4,11 +4,13 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Admin {
+class EER_Admin
+{
 
 	const ADMIN_MENU_SLUG = 'eer_event_admin';
 
-	public static function eer_add_admin_menu() {
+	public static function eer_add_admin_menu()
+	{
 		add_menu_page(__('Easy Events', 'easy-event-registration'), __('Easy Events', 'easy-event-registration'), 'eer_school', self::ADMIN_MENU_SLUG, ['EER_Template_Easy_Event', 'print_page'], 'dashicons-welcome-learn-more', 2);
 
 		add_submenu_page(EER_Admin::ADMIN_MENU_SLUG, __('Events', 'easy-event-registration'), __('Events', 'easy-event-registration'), 'eer_event_view', EER_Template_Event::MENU_SLUG, ['EER_Template_Event', 'print_content']);
@@ -23,8 +25,6 @@ class EER_Admin {
 
 		do_action('eer_add_admin_menu');
 	}
-
-
 
 }
 

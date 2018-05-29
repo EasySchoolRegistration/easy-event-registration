@@ -6,7 +6,8 @@ if (!defined('ABSPATH')) {
 
 if (!class_exists('EER_License_Handler')) {
 
-	class EER_License_Handler {
+	class EER_License_Handler
+	{
 		private $file;
 		private $license;
 		private $item_name;
@@ -28,8 +29,9 @@ if (!class_exists('EER_License_Handler')) {
 		 * @param string $_api_url
 		 * @param int $_item_id
 		 */
-		function __construct($_file, $_item_name, $_version, $_author, $_optname = null, $_api_url = null, $_item_id = null) {
-			$this->file      = $_file;
+		function __construct($_file, $_item_name, $_version, $_author, $_optname = null, $_api_url = null, $_item_id = null)
+		{
+			$this->file = $_file;
 			$this->item_name = $_item_name;
 
 			if (is_numeric($_item_id)) {
@@ -37,10 +39,10 @@ if (!class_exists('EER_License_Handler')) {
 			}
 
 			$this->item_shortname = 'eer_' . preg_replace('/[^a-zA-Z0-9_\s]/', '', str_replace(' ', '_', strtolower($this->item_name)));
-			$this->version        = $_version;
-			$this->license        = trim(EER()->settings->eer_get_option($this->item_shortname . '_license_key', ''));
-			$this->author         = $_author;
-			$this->api_url        = is_null($_api_url) ? $this->api_url : $_api_url;
+			$this->version = $_version;
+			$this->license = trim(EER()->settings->eer_get_option($this->item_shortname . '_license_key', ''));
+			$this->author = $_author;
+			$this->api_url = is_null($_api_url) ? $this->api_url : $_api_url;
 
 			/**
 			 * Allows for backwards compatibility with old license options,
@@ -69,9 +71,10 @@ if (!class_exists('EER_License_Handler')) {
 		 * @access  private
 		 * @return  void
 		 */
-		private function includes() {
+		private function includes()
+		{
 			if (!class_exists('EER_SL_Plugin_Updater')) {
-				require_once EER_PLUGIN_PATH . '/inc/class/eer-sl-plugin-updater.class.php';;
+				require_once EER_PLUGIN_PATH . '/inc/class/eer-sl-plugin-updater.class.php';
 			}
 		}
 
@@ -82,7 +85,8 @@ if (!class_exists('EER_License_Handler')) {
 		 * @access  private
 		 * @return  void
 		 */
-		private function hooks() {
+		private function hooks()
+		{
 			add_filter('eer_settings_licenses', [$this, 'settings'], 1);
 			add_action('admin_init', [$this, 'eer_activate_module_license']);
 			add_action('admin_init', [$this, 'eer_updater'], 0);
@@ -98,15 +102,16 @@ if (!class_exists('EER_License_Handler')) {
 		 *
 		 * @return  array
 		 */
-		public function settings($settings) {
+		public function settings($settings)
+		{
 			$eer_license_settings = [
 				[
-					'id'      => $this->item_shortname . '_license_key',
-					'name'    => sprintf(__('%1$s', 'easy-event-registration'), $this->item_name),
-					'desc'    => '',
-					'type'    => 'license_key',
+					'id' => $this->item_shortname . '_license_key',
+					'name' => sprintf(__('%1$s', 'easy-event-registration'), $this->item_name),
+					'desc' => '',
+					'type' => 'license_key',
 					'options' => ['is_valid_license_option' => $this->item_shortname . '_license_active'],
-					'size'    => 'regular'
+					'size' => 'regular'
 				]
 			];
 
@@ -114,11 +119,12 @@ if (!class_exists('EER_License_Handler')) {
 		}
 
 
-		public function eer_updater() {
+		public function eer_updater()
+		{
 			$args = [
 				'version' => $this->version,
 				'license' => $this->license,
-				'author'  => $this->author,
+				'author' => $this->author,
 			];
 
 			if (!empty($this->item_id)) {
@@ -132,7 +138,8 @@ if (!class_exists('EER_License_Handler')) {
 		}
 
 
-		public function eer_activate_module_license() {
+		public function eer_activate_module_license()
+		{
 			if (!isset($_POST['eer_settings'])) {
 				return;
 			}
@@ -173,16 +180,16 @@ if (!class_exists('EER_License_Handler')) {
 			// Data to send to the API
 			$api_params = [
 				'edd_action' => 'activate_license',
-				'license'    => $license,
-				'item_name'  => urlencode($this->item_name),
-				'url'        => home_url()
+				'license' => $license,
+				'item_name' => urlencode($this->item_name),
+				'url' => home_url()
 			];
 
 			// Call the API
 			$response = wp_remote_post($this->api_url, [
-				'timeout'   => 15,
+				'timeout' => 15,
 				'sslverify' => false,
-				'body'      => $api_params
+				'body' => $api_params
 			]);
 
 			// Make sure there are no errors

@@ -4,19 +4,21 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Event_Sale_Tickets {
+class EER_Template_Event_Sale_Tickets
+{
 
-	public function print_content($event_id, $for_sale = true) {
+	public function print_content($event_id, $for_sale = true)
+	{
 		$tickets = EER()->ticket->get_tickets_by_event($event_id);
 
 		if ($tickets) {
 			$ticket_width = 100 / count($tickets) - 2;
 			?>
-			<div class="eer-tickets eer-theme-dark-blue-green eer-clearfix">
+			<div class="eer-tickets eer-clearfix">
 				<?php
 				foreach ($tickets as $ticket_id => $ticket) {
 					$ticket_buy_enabled = EER()->ticket->is_ticket_buy_enabled($ticket_id, $ticket);
-					$classes            = [
+					$classes = [
 						'eer-ticket'
 					];
 					$levels = NULL;

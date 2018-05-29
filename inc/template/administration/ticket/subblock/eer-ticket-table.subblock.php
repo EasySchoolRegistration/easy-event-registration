@@ -4,9 +4,11 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Subblock_Ticket_Table {
+class EER_Subblock_Ticket_Table
+{
 
-	public function print_block() {
+	public function print_block()
+	{
 		$tickets = EER()->ticket->load_tickets();
 		?>
 		<table id="datatable" class="table table-default table-bordered eer-datatable" data-eer-columns="<?php do_action('eer_get_ticket_columns'); ?>">
@@ -50,7 +52,7 @@ class EER_Subblock_Ticket_Table {
 									echo $level['tickets'] . '</br>';
 								} else {
 									echo __('Leaders', 'easy-event-registration') . ': ' . $level['leaders'] . '</br>';
-									echo __('Followers', 'easy-event-registration') . ': ' .$level['followers'] . '</br>';
+									echo __('Followers', 'easy-event-registration') . ': ' . $level['followers'] . '</br>';
 								}
 							}
 						} elseif ($ticket->is_solo) {
@@ -70,7 +72,8 @@ class EER_Subblock_Ticket_Table {
 	}
 
 
-	private function print_action_box($id) {
+	private function print_action_box($id)
+	{
 		?>
 		<ul class="eer-actions-box dropdown-menu" data-id="<?php echo $id; ?>">
 			<li class="eer-action edit">
@@ -84,12 +87,14 @@ class EER_Subblock_Ticket_Table {
 	}
 
 
-	public static function get_columns() {
-		echo implode(';', array_keys((array) EER()->event->get_fields()));
+	public static function get_columns()
+	{
+		echo implode(';', array_keys((array)EER()->event->get_fields()));
 	}
 
 
-	public static function print_ticket_data($data) {
+	public static function print_ticket_data($data)
+	{
 		$fields = EER()->ticket->get_fields();
 		foreach ($data as $name => $value) {
 			if (isset($fields->$name) && ($fields->$name['type'] === 'timestamp')) {
@@ -103,7 +108,8 @@ class EER_Subblock_Ticket_Table {
 	}
 
 
-	public static function get_row_classes($ticket) {
+	public static function get_row_classes($ticket)
+	{
 		$classes = [
 			'eer-row',
 			'eer-event'

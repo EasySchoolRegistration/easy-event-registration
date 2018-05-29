@@ -43,7 +43,7 @@ class EER_Template_Settings_Tag
 			$replacement .= "<ul>";
 			foreach (EER()->sold_ticket->eer_get_sold_tickets_by_order($order_id) as $ticket_id => $sold_ticket) {
 				$ticket_data = EER()->ticket->get_ticket_data($sold_ticket->ticket_id);
-				$levels    = isset($ticket_data->levels) ? $ticket_data->levels : [];
+				$levels = isset($ticket_data->levels) ? $ticket_data->levels : [];
 				$replacement .= "<li>" . $ticket_data->title . "<br>
 					<ul style='margin-left: 20px'>
 						<li>" . __('Level', 'easy-event-registration') . ": " . (($levels) ? $levels[$sold_ticket->level_id]['name'] : '') . "</li>

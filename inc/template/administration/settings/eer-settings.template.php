@@ -5,21 +5,23 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Settings {
+class EER_Template_Settings
+{
 
 	const MENU_SLUG = 'eer_admin_sub_page_settings';
 
 
-	public static function print_content() {
+	public static function print_content()
+	{
 		$settings_tabs = EER()->settings->eer_get_settings_tabs();
 		$settings_tabs = empty($settings_tabs) ? [] : $settings_tabs;
-		$active_tab    = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'general';
-		$active_tab    = array_key_exists($active_tab, $settings_tabs) ? $active_tab : 'general';
-		$sections      = EER()->settings->eer_get_settings_tab_sections($active_tab);
-		$key           = 'main';
+		$active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'general';
+		$active_tab = array_key_exists($active_tab, $settings_tabs) ? $active_tab : 'general';
+		$sections = EER()->settings->eer_get_settings_tab_sections($active_tab);
+		$key = 'main';
 
 		$registered_sections = EER()->settings->eer_get_settings_tab_sections($active_tab);
-		$section             = isset($_GET['section']) && !empty($registered_sections) && array_key_exists($_GET['section'], $registered_sections) ? sanitize_text_field($_GET['section']) : $key;
+		$section = isset($_GET['section']) && !empty($registered_sections) && array_key_exists($_GET['section'], $registered_sections) ? sanitize_text_field($_GET['section']) : $key;
 
 		ob_start();
 		?>
@@ -30,7 +32,7 @@ class EER_Template_Settings {
 				foreach (EER()->settings->eer_get_settings_tabs() as $tab_id => $tab_name) {
 					$tab_url = add_query_arg([
 						'settings-updated' => false,
-						'tab'              => $tab_id,
+						'tab' => $tab_id,
 					]);
 
 					// Remove the section from the tabs so we always end up at the main section
@@ -47,7 +49,7 @@ class EER_Template_Settings {
 			<?php
 
 			$number_of_sections = count($sections);
-			$number             = 0;
+			$number = 0;
 			if ($sections && $number_of_sections > 0) {
 				echo '<div><ul class="subsubsub">';
 				foreach ($sections as $section_id => $section_name) {
@@ -55,10 +57,10 @@ class EER_Template_Settings {
 					$number++;
 					$tab_url = add_query_arg([
 						'settings-updated' => false,
-						'tab'              => $active_tab,
-						'section'          => $section_id
+						'tab' => $active_tab,
+						'section' => $section_id
 					]);
-					$class   = '';
+					$class = '';
 					if ($section == $section_id) {
 						$class = 'current';
 					}

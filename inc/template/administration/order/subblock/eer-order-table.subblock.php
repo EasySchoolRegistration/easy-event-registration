@@ -4,17 +4,19 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Subblock_Order_Table {
+class EER_Subblock_Order_Table
+{
 
-	public function print_block($event_id) {
-		$orders      = EER()->order->eer_get_orders_by_event($event_id);
+	public function print_block($event_id)
+	{
+		$orders = EER()->order->eer_get_orders_by_event($event_id);
 		$event_data = EER()->event->get_event_data($event_id);
 
 		$users_data = [];
 
-		$hosting_enabled       = intval(EER()->event->eer_get_event_option($event_data, 'hosting_enabled', -1)) === 1;
-		$tshirts_enabled       = intval(EER()->event->eer_get_event_option($event_data, 'tshirts_enabled', -1)) === 1;
-		$food_enabled          = intval(EER()->event->eer_get_event_option($event_data, 'food_enabled', -1)) === 1;
+		$hosting_enabled = intval(EER()->event->eer_get_event_option($event_data, 'hosting_enabled', -1)) === 1;
+		$tshirts_enabled = intval(EER()->event->eer_get_event_option($event_data, 'tshirts_enabled', -1)) === 1;
+		$food_enabled = intval(EER()->event->eer_get_event_option($event_data, 'food_enabled', -1)) === 1;
 		$offer_hosting_enabled = intval(EER()->event->eer_get_event_option($event_data, 'offer_hosting_enabled', -1)) === 1;
 
 		?>
@@ -60,17 +62,17 @@ class EER_Subblock_Order_Table {
 				}
 
 				$user_data_exists = isset($users_data[$order->user_id]);
-				$order_info       = json_decode($order->order_info);
+				$order_info = json_decode($order->order_info);
 
 				?>
 				<tr class="eer-row eer-status-<?php echo $order->status; ?>"
 				    data-id="<?php echo $order->id; ?>"
-				    data-phone="<?php echo (isset($order_info->phone) ? $order_info->phone : ''); ?>"
-				    data-country="<?php echo (isset($order_info->country) ? $order_info->country : ''); ?>"
-				    data-hosting="<?php echo (isset($order_info->hosting) ? $order_info->hosting : ''); ?>"
-				    data-tshirt="<?php echo (isset($order_info->tshirt) ? $order_info->tshirt : ''); ?>"
-				    data-food="<?php echo (isset($order_info->food) ? $order_info->food : ''); ?>"
-				    data-offer_hosting="<?php echo (isset($order_info->offer_hosting) ? $order_info->offer_hosting : ''); ?>">
+				    data-phone="<?php echo(isset($order_info->phone) ? $order_info->phone : ''); ?>"
+				    data-country="<?php echo(isset($order_info->country) ? $order_info->country : ''); ?>"
+				    data-hosting="<?php echo(isset($order_info->hosting) ? $order_info->hosting : ''); ?>"
+				    data-tshirt="<?php echo(isset($order_info->tshirt) ? $order_info->tshirt : ''); ?>"
+				    data-food="<?php echo(isset($order_info->food) ? $order_info->food : ''); ?>"
+				    data-offer_hosting="<?php echo(isset($order_info->offer_hosting) ? $order_info->offer_hosting : ''); ?>">
 					<td><?php echo $order->inserted_datetime; ?></td>
 					<td class="actions eer-orders">
 						<div class="eer-relative">
@@ -110,7 +112,8 @@ class EER_Subblock_Order_Table {
 	}
 
 
-	private function print_action_box($id) {
+	private function print_action_box($id)
+	{
 		?>
 		<ul class="eer-actions-box dropdown-menu" data-id="<?php echo $id; ?>">
 			<li class="eer-action edit">

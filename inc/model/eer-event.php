@@ -85,52 +85,52 @@ class EER_Event
 			]),
 			'registration_form' => apply_filters('eer_event_settings_emails', [
 				'rfmain' => [
-					'partner_name_enabled'  => [
-						'id'   => 'partner_name_enabled',
+					'partner_name_enabled' => [
+						'id' => 'partner_name_enabled',
 						'name' => __('Enable partner name', 'easy-event-registration'),
 						'type' => 'checkbox',
 					],
-					'partner_name_required'  => [
-						'id'   => 'partner_name_required',
+					'partner_name_required' => [
+						'id' => 'partner_name_required',
 						'name' => __('Partner name is required', 'easy-event-registration'),
 						'type' => 'checkbox',
 					],
-					'phone_enabled'  => [
-						'id'   => 'phone_enabled',
+					'phone_enabled' => [
+						'id' => 'phone_enabled',
 						'name' => __('Enable phone number', 'easy-event-registration'),
 						'type' => 'checkbox',
 					],
-					'phone_required'  => [
-						'id'   => 'phone_required',
+					'phone_required' => [
+						'id' => 'phone_required',
 						'name' => __('Phone number is required', 'easy-event-registration'),
 						'type' => 'checkbox',
 					],
-					'country_enabled'  => [
-						'id'   => 'country_enabled',
+					'country_enabled' => [
+						'id' => 'country_enabled',
 						'name' => __('Enable country selector', 'easy-event-registration'),
 						'type' => 'checkbox',
 					],
-					'country_required'  => [
-						'id'   => 'country_required',
+					'country_required' => [
+						'id' => 'country_required',
 						'name' => __('Country is required', 'easy-event-registration'),
 						'type' => 'checkbox',
 					],
 				],
-				'terms_conditions'     => [
-					'terms_conditions_enabled'  => [
-						'id'   => 'terms_conditions_enabled',
+				'terms_conditions' => [
+					'terms_conditions_enabled' => [
+						'id' => 'terms_conditions_enabled',
 						'name' => __('Enable terms & conditions confirmation', 'easy-event-registration'),
 						'desc' => __('By enabling you will add terms & conditions confirmation checkbox to users form at registration page.', 'easy-event-registration'),
 						'type' => 'checkbox',
 					],
 					'terms_conditions_required' => [
-						'id'   => 'terms_conditions_required',
+						'id' => 'terms_conditions_required',
 						'name' => __('Require terms & conditions', 'easy-event-registration'),
 						'desc' => __('By enabling you will set terms & conditions as required.', 'easy-event-registration'),
 						'type' => 'checkbox',
 					],
-					'terms_conditions_text'     => [
-						'id'   => 'terms_conditions_text',
+					'terms_conditions_text' => [
+						'id' => 'terms_conditions_text',
 						'name' => __('Confirmation text', 'easy-event-registration'),
 						'type' => 'full_editor',
 					],
@@ -144,33 +144,33 @@ class EER_Event
 						'field_class' => 'eer-input'
 					],
 				],
-				'hosting'           => [
+				'hosting' => [
 					'hosting_enabled' => [
-						'id'   => 'hosting_enabled',
+						'id' => 'hosting_enabled',
 						'name' => __('Enable hosting confirmation', 'easy-event-registration'),
 						'desc' => __('By enabling you will add hosting confirmation checkbox to users form at registration page.', 'easy-event-registration'),
 						'type' => 'checkbox',
 					],
-					'hosting_text'    => [
-						'id'   => 'hosting_text',
+					'hosting_text' => [
+						'id' => 'hosting_text',
 						'name' => __('Hosting text', 'easy-event-registration'),
 						'type' => 'full_editor',
 					],
 					'offer_hosting_enabled' => [
-						'id'   => 'offer_hosting_enabled',
+						'id' => 'offer_hosting_enabled',
 						'name' => __('Enable offer hosting confirmation', 'easy-event-registration'),
 						'desc' => __('By enabling you will add offer hosting confirmation checkbox to users form at registration page.', 'easy-event-registration'),
 						'type' => 'checkbox',
 					],
-					'offer_hosting_text'    => [
-						'id'   => 'offer_hosting_text',
+					'offer_hosting_text' => [
+						'id' => 'offer_hosting_text',
 						'name' => __('Offer hosting text', 'easy-event-registration'),
 						'type' => 'full_editor',
 					],
 				],
 				'rf_tshirts' => [
 					'tshirts_enabled' => [
-						'id'   => 'tshirts_enabled',
+						'id' => 'tshirts_enabled',
 						'name' => __('Enable T-shirts selection', 'easy-event-registration'),
 						'desc' => __('By enabling you will add T-shirts selection to users form at registration page.', 'easy-event-registration'),
 						'type' => 'checkbox',
@@ -181,16 +181,16 @@ class EER_Event
 						'type' => 'full_editor',
 						'field_class' => 'eer-input'
 					],
-					'tshirt_options'       => [
-						'id'       => 'tshirt_options',
-						'name'     => __('T-shirt options', 'easy-event-registration'),
-						'type'     => 'add_list_tshirts',
+					'tshirt_options' => [
+						'id' => 'tshirt_options',
+						'name' => __('T-shirt options', 'easy-event-registration'),
+						'type' => 'add_list_tshirts',
 						'singular' => __('T-shirt', 'easy-event-registration'),
 					],
 				],
-				'food'           => [
+				'food' => [
 					'food_enabled' => [
-						'id'   => 'food_enabled',
+						'id' => 'food_enabled',
 						'name' => __('Enable food confirmation', 'easy-event-registration'),
 						'desc' => __('By enabling you will add food confirmation checkbox to users form at registration page.', 'easy-event-registration'),
 						'type' => 'checkbox',
@@ -201,10 +201,10 @@ class EER_Event
 						'type' => 'full_editor',
 						'field_class' => 'eer-input'
 					],
-					'food_options'       => [
-						'id'       => 'food_options',
-						'name'     => __('Food options', 'easy-event-registration'),
-						'type'     => 'add_list_food',
+					'food_options' => [
+						'id' => 'food_options',
+						'name' => __('Food options', 'easy-event-registration'),
+						'type' => 'add_list_food',
 						'singular' => __('Food', 'easy-event-registration'),
 					],
 				],
@@ -545,7 +545,8 @@ class EER_Event
 		return !$data->is_passed && ($data->sale_start > $current_time);
 	}
 
-	public function eer_get_event_option($event_data, $key = '', $default = false) {
+	public function eer_get_event_option($event_data, $key = '', $default = false)
+	{
 		$value = !empty($event_data->$key) ? $event_data->$key : $default;
 
 		return apply_filters('eer_get_event_option_' . $key, $value, $key, $default);

@@ -4,29 +4,31 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Models_Settings_Helper_Templater {
+class EER_Models_Settings_Helper_Templater
+{
 
-	public function eer_print_settings_tab($model, $fields) {
+	public function eer_print_settings_tab($model, $fields)
+	{
 		foreach ($fields as $key => $field) {
-			$args     = wp_parse_args($field, [
-				'model'         => $model,
-				'id'            => null,
-				'desc'          => '',
-				'name'          => '',
-				'size'          => null,
-				'options'       => '',
-				'std'           => '',
-				'min'           => null,
-				'max'           => null,
-				'step'          => null,
-				'chosen'        => null,
-				'multiple'      => null,
-				'placeholder'   => null,
-				'readonly'      => false,
-				'faux'          => false,
+			$args = wp_parse_args($field, [
+				'model' => $model,
+				'id' => null,
+				'desc' => '',
+				'name' => '',
+				'size' => null,
+				'options' => '',
+				'std' => '',
+				'min' => null,
+				'max' => null,
+				'step' => null,
+				'chosen' => null,
+				'multiple' => null,
+				'placeholder' => null,
+				'readonly' => false,
+				'faux' => false,
 				'tooltip_title' => false,
-				'tooltip_desc'  => false,
-				'field_class'   => '',
+				'tooltip_desc' => false,
+				'field_class' => '',
 			]);
 			$callback = 'eer_' . $field['type'] . '_callback';
 			?>
@@ -43,7 +45,8 @@ class EER_Models_Settings_Helper_Templater {
 	}
 
 
-	public static function eer_email_callback($args) {
+	public static function eer_email_callback($args)
+	{
 		$value = isset($args['std']) ? $args['std'] : '';
 
 		$name = 'name="' . $args['model'] . '_settings[' . esc_attr($args['id']) . ']"';
@@ -57,7 +60,8 @@ class EER_Models_Settings_Helper_Templater {
 	}
 
 
-	public static function eer_text_callback($args) {
+	public static function eer_text_callback($args)
+	{
 		$value = isset($args['std']) ? $args['std'] : '';
 
 		$name = 'name="' . $args['model'] . '_settings[' . esc_attr($args['id']) . ']"';
@@ -71,7 +75,8 @@ class EER_Models_Settings_Helper_Templater {
 	}
 
 
-	public static function eer_number_callback($args) {
+	public static function eer_number_callback($args)
+	{
 		$value = isset($args['std']) ? $args['std'] : '';
 
 		$name = 'name="' . $args['model'] . '_settings[' . esc_attr($args['id']) . ']"';
@@ -85,7 +90,8 @@ class EER_Models_Settings_Helper_Templater {
 	}
 
 
-	public static function eer_color_picker_callback($args) {
+	public static function eer_color_picker_callback($args)
+	{
 		$value = isset($args['std']) ? $args['std'] : '';
 
 		$name = 'name="' . $args['model'] . '_settings[' . esc_attr($args['id']) . ']"';
@@ -99,7 +105,8 @@ class EER_Models_Settings_Helper_Templater {
 	}
 
 
-	public static function eer_full_editor_callback($args) {
+	public static function eer_full_editor_callback($args)
+	{
 		$value = isset($args['std']) ? $args['std'] : '';
 
 		$rows = isset($args['size']) ? $args['size'] : 20;
@@ -120,21 +127,23 @@ class EER_Models_Settings_Helper_Templater {
 	}
 
 
-	public static function eer_checkbox_callback($args) {
+	public static function eer_checkbox_callback($args)
+	{
 		$name = 'name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . ']"';
 
 		$class = self::eer_sanitize_html_class($args['field_class']);
 
 		$checked = isset($args['std']) && $args['std'] ? 'checked' : '';
-		$html    = '<input type="hidden"' . $name . ' value="-1" />';
-		$html    .= '<input type="checkbox" id="' . self::eer_sanitize_key($args['id']) . '"' . $name . ' value="1" ' . $checked . ' class="' . $class . ' eer-input"/>';
-		$html    .= '<label class="checkbox-label" for="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . ']"> ' . wp_kses_post($args['desc']) . '</label>';
+		$html = '<input type="hidden"' . $name . ' value="-1" />';
+		$html .= '<input type="checkbox" id="' . self::eer_sanitize_key($args['id']) . '"' . $name . ' value="1" ' . $checked . ' class="' . $class . ' eer-input"/>';
+		$html .= '<label class="checkbox-label" for="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . ']"> ' . wp_kses_post($args['desc']) . '</label>';
 
 		echo apply_filters('eer_after_setting_output', $html, $args);
 	}
 
 
-	public static function eer_select_callback($args) {
+	public static function eer_select_callback($args)
+	{
 		$value = !empty($args['std']) ? $args['std'] : '';
 
 		$class = self::eer_sanitize_html_class($args['field_class']);
@@ -155,7 +164,8 @@ class EER_Models_Settings_Helper_Templater {
 	}
 
 
-	public static function eer_add_list_levels_callback($args) {
+	public static function eer_add_list_levels_callback($args)
+	{
 		$html = '<table class="eer_list_items wp-list-table fixed posts">
 				<thead>
 				<tr>
@@ -167,29 +177,30 @@ class EER_Models_Settings_Helper_Templater {
 				</thead>
 				<tr data-key="0">
 					<td class="eer_list_item">
-						<input type="text" data-name="name" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) .'][0][name]" value=""/>
+						<input type="text" data-name="name" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . '][0][name]" value=""/>
 					</td>
 					<td class="eer_list_item max_level_leaders">
-						<input type="text" data-name="leaders" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) .'][0][leaders]" value=""/>
+						<input type="text" data-name="leaders" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . '][0][leaders]" value=""/>
 					</td>
 					<td class="eer_list_item max_level_followers">
-						<input type="text" data-name="followers" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) .'][0][followers]" value=""/>
+						<input type="text" data-name="followers" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . '][0][followers]" value=""/>
 					</td>
 					<td class="eer_list_item max_level_tickets">
-						<input type="text" data-name="tickets" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) .'][0][tickets]" value=""/>
+						<input type="text" data-name="tickets" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . '][0][tickets]" value=""/>
 					</td>
 					<td>
-						<span class="eer_remove_list_item button-secondary">' . __('Remove', 'easy-event-registration') . ' ' . $args['singular'] .'</span>
+						<span class="eer_remove_list_item button-secondary">' . __('Remove', 'easy-event-registration') . ' ' . $args['singular'] . '</span>
 					</td>
 				</tr>
 			</table>
-			<span class="button-secondary eer-add-list-item">' . __('Add', 'easy-event-registration') . ' ' . $args['singular'] .'</span>';
+			<span class="button-secondary eer-add-list-item">' . __('Add', 'easy-event-registration') . ' ' . $args['singular'] . '</span>';
 
 		echo apply_filters('eer_after_setting_output', $html, $args);
 	}
 
 
-	public static function eer_add_list_tshirts_callback($args) {
+	public static function eer_add_list_tshirts_callback($args)
+	{
 		$html = '<table class="eer_list_items wp-list-table fixed posts">
 				<thead>
 				<tr>
@@ -199,23 +210,24 @@ class EER_Models_Settings_Helper_Templater {
 				</thead>
 				<tr data-key="0">
 					<td class="eer_list_item">
-						<input type="text" data-name="name" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) .'][0][name]" value=""/>
+						<input type="text" data-name="name" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . '][0][name]" value=""/>
 					</td>
 					<td class="eer_list_item">
-						<input type="text" data-name="price" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) .'][0][price]" value=""/>
+						<input type="text" data-name="price" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . '][0][price]" value=""/>
 					</td>
 					<td>
-						<span class="eer_remove_list_item button-secondary">' . __('Remove', 'easy-event-registration') . ' ' . $args['singular'] .'</span>
+						<span class="eer_remove_list_item button-secondary">' . __('Remove', 'easy-event-registration') . ' ' . $args['singular'] . '</span>
 					</td>
 				</tr>
 			</table>
-			<span class="button-secondary eer-add-list-item">' . __('Add', 'easy-event-registration') . ' ' . $args['singular'] .'</span>';
+			<span class="button-secondary eer-add-list-item">' . __('Add', 'easy-event-registration') . ' ' . $args['singular'] . '</span>';
 
 		echo apply_filters('eer_after_setting_output', $html, $args);
 	}
 
 
-	public static function eer_add_list_food_callback($args) {
+	public static function eer_add_list_food_callback($args)
+	{
 		$html = '<table class="eer_list_items wp-list-table fixed posts">
 				<thead>
 				<tr>
@@ -225,31 +237,33 @@ class EER_Models_Settings_Helper_Templater {
 				</thead>
 				<tr data-key="0">
 					<td class="eer_list_item">
-						<input type="text" data-name="option" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) .'][0][option]" value=""/>
+						<input type="text" data-name="option" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . '][0][option]" value=""/>
 					</td>
 					<td class="eer_list_item">
-						<input type="text" data-name="price" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) .'][0][price]" value=""/>
+						<input type="text" data-name="price" name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . '][0][price]" value=""/>
 					</td>
 					<td>
-						<span class="eer_remove_list_item button-secondary">' . __('Remove', 'easy-event-registration') . ' ' . $args['singular'] .'</span>
+						<span class="eer_remove_list_item button-secondary">' . __('Remove', 'easy-event-registration') . ' ' . $args['singular'] . '</span>
 					</td>
 				</tr>
 			</table>
-			<span class="button-secondary eer-add-list-item">' . __('Add', 'easy-event-registration') . ' ' . $args['singular'] .'</span>';
+			<span class="button-secondary eer-add-list-item">' . __('Add', 'easy-event-registration') . ' ' . $args['singular'] . '</span>';
 
 		echo apply_filters('eer_after_setting_output', $html, $args);
 	}
 
 
-	public static function eer_submit_callback($args) {
-		$html        = '';
-		$status      = get_option('eer_license_status');
+	public static function eer_submit_callback($args)
+	{
+		$html = '';
+		$status = get_option('eer_license_status');
 
 		echo apply_filters('eer_after_setting_output', $html, $args);
 	}
 
 
-	public static function eer_sanitize_html_class($class = '') {
+	public static function eer_sanitize_html_class($class = '')
+	{
 
 		if (is_string($class)) {
 			$class = sanitize_html_class($class);
@@ -263,9 +277,10 @@ class EER_Models_Settings_Helper_Templater {
 	}
 
 
-	public static function eer_sanitize_key($key) {
+	public static function eer_sanitize_key($key)
+	{
 		$raw_key = $key;
-		$key     = preg_replace('/[^a-zA-Z0-9_\-\.\:\/]/', '', $key);
+		$key = preg_replace('/[^a-zA-Z0-9_\-\.\:\/]/', '', $key);
 
 		return apply_filters('eer_sanitize_key', $key, $raw_key);
 	}

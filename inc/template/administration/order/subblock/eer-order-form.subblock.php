@@ -5,9 +5,11 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Order_Edit_Form {
+class EER_Template_Order_Edit_Form
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 		add_action('eer_order_form_input', [get_called_class(), 'input_phone']);
 		add_action('eer_order_form_input', [get_called_class(), 'input_country']);
 		add_action('eer_order_form_input', [get_called_class(), 'input_tshirt']);
@@ -19,7 +21,8 @@ class EER_Template_Order_Edit_Form {
 	}
 
 
-	public function print_form($event_id) {
+	public function print_form($event_id)
+	{
 		$event_data = EER()->event->get_event_data($event_id);
 		?>
 		<div id="eer-edit-box" class="eer-edit-box">
@@ -37,7 +40,8 @@ class EER_Template_Order_Edit_Form {
 	}
 
 
-	public static function input_phone($event_data) {
+	public static function input_phone($event_data)
+	{
 		if (intval(EER()->event->eer_get_event_option($event_data, 'phone_enabled', -1)) === 1) { ?>
 			<tr>
 				<th><?php _e('Phone', 'easy-event-registration'); ?></th>
@@ -55,7 +59,8 @@ class EER_Template_Order_Edit_Form {
 	}
 
 
-	public static function input_country($event_data) {
+	public static function input_country($event_data)
+	{
 		if (intval(EER()->event->eer_get_event_option($event_data, 'country_enabled', -1)) === 1) { ?>
 			<tr>
 				<th><?php _e('Country', 'easy-event-registration'); ?></th>
@@ -80,7 +85,8 @@ class EER_Template_Order_Edit_Form {
 	}
 
 
-	public static function input_tshirt($event_data) {
+	public static function input_tshirt($event_data)
+	{
 		if (intval(EER()->event->eer_get_event_option($event_data, 'tshirts_enabled', -1)) === 1) {
 			?>
 			<tr>
@@ -104,7 +110,8 @@ class EER_Template_Order_Edit_Form {
 	}
 
 
-	public static function input_food($event_data) {
+	public static function input_food($event_data)
+	{
 		if (intval(EER()->event->eer_get_event_option($event_data, 'food_enabled', -1)) === 1) {
 			?>
 			<tr>
@@ -128,7 +135,8 @@ class EER_Template_Order_Edit_Form {
 	}
 
 
-	public static function input_hosting($event_data) {
+	public static function input_hosting($event_data)
+	{
 		if (intval(EER()->event->eer_get_event_option($event_data, 'offer_hosting_enabled', -1)) === 1) {
 			?>
 			<tr>
@@ -143,7 +151,8 @@ class EER_Template_Order_Edit_Form {
 	}
 
 
-	public static function input_offer_hosting($event_data) {
+	public static function input_offer_hosting($event_data)
+	{
 		if (intval(EER()->event->eer_get_event_option($event_data, 'offer_hosting_enabled', -1)) === 1) {
 			?>
 			<tr>
@@ -158,7 +167,8 @@ class EER_Template_Order_Edit_Form {
 	}
 
 
-	public static function input_submit() {
+	public static function input_submit()
+	{
 		?>
 		<tr>
 			<th></th>

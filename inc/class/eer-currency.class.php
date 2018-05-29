@@ -5,9 +5,11 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Currency {
+class EER_Currency
+{
 
-	public function eer_get_currencies() {
+	public function eer_get_currencies()
+	{
 		$currencies = [
 			'USD' => __('US Dollars (&#36;)', 'easy-event-registration'),
 			'EUR' => __('Euros (&euro;)', 'easy-event-registration'),
@@ -20,12 +22,14 @@ class EER_Currency {
 		return apply_filters('eer_currencies', $currencies);
 	}
 
-	private function eer_get_currency($event_data) {
+	private function eer_get_currency($event_data)
+	{
 		return isset($event_data->currency) ? $event_data->currency : 'USD';
 	}
 
 
-	public function eer_get_currency_symbol($currency = '', $event_data = null) {
+	public function eer_get_currency_symbol($currency = '', $event_data = null)
+	{
 		if (empty($currency)) {
 			$currency = $this->eer_get_currency($event_data);
 		}
@@ -58,12 +62,14 @@ class EER_Currency {
 	}
 
 
-	private function eer_currency_position($event_data) {
+	private function eer_currency_position($event_data)
+	{
 		return isset($event_data->currency_position) ? $event_data->currency_position : 'after_with_space';
 	}
 
 
-	public function eer_prepare_price($event_id, $price, $event_data = null) {
+	public function eer_prepare_price($event_id, $price, $event_data = null)
+	{
 		if (!$event_data) {
 			$event_data = EER()->event->get_event_data($event_id);
 		}
