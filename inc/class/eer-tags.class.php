@@ -191,6 +191,69 @@ class EER_Tags
 					'function' => 'eer_tag_replace_string',
 					'parameter' => 'order_code'
 				],
+				'name' => [
+					'id' => 'name',
+					'tag' => 'name',
+					'description' => __('Name of user from registration.', 'easy-event-registration'),
+					'function' => 'eer_tag_replace_order_info',
+					'parameter' => 'order_info'
+				],
+				'surname' => [
+					'id' => 'surname',
+					'tag' => 'surname',
+					'description' => __('Surname of user from registration.', 'easy-event-registration'),
+					'function' => 'eer_tag_replace_order_info',
+					'parameter' => 'order_info'
+				],
+				'email' => [
+					'id' => 'email',
+					'tag' => 'email',
+					'description' => __('Email of user from registration.', 'easy-event-registration'),
+					'function' => 'eer_tag_replace_order_info',
+					'parameter' => 'order_info'
+				],
+				'phone' => [
+					'id' => 'phone',
+					'tag' => 'phone',
+					'description' => __('Phone of user from registration.', 'easy-event-registration'),
+					'function' => 'eer_tag_replace_order_info',
+					'parameter' => 'order_info'
+				],
+				'country' => [
+					'id' => 'country',
+					'tag' => 'country',
+					'description' => __('Country of user from registration.', 'easy-event-registration'),
+					'function' => 'eer_tag_replace_order_info',
+					'parameter' => 'order_info'
+				],
+				'note' => [
+					'id' => 'note',
+					'tag' => 'note',
+					'description' => __('Note from registration.', 'easy-event-registration'),
+					'function' => 'eer_tag_replace_order_info',
+					'parameter' => 'order_info'
+				],
+				'hosting_option' => [
+					'id' => 'hosting',
+					'tag' => 'hosting_option',
+					'description' => __('Hosting option.', 'easy-event-registration'),
+					'function' => 'eer_tag_replace_string',
+					'parameter' => 'hosting_option'
+				],
+				'tshirt_option' => [
+					'id' => 'tshirt',
+					'tag' => 'tshirt_option',
+					'description' => __('T-shirt option.', 'easy-event-registration'),
+					'function' => 'eer_tag_replace_string',
+					'parameter' => 'tshirt_option'
+				],
+				'food_option' => [
+					'id' => 'food',
+					'tag' => 'food_option',
+					'description' => __('Food option.', 'easy-event-registration'),
+					'function' => 'eer_tag_replace_string',
+					'parameter' => 'food_option'
+				],
 			],
 			'payment_confirmation_email' => [
 				'event_title' => [
