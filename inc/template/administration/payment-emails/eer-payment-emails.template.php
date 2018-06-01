@@ -40,6 +40,7 @@ class EER_Template_Payment_Emails
 					<th></th>
 					<th><?php _e('Name', 'easy-school-registration'); ?></th>
 					<th><?php _e('Email', 'easy-school-registration'); ?></th>
+					<th><?php _e('Order time', 'easy-school-registration'); ?></th>
 					<th><?php _e('Last email sent', 'easy-school-registration'); ?></th>
 				</tr>
 				<?php
@@ -50,6 +51,7 @@ class EER_Template_Payment_Emails
 						</td>
 						<td><?php echo $payment->display_name; ?></td>
 						<td><?php echo $payment->user_email; ?></td>
+						<td><?php echo $payment->order_time; ?></td>
 						<td><?php echo $payment->confirmation_email_sent_timestamp; ?></td>
 					</tr>
 					<?php
