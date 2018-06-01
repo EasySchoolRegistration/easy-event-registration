@@ -42,6 +42,11 @@ class EER_Template_Payment_Email
 								$parameter = $event_data->title;
 								break;
 							}
+						case 'order_info':
+							{
+								$parameter = $order_info;
+								break;
+							}
 						case 'tickets_list' :
 							{
 								$parameter = EER()->sold_ticket->eer_get_confirmed_sold_tickets_by_order($order->id);
@@ -55,6 +60,21 @@ class EER_Template_Payment_Email
 						case 'order_code' :
 							{
 								$parameter = $order->unique_key;
+								break;
+							}
+						case 'hosting_option':
+							{
+								$parameter = $order_info->hosting ? __('Yes', 'easy-event-registration') : __('No', 'easy-event-registration');
+								break;
+							}
+						case 'tshirt_option':
+							{
+								$parameter = ($order_info->tshirt === '') || !isset($event_data->tshirt_options[$order_info->tshirt]) ? __('No', 'easy-event-registration') : $event_data->tshirt_options[$order_info->tshirt]['name'];
+								break;
+							}
+						case 'food_option':
+							{
+								$parameter = ($order_info->food === '') || !isset($event_data->food_options[$order_info->food]) ? __('No', 'easy-event-registration') : $event_data->food_options[$order_info->food]['option'];
 								break;
 							}
 					}

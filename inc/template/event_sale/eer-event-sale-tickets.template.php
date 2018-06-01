@@ -56,7 +56,7 @@ class EER_Template_Event_Sale_Tickets
 									if ($ticket_buy_enabled) { ?>
 										<button class="eer-ticket-add"><i class="ti-plus"></i></button>
 									<?php } else { ?>
-										<div class="eer-ticket-sold"><?php _e('Sold', 'easy-event-registration'); ?></div>
+										<div class="eer-ticket-sold"><?php _e('Sold Out', 'easy-event-registration'); ?></div>
 									<?php }
 								} ?>
 							</div>
