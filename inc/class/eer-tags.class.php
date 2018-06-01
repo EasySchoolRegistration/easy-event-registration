@@ -161,6 +161,20 @@ class EER_Tags
 					'function' => 'eer_tag_replace_string',
 					'parameter' => 'ticket_title'
 				],
+				'price' => [
+					'id' => 'price',
+					'tag' => 'price',
+					'description' => __('Ticket price.', 'easy-event-registration'),
+					'function' => 'eer_tag_replace_price',
+					'parameter' => 'price'
+				],
+				'order_code' => [
+					'id' => 'order_code',
+					'tag' => 'order_code',
+					'description' => __('Order code to identify which order is user paying.', 'easy-event-registration'),
+					'function' => 'eer_tag_replace_string',
+					'parameter' => 'order_code'
+				],
 			],
 			'payment_reminder_email' => [
 				'event_title' => [

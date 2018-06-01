@@ -152,10 +152,12 @@ class EER_Worker_Ajax {
 				}
 			}
 
-			$wpdb->update($wpdb->prefix . 'eer_ticket_summary', $update, [
-				'ticket_id' => $sold_ticket_data->ticket_id,
-				'level_id'  => $sold_ticket_data->level_id,
-			]);
+			if (!empty($update)) {
+				$wpdb->update($wpdb->prefix . 'eer_ticket_summary', $update, [
+					'ticket_id' => $sold_ticket_data->ticket_id,
+					'level_id' => $sold_ticket_data->level_id,
+				]);
+			}
 
 
 			$order = EER()->order->eer_get_order($sold_ticket_data->order_id);
