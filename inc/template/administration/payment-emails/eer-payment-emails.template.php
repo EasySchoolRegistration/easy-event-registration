@@ -33,16 +33,18 @@ class EER_Template_Payment_Emails
 		?>
 
 		<h2>Not Paid</h2>
-		<input type="checkbox" name="eer-select-all"/><label><?php _e('select all', 'easy-school-registration'); ?></label>
 		<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 			<table id="datatable" class="table table-default table-bordered eer-datatable eer-orders">
+				<thead>
 				<tr>
-					<th></th>
-					<th><?php _e('Name', 'easy-school-registration'); ?></th>
-					<th><?php _e('Email', 'easy-school-registration'); ?></th>
-					<th><?php _e('Order time', 'easy-school-registration'); ?></th>
-					<th><?php _e('Last email sent', 'easy-school-registration'); ?></th>
+					<th class="filter-disabled no-sort"><input type="checkbox" name="eer-select-all"/><label><?php _e('select all', 'easy-event-registration'); ?></label></th>
+					<th class="filter-disabled no-sort"><?php _e('Name', 'easy-event-registration'); ?></th>
+					<th class="filter-disabled no-sort"><?php _e('Email', 'easy-event-registration'); ?></th>
+					<th><?php _e('Order time', 'easy-event-registration'); ?></th>
+					<th><?php _e('Last email sent', 'easy-event-registration'); ?></th>
 				</tr>
+				</thead>
+				<tbody>
 				<?php
 				foreach (EER()->payment->eer_get_not_payed_payments_by_event($selected_event) as $payment) {
 					?>
@@ -52,12 +54,13 @@ class EER_Template_Payment_Emails
 						<td><?php echo $payment->display_name; ?></td>
 						<td><?php echo $payment->user_email; ?></td>
 						<td><?php echo $payment->order_time; ?></td>
-						<td><?php echo $payment->confirmation_email_sent_timestamp; ?></td>
+						<td><?php echo ($payment->confirmation_email_sent_timestamp != null ? $payment->confirmation_email_sent_timestamp : __('Not send', 'easy-event-registration')); ?></td>
 					</tr>
 					<?php
 				}
 
 				?>
+				</tbody>
 			</table>
 			<input type="hidden" name="eer_event" value="<?php echo $selected_event; ?>">
 			<input type="submit" name="eer_send_payment_email_submit">

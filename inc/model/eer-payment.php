@@ -37,7 +37,7 @@ class EER_Payment
 		global $wpdb;
 		$payments = [];
 
-		$results = $wpdb->get_results($wpdb->prepare("SELECT eo.id AS order_id, ep.id AS payment_id, u.ID, u.display_name, u.user_email, ep.confirmation_email_sent_timestamp, eo.inserted_datetime AS order_time FROM {$wpdb->prefix}eer_events_payments AS ep JOIN {$wpdb->prefix}eer_events_orders eo ON ep.order_id = eo.id JOIN {$wpdb->users} u ON u.ID = eo.user_id WHERE eo.event_id = %d AND ep.status = %d", [$event_id, EER_Enum_Payment::NOT_PAID]));
+		$results = $wpdb->get_results($wpdb->prepare("SELECT eo.id AS order_id, ep.id AS payment_id, u.ID, u.display_name, u.user_email, ep.confirmation_email_sent_timestamp, eo.inserted_datetime AS order_time FROM {$wpdb->prefix}eer_events_payments AS ep JOIN {$wpdb->prefix}eer_events_orders eo ON ep.order_id = eo.id JOIN {$wpdb->users} u ON u.ID = eo.user_id WHERE eo.event_id = %d AND ep.status = %d ORDER BY eo.inserted_datetime DESC", [$event_id, EER_Enum_Payment::NOT_PAID]));
 
 		foreach ($results as $result) {
 			if (!isset($payments[$result->order_id])) {

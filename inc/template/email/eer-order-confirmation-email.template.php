@@ -49,6 +49,16 @@ class EER_Template_Order_Confirmation_Email
 										$parameter = $ticket->title;
 										break;
 									}
+								case 'order_code' :
+									{
+										$parameter = $order->unique_key;
+										break;
+									}
+								case 'price' :
+									{
+										$parameter = ['price' => $ticket->price, 'event' => $event_data];
+										break;
+									}
 							}
 
 							$body = call_user_func(['EER_Template_Settings_Tag', $tag['function']], $tag, $body, $parameter);
@@ -94,6 +104,16 @@ class EER_Template_Order_Confirmation_Email
 						case 'ticket_title' :
 							{
 								$parameter = $ticket->title;
+								break;
+							}
+						case 'order_code' :
+							{
+								$parameter = $order->unique_key;
+								break;
+							}
+						case 'price' :
+							{
+								$parameter = ['price' => $ticket->price, 'event' => $event_data];
 								break;
 							}
 					}
