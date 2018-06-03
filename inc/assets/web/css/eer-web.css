@@ -273,11 +273,13 @@
           margin-right: 10px; }
 
 .eer-tickets-sale-wrapper .eer-ticket-shop-form .eer-user-form .eer-row.eer-form-checkbox .eer-form-group label {
-  height: 40px;
+  min-height: 40px;
   text-align: left;
   padding-left: 50px;
   font-size: 16px;
-  line-height: 40px; }
+  line-height: 20px;
+  vertical-align: middle;
+  padding-top: 5px; }
 
 .eer-tickets-sale-wrapper .eer-ticket-shop-form .btn.btn-default {
   background-color: #182f49;
