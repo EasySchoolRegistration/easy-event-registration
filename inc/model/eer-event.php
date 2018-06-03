@@ -474,7 +474,7 @@ class EER_Event
 	public function load_events_without_data()
 	{
 		global $wpdb;
-		return $wpdb->get_results("SELECT * FROM {$wpdb->prefix}eer_events", OBJECT_K);
+		return $wpdb->get_results("SELECT * FROM {$wpdb->prefix}eer_events ORDER BY id DESC", OBJECT_K);
 	}
 
 
