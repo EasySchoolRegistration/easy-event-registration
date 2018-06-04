@@ -21,7 +21,7 @@ class EER_Database
 	{
 		self::create_tables();
 
-		add_option('eer_db_version', EER_VERSION);
+		update_option('eer_db_version', EER_VERSION);
 	}
 
 

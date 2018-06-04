@@ -195,7 +195,7 @@ if (!class_exists('Easy_Event_Registration')) {
 			global $wpdb;
 
 			define('EER_SLUG', 'eer');
-			define('EER_VERSION', '1.0.12');
+			define('EER_VERSION', '1.0.14');
 			// Plugin Root File.
 			if (!defined('EER_PLUGIN_FILE')) {
 				define('EER_PLUGIN_FILE', __FILE__);

@@ -102,7 +102,7 @@ class EER_Settings
 	public static function eer_register_settings()
 	{
 		if (false == get_option('eer_settings')) {
-			add_option('eer_settings');
+			update_option('eer_settings', []);
 		}
 
 		foreach (EER()->settings->eer_get_registered_settings() as $tab => $sections) {
