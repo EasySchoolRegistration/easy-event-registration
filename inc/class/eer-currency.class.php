@@ -15,6 +15,7 @@ class EER_Currency
 			'EUR' => __('Euros (&euro;)', 'easy-event-registration'),
 			'GBP' => __('Pound Sterling (&pound;)', 'easy-event-registration'),
 			'CZK' => __('Czech Crown (Kč)', 'easy-event-registration'),
+			'DKK' => __('Danish Krone (kr)', 'easy-event-registration'),
 			'HUF' => __('Hungarian Forint (Ft)', 'easy-event-registration'),
 			'PLN' => __('Polish Zloty (Z&#0179;)', 'easy-event-registration'),
 		];
@@ -52,6 +53,9 @@ class EER_Currency
 				break;
 			case "PLN" :
 				$symbol = 'Z&#179;';
+				break;
+			case "DKK" :
+				$symbol = 'kr';
 				break;
 			default :
 				$symbol = $currency;
