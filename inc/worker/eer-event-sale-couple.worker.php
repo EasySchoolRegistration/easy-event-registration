@@ -25,7 +25,7 @@ class EER_Event_Sale_Couple_Worker {
 		if ((EER()->dancing_as->eer_is_leader($dancing_as) && $leaders_enabled) || (EER()->dancing_as->eer_is_follower($dancing_as) && $followers_enabled)) {
 			if ($level_id !== null) {
 				$status = $wpdb->query($wpdb->prepare("INSERT INTO {$wpdb->prefix}eer_sold_tickets(order_id, ticket_id, level_id, unique_key, dancing_as, dancing_with, dancing_with_name, status, position)
-							SELECT %d, %d, %d, %d, %d, %s, %s, %d, COALESCE(COUNT(event_id) + 1, 0)  FROM  {$wpdb->prefix}eer_sold_tickets AS st JOIN wp_eer_events_orders AS eo ON eo.id = st.order_id WHERE eo.event_id = %d AND st.ticket_id = %d", [
+							SELECT %d, %d, %d, %d, %d, %s, %s, %d, COALESCE(COUNT(event_id) + 1, 0)  FROM  {$wpdb->prefix}eer_sold_tickets AS st JOIN {$wpdb->prefix}eer_events_orders AS eo ON eo.id = st.order_id WHERE eo.event_id = %d AND st.ticket_id = %d", [
 					$order_id,
 					$ticket_id,
 					$level_id,
@@ -39,7 +39,7 @@ class EER_Event_Sale_Couple_Worker {
 				]));
 			} else {
 				$status = $wpdb->query($wpdb->prepare("INSERT INTO {$wpdb->prefix}eer_sold_tickets(order_id, ticket_id, level_id, unique_key, dancing_as, dancing_with, dancing_with_name, status, position)
-							SELECT %d, %d, NULL, %d, %d, %s, %s, %d, COALESCE(COUNT(event_id) + 1, 0)  FROM  {$wpdb->prefix}eer_sold_tickets AS st JOIN wp_eer_events_orders AS eo ON eo.id = st.order_id WHERE eo.event_id = %d AND st.ticket_id = %d", [
+							SELECT %d, %d, NULL, %d, %d, %s, %s, %d, COALESCE(COUNT(event_id) + 1, 0)  FROM  {$wpdb->prefix}eer_sold_tickets AS st JOIN {$wpdb->prefix}eer_events_orders AS eo ON eo.id = st.order_id WHERE eo.event_id = %d AND st.ticket_id = %d", [
 					$order_id,
 					$ticket_id,
 					EER()->sold_ticket->generate_unique_key($event_id),
@@ -155,14 +155,14 @@ class EER_Event_Sale_Couple_Worker {
 					} else {
 						$wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}eer_sold_tickets AS est
 						JOIN (SELECT COALESCE(MAX(COALESCE(cp_position,0)), 0) + 1 AS np 
-						FROM wp_eer_sold_tickets WHERE ticket_id = %d 
+						FROM {$wpdb->prefix}eer_sold_tickets WHERE ticket_id = %d 
 						AND dancing_with != '' AND status = %d AND cp_position IS NOT NULL) AS pos
   SET est.cp_position = pos.np, partner_id = %d, status = %d
   WHERE est.id = %d", [$ticket_id, EER_Enum_Sold_Ticket_Status::CONFIRMED, $partner_reg[0]->user_id, EER_Enum_Sold_Ticket_Status::CONFIRMED, $sold_ticket_id]));
 
 						$wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}eer_sold_tickets AS est
 						JOIN (SELECT COALESCE(MAX(COALESCE(cp_position,0)), 0) + 1 AS np 
-						FROM wp_eer_sold_tickets WHERE ticket_id = %d 
+						FROM {$wpdb->prefix}eer_sold_tickets WHERE ticket_id = %d 
 						AND dancing_with != '' AND status = %d AND cp_position IS NOT NULL) AS pos
   SET est.cp_position = pos.np, partner_id = %d, status = %d
   WHERE est.id = %d", [$ticket_id, EER_Enum_Sold_Ticket_Status::CONFIRMED, $user_id, EER_Enum_Sold_Ticket_Status::CONFIRMED, $partner_reg[0]->id]));

@@ -19,7 +19,7 @@ class EER_Event_Sale_Solo_Worker
 		$summary = EER()->ticket_summary->eer_get_ticket_summary($ticket_id, $level_id);
 		for ($i = 0; $i < $number_of_registrations; $i++) {
 			$status = $wpdb->query($wpdb->prepare("INSERT INTO {$wpdb->prefix}eer_sold_tickets(order_id, ticket_id, unique_key, dancing_as, dancing_with, status, position)
-							SELECT %d, %d, %d, %d, %s, %d, COALESCE(COUNT(event_id) + 1, 0)  FROM  {$wpdb->prefix}eer_sold_tickets AS st JOIN wp_eer_events_orders AS eo ON eo.id = st.order_id WHERE eo.event_id = %d AND st.ticket_id = %d", [
+							SELECT %d, %d, %d, %d, %s, %d, COALESCE(COUNT(event_id) + 1, 0)  FROM  {$wpdb->prefix}eer_sold_tickets AS st JOIN {$wpdb->prefix}eer_events_orders AS eo ON eo.id = st.order_id WHERE eo.event_id = %d AND st.ticket_id = %d", [
 				$order_id, $ticket_id, EER()->sold_ticket->generate_unique_key($event_id), EER_Enum_Dancing_As::SOLO, null, EER()->pairing_mode->get_solo_ticket_default_status($ticket_data->pairing_mode), $event_id, $ticket_id]));
 		}
 

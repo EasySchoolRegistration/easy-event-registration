@@ -100,7 +100,7 @@ class EER_Database
 			status int DEFAULT 0,
 			not_paying int(1) NOT NULL DEFAULT 0, 
 			inserted_datetime timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-			confirmation_email_sent_timestamp timestamp NULL DEFAULT NULL
+			confirmation_email_sent_timestamp timestamp NULL DEFAULT NULL,
 			PRIMARY KEY id (id),
 			FOREIGN KEY (order_id) REFERENCES {$wpdb->prefix}eer_events_orders(id) ON DELETE CASCADE
 		) $charset_collate;";
