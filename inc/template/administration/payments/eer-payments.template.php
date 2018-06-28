@@ -25,7 +25,7 @@ class EER_Template_Payments
 		?>
 		<div class="wrap eer-settings">
 			<?php $template_all_events->print_content($selected_event); ?>
-			<h1 class="wp-heading-inline"><?php _e('Payments', 'easy-school-registration'); ?></h1>
+			<h1 class="wp-heading-inline"><?php _e('Payments', 'easy-event-registration'); ?></h1>
 
 			<?php
 

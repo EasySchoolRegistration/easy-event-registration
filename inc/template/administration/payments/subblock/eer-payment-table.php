@@ -24,16 +24,16 @@ class EER_Subblock_Template_Payment_Table
 			</colgroup>
 			<thead>
 			<tr>
-				<th class="no-sort"><?php _e('Status', 'easy-school-registration') ?></th>
+				<th class="no-sort"><?php _e('Status', 'easy-event-registration') ?></th>
 				<?php if ($user_can_edit) { ?>
-					<th class="filter-disabled no-sort eer-hide-print"><?php _e('Actions', 'easy-school-registration') ?></th>
+					<th class="filter-disabled no-sort eer-hide-print"><?php _e('Actions', 'easy-event-registration') ?></th>
 				<?php } ?>
-				<th class="filter-disabled no-sort"><?php _e('Note', 'easy-school-registration') ?></th>
-				<th class="filter-disabled no-sort"><?php _e('Name', 'easy-school-registration') ?></th>
-				<th class="filter-disabled no-sort"><?php _e('Email', 'easy-school-registration') ?></th>
-				<th class="filter-disabled no-sort"><?php _e('Order code', 'easy-school-registration') ?></th>
-				<th class="no-sort"><?php _e('To pay', 'easy-school-registration') ?></th>
-				<th class="no-sort"><?php _e('Paid', 'easy-school-registration') ?></th>
+				<th class="filter-disabled no-sort"><?php _e('Note', 'easy-event-registration') ?></th>
+				<th class="filter-disabled no-sort"><?php _e('Name', 'easy-event-registration') ?></th>
+				<th class="filter-disabled no-sort"><?php _e('Email', 'easy-event-registration') ?></th>
+				<th class="filter-disabled no-sort"><?php _e('Order code', 'easy-event-registration') ?></th>
+				<th class="no-sort"><?php _e('To pay', 'easy-event-registration') ?></th>
+				<th class="no-sort"><?php _e('Paid', 'easy-event-registration') ?></th>
 			</tr>
 			</thead>
 			<tbody class="list">
@@ -88,7 +88,7 @@ class EER_Subblock_Template_Payment_Table
 			<li class="eer-action confirm-payment">
 				<a href="javascript:;">
 					<i class="fa fa-edit"></i>
-					<span><?php _e('Confirm payment', 'easy-school-registration'); ?></span>
+					<span><?php _e('Confirm payment', 'easy-event-registration'); ?></span>
 				</a>
 			</li>
 		</ul>

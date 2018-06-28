@@ -58,9 +58,9 @@ class EER_Ticket
 					],
 					'levels' => [
 						'id' => 'levels',
-						'name' => __('Levels', 'easy-school-registration'),
+						'name' => __('Levels', 'easy-event-registration'),
 						'type' => 'add_list_levels',
-						'singular' => __('Level', 'easy-school-registration'),
+						'singular' => __('Level', 'easy-event-registration'),
 					],
 				],
 			]),
@@ -107,7 +107,7 @@ class EER_Ticket
 					],
 					'pdfticket_code_color' => [
 						'id' => 'pdfticket_code_color',
-						'name' => __('Code color', 'easy-school-registration'),
+						'name' => __('Code color', 'easy-event-registration'),
 						'type' => 'color_picker',
 						'std' => '#61c8da',
 						'field_class' => 'eer-input'

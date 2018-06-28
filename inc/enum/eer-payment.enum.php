@@ -21,27 +21,27 @@ class EER_Enum_Payment
 		$this->items = [
 			self::NOT_PAID => [
 				'key' => 'not_paid',
-				'title' => __('Not paid', 'easy-school-registration'),
+				'title' => __('Not paid', 'easy-event-registration'),
 			],
 			self::PAID => [
 				'key' => 'paid',
-				'title' => __('Paid', 'easy-school-registration'),
+				'title' => __('Paid', 'easy-event-registration'),
 			],
 			self::OVER_PAID => [
 				'key' => 'over_paid',
-				'title' => __('Over paid', 'easy-school-registration'),
+				'title' => __('Over paid', 'easy-event-registration'),
 			],
 			self::NOT_PAYING => [
 				'key' => 'not_paying',
-				'title' => __('Not paying', 'easy-school-registration'),
+				'title' => __('Not paying', 'easy-event-registration'),
 			],
 			self::VOUCHER => [
 				'key' => 'voucher',
-				'title' => __('Voucher', 'easy-school-registration'),
+				'title' => __('Voucher', 'easy-event-registration'),
 			],
 			self::NOT_PAID_ALL => [
 				'key' => 'not_paid_all',
-				'title' => __('Not paid all', 'easy-school-registration'),
+				'title' => __('Not paid all', 'easy-event-registration'),
 			],
 		];
 	}

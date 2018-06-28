@@ -26,7 +26,7 @@ class EER_Template_Tickets_In_Numbers
 		?>
 		<div class="wrap eer-settings">
 			<?php $template_all_events->print_content($selected_event); ?>
-			<h1 class="wp-heading-inline"><?php _e('Tickets in numbers', 'easy-school-registration'); ?></h1>
+			<h1 class="wp-heading-inline"><?php _e('Tickets in numbers', 'easy-event-registration'); ?></h1>
 
 			<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="eer-recount-button">
 				<input type="hidden" name="eer_recount_event_id" value="<?php echo $selected_event; ?>">
@@ -35,11 +35,11 @@ class EER_Template_Tickets_In_Numbers
 			<table id="datatable" class="eer-datatable table table-default table-bordered eer-tickets-in-numbers-table">
 				<thead>
 				<tr>
-					<th class="no-sort"><?php _e('Ticket', 'easy-school-registration') ?></th>
-					<th class="filter-disabled no-sort"><?php _e('Level', 'easy-school-registration') ?></th>
-					<th class="filter-disabled no-sort"><?php _e('Leaders', 'easy-school-registration') ?></th>
-					<th class="filter-disabled no-sort"><?php _e('Followers', 'easy-school-registration') ?></th>
-					<th class="filter-disabled no-sort"><?php _e('Tickets', 'easy-school-registration') ?></th>
+					<th class="no-sort"><?php _e('Ticket', 'easy-event-registration') ?></th>
+					<th class="filter-disabled no-sort"><?php _e('Level', 'easy-event-registration') ?></th>
+					<th class="filter-disabled no-sort"><?php _e('Leaders', 'easy-event-registration') ?></th>
+					<th class="filter-disabled no-sort"><?php _e('Followers', 'easy-event-registration') ?></th>
+					<th class="filter-disabled no-sort"><?php _e('Tickets', 'easy-event-registration') ?></th>
 				</tr>
 				</thead>
 				<tbody>
