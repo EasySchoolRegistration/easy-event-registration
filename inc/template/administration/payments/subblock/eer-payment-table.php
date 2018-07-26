@@ -61,7 +61,7 @@ class EER_Subblock_Template_Payment_Table
 				<?php if ($user_can_edit) { ?>
 					<td class="actions eer-payment">
 						<div class="eer-relative">
-							<button class="page-title-action" type="button" data-toggle="dropdown" aria-expanded="false">Actions</button>
+							<button class="page-title-action">Actions</button>
 							<?php $this->print_action_box($payment->order_id); ?>
 						</div>
 					</td>

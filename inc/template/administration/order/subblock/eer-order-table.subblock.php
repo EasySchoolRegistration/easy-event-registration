@@ -76,7 +76,7 @@ class EER_Subblock_Order_Table
 					<td><?php echo $order->inserted_datetime; ?></td>
 					<td class="actions eer-orders">
 						<div class="eer-relative">
-							<button class="page-title-action" type="button" data-toggle="dropdown" aria-expanded="false">Actions</button>
+							<button class="page-title-action">Actions</button>
 							<?php $this->print_action_box($order->id); ?>
 						</div>
 					</td>

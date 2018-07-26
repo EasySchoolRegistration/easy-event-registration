@@ -37,7 +37,7 @@ class EER_Subblock_Ticket_Table
 					<?php apply_filters('eer_print_ticket_data', $ticket); ?>>
 					<td class="actions eer-tickets">
 						<div class="eer-relative">
-							<button class="page-title-action" type="button" data-toggle="dropdown" aria-expanded="false">Actions</button>
+							<button class="page-title-action">Actions</button>
 							<?php $this->print_action_box($ticket->id); ?>
 						</div>
 					</td>

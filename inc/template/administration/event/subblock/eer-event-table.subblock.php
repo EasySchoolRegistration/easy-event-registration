@@ -33,7 +33,7 @@ class EER_Subblock_Event_Table
 					<?php apply_filters('eer_print_event_data', $event); ?>>
 					<td class="actions eer-events">
 						<div class="eer-relative">
-							<button class="page-title-action" type="button" data-toggle="dropdown" aria-expanded="false">Actions</button>
+							<button class="page-title-action">Actions</button>
 							<?php $this->print_action_box($event->id); ?>
 						</div>
 					</td>

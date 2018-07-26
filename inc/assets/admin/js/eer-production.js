@@ -52,6 +52,14 @@ jQuery(function ($) {
 					$(".max_leaders, .max_followers").show();
 				}
 			}
+		}).on("click", ".eer-row .actions button", function () {
+			if ($(this).next().is(":visible")) {
+				$(this).next().hide();
+			} else {
+				$(".eer-actions-box").hide();
+				$(this).next().show();
+				esrd_hide_actions = false;
+			}
 		});
 
 		function cleanInputs(box) {
