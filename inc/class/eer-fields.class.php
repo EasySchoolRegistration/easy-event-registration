@@ -24,7 +24,7 @@ class EER_Fields
 	 */
 	public function get_fields()
 	{
-		return (object)$this->fields;
+		return $this->fields;
 	}
 
 	public function sanitize($type, $value)
