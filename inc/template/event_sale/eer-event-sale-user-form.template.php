@@ -219,6 +219,7 @@ class EER_Template_Event_Sale_User_Form
 						        value=""><?php _e('Choose your level', 'easy-event-registration'); ?></option>
 					</select>
 					<div class="eer-info-row-input eer-dancing-as">
+						<span class="eer-info-row-label"><?php _e('Dancing as?', 'easy-event-registration'); ?></span>
 						<label>
 							<input class="eer-leader eer-dancing-as-input" type="radio"
 							       name="%eer-ticket-id%_dancing_as" required

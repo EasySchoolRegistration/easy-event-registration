@@ -110,6 +110,21 @@
           }
         }
       }
+      .eer-info-row {
+        label {
+          float: left;
+          width: 50%;
+          text-align: left;
+        }
+        input {
+          border-radius: 0;
+          color: #000;
+          background-color: #fff;
+          border: 1px solid #121921;
+          font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
+          background: none;
+        }
+      }
     }
   }
 }
@@ -365,8 +380,6 @@
 
         .eer-dancing-as {
           label {
-            padding: 0 20px;
-
             input {
               margin-right: 10px;
             }

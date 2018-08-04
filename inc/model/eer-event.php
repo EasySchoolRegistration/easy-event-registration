@@ -454,7 +454,7 @@ class EER_Event
 		global $wpdb;
 		$return = [];
 
-		$events = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}eer_events", OBJECT_K);
+		$events = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}eer_events ORDER BY id DESC", OBJECT_K);
 
 		foreach ($events as $id => $event) {
 			$settings = $event->event_settings;
