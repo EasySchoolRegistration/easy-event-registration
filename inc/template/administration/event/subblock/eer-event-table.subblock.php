@@ -76,8 +76,8 @@ class EER_Subblock_Event_Table
 	{
 		$fields = EER()->event->get_fields();
 		foreach ($data as $name => $value) {
-			if (isset($fields->$name) && ($fields->$name['type'] === 'timestamp')) {
-				echo ' data-' . $name . '="' . strftime('%Y-%m-%dT%H:%M:%S', strtotime($value)) . '"';
+			if ((is_array($fields) && isset($fields[$name]) && ($fields[$name]['type'] == 'timestamp')) || (is_object($fields) && isset($fields->$name) && ($fields->$name['type'] == 'timestamp'))) {
+				echo ' data-' . $name . '="' . str_replace(' ', 'T', strftime('%Y-%m-%dT%H:%M:%S', strtotime($value))) . '"';
 			} elseif (is_array($value)) {
 				echo ' data-' . $name . '="' . htmlspecialchars(json_encode($value)) . '"';
 			} else {
