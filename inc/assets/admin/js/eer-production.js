@@ -10,6 +10,7 @@ jQuery(function ($) {
 			}
 		});
 
+		var eer_hide_actions = true;
 		$(document).on("click", ".eer-add-new", function () {
 			showEditBox();
 		}).on("click", ".eer-edit-box .close", function () {
@@ -58,7 +59,7 @@ jQuery(function ($) {
 			} else {
 				$(".eer-actions-box").hide();
 				$(this).next().show();
-				esrd_hide_actions = false;
+				eer_hide_actions = false;
 			}
 		});
 
@@ -432,5 +433,13 @@ jQuery(function ($) {
         if ($(".eer-color-picker").length > 0) {
             $(".eer-color-picker").wpColorPicker();
         }
+
+
+		$(document).on("click", "body", function () {
+			if (eer_hide_actions) {
+				$(".eer-actions-box").hide();
+			}
+			eer_hide_actions = true;
+		});
 	});
 });
