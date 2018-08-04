@@ -205,9 +205,6 @@ if (!class_exists('Easy_Event_Registration')) {
 			if (!defined('EER_PLUGIN_NAME')) {
 				define('EER_PLUGIN_NAME', 'Easy Event Registration');
 			}
-			if (!defined('EER_PLUGIN_LICENSE_KEY')) {
-				define('EER_PLUGIN_LICENSE_KEY', 'be231c0b91c6e003810780167fc92694');
-			}
 
 			define('EER_PLUGIN_PATH', dirname(__FILE__));
 			define('EER_PLUGIN_URL', plugin_dir_url(__FILE__));
@@ -332,7 +329,7 @@ $license_key = $license_key ? trim($license_key) : '';
 // setup the updater
 $edd_updater = new EER_SL_Plugin_Updater(EER_SL_STORE_URL, EER_PLUGIN_FILE, [
 	'version'   => EER_VERSION,        // current version number
-	'license'   => EER_PLUGIN_LICENSE_KEY,    // license key (used get_option above to retrieve from DB)
+	'license'   => $license_key,    // license key (used get_option above to retrieve from DB)
 	'item_name' => EER_PLUGIN_NAME,
 	//'item_id'   => 1358,    // id of this product in EER
 	'author'    => 'zbynek',  // author of this plugin
