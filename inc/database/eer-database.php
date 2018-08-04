@@ -35,6 +35,7 @@ class EER_Database
 		include_once 'updates/eer-update.1.0.10.php';
 		include_once 'updates/eer-update.1.0.11.php';
 		include_once 'updates/eer-update.1.0.12.php';
+		include_once 'updates/eer-update.1.1.0.php';
 		update_option('eer_db_version', EER_VERSION);
 	}
 
