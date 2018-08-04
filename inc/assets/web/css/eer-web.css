@@ -79,6 +79,17 @@
         .eer-form-tickets .eer-ticket-to-buy .eer-column.eer-partner .eer-info-row .eer-info-row-input .eer-choose-partner {
           width: 50%;
           float: left; }
+    .eer-form-tickets .eer-ticket-to-buy .eer-column .eer-info-row label {
+      float: left;
+      width: 50%;
+      text-align: left; }
+    .eer-form-tickets .eer-ticket-to-buy .eer-column .eer-info-row input {
+      border-radius: 0;
+      color: #000;
+      background-color: #fff;
+      border: 1px solid #121921;
+      font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: none; }
 
 .eer-final-price {
   margin-bottom: 20px; }
@@ -267,10 +278,8 @@
     width: 100%; }
     .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-partner .eer-info-row {
       padding: 0 10px; }
-      .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-partner .eer-info-row .eer-dancing-as label {
-        padding: 0 20px; }
-        .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-partner .eer-info-row .eer-dancing-as label input {
-          margin-right: 10px; }
+      .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-partner .eer-info-row .eer-dancing-as label input {
+        margin-right: 10px; }
 
 .eer-tickets-sale-wrapper .eer-ticket-shop-form .eer-user-form .eer-row.eer-form-checkbox .eer-form-group label {
   min-height: 40px;

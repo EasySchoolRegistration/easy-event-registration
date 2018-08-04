@@ -6,7 +6,10 @@ jQuery(function ($) {
 			if (max_height < ticket_outer_height) {
 				max_height = ticket_outer_height;
 			}
-		}).css("height", max_height);
+		});
+		if (max_height > 0) {
+			$(".eer-tickets .eer-ticket-body-wraper").css("height", max_height);
+		}
 
 		/** global: ajaxurl */
 		$("body").on("click", ".eer-ticket:not(.eer-ticket-remove):not(.eer-sold) .eer-ticket-add", function (e) {
