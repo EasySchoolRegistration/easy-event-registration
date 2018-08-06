@@ -69,6 +69,9 @@ class EER_Fields
 							case 'add_list_tshirts':
 							case 'add_list_food':
 								$ret[$key] = $values[$key];
+								if (isset(current($ret[$key])->option)) {
+									current($ret[$key])->option = stripcslashes(sanitize_text_field(current($ret[$key])->option));
+								}
 								break;
 							case 'text':
 							case 'select':
