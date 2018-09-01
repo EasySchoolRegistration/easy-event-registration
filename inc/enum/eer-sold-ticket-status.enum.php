@@ -9,6 +9,10 @@ class EER_Enum_Sold_Ticket_Status
 
 	private $items = [];
 
+
+	/**
+	 * @codeCoverageIgnore
+	 */
 	public function __construct()
 	{
 		$this->items = [
@@ -36,7 +40,7 @@ class EER_Enum_Sold_Ticket_Status
 
 	public function is_waiting($key)
 	{
-		return intval($key) === self::WAITING;
+		return ($key !== null) && (intval($key) === self::WAITING);
 	}
 
 }

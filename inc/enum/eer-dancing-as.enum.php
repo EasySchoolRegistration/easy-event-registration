@@ -13,6 +13,9 @@ class EER_Enum_Dancing_As
 	private $items = [];
 
 
+	/**
+	 * @codeCoverageIgnore
+	 */
 	public function __construct()
 	{
 		$this->items = [
@@ -54,7 +57,7 @@ class EER_Enum_Dancing_As
 	 */
 	public function eer_is_leader($key)
 	{
-		return $key == self::LEADER;
+		return ($key !== null) && ($key == self::LEADER);
 	}
 
 
@@ -65,7 +68,7 @@ class EER_Enum_Dancing_As
 	 */
 	public function eer_is_follower($key)
 	{
-		return $key == self::FOLLOWER;
+		return ($key !== null) && ($key == self::FOLLOWER);
 	}
 
 

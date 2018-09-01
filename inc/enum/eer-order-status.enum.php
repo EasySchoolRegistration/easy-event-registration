@@ -12,6 +12,10 @@ class EER_Enum_Order_Status
 
 	public $items = [];
 
+
+	/**
+	 * @codeCoverageIgnore
+	 */
 	public function __construct()
 	{
 		$this->items = [

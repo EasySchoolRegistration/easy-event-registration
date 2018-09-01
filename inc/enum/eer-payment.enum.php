@@ -61,7 +61,11 @@ class EER_Enum_Payment
 
 	public function get_title($key)
 	{
-		return $this->getItem($key)['title'];
+		if (!isset($this->items[$key]['title'])) {
+			return NULL;
+		}
+
+		return $this->items[$key]['title'];
 	}
 
 
@@ -75,9 +79,9 @@ class EER_Enum_Payment
 				return self::VOUCHER;
 			}
 			if ($user_payment->payment !== null) {
-				if (intval($user_payment->to_pay) == $user_payment->payment) {
+				if (floatval($user_payment->to_pay) == $user_payment->payment) {
 					return EER_Enum_Payment::PAID;
-				} else if (intval($user_payment->to_pay) > $user_payment->payment) {
+				} else if (floatval($user_payment->to_pay) > $user_payment->payment) {
 					return EER_Enum_Payment::NOT_PAID_ALL;
 				} else {
 					return EER_Enum_Payment::OVER_PAID;

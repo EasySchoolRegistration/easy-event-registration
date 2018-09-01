@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\Workspace\DSRS\project\wp-content\plugins\easy-event-registration\inc</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href=".css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href=".css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href=".css/style.css" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]>
+  <script src=".js/html5shiv.min.js"></script>
+  <script src=".js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="index.html">C:\Workspace\DSRS\project\wp-content\plugins\easy-event-registration\inc</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="enum/eer-pairing-mode.enum.php.html#8">EER_Enum_Pairing_Mode</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event-sale-solo.worker.php.html#8">EER_Event_Sale_Solo_Worker</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ticket.worker.php.html#7">EER_Worker_Ticket</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-sold-ticket.worker.php.html#8">EER_Worker_Sold_Ticket</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-payment.worker.php.html#8">EER_Worker_Payment</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-payment-email.worker.php.html#8">EER_Worker_Payment_Email</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-order.worker.php.html#8">EER_Worker_Order</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#7">EER_Worker_Event</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#7">EER_Worker_Event_Sale</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event-sale-couple.worker.php.html#8">EER_Event_Sale_Couple_Worker</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-email.worker.php.html#8">EER_Worker_Email</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#8">EER_Worker_Ajax</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#7">EER_Ticket</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket-summary.php.html#8">EER_Ticket_Summary</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-sold-ticket.php.html#9">EER_Sold_Ticket</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-payment.php.html#7">EER_Payment</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-order.php.html#7">EER_Order</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#7">EER_Event</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-tickets-in-numbers.worker.php.html#8">EER_Worker_Tickets_In_Numbers</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="enum/eer-payment.enum.php.html#8">EER_Enum_Payment</a></td><td class="text-right">88%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#8">EER_Worker_Ajax</a></td><td class="text-right">2070</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#7">EER_Worker_Event_Sale</a></td><td class="text-right">1806</td></tr>
+       <tr><td><a href="worker/eer-event-sale-couple.worker.php.html#8">EER_Event_Sale_Couple_Worker</a></td><td class="text-right">1056</td></tr>
+       <tr><td><a href="worker/eer-ticket.worker.php.html#7">EER_Worker_Ticket</a></td><td class="text-right">1056</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#7">EER_Ticket</a></td><td class="text-right">992</td></tr>
+       <tr><td><a href="model/eer-event.php.html#7">EER_Event</a></td><td class="text-right">930</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#7">EER_Worker_Event</a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="worker/eer-payment.worker.php.html#8">EER_Worker_Payment</a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="worker/eer-sold-ticket.worker.php.html#8">EER_Worker_Sold_Ticket</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="worker/eer-order.worker.php.html#8">EER_Worker_Order</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="enum/eer-pairing-mode.enum.php.html#8">EER_Enum_Pairing_Mode</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="model/eer-sold-ticket.php.html#9">EER_Sold_Ticket</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="model/eer-ticket-summary.php.html#8">EER_Ticket_Summary</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="model/eer-payment.php.html#7">EER_Payment</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="worker/eer-event-sale-solo.worker.php.html#8">EER_Event_Sale_Solo_Worker</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="model/eer-order.php.html#7">EER_Order</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="enum/eer-payment.enum.php.html#8">EER_Enum_Payment</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="worker/eer-tickets-in-numbers.worker.php.html#8">EER_Worker_Tickets_In_Numbers</a></td><td class="text-right">12</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="enum/eer-pairing-mode.enum.php.html#38"><abbr title="EER_Enum_Pairing_Mode::get_items">get_items</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#53"><abbr title="EER_Worker_Ajax::remove_sold_ticket">remove_sold_ticket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#21"><abbr title="EER_Worker_Event_Sale::process_registration">process_registration</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#14"><abbr title="EER_Worker_Event_Sale::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event-sale-solo.worker.php.html#11"><abbr title="EER_Event_Sale_Solo_Worker::process_registration">process_registration</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event-sale-couple.worker.php.html#10"><abbr title="EER_Event_Sale_Couple_Worker::process_registration">process_registration</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-email.worker.php.html#49"><abbr title="EER_Worker_Email::set_html_content_type">set_html_content_type</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-email.worker.php.html#32"><abbr title="EER_Worker_Email::send_ticket_email">send_ticket_email</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#174"><abbr title="EER_Worker_Ajax::save_payment">save_payment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#118"><abbr title="EER_Worker_Ajax::confirm_sold_ticket">confirm_sold_ticket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#97"><abbr title="EER_Worker_Ajax::remove_sold_ticket_forever_callback">remove_sold_ticket_forever_callback</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#10"><abbr title="EER_Worker_Ajax::remove_order">remove_order</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#98"><abbr title="EER_Worker_Event_Sale::eer_registration_form_validation">eer_registration_form_validation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#293"><abbr title="EER_Ticket::eer_is_solo">eer_is_solo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#283"><abbr title="EER_Ticket::get_ticket_data">get_ticket_data</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#268"><abbr title="EER_Ticket::is_ticket_buy_enabled">is_ticket_buy_enabled</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#254"><abbr title="EER_Ticket::get_max_number_of_tickets">get_max_number_of_tickets</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#236"><abbr title="EER_Ticket::get_tickets_by_event">get_tickets_by_event</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#211"><abbr title="EER_Ticket::load_tickets">load_tickets</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#201"><abbr title="EER_Ticket::get_fields">get_fields</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#170"><abbr title="EER_Ticket::eer_get_ticket_settings_sections">eer_get_ticket_settings_sections</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#154"><abbr title="EER_Ticket::eer_get_ticket_settings_tab_sections">eer_get_ticket_settings_tab_sections</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#44"><abbr title="EER_Worker_Event_Sale::eer_complete_registration">eer_complete_registration</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#139"><abbr title="EER_Worker_Event_Sale::eer_get_valid_data">eer_get_valid_data</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#135"><abbr title="EER_Ticket::eer_get_ticket_settings_tabs">eer_get_ticket_settings_tabs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-payment.worker.php.html#36"><abbr title="EER_Worker_Payment::eer_update_payment">eer_update_payment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ticket.worker.php.html#109"><abbr title="EER_Worker_Ticket::prepare_data">prepare_data</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ticket.worker.php.html#58"><abbr title="EER_Worker_Ticket::update_ticket_action">update_ticket_action</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ticket.worker.php.html#24"><abbr title="EER_Worker_Ticket::add_ticket_action">add_ticket_action</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ticket.worker.php.html#15"><abbr title="EER_Worker_Ticket::process_ticket">process_ticket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-ticket.worker.php.html#9"><abbr title="EER_Worker_Ticket::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-sold-ticket.worker.php.html#10"><abbr title="EER_Worker_Sold_Ticket::update_sold_ticket">update_sold_ticket</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-payment.worker.php.html#85"><abbr title="EER_Worker_Payment::eer_get_other_order_payments">eer_get_other_order_payments</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-payment.worker.php.html#79"><abbr title="EER_Worker_Payment::eer_delete_payment">eer_delete_payment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-payment.worker.php.html#57"><abbr title="EER_Worker_Payment::eer_insert_payment">eer_insert_payment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-payment.worker.php.html#25"><abbr title="EER_Worker_Payment::eer_update_user_payment_filter">eer_update_user_payment_filter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#168"><abbr title="EER_Worker_Event_Sale::eer_check_required">eer_check_required</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-payment.worker.php.html#16"><abbr title="EER_Worker_Payment::eer_update_payments_by_event">eer_update_payments_by_event</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-payment.worker.php.html#11"><abbr title="EER_Worker_Payment::eer_update_user_payment">eer_update_user_payment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-payment-email.worker.php.html#11"><abbr title="EER_Worker_Payment_Email::eer_update_payment_email_timestamp">eer_update_payment_email_timestamp</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-order.worker.php.html#11"><abbr title="EER_Worker_Order::update_order">update_order</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#69"><abbr title="EER_Worker_Event::array_to_objects">array_to_objects</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#47"><abbr title="EER_Worker_Event::prepare_data">prepare_data</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#36"><abbr title="EER_Worker_Event::update_event_action">update_event_action</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#24"><abbr title="EER_Worker_Event::add_event_action">add_event_action</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#15"><abbr title="EER_Worker_Event::process_event">process_event</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#9"><abbr title="EER_Worker_Event::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#146"><abbr title="EER_Ticket::eer_get_ticket_settings_tab">eer_get_ticket_settings_tab</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#123"><abbr title="EER_Ticket::eer_get_ticket_settings_fields_to_print">eer_get_ticket_settings_fields_to_print</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="enum/eer-pairing-mode.enum.php.html#44"><abbr title="EER_Enum_Pairing_Mode::get_items_for_settings">get_items_for_settings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#374"><abbr title="EER_Event::eer_get_event_settings_tabs">eer_get_event_settings_tabs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#507"><abbr title="EER_Event::get_fields">get_fields</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#498"><abbr title="EER_Event::get_event_title">get_event_title</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#491"><abbr title="EER_Event::get_event_setting">get_event_setting</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#481"><abbr title="EER_Event::get_event_data">get_event_data</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#474"><abbr title="EER_Event::load_events_without_data">load_events_without_data</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#452"><abbr title="EER_Event::load_events">load_events</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#409"><abbr title="EER_Event::eer_get_event_settings_sections">eer_get_event_settings_sections</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#393"><abbr title="EER_Event::eer_get_event_settings_tab_sections">eer_get_event_settings_tab_sections</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#385"><abbr title="EER_Event::eer_get_event_settings_tab">eer_get_event_settings_tab</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#362"><abbr title="EER_Event::eer_get_event_settings_fields_to_print">eer_get_event_settings_fields_to_print</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#526"><abbr title="EER_Event::is_event_sale_closed">is_event_sale_closed</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#29"><abbr title="EER_Event::eer_get_event_settings_fields">eer_get_event_settings_fields</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#13"><abbr title="EER_Event::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="enum/eer-payment.enum.php.html#56"><abbr title="EER_Enum_Payment::getItem">getItem</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="enum/eer-payment.enum.php.html#50"><abbr title="EER_Enum_Payment::getItems">getItems</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="enum/eer-pairing-mode.enum.php.html#76"><abbr title="EER_Enum_Pairing_Mode::get_solo_ticket_default_status">get_solo_ticket_default_status</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="enum/eer-pairing-mode.enum.php.html#71"><abbr title="EER_Enum_Pairing_Mode::is_auto_confirmation_enabled">is_auto_confirmation_enabled</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="enum/eer-pairing-mode.enum.php.html#66"><abbr title="EER_Enum_Pairing_Mode::is_pairing_enabled">is_pairing_enabled</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="enum/eer-pairing-mode.enum.php.html#61"><abbr title="EER_Enum_Pairing_Mode::get_title">get_title</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="enum/eer-pairing-mode.enum.php.html#55"><abbr title="EER_Enum_Pairing_Mode::get_item">get_item</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#512"><abbr title="EER_Event::is_event_sale_active">is_event_sale_active</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#540"><abbr title="EER_Event::is_event_sale_not_opened_yet">is_event_sale_not_opened_yet</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#37"><abbr title="EER_Ticket::eer_get_ticket_settings_fields">eer_get_ticket_settings_fields</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-sold-ticket.php.html#55"><abbr title="EER_Sold_Ticket::eer_are_all_ordered_tickets_deleted">eer_are_all_ordered_tickets_deleted</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#13"><abbr title="EER_Ticket::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket-summary.php.html#70"><abbr title="EER_Ticket_Summary::eer_get_ticket_availability_by_levels">eer_get_ticket_availability_by_levels</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket-summary.php.html#58"><abbr title="EER_Ticket_Summary::eer_ticket_summary_exists">eer_ticket_summary_exists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket-summary.php.html#45"><abbr title="EER_Ticket_Summary::eer_get_ticket_by_event">eer_get_ticket_by_event</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket-summary.php.html#39"><abbr title="EER_Ticket_Summary::eer_get_ticket_summaries">eer_get_ticket_summaries</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket-summary.php.html#29"><abbr title="EER_Ticket_Summary::eer_get_ticket_summary">eer_get_ticket_summary</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-ticket-summary.php.html#16"><abbr title="EER_Ticket_Summary::eer_update_ticket_summary">eer_update_ticket_summary</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-sold-ticket.php.html#71"><abbr title="EER_Sold_Ticket::eer_ticket_order_exists">eer_ticket_order_exists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-sold-ticket.php.html#63"><abbr title="EER_Sold_Ticket::eer_count_sold_tickets">eer_count_sold_tickets</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-sold-ticket.php.html#47"><abbr title="EER_Sold_Ticket::eer_get_confirmed_sold_tickets_by_order">eer_get_confirmed_sold_tickets_by_order</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-event.php.html#548"><abbr title="EER_Event::eer_get_event_option">eer_get_event_option</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-sold-ticket.php.html#39"><abbr title="EER_Sold_Ticket::eer_get_sold_tickets_by_order">eer_get_sold_tickets_by_order</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-sold-ticket.php.html#31"><abbr title="EER_Sold_Ticket::eer_get_sold_tickets_by_event">eer_get_sold_tickets_by_event</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-sold-ticket.php.html#24"><abbr title="EER_Sold_Ticket::eer_get_sold_tickets_data">eer_get_sold_tickets_data</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-sold-ticket.php.html#12"><abbr title="EER_Sold_Ticket::generate_unique_key">generate_unique_key</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-payment.php.html#35"><abbr title="EER_Payment::eer_get_not_payed_payments_by_event">eer_get_not_payed_payments_by_event</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-payment.php.html#27"><abbr title="EER_Payment::eer_get_payment">eer_get_payment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-payment.php.html#10"><abbr title="EER_Payment::eer_get_payments_by_event">eer_get_payments_by_event</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-order.php.html#31"><abbr title="EER_Order::eer_get_order">eer_get_order</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-order.php.html#23"><abbr title="EER_Order::eer_get_orders_by_event">eer_get_orders_by_event</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="model/eer-order.php.html#10"><abbr title="EER_Order::generate_unique_order_key">generate_unique_order_key</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="worker/eer-tickets-in-numbers.worker.php.html#10"><abbr title="EER_Worker_Tickets_In_Numbers::eer_recount_event_statistics">eer_recount_event_statistics</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="worker/eer-event-sale-couple.worker.php.html#10"><abbr title="EER_Event_Sale_Couple_Worker::process_registration">process_registration</abbr></a></td><td class="text-right">1056</td></tr>
+       <tr><td><a href="worker/eer-ticket.worker.php.html#109"><abbr title="EER_Worker_Ticket::prepare_data">prepare_data</abbr></a></td><td class="text-right">272</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#98"><abbr title="EER_Worker_Event_Sale::eer_registration_form_validation">eer_registration_form_validation</abbr></a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#139"><abbr title="EER_Worker_Event_Sale::eer_get_valid_data">eer_get_valid_data</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="worker/eer-sold-ticket.worker.php.html#10"><abbr title="EER_Worker_Sold_Ticket::update_sold_ticket">update_sold_ticket</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#174"><abbr title="EER_Worker_Ajax::save_payment">save_payment</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#118"><abbr title="EER_Worker_Ajax::confirm_sold_ticket">confirm_sold_ticket</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="worker/eer-order.worker.php.html#11"><abbr title="EER_Worker_Order::update_order">update_order</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#10"><abbr title="EER_Worker_Ajax::remove_order">remove_order</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#53"><abbr title="EER_Worker_Ajax::remove_sold_ticket">remove_sold_ticket</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#44"><abbr title="EER_Worker_Event_Sale::eer_complete_registration">eer_complete_registration</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#47"><abbr title="EER_Worker_Event::prepare_data">prepare_data</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="worker/eer-payment.worker.php.html#85"><abbr title="EER_Worker_Payment::eer_get_other_order_payments">eer_get_other_order_payments</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="worker/eer-ticket.worker.php.html#24"><abbr title="EER_Worker_Ticket::add_ticket_action">add_ticket_action</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="worker/eer-event-sale-solo.worker.php.html#11"><abbr title="EER_Event_Sale_Solo_Worker::process_registration">process_registration</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#254"><abbr title="EER_Ticket::get_max_number_of_tickets">get_max_number_of_tickets</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="worker/eer-ticket.worker.php.html#58"><abbr title="EER_Worker_Ticket::update_ticket_action">update_ticket_action</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="model/eer-event.php.html#393"><abbr title="EER_Event::eer_get_event_settings_tab_sections">eer_get_event_settings_tab_sections</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#21"><abbr title="EER_Worker_Event_Sale::process_registration">process_registration</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#268"><abbr title="EER_Ticket::is_ticket_buy_enabled">is_ticket_buy_enabled</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#154"><abbr title="EER_Ticket::eer_get_ticket_settings_tab_sections">eer_get_ticket_settings_tab_sections</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="worker/eer-ajax.worker.php.html#97"><abbr title="EER_Worker_Ajax::remove_sold_ticket_forever_callback">remove_sold_ticket_forever_callback</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="worker/eer-tickets-in-numbers.worker.php.html#10"><abbr title="EER_Worker_Tickets_In_Numbers::eer_recount_event_statistics">eer_recount_event_statistics</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#15"><abbr title="EER_Worker_Event::process_event">process_event</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="model/eer-payment.php.html#35"><abbr title="EER_Payment::eer_get_not_payed_payments_by_event">eer_get_not_payed_payments_by_event</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="model/eer-payment.php.html#10"><abbr title="EER_Payment::eer_get_payments_by_event">eer_get_payments_by_event</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="model/eer-event.php.html#512"><abbr title="EER_Event::is_event_sale_active">is_event_sale_active</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="worker/eer-ticket.worker.php.html#15"><abbr title="EER_Worker_Ticket::process_ticket">process_ticket</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="worker/eer-event-sale.worker.php.html#168"><abbr title="EER_Worker_Event_Sale::eer_check_required">eer_check_required</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#69"><abbr title="EER_Worker_Event::array_to_objects">array_to_objects</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="worker/eer-payment.worker.php.html#16"><abbr title="EER_Worker_Payment::eer_update_payments_by_event">eer_update_payments_by_event</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="worker/eer-event.worker.php.html#24"><abbr title="EER_Worker_Event::add_event_action">add_event_action</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="enum/eer-pairing-mode.enum.php.html#44"><abbr title="EER_Enum_Pairing_Mode::get_items_for_settings">get_items_for_settings</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="enum/eer-pairing-mode.enum.php.html#76"><abbr title="EER_Enum_Pairing_Mode::get_solo_ticket_default_status">get_solo_ticket_default_status</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-event.php.html#540"><abbr title="EER_Event::is_event_sale_not_opened_yet">is_event_sale_not_opened_yet</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-event.php.html#362"><abbr title="EER_Event::eer_get_event_settings_fields_to_print">eer_get_event_settings_fields_to_print</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-event.php.html#385"><abbr title="EER_Event::eer_get_event_settings_tab">eer_get_event_settings_tab</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-event.php.html#409"><abbr title="EER_Event::eer_get_event_settings_sections">eer_get_event_settings_sections</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-event.php.html#452"><abbr title="EER_Event::load_events">load_events</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-event.php.html#491"><abbr title="EER_Event::get_event_setting">get_event_setting</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-event.php.html#526"><abbr title="EER_Event::is_event_sale_closed">is_event_sale_closed</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-event.php.html#548"><abbr title="EER_Event::eer_get_event_option">eer_get_event_option</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#236"><abbr title="EER_Ticket::get_tickets_by_event">get_tickets_by_event</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-order.php.html#10"><abbr title="EER_Order::generate_unique_order_key">generate_unique_order_key</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-sold-ticket.php.html#12"><abbr title="EER_Sold_Ticket::generate_unique_key">generate_unique_key</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-ticket-summary.php.html#29"><abbr title="EER_Ticket_Summary::eer_get_ticket_summary">eer_get_ticket_summary</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#123"><abbr title="EER_Ticket::eer_get_ticket_settings_fields_to_print">eer_get_ticket_settings_fields_to_print</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#146"><abbr title="EER_Ticket::eer_get_ticket_settings_tab">eer_get_ticket_settings_tab</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#170"><abbr title="EER_Ticket::eer_get_ticket_settings_sections">eer_get_ticket_settings_sections</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#211"><abbr title="EER_Ticket::load_tickets">load_tickets</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="model/eer-ticket.php.html#293"><abbr title="EER_Ticket::eer_is_solo">eer_is_solo</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 5.3.0</a> using <a href="https://secure.php.net/" target="_top">PHP 7.1.1</a> with <a href="https://xdebug.org/">Xdebug 2.5.5</a> and <a href="https://phpunit.de/">PHPUnit 6.5.7</a> at Sat Sep 1 8:21:52 UTC 2018.</small>
+    </p>
+   </footer>
+  </div>
+  <script src=".js/jquery.min.js" type="text/javascript"></script>
+  <script src=".js/bootstrap.min.js" type="text/javascript"></script>
+  <script src=".js/holder.min.js" type="text/javascript"></script>
+  <script src=".js/d3.min.js" type="text/javascript"></script>
+  <script src=".js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([19,0,0,0,0,0,0,0,0,1,0,5], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([97,0,0,0,0,0,0,0,0,0,0,22], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[100,2,"<a href=\"enum\/eer-countries.enum.php.html#3\">EER_Enum_Countries<\/a>"],[100,14,"<a href=\"enum\/eer-dancing-as.enum.php.html#8\">EER_Enum_Dancing_As<\/a>"],[100,3,"<a href=\"enum\/eer-order-status.enum.php.html#7\">EER_Enum_Order_Status<\/a>"],[0,10,"<a href=\"enum\/eer-pairing-mode.enum.php.html#8\">EER_Enum_Pairing_Mode<\/a>"],[88.23529411764706,12,"<a href=\"enum\/eer-payment.enum.php.html#8\">EER_Enum_Payment<\/a>"],[100,2,"<a href=\"enum\/eer-role.enum.php.html#8\">EER_Role<\/a>"],[100,5,"<a href=\"enum\/eer-sold-ticket-status.enum.php.html#3\">EER_Enum_Sold_Ticket_Status<\/a>"],[0,30,"<a href=\"model\/eer-event.php.html#7\">EER_Event<\/a>"],[0,4,"<a href=\"model\/eer-order.php.html#7\">EER_Order<\/a>"],[0,7,"<a href=\"model\/eer-payment.php.html#7\">EER_Payment<\/a>"],[0,9,"<a href=\"model\/eer-sold-ticket.php.html#9\">EER_Sold_Ticket<\/a>"],[0,7,"<a href=\"model\/eer-ticket-summary.php.html#8\">EER_Ticket_Summary<\/a>"],[0,31,"<a href=\"model\/eer-ticket.php.html#7\">EER_Ticket<\/a>"],[0,45,"<a href=\"worker\/eer-ajax.worker.php.html#8\">EER_Worker_Ajax<\/a>"],[0,3,"<a href=\"worker\/eer-email.worker.php.html#8\">EER_Worker_Email<\/a>"],[0,32,"<a href=\"worker\/eer-event-sale-couple.worker.php.html#8\">EER_Event_Sale_Couple_Worker<\/a>"],[0,6,"<a href=\"worker\/eer-event-sale-solo.worker.php.html#8\">EER_Event_Sale_Solo_Worker<\/a>"],[0,42,"<a href=\"worker\/eer-event-sale.worker.php.html#7\">EER_Worker_Event_Sale<\/a>"],[0,17,"<a href=\"worker\/eer-event.worker.php.html#7\">EER_Worker_Event<\/a>"],[0,10,"<a href=\"worker\/eer-order.worker.php.html#8\">EER_Worker_Order<\/a>"],[0,1,"<a href=\"worker\/eer-payment-email.worker.php.html#8\">EER_Worker_Payment_Email<\/a>"],[0,14,"<a href=\"worker\/eer-payment.worker.php.html#8\">EER_Worker_Payment<\/a>"],[0,12,"<a href=\"worker\/eer-sold-ticket.worker.php.html#8\">EER_Worker_Sold_Ticket<\/a>"],[0,32,"<a href=\"worker\/eer-ticket.worker.php.html#7\">EER_Worker_Ticket<\/a>"],[0,3,"<a href=\"worker\/eer-tickets-in-numbers.worker.php.html#8\">EER_Worker_Tickets_In_Numbers<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"enum\/eer-countries.enum.php.html#12\">EER_Enum_Countries::__construct<\/a>"],[100,1,"<a href=\"enum\/eer-countries.enum.php.html#258\">EER_Enum_Countries::eer_get_items<\/a>"],[100,1,"<a href=\"enum\/eer-dancing-as.enum.php.html#19\">EER_Enum_Dancing_As::__construct<\/a>"],[100,1,"<a href=\"enum\/eer-dancing-as.enum.php.html#35\">EER_Enum_Dancing_As::eer_get_items<\/a>"],[100,1,"<a href=\"enum\/eer-dancing-as.enum.php.html#41\">EER_Enum_Dancing_As::eer_get_item<\/a>"],[100,1,"<a href=\"enum\/eer-dancing-as.enum.php.html#47\">EER_Enum_Dancing_As::eer_get_title<\/a>"],[100,2,"<a href=\"enum\/eer-dancing-as.enum.php.html#58\">EER_Enum_Dancing_As::eer_is_leader<\/a>"],[100,2,"<a href=\"enum\/eer-dancing-as.enum.php.html#69\">EER_Enum_Dancing_As::eer_is_follower<\/a>"],[100,2,"<a href=\"enum\/eer-dancing-as.enum.php.html#81\">EER_Enum_Dancing_As::eer_is_leader_registration_enabled<\/a>"],[100,2,"<a href=\"enum\/eer-dancing-as.enum.php.html#99\">EER_Enum_Dancing_As::eer_is_followers_registration_enabled<\/a>"],[100,2,"<a href=\"enum\/eer-dancing-as.enum.php.html#117\">EER_Enum_Dancing_As::eer_is_solo_registration_enabled<\/a>"],[100,1,"<a href=\"enum\/eer-order-status.enum.php.html#19\">EER_Enum_Order_Status::__construct<\/a>"],[100,2,"<a href=\"enum\/eer-order-status.enum.php.html#32\">EER_Enum_Order_Status::get_title<\/a>"],[100,1,"<a href=\"enum\/eer-pairing-mode.enum.php.html#19\">EER_Enum_Pairing_Mode::__construct<\/a>"],[0,1,"<a href=\"enum\/eer-pairing-mode.enum.php.html#38\">EER_Enum_Pairing_Mode::get_items<\/a>"],[0,2,"<a href=\"enum\/eer-pairing-mode.enum.php.html#44\">EER_Enum_Pairing_Mode::get_items_for_settings<\/a>"],[0,1,"<a href=\"enum\/eer-pairing-mode.enum.php.html#55\">EER_Enum_Pairing_Mode::get_item<\/a>"],[0,1,"<a href=\"enum\/eer-pairing-mode.enum.php.html#61\">EER_Enum_Pairing_Mode::get_title<\/a>"],[0,1,"<a href=\"enum\/eer-pairing-mode.enum.php.html#66\">EER_Enum_Pairing_Mode::is_pairing_enabled<\/a>"],[0,1,"<a href=\"enum\/eer-pairing-mode.enum.php.html#71\">EER_Enum_Pairing_Mode::is_auto_confirmation_enabled<\/a>"],[0,2,"<a href=\"enum\/eer-pairing-mode.enum.php.html#76\">EER_Enum_Pairing_Mode::get_solo_ticket_default_status<\/a>"],[100,1,"<a href=\"enum\/eer-payment.enum.php.html#19\">EER_Enum_Payment::__construct<\/a>"],[0,1,"<a href=\"enum\/eer-payment.enum.php.html#50\">EER_Enum_Payment::getItems<\/a>"],[0,1,"<a href=\"enum\/eer-payment.enum.php.html#56\">EER_Enum_Payment::getItem<\/a>"],[100,2,"<a href=\"enum\/eer-payment.enum.php.html#62\">EER_Enum_Payment::get_title<\/a>"],[100,7,"<a href=\"enum\/eer-payment.enum.php.html#72\">EER_Enum_Payment::get_status<\/a>"],[100,2,"<a href=\"enum\/eer-role.enum.php.html#14\">EER_Role::init<\/a>"],[100,1,"<a href=\"enum\/eer-sold-ticket-status.enum.php.html#16\">EER_Enum_Sold_Ticket_Status::__construct<\/a>"],[100,2,"<a href=\"enum\/eer-sold-ticket-status.enum.php.html#32\">EER_Enum_Sold_Ticket_Status::get_title<\/a>"],[100,2,"<a href=\"enum\/eer-sold-ticket-status.enum.php.html#41\">EER_Enum_Sold_Ticket_Status::is_waiting<\/a>"],[0,1,"<a href=\"model\/eer-event.php.html#13\">EER_Event::__construct<\/a>"],[0,1,"<a href=\"model\/eer-event.php.html#29\">EER_Event::eer_get_event_settings_fields<\/a>"],[0,2,"<a href=\"model\/eer-event.php.html#362\">EER_Event::eer_get_event_settings_fields_to_print<\/a>"],[0,1,"<a href=\"model\/eer-event.php.html#374\">EER_Event::eer_get_event_settings_tabs<\/a>"],[0,2,"<a href=\"model\/eer-event.php.html#385\">EER_Event::eer_get_event_settings_tab<\/a>"],[0,4,"<a href=\"model\/eer-event.php.html#393\">EER_Event::eer_get_event_settings_tab_sections<\/a>"],[0,2,"<a href=\"model\/eer-event.php.html#409\">EER_Event::eer_get_event_settings_sections<\/a>"],[0,2,"<a href=\"model\/eer-event.php.html#452\">EER_Event::load_events<\/a>"],[0,1,"<a href=\"model\/eer-event.php.html#474\">EER_Event::load_events_without_data<\/a>"],[0,1,"<a href=\"model\/eer-event.php.html#481\">EER_Event::get_event_data<\/a>"],[0,2,"<a href=\"model\/eer-event.php.html#491\">EER_Event::get_event_setting<\/a>"],[0,1,"<a href=\"model\/eer-event.php.html#498\">EER_Event::get_event_title<\/a>"],[0,1,"<a href=\"model\/eer-event.php.html#507\">EER_Event::get_fields<\/a>"],[0,3,"<a href=\"model\/eer-event.php.html#512\">EER_Event::is_event_sale_active<\/a>"],[0,2,"<a href=\"model\/eer-event.php.html#526\">EER_Event::is_event_sale_closed<\/a>"],[0,2,"<a href=\"model\/eer-event.php.html#540\">EER_Event::is_event_sale_not_opened_yet<\/a>"],[0,2,"<a href=\"model\/eer-event.php.html#548\">EER_Event::eer_get_event_option<\/a>"],[0,2,"<a href=\"model\/eer-order.php.html#10\">EER_Order::generate_unique_order_key<\/a>"],[0,1,"<a href=\"model\/eer-order.php.html#23\">EER_Order::eer_get_orders_by_event<\/a>"],[0,1,"<a href=\"model\/eer-order.php.html#31\">EER_Order::eer_get_order<\/a>"],[0,3,"<a href=\"model\/eer-payment.php.html#10\">EER_Payment::eer_get_payments_by_event<\/a>"],[0,1,"<a href=\"model\/eer-payment.php.html#27\">EER_Payment::eer_get_payment<\/a>"],[0,3,"<a href=\"model\/eer-payment.php.html#35\">EER_Payment::eer_get_not_payed_payments_by_event<\/a>"],[0,2,"<a href=\"model\/eer-sold-ticket.php.html#12\">EER_Sold_Ticket::generate_unique_key<\/a>"],[0,1,"<a href=\"model\/eer-sold-ticket.php.html#24\">EER_Sold_Ticket::eer_get_sold_tickets_data<\/a>"],[0,1,"<a href=\"model\/eer-sold-ticket.php.html#31\">EER_Sold_Ticket::eer_get_sold_tickets_by_event<\/a>"],[0,1,"<a href=\"model\/eer-sold-ticket.php.html#39\">EER_Sold_Ticket::eer_get_sold_tickets_by_order<\/a>"],[0,1,"<a href=\"model\/eer-sold-ticket.php.html#47\">EER_Sold_Ticket::eer_get_confirmed_sold_tickets_by_order<\/a>"],[0,1,"<a href=\"model\/eer-sold-ticket.php.html#55\">EER_Sold_Ticket::eer_are_all_ordered_tickets_deleted<\/a>"],[0,1,"<a href=\"model\/eer-sold-ticket.php.html#63\">EER_Sold_Ticket::eer_count_sold_tickets<\/a>"],[0,1,"<a href=\"model\/eer-sold-ticket.php.html#71\">EER_Sold_Ticket::eer_ticket_order_exists<\/a>"],[0,1,"<a href=\"model\/eer-ticket-summary.php.html#16\">EER_Ticket_Summary::eer_update_ticket_summary<\/a>"],[0,2,"<a href=\"model\/eer-ticket-summary.php.html#29\">EER_Ticket_Summary::eer_get_ticket_summary<\/a>"],[0,1,"<a href=\"model\/eer-ticket-summary.php.html#39\">EER_Ticket_Summary::eer_get_ticket_summaries<\/a>"],[0,1,"<a href=\"model\/eer-ticket-summary.php.html#45\">EER_Ticket_Summary::eer_get_ticket_by_event<\/a>"],[0,1,"<a href=\"model\/eer-ticket-summary.php.html#58\">EER_Ticket_Summary::eer_ticket_summary_exists<\/a>"],[0,1,"<a href=\"model\/eer-ticket-summary.php.html#70\">EER_Ticket_Summary::eer_get_ticket_availability_by_levels<\/a>"],[0,1,"<a href=\"model\/eer-ticket.php.html#13\">EER_Ticket::__construct<\/a>"],[0,1,"<a href=\"model\/eer-ticket.php.html#37\">EER_Ticket::eer_get_ticket_settings_fields<\/a>"],[0,2,"<a href=\"model\/eer-ticket.php.html#123\">EER_Ticket::eer_get_ticket_settings_fields_to_print<\/a>"],[0,1,"<a href=\"model\/eer-ticket.php.html#135\">EER_Ticket::eer_get_ticket_settings_tabs<\/a>"],[0,2,"<a href=\"model\/eer-ticket.php.html#146\">EER_Ticket::eer_get_ticket_settings_tab<\/a>"],[0,4,"<a href=\"model\/eer-ticket.php.html#154\">EER_Ticket::eer_get_ticket_settings_tab_sections<\/a>"],[0,2,"<a href=\"model\/eer-ticket.php.html#170\">EER_Ticket::eer_get_ticket_settings_sections<\/a>"],[0,1,"<a href=\"model\/eer-ticket.php.html#201\">EER_Ticket::get_fields<\/a>"],[0,2,"<a href=\"model\/eer-ticket.php.html#211\">EER_Ticket::load_tickets<\/a>"],[0,2,"<a href=\"model\/eer-ticket.php.html#236\">EER_Ticket::get_tickets_by_event<\/a>"],[0,6,"<a href=\"model\/eer-ticket.php.html#254\">EER_Ticket::get_max_number_of_tickets<\/a>"],[0,4,"<a href=\"model\/eer-ticket.php.html#268\">EER_Ticket::is_ticket_buy_enabled<\/a>"],[0,1,"<a href=\"model\/eer-ticket.php.html#283\">EER_Ticket::get_ticket_data<\/a>"],[0,2,"<a href=\"model\/eer-ticket.php.html#293\">EER_Ticket::eer_is_solo<\/a>"],[0,10,"<a href=\"worker\/eer-ajax.worker.php.html#10\">EER_Worker_Ajax::remove_order<\/a>"],[0,10,"<a href=\"worker\/eer-ajax.worker.php.html#53\">EER_Worker_Ajax::remove_sold_ticket<\/a>"],[0,3,"<a href=\"worker\/eer-ajax.worker.php.html#97\">EER_Worker_Ajax::remove_sold_ticket_forever_callback<\/a>"],[0,11,"<a href=\"worker\/eer-ajax.worker.php.html#118\">EER_Worker_Ajax::confirm_sold_ticket<\/a>"],[0,11,"<a href=\"worker\/eer-ajax.worker.php.html#174\">EER_Worker_Ajax::save_payment<\/a>"],[100,1,"<a href=\"worker\/eer-email.worker.php.html#18\">EER_Worker_Email::send_email<\/a>"],[0,1,"<a href=\"worker\/eer-email.worker.php.html#32\">EER_Worker_Email::send_ticket_email<\/a>"],[0,1,"<a href=\"worker\/eer-email.worker.php.html#49\">EER_Worker_Email::set_html_content_type<\/a>"],[0,32,"<a href=\"worker\/eer-event-sale-couple.worker.php.html#10\">EER_Event_Sale_Couple_Worker::process_registration<\/a>"],[0,6,"<a href=\"worker\/eer-event-sale-solo.worker.php.html#11\">EER_Event_Sale_Solo_Worker::process_registration<\/a>"],[0,1,"<a href=\"worker\/eer-event-sale.worker.php.html#14\">EER_Worker_Event_Sale::__construct<\/a>"],[0,4,"<a href=\"worker\/eer-event-sale.worker.php.html#21\">EER_Worker_Event_Sale::process_registration<\/a>"],[0,9,"<a href=\"worker\/eer-event-sale.worker.php.html#44\">EER_Worker_Event_Sale::eer_complete_registration<\/a>"],[0,14,"<a href=\"worker\/eer-event-sale.worker.php.html#98\">EER_Worker_Event_Sale::eer_registration_form_validation<\/a>"],[0,12,"<a href=\"worker\/eer-event-sale.worker.php.html#139\">EER_Worker_Event_Sale::eer_get_valid_data<\/a>"],[0,2,"<a href=\"worker\/eer-event-sale.worker.php.html#168\">EER_Worker_Event_Sale::eer_check_required<\/a>"],[0,1,"<a href=\"worker\/eer-event.worker.php.html#9\">EER_Worker_Event::__construct<\/a>"],[0,3,"<a href=\"worker\/eer-event.worker.php.html#15\">EER_Worker_Event::process_event<\/a>"],[0,2,"<a href=\"worker\/eer-event.worker.php.html#24\">EER_Worker_Event::add_event_action<\/a>"],[0,1,"<a href=\"worker\/eer-event.worker.php.html#36\">EER_Worker_Event::update_event_action<\/a>"],[0,8,"<a href=\"worker\/eer-event.worker.php.html#47\">EER_Worker_Event::prepare_data<\/a>"],[0,2,"<a href=\"worker\/eer-event.worker.php.html#69\">EER_Worker_Event::array_to_objects<\/a>"],[0,10,"<a href=\"worker\/eer-order.worker.php.html#11\">EER_Worker_Order::update_order<\/a>"],[0,1,"<a href=\"worker\/eer-payment-email.worker.php.html#11\">EER_Worker_Payment_Email::eer_update_payment_email_timestamp<\/a>"],[0,1,"<a href=\"worker\/eer-payment.worker.php.html#11\">EER_Worker_Payment::eer_update_user_payment<\/a>"],[0,2,"<a href=\"worker\/eer-payment.worker.php.html#16\">EER_Worker_Payment::eer_update_payments_by_event<\/a>"],[0,1,"<a href=\"worker\/eer-payment.worker.php.html#25\">EER_Worker_Payment::eer_update_user_payment_filter<\/a>"],[0,1,"<a href=\"worker\/eer-payment.worker.php.html#36\">EER_Worker_Payment::eer_update_payment<\/a>"],[0,1,"<a href=\"worker\/eer-payment.worker.php.html#57\">EER_Worker_Payment::eer_insert_payment<\/a>"],[0,1,"<a href=\"worker\/eer-payment.worker.php.html#79\">EER_Worker_Payment::eer_delete_payment<\/a>"],[0,7,"<a href=\"worker\/eer-payment.worker.php.html#85\">EER_Worker_Payment::eer_get_other_order_payments<\/a>"],[0,12,"<a href=\"worker\/eer-sold-ticket.worker.php.html#10\">EER_Worker_Sold_Ticket::update_sold_ticket<\/a>"],[0,1,"<a href=\"worker\/eer-ticket.worker.php.html#9\">EER_Worker_Ticket::__construct<\/a>"],[0,3,"<a href=\"worker\/eer-ticket.worker.php.html#15\">EER_Worker_Ticket::process_ticket<\/a>"],[0,7,"<a href=\"worker\/eer-ticket.worker.php.html#24\">EER_Worker_Ticket::add_ticket_action<\/a>"],[0,5,"<a href=\"worker\/eer-ticket.worker.php.html#58\">EER_Worker_Ticket::update_ticket_action<\/a>"],[0,16,"<a href=\"worker\/eer-ticket.worker.php.html#109\">EER_Worker_Ticket::prepare_data<\/a>"],[0,3,"<a href=\"worker\/eer-tickets-in-numbers.worker.php.html#10\">EER_Worker_Tickets_In_Numbers::eer_recount_event_statistics<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

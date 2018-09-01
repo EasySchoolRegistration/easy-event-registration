@@ -1,17 +1,16 @@
 <?php
+include_once EER_PLUGIN_PATH . '/tests/eer-base-test.php';
 
-class EER_Enum_Countries
-{
-
-	private $items = [];
+class EER_Countries_Test extends PHPUnit_Framework_TestCase2 {
 
 
 	/**
-	 * @codeCoverageIgnore
+	 * Test adding teacher
 	 */
-	public function __construct()
-	{
-		$this->items = [
+	public function test_get_items() {
+		$enum_countries = new EER_Enum_Countries();
+
+		$this->assertEquals($enum_countries->eer_get_items(), [
 			'AF' => 'Afghanistan',
 			'AL' => 'Albania',
 			'DZ' => 'Algeria',
@@ -251,13 +250,6 @@ class EER_Enum_Countries
 			'YE' => 'Yemen',
 			'ZM' => 'Zambia',
 			'ZW' => 'Zimbabwe'
-		];
+		]);
 	}
-
-
-	public function eer_get_items()
-	{
-		return $this->items;
-	}
-
 }

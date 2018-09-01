@@ -47,6 +47,11 @@ if (!class_exists('Easy_Event_Registration')) {
 		public $email;
 
 		/**
+		 * @var EER_Enum_Payment
+		 */
+		public $enum_payment;
+
+		/**
 		 * @var EER_Event
 		 */
 		public $event;
@@ -143,11 +148,12 @@ if (!class_exists('Easy_Event_Registration')) {
 				self::$instance->currency           = new EER_Currency();
 				self::$instance->dancing_as         = new EER_Enum_Dancing_As();
 				self::$instance->email              = new EER_Email();
+				self::$instance->enum_payment       = new EER_Enum_Payment();
 				self::$instance->event              = new EER_Event();
 				self::$instance->fields             = new EER_Fields();
 				self::$instance->model_settings     = new EER_Model_Settings();
 				self::$instance->order              = new EER_Order();
-				self::$instance->order_status              = new EER_Enum_Order_Status();
+				self::$instance->order_status       = new EER_Enum_Order_Status();
 				self::$instance->payment            = new EER_Payment();
 				self::$instance->pdf_ticket         = new EER_PDF_Ticket();
 				self::$instance->pairing_mode       = new EER_Enum_Pairing_Mode();
