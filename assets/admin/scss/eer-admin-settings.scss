@@ -99,12 +99,36 @@ table.dataTable tbody tr.status-2 {
     .eer-status {
       &-0 {
         background-color: #B8C2D8;
+
+        .eer-actions-box {
+          .eer-action {
+            &.remove-forever {
+              display: none;
+            }
+          }
+        }
       }
       &-1 {
         background-color: #A5C663;
+
+        .eer-actions-box {
+          .eer-action {
+            &.confirm, &.remove-forever {
+              display: none;
+            }
+          }
+        }
       }
       &-2 {
         background-color: #D46A6A;
+
+        .eer-actions-box {
+          .eer-action {
+            &.edit, &.remove {
+              display: none;
+            }
+          }
+        }
       }
     }
   }

@@ -73,12 +73,18 @@ table.dataTable tbody tr.status-2 {
 
 .eer-datatable.eer-sold-tickets .eer-status-0 {
   background-color: #B8C2D8; }
+  .eer-datatable.eer-sold-tickets .eer-status-0 .eer-actions-box .eer-action.remove-forever {
+    display: none; }
 
 .eer-datatable.eer-sold-tickets .eer-status-1 {
   background-color: #A5C663; }
+  .eer-datatable.eer-sold-tickets .eer-status-1 .eer-actions-box .eer-action.confirm, .eer-datatable.eer-sold-tickets .eer-status-1 .eer-actions-box .eer-action.remove-forever {
+    display: none; }
 
 .eer-datatable.eer-sold-tickets .eer-status-2 {
   background-color: #D46A6A; }
+  .eer-datatable.eer-sold-tickets .eer-status-2 .eer-actions-box .eer-action.edit, .eer-datatable.eer-sold-tickets .eer-status-2 .eer-actions-box .eer-action.remove {
+    display: none; }
 
 .eer-datatable.eer-orders .eer-status-0 {
   background-color: #B8C2D8; }

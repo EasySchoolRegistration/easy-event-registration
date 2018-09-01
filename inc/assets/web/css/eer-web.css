@@ -119,7 +119,8 @@
     padding-right: 15px;
     padding-left: 15px;
     font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    box-sizing: border-box; }
     @media (max-width: 768px) {
       .eer-ticket-shop-form .eer-user-form .eer-row .eer-form-group {
         width: 100%;
