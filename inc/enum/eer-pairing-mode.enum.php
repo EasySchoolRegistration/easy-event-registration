@@ -54,13 +54,15 @@ class EER_Enum_Pairing_Mode
 
 	public function get_item($key)
 	{
-		return $this->get_items()[$key];
+		$items = $this->get_items();
+		return isset($items[$key]) ? $items[$key] : [];
 	}
 
 
 	public function get_title($key)
 	{
-		return $this->get_item($key)['title'];
+		$item = $this->get_item($key);
+		return isset($item['title']) ? $item['title'] : null;
 	}
 
 	public function is_pairing_enabled($key)

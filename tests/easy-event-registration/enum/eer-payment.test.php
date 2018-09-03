@@ -100,5 +100,11 @@ class EER_Payment_Test extends PHPUnit_Framework_TestCase2 {
 		$this->assertEquals(EER_Enum_Payment::OVER_PAID, EER()->enum_payment->get_status($payment));
 	}
 
+	public function test_get_item() {
+		$this->assertEquals(['key' => 'not_paid', 'title' => 'Not paid'], EER()->enum_payment->getItem(EER_Enum_Payment::NOT_PAID));
+		$this->assertEquals([], EER()->enum_payment->getItem(null));
+		$this->assertEquals([], EER()->enum_payment->getItem(-1));
+	}
+
 
 }

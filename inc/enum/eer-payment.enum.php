@@ -55,7 +55,8 @@ class EER_Enum_Payment
 
 	public function getItem($key)
 	{
-		return $this->getItems()[$key];
+		$items = $this->getItems();
+		return isset($items[$key]) ? $items[$key] : [];
 	}
 
 
