@@ -182,124 +182,120 @@
   width: 100%;
   display: inline-block; }
 
-.eer-tickets-sale-wrapper .eer-tickets .eer-ticket {
-  font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 0 1% 40px;
-  min-width: 31%;
-  color: #fff; }
-  .eer-tickets-sale-wrapper .eer-tickets .eer-ticket.eer-ticket-remove button.eer-ticket-add {
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    cursor: default; }
-  .eer-tickets-sale-wrapper .eer-tickets .eer-ticket .eer-ticket-body-wraper {
-    background-color: #182f49;
-    position: relative;
-    color: #fff; }
-    .eer-tickets-sale-wrapper .eer-tickets .eer-ticket .eer-ticket-body-wraper .eer-ticket-body {
-      color: #fff;
-      border: 2px dashed rgba(255, 255, 255, 0.2); }
-      .eer-tickets-sale-wrapper .eer-tickets .eer-ticket .eer-ticket-body-wraper .eer-ticket-body button.eer-ticket-add {
-        background: transparent url("../img/ticket-add-bg.png");
-        position: absolute;
-        bottom: -35px;
-        right: -25px;
-        height: 80px;
-        width: 80px;
-        border: none;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
-        -o-background-size: cover;
-        vertical-align: middle;
-        text-align: center;
-        line-height: 10px;
-        font-size: 20px;
-        color: white;
-        outline: 0;
-        border: 0;
-        box-shadow: none;
-        cursor: pointer; }
-      .eer-tickets-sale-wrapper .eer-tickets .eer-ticket .eer-ticket-body-wraper .eer-ticket-body .eer-ticket-title {
-        color: #fff; }
-  .eer-tickets-sale-wrapper .eer-tickets .eer-ticket.eer-sold .eer-ticket-body-wraper {
-    background-color: #7a8d91; }
-
-.eer-tickets-sale-wrapper .eer-form-tickets-header {
-  border-bottom: 1px dashed #000; }
-  .eer-tickets-sale-wrapper .eer-form-tickets-header .eer-column-header {
-    padding: 8px 0;
+.eer-tickets-sale-wrapper {
+  position: relative; }
+  .eer-tickets-sale-wrapper .eer-tickets .eer-ticket {
     font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 300;
-    font-size: 11px;
-    line-height: 11px;
-    color: #000;
-    letter-spacing: 1px; }
-
-.eer-tickets-sale-wrapper button.eer-ticket-remove {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  height: 40px;
-  width: 40px;
-  border: none;
-  background-color: #E04038;
-  vertical-align: middle;
-  text-align: center;
-  line-height: 10px;
-  color: white;
-  padding: 0;
-  outline: none;
-  cursor: pointer; }
-
-.eer-tickets-sale-wrapper .eer-final-price {
-  border-top: 1px dashed #000; }
-
-.eer-tickets-sale-wrapper .eer-ticket-to-buy {
-  border-top: 1px dashed #000;
-  color: #1a1a1a; }
-  .eer-tickets-sale-wrapper .eer-ticket-to-buy:first-child {
-    border-top: 0; }
-  .eer-tickets-sale-wrapper .eer-ticket-to-buy input[type=number] {
-    background: none;
-    border: 1px solid #ccc; }
-  .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-ticket-title.eer-column {
-    font-size: 16px;
-    text-align: left;
-    padding-left: 55px;
-    width: 50%;
-    line-height: 60px; }
-  .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-price.eer-column {
-    font-size: 16px;
+    margin: 0 1% 40px;
+    min-width: 31%;
+    color: #fff; }
+    .eer-tickets-sale-wrapper .eer-tickets .eer-ticket.eer-ticket-remove button.eer-ticket-add {
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+      cursor: default; }
+    .eer-tickets-sale-wrapper .eer-tickets .eer-ticket .eer-ticket-body-wraper {
+      background-color: #182f49;
+      position: relative;
+      color: #fff; }
+      .eer-tickets-sale-wrapper .eer-tickets .eer-ticket .eer-ticket-body-wraper .eer-ticket-body {
+        color: #fff;
+        border: 2px dashed rgba(255, 255, 255, 0.2); }
+        .eer-tickets-sale-wrapper .eer-tickets .eer-ticket .eer-ticket-body-wraper .eer-ticket-body button.eer-ticket-add {
+          background: transparent url("../img/ticket-add-bg.png");
+          position: absolute;
+          bottom: -35px;
+          right: -25px;
+          height: 80px;
+          width: 80px;
+          border: none;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          background-size: cover;
+          -o-background-size: cover;
+          vertical-align: middle;
+          text-align: center;
+          line-height: 10px;
+          font-size: 20px;
+          color: white;
+          outline: 0;
+          border: 0;
+          box-shadow: none;
+          cursor: pointer; }
+        .eer-tickets-sale-wrapper .eer-tickets .eer-ticket .eer-ticket-body-wraper .eer-ticket-body .eer-ticket-title {
+          color: #fff; }
+    .eer-tickets-sale-wrapper .eer-tickets .eer-ticket.eer-sold .eer-ticket-body-wraper {
+      background-color: #7a8d91; }
+  .eer-tickets-sale-wrapper .eer-form-tickets-header {
+    border-bottom: 1px dashed #000; }
+    .eer-tickets-sale-wrapper .eer-form-tickets-header .eer-column-header {
+      padding: 8px 0;
+      font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      font-weight: 300;
+      font-size: 11px;
+      line-height: 11px;
+      color: #000;
+      letter-spacing: 1px; }
+  .eer-tickets-sale-wrapper button.eer-ticket-remove {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 40px;
+    width: 40px;
+    border: none;
+    background-color: #E04038;
+    vertical-align: middle;
     text-align: center;
-    line-height: 60px; }
-  .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-number-of-tickets {
-    margin-top: 10px; }
-  .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-partner {
-    width: 100%; }
-    .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-partner .eer-info-row {
-      padding: 0 10px; }
-      .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-partner .eer-info-row .eer-dancing-as label input {
-        margin-right: 10px; }
-
-.eer-tickets-sale-wrapper .eer-ticket-shop-form .eer-user-form .eer-row.eer-form-checkbox .eer-form-group label {
-  min-height: 40px;
-  text-align: left;
-  padding-left: 50px;
-  font-size: 16px;
-  line-height: 20px;
-  vertical-align: middle;
-  padding-top: 5px; }
-
-.eer-tickets-sale-wrapper .eer-ticket-shop-form .btn.btn-default {
-  background-color: #182f49;
-  border: 0;
-  border-radius: 2px;
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 0.046875em;
-  line-height: 1;
-  padding: 0.84375em 0.875em 0.78125em;
-  text-transform: uppercase; }
-  .eer-tickets-sale-wrapper .eer-ticket-shop-form .btn.btn-default:hover {
-    background-color: #182f49; }
+    line-height: 10px;
+    color: white;
+    padding: 0;
+    outline: none;
+    cursor: pointer; }
+  .eer-tickets-sale-wrapper .eer-final-price {
+    border-top: 1px dashed #000; }
+  .eer-tickets-sale-wrapper .eer-ticket-to-buy {
+    border-top: 1px dashed #000;
+    color: #1a1a1a; }
+    .eer-tickets-sale-wrapper .eer-ticket-to-buy:first-child {
+      border-top: 0; }
+    .eer-tickets-sale-wrapper .eer-ticket-to-buy input[type=number] {
+      background: none;
+      border: 1px solid #ccc; }
+    .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-ticket-title.eer-column {
+      font-size: 16px;
+      text-align: left;
+      padding-left: 55px;
+      width: 50%;
+      line-height: 60px; }
+    .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-price.eer-column {
+      font-size: 16px;
+      text-align: center;
+      line-height: 60px; }
+    .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-number-of-tickets {
+      margin-top: 10px; }
+    .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-partner {
+      width: 100%; }
+      .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-partner .eer-info-row {
+        padding: 0 10px; }
+        .eer-tickets-sale-wrapper .eer-ticket-to-buy .eer-partner .eer-info-row .eer-dancing-as label input {
+          margin-right: 10px; }
+  .eer-tickets-sale-wrapper .eer-ticket-shop-form .eer-user-form .eer-row.eer-form-checkbox .eer-form-group label {
+    min-height: 40px;
+    text-align: left;
+    padding-left: 50px;
+    font-size: 16px;
+    line-height: 20px;
+    vertical-align: middle;
+    padding-top: 5px; }
+  .eer-tickets-sale-wrapper .eer-ticket-shop-form .btn.btn-default {
+    background-color: #182f49;
+    border: 0;
+    border-radius: 2px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.046875em;
+    line-height: 1;
+    padding: 0.84375em 0.875em 0.78125em;
+    text-transform: uppercase; }
+    .eer-tickets-sale-wrapper .eer-ticket-shop-form .btn.btn-default:hover {
+      background-color: #182f49; }

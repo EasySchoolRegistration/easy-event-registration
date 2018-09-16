@@ -127,6 +127,7 @@ jQuery(function ($) {
 			e.preventDefault();
 			var form = $(this);
 			var sale_wrapper = $(this).closest(".eer-tickets-sale-wrapper");
+			var spinner = eer_run_spinner(sale_wrapper);
 			form.find(".eer-error:not(.eer-form-tickets)").remove(); //Remove old errors
 			var order_data = {};
 
@@ -176,6 +177,7 @@ jQuery(function ($) {
                 /** global: eer_ajax_object */
 				$.post(eer_ajax_object.ajaxurl, data, function (response) {
 				}).done(function (response) {
+					eer_stop_spinner(spinner, sale_wrapper);
 					if (response.hasOwnProperty("thank_you_text")) {
 						sale_wrapper.find(".eer-ticket-shop-form").remove();
 						sale_wrapper.find(".eer-tickets").empty().append(response.thank_you_text);
@@ -237,6 +239,39 @@ jQuery(function ($) {
 		function eer_price_template(price, sale_wrapper) {
 			var price_template = sale_wrapper.find(".eer-form-tickets").data("price-template");
 			return price_template.replace("[price]", price);
+		}
+
+		function eer_run_spinner(wrapper) {
+			var opts = {
+				lines: 12, // The number of lines to draw
+				length: 30, // The length of each line
+				width: 17, // The line thickness
+				radius: 45, // The radius of the inner circle
+				scale: 1, // Scales overall size of the spinner
+				corners: 1, // Corner roundness (0..1)
+				color: '#ffffff', // CSS color or array of colors
+				fadeColor: 'transparent', // CSS color or array of colors
+				speed: 0.7, // Rounds per second
+				rotate: 0, // The rotation offset
+				animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
+				direction: 1, // 1: clockwise, -1: counterclockwise
+				zIndex: 2e9, // The z-index (defaults to 2000000000)
+				className: 'spinner', // The CSS class to assign to the spinner
+				top: '80%', // Top position relative to parent
+				left: '50%', // Left position relative to parent
+				shadow: '0 0 1px transparent', // Box-shadow for the lines
+				position: 'absolute' // Element positioning
+			};
+
+			var spinner = new Spinner(opts).spin();
+			$(".eer-spinner-bg", wrapper).show();
+			$(wrapper).append(spinner.el);
+			return spinner;
+		}
+
+		function eer_stop_spinner(spinner, wrapper) {
+			spinner.stop();
+			$(".eer-spinner-bg", wrapper).hide();
 		}
 	});
 });

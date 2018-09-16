@@ -24,6 +24,7 @@ class EER_Enqueue_Scripts
 	private static function enqueue_web_js_scripts()
 	{
 		wp_enqueue_script('eer_web_script', EER_PLUGIN_URL . 'inc/assets/web/js/eer-web.js', ['jquery'], EER_VERSION);
+		wp_enqueue_script('eer_spin_js_script', EER_PLUGIN_URL . 'libs/spin/js/spin.min.js', ['jquery'], EER_VERSION);
 		wp_localize_script('eer_web_script', 'eer_ajax_object', ['ajaxurl' => admin_url('admin-ajax.php')]);
 
 	}

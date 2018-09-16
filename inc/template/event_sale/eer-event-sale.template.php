@@ -25,7 +25,7 @@ class EER_Template_Event_Sale
 			$templater_not_opened = new EER_Template_Event_Sale_Not_Opened();
 			$templater_not_opened->print_content($event_id);
 		}
-		echo '</div>';
+		echo '<div class="eer-spinner-bg" style="background: #000;opacity: 0.5;position: absolute;bottom: -10px;left: -10px;right: -10px;top: -10px;z-index: 5000;display: none;"></div></div>';
 
 		echo ob_get_clean();
 	}
