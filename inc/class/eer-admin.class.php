@@ -19,6 +19,7 @@ class EER_Admin
 		add_submenu_page(EER_Admin::ADMIN_MENU_SLUG, __('Sold tickets', 'easy-event-registration'), __('Sold tickets', 'easy-event-registration'), 'eer_sold_ticket_view', EER_Template_Sold_Ticket::MENU_SLUG, ['EER_Template_Sold_Ticket', 'print_content']);
 		add_submenu_page(EER_Admin::ADMIN_MENU_SLUG, __('Tickets in numbers', 'easy-event-registration'), __('Tickets in numbers', 'easy-event-registration'), 'eer_tickets_in_numbers_view', EER_Template_Tickets_In_Numbers::MENU_SLUG, ['EER_Template_Tickets_In_Numbers', 'print_content']);
 		add_submenu_page(EER_Admin::ADMIN_MENU_SLUG, __('Payments', 'easy-event-registration'), __('Payments', 'easy-event-registration'), 'eer_payment_view', EER_Template_Payments::MENU_SLUG, ['EER_Template_Payments', 'print_content']);
+		//add_submenu_page(EER_Admin::ADMIN_MENU_SLUG, __('Add Over Limit', 'easy-event-registration'), __('Add Over Limit', 'easy-event-registration'), 'eer_add_over_limit_view', EER_Template_Add_Over_Limit::MENU_SLUG, ['EER_Template_Add_Over_Limit', 'print_content']);
 		add_submenu_page(EER_Admin::ADMIN_MENU_SLUG, __('Payment emails', 'easy-event-registration'), __('Payment emails', 'easy-event-registration'), 'eer_payment_emails_view', EER_Template_Payment_Emails::MENU_SLUG, ['EER_Template_Payment_Emails', 'print_content']);
 
 		add_submenu_page(EER_Admin::ADMIN_MENU_SLUG, __('Settings', 'easy-event-registration'), __('Settings', 'easy-event-registration'), 'eer_settings', EER_Template_Settings::MENU_SLUG, ['EER_Template_Settings', 'print_content']);

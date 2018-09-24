@@ -16,6 +16,8 @@ class EER_Role
 		//add capabilities for admin
 		$admin = get_role('administrator');
 		$capabilities = [
+			'eer_add_over_limit_edit' => true,
+			'eer_add_over_limit_view' => true,
 			'eer_event_edit' => true,
 			'eer_event_view' => true,
 			'eer_ticket_edit' => true,
