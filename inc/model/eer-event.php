@@ -482,8 +482,11 @@ class EER_Event
 	{
 		global $wpdb;
 		$event = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}eer_events WHERE id = %d", [$event_id]), OBJECT);
-		$settings = $event->event_settings;
-		unset($event->event_settings);
+		$settings = "";
+		if ($event) {
+			$settings = $event->event_settings;
+			unset($event->event_settings);
+		}
 		return (object)array_merge((array)$event, (array)json_decode($settings, true));
 	}
 

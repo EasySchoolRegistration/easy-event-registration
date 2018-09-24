@@ -16,12 +16,16 @@ class EER_Subblock_Sold_Ticket_Table
 		$event_data = EER()->event->get_event_data($event_id);
 
 		$partner_name_enabled = intval(EER()->event->eer_get_event_option($event_data, 'partner_name_enabled', -1)) === 1;
+
+		$hosting_enabled = intval(EER()->event->eer_get_event_option($event_data, 'hosting_enabled', -1)) === 1;
+		$tshirts_enabled = intval(EER()->event->eer_get_event_option($event_data, 'tshirts_enabled', -1)) === 1;
+		$food_enabled = intval(EER()->event->eer_get_event_option($event_data, 'food_enabled', -1)) === 1;
+		$offer_hosting_enabled = intval(EER()->event->eer_get_event_option($event_data, 'offer_hosting_enabled', -1)) === 1;
+
 		?>
 		<table id="datatable" class="table table-default table-bordered eer-datatable eer-sold-tickets">
 			<colgroup>
-				<col width="170">
 				<col width="100">
-				<col width="50">
 			</colgroup>
 			<thead>
 			<tr>
@@ -38,6 +42,22 @@ class EER_Subblock_Sold_Ticket_Table
 				<th class="filter-disabled no-sort"><?php _e('Dancing With', 'easy-event-registration'); ?></th>
 				<th class="filter-disabled no-sort"><?php _e('Partner', 'easy-event-registration'); ?></th>
 				<th class="filter-disabled"><?php _e('C.P. position', 'easy-event-registration'); ?></th>
+				<?php if ($hosting_enabled) {
+					?>
+					<th class="no-sort"><?php _e('Hosting', 'easy-event-registration'); ?></th><?php
+				} ?>
+				<?php if ($tshirts_enabled) {
+					?>
+					<th class="no-sort"><?php _e('T-shirt', 'easy-event-registration'); ?></th><?php
+				} ?>
+				<?php if ($food_enabled) {
+					?>
+					<th class="no-sort"><?php _e('Food', 'easy-event-registration'); ?></th><?php
+				} ?>
+				<?php if ($offer_hosting_enabled) {
+					?>
+					<th class="no-sort"><?php _e('Offer hosting', 'easy-event-registration'); ?></th><?php
+				} ?>
 			</tr>
 			</thead>
 			<tbody class="list">
@@ -49,6 +69,7 @@ class EER_Subblock_Sold_Ticket_Table
 			}
 			foreach ($sold_tickets as $sold_ticket) {
 				$order = isset($orders[$sold_ticket->order_id]) ? $orders[$sold_ticket->order_id] : null;
+				$order_info = json_decode($order->order_info);
 
 				$ticket_id = $sold_ticket->ticket_id;
 				$levels = isset($tickets[$ticket_id]->levels) ? $tickets[$ticket_id]->levels : [];
@@ -82,9 +103,25 @@ class EER_Subblock_Sold_Ticket_Table
 						}
 						?></td>
 					<td><?php if ($sold_ticket->partner_id) {
-							echo $users[$sold_ticket->partner_id]->display_name;
+							echo isset($users[$sold_ticket->partner_id]) ? $users[$sold_ticket->partner_id]->display_name : '';
 						}; ?></td>
 					<td><?php echo(isset($sold_ticket->cp_position) ? $sold_ticket->cp_position : ''); ?></td>
+					<?php if ($hosting_enabled) {
+						?>
+						<td><?php echo $order_info->hosting ? __('Yes', 'easy-event-registration') : __('No', 'easy-event-registration'); ?></td><?php
+					} ?>
+					<?php if ($tshirts_enabled) {
+						?>
+						<td><?php echo ($order_info->tshirt === '') || !isset($event_data->tshirt_options[$order_info->tshirt]) ? __('No', 'easy-event-registration') : $event_data->tshirt_options[$order_info->tshirt]['name']; ?></td><?php
+					} ?>
+					<?php if ($food_enabled) {
+						?>
+						<td><?php echo ($order_info->food === '') || !isset($event_data->food_options[$order_info->food]) ? __('No', 'easy-event-registration') : $event_data->food_options[$order_info->food]['option']; ?></td><?php
+					} ?>
+					<?php if ($offer_hosting_enabled) {
+						?>
+						<td><?php echo (isset($order_info->offer_hosting) && $order_info->offer_hosting) ? __('Yes', 'easy-event-registration') : __('No', 'easy-event-registration'); ?></td><?php
+					} ?>
 				</tr>
 			<?php } ?>
 			</tbody>

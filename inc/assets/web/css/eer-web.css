@@ -296,6 +296,7 @@
     letter-spacing: 0.046875em;
     line-height: 1;
     padding: 0.84375em 0.875em 0.78125em;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    cursor: pointer; }
     .eer-tickets-sale-wrapper .eer-ticket-shop-form .btn.btn-default:hover {
       background-color: #182f49; }

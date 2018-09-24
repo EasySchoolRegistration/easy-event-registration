@@ -3,7 +3,7 @@
  * Plugin Name: Easy Event Registration
  * Plugin URI: http://easyschoolregistrations.com/
  * Description: System for Easy Event Registration
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Zbyněk Nedoma
  * Author URI: http://easyschoolregistrations.com/
  * License: A "Slug" license name e.g. GPL12
@@ -201,7 +201,7 @@ if (!class_exists('Easy_Event_Registration')) {
 			global $wpdb;
 
 			define('EER_SLUG', 'eer');
-			define('EER_VERSION', '1.1.0');
+			define('EER_VERSION', '1.1.1');
 			// Plugin Root File.
 			if (!defined('EER_PLUGIN_FILE')) {
 				define('EER_PLUGIN_FILE', __FILE__);
@@ -269,6 +269,7 @@ if (!class_exists('Easy_Event_Registration')) {
 			require_once EER_PLUGIN_PATH . '/inc/model/eer-ticket-summary.php';
 
 			require_once EER_PLUGIN_PATH . '/inc/template/administration/easy-event/eer-easy-event.templater.php';
+			require_once EER_PLUGIN_PATH . '/inc/template/administration/add-over-limit/eer-add-over-limit.template.php';
 			require_once EER_PLUGIN_PATH . '/inc/template/administration/event/eer-event.template.php';
 			require_once EER_PLUGIN_PATH . '/inc/template/administration/event/subblock/eer-event-editor.subblock.php';
 			require_once EER_PLUGIN_PATH . '/inc/template/administration/event/subblock/eer-event-table.subblock.php';

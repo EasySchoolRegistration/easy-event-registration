@@ -5,11 +5,9 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_All_Events_Select
-{
+class EER_Template_All_Events_Select {
 
-	public function print_content($selected_event = null)
-	{
+	public function print_content($selected_event = null) {
 		$events = EER()->event->load_events_without_data();
 
 		if (!$selected_event) {
@@ -39,15 +37,18 @@ class EER_Template_All_Events_Select
 	 *
 	 * @return int
 	 */
-	public function get_selected_event($events = [])
-	{
+	public function get_selected_event($events = []) {
+		$user_saved_event = get_user_meta(get_current_user_id(), 'eer_user_event_id');
 		if (isset($_POST['eer_choose_event_submit']) && isset($_POST['eer_event'])) {
+			update_user_meta(get_current_user_id(), 'eer_user_event_id', $_POST['eer_event']);
 			return $_POST['eer_event'];
+		} else if (count($user_saved_event) > 0) {
+			return $user_saved_event[0];
 		} else if ($events) {
 			return reset($events);
 		} else {
 			$events = EER()->event->load_events_without_data();
-			$event = reset($events);
+			$event  = reset($events);
 			if ($event) {
 				return $event->id;
 			}

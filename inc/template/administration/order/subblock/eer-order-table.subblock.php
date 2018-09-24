@@ -61,7 +61,7 @@ class EER_Subblock_Order_Table
 					$users_data[$order->user_id] = get_userdata($order->user_id);
 				}
 
-				$user_data_exists = isset($users_data[$order->user_id]);
+				$user_data_exists = isset($users_data[$order->user_id]) && $users_data[$order->user_id];
 				$order_info = json_decode($order->order_info);
 
 				?>

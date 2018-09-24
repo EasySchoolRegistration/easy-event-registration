@@ -4,11 +4,9 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Event_Sale_User_Form
-{
+class EER_Template_Event_Sale_User_Form {
 
-	public function print_content($event_id)
-	{
+	public function print_content($event_id) {
 		$event_data = EER()->event->get_event_data($event_id);
 		?>
 		<form id="eer-ticket-shop-form" class="eer-ticket-shop-form"
@@ -178,8 +176,7 @@ class EER_Template_Event_Sale_User_Form
 	}
 
 
-	private function get_user_default_value($key)
-	{
+	private function get_user_default_value($key) {
 		$current_user = wp_get_current_user();
 		if ($current_user && isset($current_user->$key)) {
 			return 'value="' . $current_user->$key . '"';
@@ -189,8 +186,7 @@ class EER_Template_Event_Sale_User_Form
 	}
 
 
-	private function eer_print_ticket_row($event_data, $main_currency)
-	{
+	private function eer_print_ticket_row($event_data, $main_currency) {
 		$ticket_id = '%eer-ticket-id%';
 		?>
 		<div id="eer-ticket-<?php echo $ticket_id; ?>"
@@ -218,8 +214,10 @@ class EER_Template_Event_Sale_User_Form
 						<option class="eer-default"
 						        value=""><?php _e('Choose your level', 'easy-event-registration'); ?></option>
 					</select>
+				</div>
+				<div class="eer-info-row">
+					<span class="eer-info-row-label"><?php _e('Dancing as?', 'easy-event-registration'); ?></span>
 					<div class="eer-info-row-input eer-dancing-as">
-						<span class="eer-info-row-label"><?php _e('Dancing as?', 'easy-event-registration'); ?></span>
 						<label>
 							<input class="eer-leader eer-dancing-as-input" type="radio"
 							       name="%eer-ticket-id%_dancing_as" required
