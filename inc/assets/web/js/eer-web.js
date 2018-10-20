@@ -63,6 +63,8 @@ jQuery(function ($) {
 				}
 
 				if (ticket.data("sold_separately") === 1) {
+					sale_wrapper.find(".eer-tickets .eer-ticket").addClass("eer-ticket-remove");
+				} else {
 					sale_wrapper.find(".eer-tickets .eer-ticket[data-sold_separately=1]").addClass("eer-ticket-remove");
 				}
 
@@ -77,8 +79,8 @@ jQuery(function ($) {
 			ttb.remove();
 			eer_tickets_final_price_recount(sale_wrapper);
 
-			if (ticket.data("sold_separately") === 1) {
-				$(".eer-tickets .eer-ticket[data-sold_separately=1]").removeClass("eer-ticket-remove");
+			if ($(".eer-form-tickets .eer-ticket-to-buy", $(sale_wrapper)).size() === 0) {
+				$(".eer-tickets .eer-ticket").removeClass("eer-ticket-remove");
 			}
 		}).on("change", ".eer-number-of-tickets input[type=number]", function () {
 			if (parseInt($(this).val()) > parseInt($(this).attr("max"))) {
