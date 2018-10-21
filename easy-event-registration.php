@@ -270,6 +270,7 @@ if (!class_exists('Easy_Event_Registration')) {
 
 			require_once EER_PLUGIN_PATH . '/inc/template/administration/easy-event/eer-easy-event.templater.php';
 			require_once EER_PLUGIN_PATH . '/inc/template/administration/add-over-limit/eer-add-over-limit.template.php';
+			require_once EER_PLUGIN_PATH . '/inc/template/administration/add-over-limit/subblock/eer-add-over-limit-form.subblock.php';
 			require_once EER_PLUGIN_PATH . '/inc/template/administration/event/eer-event.template.php';
 			require_once EER_PLUGIN_PATH . '/inc/template/administration/event/subblock/eer-event-editor.subblock.php';
 			require_once EER_PLUGIN_PATH . '/inc/template/administration/event/subblock/eer-event-table.subblock.php';
@@ -307,6 +308,7 @@ if (!class_exists('Easy_Event_Registration')) {
 			require_once EER_PLUGIN_PATH . '/inc/template/helpers/eer-models-settings-helper.template.php';
 			require_once EER_PLUGIN_PATH . '/inc/template/helpers/eer-all-events-select.templater.php';
 			require_once EER_PLUGIN_PATH . '/inc/template/helpers/eer-settings-tag.template.php';
+			require_once EER_PLUGIN_PATH . '/inc/template/helpers/filters/eer-event-tickets-filter.templater.php';
 
 			require_once EER_PLUGIN_PATH . '/inc/worker/eer-ajax.worker.php';
 			require_once EER_PLUGIN_PATH . '/inc/worker/eer-email.worker.php';

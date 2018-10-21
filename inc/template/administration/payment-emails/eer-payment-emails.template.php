@@ -14,9 +14,8 @@ class EER_Template_Payment_Emails
 	public static function print_content()
 	{
 		$data = $_POST;
-		$template_all_events = new EER_Template_All_Events_Select();
 
-		$selected_event = $template_all_events->get_selected_event();
+		$selected_event = apply_filters('eer_all_events_select_get', []);
 
 		if (isset($data['eer_send_payment_email_submit'])) {
 			$event_data = EER()->event->get_event_data($selected_event);
@@ -29,7 +28,7 @@ class EER_Template_Payment_Emails
 		<div class="wrap">
 
 		<?php
-		$template_all_events->print_content($selected_event);
+		do_action('eer_all_events_select_print', $selected_event);
 		?>
 
 		<h2>Not Paid</h2>

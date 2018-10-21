@@ -15,8 +15,7 @@ class EER_Template_Tickets_In_Numbers
 	{
 		$template_all_events = new EER_Template_All_Events_Select();
 
-		$selected_event = $template_all_events->get_selected_event();
-
+		$selected_event = apply_filters('eer_all_events_select_get', []);
 
 		if (isset($_POST['eer_recount_event']) && isset($_POST['eer_recount_event_id'])) {
 			$worker_cin = new EER_Worker_Tickets_In_Numbers();
@@ -26,6 +25,7 @@ class EER_Template_Tickets_In_Numbers
 		?>
 		<div class="wrap eer-settings">
 			<?php $template_all_events->print_content($selected_event); ?>
+			<?php do_action('eer_all_events_select_print', $selected_event); ?>
 			<h1 class="wp-heading-inline"><?php _e('Tickets in numbers', 'easy-event-registration'); ?></h1>
 
 			<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post" class="eer-recount-button">

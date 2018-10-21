@@ -14,9 +14,8 @@ class EER_Template_Order
 	{
 		$template_order_form = new EER_Template_Order_Edit_Form();
 		$subblock_orders_table = new EER_Subblock_Order_Table();
-		$template_all_events = new EER_Template_All_Events_Select();
 
-		$selected_event = $template_all_events->get_selected_event();
+		$selected_event = apply_filters('eer_all_events_select_get', []);
 
 		$user_can_edit = current_user_can('eer_order_edit');
 
@@ -30,7 +29,7 @@ class EER_Template_Order
 		<div class="wrap tabbable boxed parentTabs">
 			<h1 class="wp-heading-inline"><?php _e('Orders', 'easy-event-registration'); ?></h1>
 			<?php
-			$template_all_events->print_content($selected_event);
+			do_action('eer_all_events_select_print', $selected_event);
 
 			if ($user_can_edit) {
 				$template_order_form->print_form($selected_event);

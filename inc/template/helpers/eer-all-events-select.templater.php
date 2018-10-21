@@ -7,11 +7,11 @@ if (!defined('ABSPATH')) {
 
 class EER_Template_All_Events_Select {
 
-	public function print_content($selected_event = null) {
+	public static function eer_print_select($selected_event = null) {
 		$events = EER()->event->load_events_without_data();
 
 		if (!$selected_event) {
-			$selected_event = $this->get_selected_event($events);
+			$selected_event = apply_filters('eer_all_events_select_get', $events);
 		}
 
 		?>
@@ -37,7 +37,7 @@ class EER_Template_All_Events_Select {
 	 *
 	 * @return int
 	 */
-	public function get_selected_event($events = []) {
+	public static function eer_get_selected_event($events = []) {
 		$user_saved_event = get_user_meta(get_current_user_id(), 'eer_user_event_id');
 		if (isset($_POST['eer_choose_event_submit']) && isset($_POST['eer_event'])) {
 			update_user_meta(get_current_user_id(), 'eer_user_event_id', $_POST['eer_event']);
@@ -57,3 +57,7 @@ class EER_Template_All_Events_Select {
 		return null;
 	}
 }
+
+add_filter('eer_all_events_select_get', ['EER_Template_All_Events_Select', 'eer_get_selected_event']);
+
+add_action('eer_all_events_select_print', ['EER_Template_All_Events_Select', 'eer_print_select']);

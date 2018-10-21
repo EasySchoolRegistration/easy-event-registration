@@ -29,7 +29,7 @@ class EER_Template_Event_Sale_User_Form {
 			</div>
 
 			<div class="eer-user-form eer-clearfix">
-				<div class="eer-row">
+				<div class="eer-row eer-clearfix">
 					<div class="eer-form-group">
 						<label><?php _e('Name', 'easy-event-registration'); ?></label>
 						<input class="eer-form-control" type="text" required
@@ -43,7 +43,7 @@ class EER_Template_Event_Sale_User_Form {
 						       placeholder="<?php _e('surname', 'easy-event-registration'); ?>">
 					</div>
 				</div>
-				<div class="eer-row eer-full-width">
+				<div class="eer-row eer-full-width eer-clearfix">
 					<div class="eer-form-group">
 						<label><?php _e('E-mail', 'easy-event-registration'); ?></label>
 						<input class="eer-form-control" type="email" required
@@ -51,7 +51,7 @@ class EER_Template_Event_Sale_User_Form {
 						       placeholder="<?php _e('e-mail address', 'easy-event-registration'); ?>">
 					</div>
 				</div>
-				<div class="eer-row">
+				<div class="eer-row eer-clearfix">
 					<?php if (intval(EER()->event->eer_get_event_option($event_data, 'phone_enabled', -1)) === 1) { ?>
 						<div class="eer-form-group">
 							<label><?php _e('Phone number', 'easy-event-registration'); ?></label>
@@ -83,7 +83,7 @@ class EER_Template_Event_Sale_User_Form {
 						</div>
 					<?php } ?>
 				</div>
-				<div class="eer-row eer-full-width">
+				<div class="eer-row eer-full-width eer-clearfix">
 					<div class="eer-form-group">
 						<label><?php _e('Note', 'easy-event-registration'); ?></label>
 						<textarea name="note" class="eer-form-control" placeholder="note"></textarea>

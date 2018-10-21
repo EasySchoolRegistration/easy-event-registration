@@ -13,15 +13,14 @@ class EER_Template_Add_Over_Limit
 
 	public static function print_content()
 	{
-		$data = $_POST;
-		$template_all_events = new EER_Template_All_Events_Select();
-
-		$selected_event = $template_all_events->get_selected_event();
-
+		$selected_event = apply_filters('eer_all_events_select_get', []);
+		$selected_ticket = apply_filters('eer_event_tickets_select_get', $selected_event);
 		?>
-		<div class="wrap">
+		<div class="wrap eer-settings eer-add-over-limit">
 		<?php
-		$template_all_events->print_content($selected_event);
+			do_action('eer_all_events_select_print', $selected_event);
+			do_action('eer_event_tickets_select_print');
+			do_action('eer_print_add_over_limit_form', $selected_event, $selected_ticket);
 		?>
 
 		</div><?php

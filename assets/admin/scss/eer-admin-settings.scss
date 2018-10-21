@@ -1,43 +1,43 @@
 .tab-pane {
   .eer-sub-tabs {
-    &.nav-tabs {
-      border: 0;
-
-      li {
-        display: inline-block;
-        margin: 0;
-        padding: 0;
-        white-space: nowrap;
-        outline: 0;
-
-        a {
-          line-height: 2;
-          padding: .2em;
-          text-decoration: none;
-          color: #337ab7;
-          background: none;
-          border: 0;
-          margin: 0;
-          border-radius: 0;
-          font-size: 13px;
-          float: none;
-          outline: 0;
-          display: inline;
-
-          &:hover, &:focus, &:active {
-            text-decoration: none;
-            background: none;
-            border: 0;
-          }
-        }
-        &.active {
-          a {
-            color: #000;
-            border: 0;
-          }
-        }
-      }
-    }
+	&.nav-tabs {
+	  border: 0;
+	  
+	  li {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		white-space: nowrap;
+		outline: 0;
+		
+		a {
+		  line-height: 2;
+		  padding: .2em;
+		  text-decoration: none;
+		  color: #337ab7;
+		  background: none;
+		  border: 0;
+		  margin: 0;
+		  border-radius: 0;
+		  font-size: 13px;
+		  float: none;
+		  outline: 0;
+		  display: inline;
+		  
+		  &:hover, &:focus, &:active {
+			text-decoration: none;
+			background: none;
+			border: 0;
+		  }
+		}
+		&.active {
+		  a {
+			color: #000;
+			border: 0;
+		  }
+		}
+	  }
+	}
   }
 }
 
@@ -93,53 +93,95 @@ table.dataTable tbody tr.status-2 {
 
 .eer-datatable {
   .eer-status-0, &.eer-status-1, &.eer-status-2 {
-    background: transparent;
+	background: transparent;
   }
   &.eer-sold-tickets {
-    .eer-status {
-      &-0 {
-        background-color: #B8C2D8;
-
-        .eer-actions-box {
-          .eer-action {
-            &.remove-forever {
-              display: none;
-            }
-          }
-        }
-      }
-      &-1 {
-        background-color: #A5C663;
-
-        .eer-actions-box {
-          .eer-action {
-            &.confirm, &.remove-forever {
-              display: none;
-            }
-          }
-        }
-      }
-      &-2 {
-        background-color: #D46A6A;
-
-        .eer-actions-box {
-          .eer-action {
-            &.edit, &.remove {
-              display: none;
-            }
-          }
-        }
-      }
-    }
+	.eer-status {
+	  &-0 {
+		background-color: #B8C2D8;
+		
+		.eer-actions-box {
+		  .eer-action {
+			&.remove-forever {
+			  display: none;
+			}
+		  }
+		}
+	  }
+	  &-1 {
+		background-color: #A5C663;
+		
+		.eer-actions-box {
+		  .eer-action {
+			&.confirm, &.remove-forever {
+			  display: none;
+			}
+		  }
+		}
+	  }
+	  &-2 {
+		background-color: #D46A6A;
+		
+		.eer-actions-box {
+		  .eer-action {
+			&.edit, &.remove {
+			  display: none;
+			}
+		  }
+		}
+	  }
+	}
   }
   &.eer-orders {
-    .eer-status {
-      &-0 {
-        background-color: #B8C2D8;
-      }
-      &-1 {
-        background-color: #D46A6A;
-      }
-    }
+	.eer-status {
+	  &-0 {
+		background-color: #B8C2D8;
+	  }
+	  &-1 {
+		background-color: #D46A6A;
+	  }
+	}
+  }
+}
+
+.eer-settings {
+  &.eer-add-over-limit {
+	.eer-user-form {
+	  max-width: 400px;
+	  .eer-row {
+		
+		.eer-form-group {
+		  width: 48%;
+		  margin: 1%;
+		  float: left;
+		  box-sizing: border-box;
+		  
+		  label {
+			width: 100%;
+			display: block;
+		  }
+		  input:not([type=checkbox]), select, textarea {
+			width: 100%;
+		  }
+		  input[type=checkbox] {
+			float: left;
+			display: inline-block;
+			margin: 0 10px 0 0;
+		  }
+		}
+		&.eer-form-checkbox {
+		  label {
+			float: left;
+			width: auto;
+			display: inline-block;
+		  }
+		}
+		&.eer-full-width {
+		  .eer-form-group {
+			width: 100%;
+		  }
+		}
+	  }
+	}
   }
 }
