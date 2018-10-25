@@ -17,7 +17,8 @@ class EER_Template_Event_Sale_Tickets
 			<div class="eer-tickets eer-clearfix">
 				<?php
 				foreach ($tickets as $ticket_id => $ticket) {
-					$ticket_buy_enabled = $always_enabled ? true : EER()->ticket->is_ticket_buy_enabled($ticket_id, $ticket);
+					$ticket_buy_enabled = $always_enabled ? true : EER()->ticket->is_ticket_buy_enabled($ticket->id, $ticket);
+
 					$classes = [
 						'eer-ticket'
 					];

@@ -119,7 +119,7 @@ class EER_Enum_Dancing_As
 		global $wpdb;
 
 		if (is_null($level_id)) {
-			return filter_var($wpdb->get_var($wpdb->prepare("SELECT 1 FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d AND max_tickets > registered_tickets", [$ticket_id])), FILTER_VALIDATE_BOOLEAN);
+			return filter_var($wpdb->get_var($wpdb->prepare("SELECT max_tickets > registered_tickets FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d", [intval($ticket_id)])), FILTER_VALIDATE_BOOLEAN);
 		} else {
 			return filter_var($wpdb->get_var($wpdb->prepare("SELECT 1 FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d AND level_id = %d AND max_tickets > registered_tickets", [$ticket_id, $level_id])), FILTER_VALIDATE_BOOLEAN);
 		}

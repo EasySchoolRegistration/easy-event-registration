@@ -13,7 +13,6 @@ class EER_Template_Tickets_In_Numbers
 
 	public static function print_content()
 	{
-		$template_all_events = new EER_Template_All_Events_Select();
 
 		$selected_event = apply_filters('eer_all_events_select_get', []);
 
@@ -24,7 +23,6 @@ class EER_Template_Tickets_In_Numbers
 
 		?>
 		<div class="wrap eer-settings">
-			<?php $template_all_events->print_content($selected_event); ?>
 			<?php do_action('eer_all_events_select_print', $selected_event); ?>
 			<h1 class="wp-heading-inline"><?php _e('Tickets in numbers', 'easy-event-registration'); ?></h1>
 
