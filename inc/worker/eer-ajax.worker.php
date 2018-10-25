@@ -202,4 +202,14 @@ class EER_Worker_Ajax {
 		return false;
 	}
 
+
+	public static function eer_add_over_limit_callback($data) {
+		$worker_event_sale = new EER_Worker_Event_Sale();
+		$worker_event_sale->process_registration(json_decode(stripslashes($data['order_data'])));
+
+		return $data;
+	}
+
 }
+
+add_filter('eer_add_over_limit', ['EER_Ajax_Worker', 'eer_add_over_limit_callback']);

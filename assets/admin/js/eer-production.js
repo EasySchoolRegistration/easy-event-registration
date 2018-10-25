@@ -61,7 +61,89 @@ jQuery(function ($) {
 				$(this).next().show();
 				eer_hide_actions = false;
 			}
-		});
+		}).on("submit", "#eer-ticket-shop-form", function (e) {
+            e.preventDefault();
+            var form = $(this);
+            var sale_wrapper = $(this).closest(".eer-tickets-sale-wrapper");
+            var spinner = eer_run_spinner(sale_wrapper);
+            form.find(".eer-error:not(.eer-form-tickets)").remove(); //Remove old errors
+            var order_data = {};
+
+            order_data["tickets"] = {};
+            if (form.find(".eer-form-tickets .eer-ticket-to-buy").size() > 0) {
+                form.find(".eer-form-tickets .eer-ticket-to-buy").each(function (key, row) {
+                    var ticket_id = $(row).data("id");
+                    order_data["tickets"][ticket_id] = {};
+                    order_data["tickets"][ticket_id]["ticket_id"] = ticket_id;
+                    order_data["tickets"][ticket_id]["number_of_tickets"] = $(row).find("input[name=number_of_tickets]").val();
+
+                    if ($(row).find(".eer-dancing-as-input").length !== 0) {
+                        order_data["tickets"][ticket_id]["dancing_as"] = $(row).find(".eer-dancing-as-input:checked").val()
+                    }
+
+                    if ($(row).find("[name=level_id]").length !== 0) {
+                        order_data["tickets"][ticket_id]["level_id"] = $(row).find("[name=level_id]").val();
+                    }
+
+                    if ($(row).find(".eer-choose-partner-input").length !== 0) {
+                        order_data["tickets"][ticket_id]["choose_partner"] = $(row).find(".eer-choose-partner-input:checked").val();
+                        order_data["tickets"][ticket_id]["dancing_with"] = $(row).find("[name=dancing_with]").val();
+
+                        if ($(row).find(".eer-info-row.dancing-with-name").length !== 0) {
+                            order_data["tickets"][ticket_id]["dancing_with_name"] = $(row).find("[name=dancing_with_name]").val();
+                        }
+                    }
+                });
+
+                //load user data
+                order_data["user_info"] = {};
+                form.find(".eer-user-form input, .eer-user-form select, .eer-user-form textarea").each(function (key, input) {
+                    var value = $(input).val();
+                    if ($(input).attr("type") === "checkbox") {
+                        value = $(input).prop('checked');
+                    }
+                    order_data["user_info"][$(input).attr("name")] = value;
+                });
+                //send ajax
+                order_data["event_id"] = form.find("input[name=event_id]").val();
+                var order_data_json = JSON.stringify(order_data);
+                var data = {
+                    "action": "eer_process_order",
+                    "order_data": order_data_json
+                };
+
+                /** global: eer_ajax_object */
+                $.post(eer_ajax_object.ajaxurl, data, function (response) {
+                }).done(function (response) {
+                    eer_stop_spinner(spinner, sale_wrapper);
+                    if (response.hasOwnProperty("thank_you_text")) {
+                        sale_wrapper.find(".eer-ticket-shop-form").remove();
+                        sale_wrapper.find(".eer-tickets").empty().append(response.thank_you_text);
+                    } else if (response.hasOwnProperty("errors")) {
+                        $.each(response.errors.errors, function (key, message) {
+                            var keys = key.split(".");
+                            if (keys[0] === "user_info") {
+                                sale_wrapper.find("[name=" + keys[1] + "]").after("<div class=\"eer-error\">" + message[0] + "</div>");
+                            } else if (keys[0] === "tickets") {
+                                if (keys[1] === "all") {
+
+                                } else {
+                                    sale_wrapper.find(".eer-ticket-to-buy[data-id=" + keys[1] + "]").append("<div class=\"eer-error\">" + message[0] + "</div>");
+                                }
+                                if (keys[2] === "full") {
+                                    //$(".eer-ticket[data-id=" + keys[1] + "]").addClass('eer-sold');
+                                }
+                            }
+                        });
+                        $('html, body').animate({
+                            scrollTop: sale_wrapper.find(".eer-form-tickets").offset().top - 50
+                        }, 2000);
+                    }
+                });
+            } else {
+                form.find(".eer-form-tickets").text(form.data("no-tickets")).addClass("eer-error");
+            }
+        });
 
 		function cleanInputs(box) {
 			box.find("input.eer-input:not([type=submit]):not([type=checkbox]):not([type=radio])").val("");

@@ -18,7 +18,7 @@ class EER_Worker_Event_Sale
 	}
 
 
-	public function process_registration($data)
+	public function process_registration($data, $limit_validation = true)
 	{
 		$status = false;
 		$return_data = [];
@@ -136,28 +136,32 @@ class EER_Worker_Event_Sale
 	}
 
 
-	private function eer_get_valid_data($data)
+	private function eer_get_valid_data($data, $limit_validation = true)
 	{
 		global $eer_reg_errors;
 		$return_data = [];
 		$test_full = false;
 
 		foreach ($data->tickets as $ticket_id => $ticket) {
-			if (EER()->ticket->eer_is_solo($ticket_id)) {
-				$test_full = EER()->dancing_as->eer_is_solo_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : NULL));
-			} else {
-				if (EER()->dancing_as->eer_is_leader($ticket->dancing_as)) {
-					$test_full = EER()->dancing_as->eer_is_leader_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : NULL));
-				} else if (EER()->dancing_as->eer_is_follower($ticket->dancing_as)) {
-					$test_full = EER()->dancing_as->eer_is_followers_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : NULL));
+			if ($limit_validation) {
+				if (EER()->ticket->eer_is_solo($ticket_id)) {
+					$test_full = EER()->dancing_as->eer_is_solo_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : NULL));
+				} else {
+					if (EER()->dancing_as->eer_is_leader($ticket->dancing_as)) {
+						$test_full = EER()->dancing_as->eer_is_leader_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : NULL));
+					} else if (EER()->dancing_as->eer_is_follower($ticket->dancing_as)) {
+						$test_full = EER()->dancing_as->eer_is_followers_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : NULL));
+					}
 				}
-			}
 
-			if ($test_full) {
-				$return_data['valid'][$ticket_id] = $ticket;
+				if ($test_full) {
+					$return_data['valid'][$ticket_id] = $ticket;
+				} else {
+					$return_data['full'][$ticket_id] = $ticket;
+					$eer_reg_errors->add('tickets.' . $ticket_id . '.full', __('Sorry this ticket is already sold out.', 'easy-event-registration'));
+				}
 			} else {
-				$return_data['full'][$ticket_id] = $ticket;
-				$eer_reg_errors->add('tickets.' . $ticket_id . '.full', __('Sorry this ticket is already sold out.', 'easy-event-registration'));
+				$return_data['valid'][$ticket_id] = $ticket;
 			}
 		}
 

@@ -196,7 +196,7 @@ class EER_Subblock_Add_Over_Limit_Form {
 					<?php } ?>
 				</div>
 				<input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">
-				<input type="button" value="<?php _e('Submit', 'easy-event-registration'); ?>">
+				<input type="button" name="eer_add_over_limit_submit" value="<?php _e('Submit', 'easy-event-registration'); ?>">
 			</div>
 		</div>
 

@@ -116,6 +116,17 @@ class EER_Ajax
 		wp_die();
 	}
 
+
+	public static function eer_add_ticket_registration_callback() {
+		if (isset($_POST['eer_add_over_limit_submit'])) {
+			apply_filters('eer_add_over_limit', $_POST);
+
+			wp_die();
+		}
+		echo -1;
+		wp_die();
+	}
+
 }
 
 //Frontend
