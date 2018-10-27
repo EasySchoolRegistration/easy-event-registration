@@ -16,7 +16,7 @@ class EER_Template_Add_Over_Limit
 		$selected_event = apply_filters('eer_all_events_select_get', []);
 		$selected_ticket = apply_filters('eer_event_tickets_select_get', $selected_event);
 		?>
-		<div class="wrap eer-settings eer-add-over-limit">
+		<div class="wrap eer-settings eer-add-over-limit eer-tickets-sale-wrapper">
 		<?php
 			do_action('eer_all_events_select_print', $selected_event);
 			do_action('eer_event_tickets_select_print');

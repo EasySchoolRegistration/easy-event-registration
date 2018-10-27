@@ -61,6 +61,28 @@ jQuery(function ($) {
 				$(this).next().show();
 				eer_hide_actions = false;
 			}
+		}).on("change", "input.choose_partner", function () {
+			if ($(this).is(":checked")) {
+				var partner_input_box = $(this).closest(".eer-partner").find(".eer-info-row.dancing-with-email");
+				if ($(this).val() === "0") {
+					partner_input_box.hide();
+					partner_input_box.find(".eer-info-row-input.dancing-with").prop("required", false);
+				} else {
+					partner_input_box.show();
+					partner_input_box.find(".eer-info-row-input.dancing-with").prop("required", true);
+				}
+
+				var partner_name_input_box = $(this).closest(".eer-partner").find(".eer-info-row.dancing-with-name");
+				if ($(this).val() === "0") {
+					partner_name_input_box.hide();
+					partner_name_input_box.find(".eer-info-row-input.dancing-with").prop("required", false);
+				} else {
+					partner_name_input_box.show();
+					if (partner_name_input_box.data("required") === 1) {
+						partner_name_input_box.find(".eer-info-row-input.dancing-with-name").prop("required", true);
+					}
+				}
+			}
 		});
 
 		function cleanInputs(box) {
@@ -105,10 +127,10 @@ jQuery(function ($) {
 
 			$.each($(editBox).find("textarea"), function () {
 				var areaId = $(this).attr("id");
-                /** global: tinyMCE */
+				/** global: tinyMCE */
 				tinyMCE.execCommand("mceRemoveEditor", false, areaId);
 				if ($(row).data(areaId)) {
-					$("#" + areaId).val($(row).data(areaId).replace(/\\/g, ''));
+					$("#" + areaId).val($(row).data(areaId).replace(/\\/g, ""));
 					$("#" + areaId + "-tmce").click();
 				}
 			});
@@ -122,8 +144,8 @@ jQuery(function ($) {
 			var editBox = $(".eer-edit-box");
 
 			$.each($(editBox).find("input.eer-input:not([type=submit]):not([type=checkbox]):not([type=radio]),select.eer-input"), function ($key, $value) {
-				if ($($value).hasClass('eer-color-picker')) {
-					$($value).wpColorPicker('color', $(row).data($($value).attr("id")));
+				if ($($value).hasClass("eer-color-picker")) {
+					$($value).wpColorPicker("color", $(row).data($($value).attr("id")));
 				} else {
 					$($value).val($(row).data($($value).attr("id")));
 				}
@@ -143,7 +165,7 @@ jQuery(function ($) {
 
 			$.each($(editBox).find("textarea"), function () {
 				var areaId = $(this).attr("id");
-                /** global: tinyMCE */
+				/** global: tinyMCE */
 				tinyMCE.execCommand("mceRemoveEditor", false, areaId);
 				if ($(row).data(areaId)) {
 					$("#" + areaId).val($(row).data(areaId).replace(/\\"/g, "\""));
@@ -236,7 +258,7 @@ jQuery(function ($) {
 				"order_id": order.data("id")
 			};
 			// We can also pass the url value separately from ajaxurl for front end AJAX implementations
-            /** global: eer_ajax_object */
+			/** global: eer_ajax_object */
 			$.post(eer_ajax_object.ajaxurl, data, function (response) {
 			});
 		}).on("click", ".eer-orders .eer-action.remove", function () {
@@ -249,7 +271,7 @@ jQuery(function ($) {
 					"order_id": order.data("id")
 				};
 				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
-                /** global: eer_ajax_object */
+				/** global: eer_ajax_object */
 				$.post(eer_ajax_object.ajaxurl, data, function (response) {
 					if (response == 1) {
 						order.removeClass("eer-status-0").addClass("eer-status-1");
@@ -266,7 +288,7 @@ jQuery(function ($) {
 					"sold_ticket_id": sold_ticket.data("id")
 				};
 				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
-                /** global: eer_ajax_object */
+				/** global: eer_ajax_object */
 				$.post(eer_ajax_object.ajaxurl, data, function (response) {
 					if (response == 1) {
 						sold_ticket.removeClass("eer-status-0").removeClass("eer-status-1").addClass("eer-status-2");
@@ -274,23 +296,23 @@ jQuery(function ($) {
 				});
 			}
 		}).on("click", ".eer-sold-tickets .eer-action.remove-forever", function () {
-            var sold_ticket = $(this).closest("tr");
+			var sold_ticket = $(this).closest("tr");
 
-            var answer = confirm("Do you really want to delete this ticket forever?");
-            if (answer === true) {
-                var data = {
-                    "action": "eer_remove_sold_ticket_forever",
-                    "sold_ticket_id": sold_ticket.data("id")
-                };
-                // We can also pass the url value separately from ajaxurl for front end AJAX implementations
-                /** global: eer_ajax_object */
-                $.post(eer_ajax_object.ajaxurl, data, function (response) {
-                    if (response == 1) {
-                        sold_ticket.remove();
-                    }
-                });
-            }
-        }).on("click", ".eer-sold-tickets .eer-action.confirm", function () {
+			var answer = confirm("Do you really want to delete this ticket forever?");
+			if (answer === true) {
+				var data = {
+					"action": "eer_remove_sold_ticket_forever",
+					"sold_ticket_id": sold_ticket.data("id")
+				};
+				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+				/** global: eer_ajax_object */
+				$.post(eer_ajax_object.ajaxurl, data, function (response) {
+					if (response == 1) {
+						sold_ticket.remove();
+					}
+				});
+			}
+		}).on("click", ".eer-sold-tickets .eer-action.confirm", function () {
 			var sold_ticket = $(this).closest("tr");
 
 			var answer = confirm("Do you really want to confirm this ticket?");
@@ -300,7 +322,7 @@ jQuery(function ($) {
 					"sold_ticket_id": sold_ticket.data("id")
 				};
 				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
-                /** global: eer_ajax_object */
+				/** global: eer_ajax_object */
 				$.post(eer_ajax_object.ajaxurl, data, function (response) {
 					if (response == 1) {
 						sold_ticket.removeClass("eer-status-0").removeClass("eer-status-2").addClass("eer-status-1");
@@ -344,11 +366,83 @@ jQuery(function ($) {
 					}
 				}
 			});
+		}).on("click", ".eer-ticket-shop-form input[type=button]", function (e) {
+			e.preventDefault();
+			var sale_wrapper = $(this).closest(".eer-tickets-sale-wrapper");
+			var order_data = {};
+
+			order_data["tickets"] = {};
+
+			var ticket_id = $("input[name=ticket_id]", $(sale_wrapper)).val();
+			order_data["tickets"][ticket_id] = {};
+			order_data["tickets"][ticket_id]["ticket_id"] = ticket_id;
+			order_data["tickets"][ticket_id]["number_of_tickets"] = 1;
+
+			if ($(sale_wrapper).find(".eer-dancing-as-input").length !== 0) {
+				order_data["tickets"][ticket_id]["dancing_as"] = $(sale_wrapper).find(".eer-dancing-as-input:checked").val();
+			}
+
+			if ($(sale_wrapper).find("[name=level_id]").length !== 0) {
+				order_data["tickets"][ticket_id]["level_id"] = $(sale_wrapper).find("[name=level_id]").val();
+			}
+
+			if ($(sale_wrapper).find(".eer-choose-partner-input").length !== 0) {
+				order_data["tickets"][ticket_id]["choose_partner"] = $(sale_wrapper).find(".eer-choose-partner-input:checked").val();
+				order_data["tickets"][ticket_id]["dancing_with"] = $(sale_wrapper).find("[name=dancing_with]").val();
+
+				if ($(sale_wrapper).find(".eer-info-row.dancing-with-name").length !== 0) {
+					order_data["tickets"][ticket_id]["dancing_with_name"] = $(sale_wrapper).find("[name=dancing_with_name]").val();
+				}
+			}
+
+			//load user data
+			order_data["user_info"] = {};
+			$(sale_wrapper).find(".eer-user-form input, .eer-user-form select, .eer-user-form textarea").each(function (key, input) {
+				var value = $(input).val();
+				if ($(input).attr("type") === "checkbox") {
+					value = $(input).prop("checked");
+				}
+				order_data["user_info"][$(input).attr("name")] = value;
+			});
+			//send ajax
+			order_data["event_id"] = $(sale_wrapper).find("input[name=event_id]").val();
+			var order_data_json = JSON.stringify(order_data);
+			var data = {
+				"action": "eer_add_ticket_registration",
+				"order_data": order_data_json
+			};
+
+			/** global: eer_ajax_object */
+			$.post(eer_ajax_object.ajaxurl, data, function (response) {
+			}).done(function (response) {
+				if (response.hasOwnProperty("thank_you_text")) {
+					$(sale_wrapper).find(".eer-ticket-shop-form").empty().append(response.thank_you_text);
+				} else if (response.hasOwnProperty("errors")) {
+					$.each(response.errors.errors, function (key, message) {
+						var keys = key.split(".");
+						if (keys[0] === "user_info") {
+							sale_wrapper.find("[name=" + keys[1] + "]").after("<div class=\"eer-error\">" + message[0] + "</div>");
+						} else if (keys[0] === "tickets") {
+							if (keys[1] === "all") {
+
+							} else {
+								sale_wrapper.find(".eer-ticket-to-buy[data-id=" + keys[1] + "]").append("<div class=\"eer-error\">" + message[0] + "</div>");
+							}
+							if (keys[2] === "full") {
+								//$(".eer-ticket[data-id=" + keys[1] + "]").addClass('eer-sold');
+							}
+						}
+					});
+					$("html, body").animate({
+						scrollTop: sale_wrapper.find(".eer-form-tickets").offset().top - 50
+					}, 2000);
+				}
+			});
 		});
 
-        $("input[name=\"eer-select-all\"]").on("change", function () {
-            $("input[name=\"eer_choosed_payments[]\"]").prop("checked", $(this).is(":checked"));
-        });
+		$("input[name=\"eer-select-all\"]").on("change", function () {
+			$("input[name=\"eer_choosed_payments[]\"]").prop("checked", $(this).is(":checked"));
+		});
 
 		function prepopulate_list(row, id, data) {
 			if (row.attr("data-" + data)) {
@@ -385,6 +479,39 @@ jQuery(function ($) {
 				editBox.find("[name=payment_id]").val(row.data("id"));
 				editBox.find("[name=payment]").val(parseInt(row.data("payment")));
 			}
+		}
+
+		function eer_run_spinner(wrapper) {
+			var opts = {
+				lines: 12, // The number of lines to draw
+				length: 30, // The length of each line
+				width: 17, // The line thickness
+				radius: 45, // The radius of the inner circle
+				scale: 1, // Scales overall size of the spinner
+				corners: 1, // Corner roundness (0..1)
+				color: "#ffffff", // CSS color or array of colors
+				fadeColor: "transparent", // CSS color or array of colors
+				speed: 0.7, // Rounds per second
+				rotate: 0, // The rotation offset
+				animation: "spinner-line-fade-quick", // The CSS animation name for the lines
+				direction: 1, // 1: clockwise, -1: counterclockwise
+				zIndex: 2e9, // The z-index (defaults to 2000000000)
+				className: "spinner", // The CSS class to assign to the spinner
+				top: "80%", // Top position relative to parent
+				left: "50%", // Left position relative to parent
+				shadow: "0 0 1px transparent", // Box-shadow for the lines
+				position: "absolute" // Element positioning
+			};
+
+			var spinner = new Spinner(opts).spin();
+			$(".eer-spinner-bg", wrapper).show();
+			$(wrapper).append(spinner.el);
+			return spinner;
+		}
+
+		function eer_stop_spinner(spinner, wrapper) {
+			spinner.stop();
+			$(".eer-spinner-bg", wrapper).hide();
 		}
 
 		if ($(".eer-datatable").length) {
@@ -430,10 +557,9 @@ jQuery(function ($) {
 				}
 			});
 		}
-        if ($(".eer-color-picker").length > 0) {
-            $(".eer-color-picker").wpColorPicker();
-        }
-
+		if ($(".eer-color-picker").length > 0) {
+			$(".eer-color-picker").wpColorPicker();
+		}
 
 		$(document).on("click", "body", function () {
 			if (eer_hide_actions) {
@@ -442,4 +568,5 @@ jQuery(function ($) {
 			eer_hide_actions = true;
 		});
 	});
-});
+})
+;

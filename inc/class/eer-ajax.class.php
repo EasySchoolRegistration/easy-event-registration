@@ -118,10 +118,8 @@ class EER_Ajax
 
 
 	public static function eer_add_ticket_registration_callback() {
-		if (isset($_POST['eer_add_over_limit_submit'])) {
-			apply_filters('eer_add_over_limit', $_POST);
-
-			wp_die();
+		if (isset($_POST['order_data'])) {
+			wp_send_json(apply_filters('eer_add_over_limit', $_POST));
 		}
 		echo -1;
 		wp_die();
@@ -140,4 +138,7 @@ add_action('wp_ajax_eer_remove_sold_ticket', ['EER_Ajax', 'eer_remove_sold_ticke
 add_action('wp_ajax_eer_confirm_sold_ticket', ['EER_Ajax', 'eer_confirm_sold_ticket_callback']);
 add_action('wp_ajax_eer_save_payment', ['EER_Ajax', 'eer_save_payment_callback']);
 add_action('wp_ajax_eer_remove_sold_ticket_forever', ['EER_Ajax', 'eer_remove_sold_ticket_forever_callback']);
+
+add_action('wp_ajax_eer_add_ticket_registration', ['EER_Ajax', 'eer_add_ticket_registration_callback']);
+
 

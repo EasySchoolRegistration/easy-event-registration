@@ -24,7 +24,7 @@ class EER_Worker_Event_Sale
 		$return_data = [];
 
 		if ($this->eer_registration_form_validation($data)) {
-			$status = $this->eer_complete_registration($data);
+			$status = $this->eer_complete_registration($data, $limit_validation);
 		}
 
 		if ($status) {
@@ -36,14 +36,13 @@ class EER_Worker_Event_Sale
 		if (count($eer_reg_errors->get_error_messages()) !== 0) {
 			$return_data['errors'] = $eer_reg_errors;
 		}
-
 		return $return_data;
 	}
 
 
-	private function eer_complete_registration($data)
+	private function eer_complete_registration($data, $limit_validation = true)
 	{
-		$eer_data = $this->eer_get_valid_data($data);
+		$eer_data = $this->eer_get_valid_data($data, $limit_validation);
 
 		global $eer_reg_errors, $wpdb;
 		$return_tickets = [];
