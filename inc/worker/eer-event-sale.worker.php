@@ -83,8 +83,10 @@ class EER_Worker_Event_Sale
 
 			EER()->email->eer_send_order_email($order_id, $return_tickets);
 
-			if (isset($return_tickets['paired']) && $return_tickets['paired']) {
-				EER()->email->eer_send_order_confirmation_email($data->event_id, $return_tickets['paired']);
+			if (!isset($data->user_info->eer_disable_confirmation_email) || (isset($data->user_info->eer_disable_confirmation_email) && !$data->user_info->eer_disable_confirmation_email)) {
+				if (isset($return_tickets['paired']) && $return_tickets['paired']) {
+					EER()->email->eer_send_order_confirmation_email($data->event_id, $return_tickets['paired']);
+				}
 			}
 
 			return $return_tickets;

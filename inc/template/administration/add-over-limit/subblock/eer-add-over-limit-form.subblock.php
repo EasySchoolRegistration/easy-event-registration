@@ -197,6 +197,12 @@ class EER_Subblock_Add_Over_Limit_Form {
 								</div>
 							</div>
 						<?php } ?>
+						<div class="eer-row eer-full-width eer-clearfix eer-form-checkbox">
+							<div class="eer-form-group">
+								<input class="eer-form-control" type="checkbox" name="eer_disable_confirmation_email" value="1">
+								<label><?php _e('Disable Confirmation Email', 'easy-event-registration') ?></label>
+							</div>
+						</div>
 					</div>
 					<input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">
 					<input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
