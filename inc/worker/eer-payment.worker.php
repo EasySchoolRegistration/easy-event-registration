@@ -94,10 +94,10 @@ SELECT NULL, eo.id, SUM(t.price) + %d AS to_pay
 
 				$event_data = EER()->event->get_event_data($order->event_id);
 
-				if (!(($order_info->tshirt === '') || !isset($event_data->tshirt_options[$order_info->tshirt]))) {
+				if (isset($order_info->tshirt) && (!(($order_info->tshirt === '') || !isset($event_data->tshirt_options[$order_info->tshirt])))) {
 					$other_payments += intval($event_data->tshirt_options[$order_info->tshirt]['price']);
 				}
-				if (!(($order_info->food === '') || !isset($event_data->food_options[$order_info->food]))) {
+				if (isset($order_info->food) && (!(($order_info->food === '') || !isset($event_data->food_options[$order_info->food])))) {
 					$other_payments += intval($event_data->food_options[$order_info->food]['price']);
 				}
 			}
