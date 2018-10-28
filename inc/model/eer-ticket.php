@@ -213,7 +213,7 @@ class EER_Ticket
 		global $wpdb;
 		$return = [];
 
-		$tickets = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}eer_tickets", OBJECT_K);
+		$tickets = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}eer_tickets ORDER BY id DESC", OBJECT_K);
 
 		foreach ($tickets as $id => $ticket) {
 			$settings = $ticket->ticket_settings;
