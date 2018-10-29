@@ -30,21 +30,26 @@ class EER_PDF_Ticket
 		$pdf->AddPage();
 		$pdf->lastPage();
 
-
 		$img_file = $ticket_data->pdfticket_design_background;
 		$pdf->Image($img_file, 0, 0, 211, 0, 'JPG', '', '', true, 300, '', false, false, 0, false, false, false);
 
 		$name = 'ticket-' . $code . '.pdf';
+		list($r, $g, $b) = sscanf($ticket_data->pdfticket_code_color, "#%02x%02x%02x");
+		$pdf->SetTextColor($r, $g, $b);
+		$pdf->SetFont('helvetica', '', 30, '', 'default', true);
+		$pdf->setCellPaddings(102, 10, 0, 0);
+		$pdf->MultiCell(200, 50, $ticket_data->title, 0, 'L', false, 1, '', '', true, 0, false, true, 0, 'T', false);
 
 		list($r, $g, $b) = sscanf($ticket_data->pdfticket_code_color, "#%02x%02x%02x");
 		$pdf->SetTextColor($r, $g, $b);
 		$pdf->SetFont('helvetica', '', 20, '', 'default', true);
-		$pdf->Text(157, 52, $code, false, false, true, 0, 0, '', false, '', 0, false, 'T', 'M', false);
-
+		$pdf->setCellPaddings(102, 10, 0, 0);
+		$pdf->MultiCell(200, 50, "Ticket number: " . $code, 0, 'L', false, 1, '', '', true, 0, false, true, 0, 'T', false);
 
 		$pdf->SetTextColor(0, 0, 0);
-		$pdf->SetFont('helvetica', '', 14, '', 'default', true);
-		$pdf->Text(10, 100, $ticket_data->pdfticket_design_description, false, false, true, 0, 0, '', false, '', 0, false, 'T', 'M', false);
+		$pdf->SetFont('helvetica', '', 10, '', 'default', true);
+		$pdf->setCellPaddings(10, 10, 0, 0);
+		$pdf->MultiCell(150, 100, $ticket_data->pdfticket_design_description, 0, 'L', false, 1, '', '', true, 0, false, true, 0, 'T', false);
 		$pdf->Output(EER_PLUGIN_DIR . 'temp/' . $name, 'F');
 
 		return EER_PLUGIN_DIR . 'temp/' . $name;

@@ -48,7 +48,7 @@ if (!class_exists('EER_Sold_Ticket')) {
 		{
 			global $wpdb;
 
-			return $wpdb->get_results($wpdb->prepare("SELECT st.*, t.* FROM {$wpdb->prefix}eer_sold_tickets AS st JOIN {$wpdb->prefix}eer_tickets AS t ON st.ticket_id = t.id WHERE st.order_id = %d AND st.status = %d", [$order_id, EER_Enum_Sold_Ticket_Status::CONFIRMED]), OBJECT_K);
+			return $wpdb->get_results($wpdb->prepare("SELECT st.*, t.* FROM {$wpdb->prefix}eer_sold_tickets AS st JOIN {$wpdb->prefix}eer_tickets AS t ON st.ticket_id = t.id WHERE st.order_id = %d AND st.status = %d", [$order_id, EER_Enum_Sold_Ticket_Status::CONFIRMED]));
 		}
 
 
