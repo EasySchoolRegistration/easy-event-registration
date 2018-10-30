@@ -143,7 +143,7 @@ class EER_Subblock_Ticket_Editor
 		?>
 		<tr>
 			<th><?php _e('Is solo', 'easy-event-registration'); ?></th>
-			<td><input id="is_solo" type="checkbox" name="is_solo" class="eer-input" data-show=".max_tickets" data-hide=".max_leaders, .max_followers" value="1"></td>
+			<td><input id="is_solo" type="checkbox" name="is_solo" class="eer-input" data-show=".max_tickets, .max_level_tickets" data-hide=".max_leaders, .max_followers, .max_level_followers, .max_level_leaders" value="1"></td>
 		</tr>
 		<?php
 	}
