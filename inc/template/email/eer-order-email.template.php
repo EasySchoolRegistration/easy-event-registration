@@ -51,6 +51,11 @@ class EER_Template_Order_Email
 								$parameter = $order_info->hosting ? __('Yes', 'easy-event-registration') : __('No', 'easy-event-registration');
 								break;
 							}
+						case 'hosting_offer_option':
+							{
+								$parameter = $order_info->offer_hosting ? __('Yes', 'easy-event-registration') : __('No', 'easy-event-registration');
+								break;
+							}
 						case 'tshirt_option':
 							{
 								$parameter = ($order_info->tshirt === '') || !isset($event_data->tshirt_options[$order_info->tshirt]) ? __('No', 'easy-event-registration') : $event_data->tshirt_options[$order_info->tshirt]['name'];

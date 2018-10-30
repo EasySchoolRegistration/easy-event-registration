@@ -129,6 +129,13 @@ class EER_Tags {
 					'function'    => 'eer_tag_replace_string',
 					'parameter'   => 'hosting_option'
 				],
+				'hosting_offer_option'    => [
+					'id'          => 'hosting_offer_option',
+					'tag'         => 'hosting_offer_option',
+					'description' => __('Hosting offer option.', 'easy-event-registration'),
+					'function'    => 'eer_tag_replace_string',
+					'parameter'   => 'hosting_offer_option'
+				],
 				'tshirt_option'     => [
 					'id'          => 'tshirt',
 					'tag'         => 'tshirt_option',
@@ -251,6 +258,13 @@ class EER_Tags {
 					'description' => __('Hosting option.', 'easy-event-registration'),
 					'function'    => 'eer_tag_replace_string',
 					'parameter'   => 'hosting_option'
+				],
+				'hosting_offer_option'    => [
+					'id'          => 'hosting_offer_option',
+					'tag'         => 'hosting_offer_option',
+					'description' => __('Hosting offer option.', 'easy-event-registration'),
+					'function'    => 'eer_tag_replace_string',
+					'parameter'   => 'hosting_offer_option'
 				],
 				'tshirt_option'  => [
 					'id'          => 'tshirt',
