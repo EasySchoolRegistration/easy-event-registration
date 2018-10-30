@@ -69,7 +69,8 @@ class EER_Event
 					'sale_not_opened' => [
 						'id' => 'sale_not_opened',
 						'name' => __('Sale Not Opened Yet', 'easy-event-registration'),
-						'desc' => __('Available template tags:', 'easy-event-registration'),
+						'desc'      => __('Available template tags:', 'easy-school-registration'),
+						'desc_tags' => $template_settings_tag->print_content(EER()->tags->get_tags('sale_not_opened')),
 						'type' => 'full_editor',
 						'field_class' => 'eer-input'
 					],
@@ -139,6 +140,7 @@ class EER_Event
 					'thank_you' => [
 						'id' => 'thank_you',
 						'name' => __('Thank you text', 'easy-event-registration'),
+						'desc'      => __('Available template tags:', 'easy-school-registration'),
 						'desc_tags' => $template_settings_tag->print_content(EER()->tags->get_tags('thank_you_page')),
 						'type' => 'full_editor',
 						'field_class' => 'eer-input'
