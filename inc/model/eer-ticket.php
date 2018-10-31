@@ -4,14 +4,12 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Ticket
-{
+class EER_Ticket {
 
 	private $fields;
 
 
-	public function __construct()
-	{
+	public function __construct() {
 		$this->fields = new EER_Fields();
 
 		$this->fields->add_field('event_id', 'int', true);
@@ -34,32 +32,31 @@ class EER_Ticket
 	 *
 	 * @return array
 	 */
-	public function eer_get_ticket_settings_fields()
-	{
+	public function eer_get_ticket_settings_fields() {
 		$eer_ticket_settings = [
 			/** General Settings */
-			'general' => apply_filters('eer_ticket_settings_general', [
-				'gmain' => [
+			'general'      => apply_filters('eer_ticket_settings_general', [
+				'gmain'  => [
 					'content' => [
-						'id' => 'content',
-						'name' => __('Content', 'easy-event-registration'),
-						'type' => 'full_editor',
+						'id'          => 'content',
+						'name'        => __('Content', 'easy-event-registration'),
+						'type'        => 'full_editor',
 						'field_class' => 'eer-input'
 					],
 				],
 				'levels' => [
 					'levels_enabled' => [
-						'id' => 'levels_enabled',
-						'name' => __('Enable levels', 'easy-event-registration'),
-						'desc' => '',
-						'type' => 'checkbox',
-						'std' => true,
+						'id'          => 'levels_enabled',
+						'name'        => __('Enable levels', 'easy-event-registration'),
+						'desc'        => '',
+						'type'        => 'checkbox',
+						'std'         => true,
 						'field_class' => 'eer-input'
 					],
-					'levels' => [
-						'id' => 'levels',
-						'name' => __('Levels', 'easy-event-registration'),
-						'type' => 'add_list_levels',
+					'levels'         => [
+						'id'       => 'levels',
+						'name'     => __('Levels', 'easy-event-registration'),
+						'type'     => 'add_list_levels',
 						'singular' => __('Level', 'easy-event-registration'),
 					],
 				],
@@ -67,49 +64,49 @@ class EER_Ticket
 			'waiting_list' => apply_filters('eer_ticket_settings_waiting_list', [
 				'wlmain' => [
 					'waiting_list_enabled' => [
-						'id' => 'waiting_list_enabled',
-						'name' => __('Enable waiting list', 'easy-event-registration'),
-						'desc' => '',
-						'type' => 'checkbox',
-						'std' => true,
+						'id'          => 'waiting_list_enabled',
+						'name'        => __('Enable waiting list', 'easy-event-registration'),
+						'desc'        => '',
+						'type'        => 'checkbox',
+						'std'         => true,
 						'field_class' => 'eer-input'
 					],
-					'waiting_list_limit' => [
-						'id' => 'waiting_list_limit',
+					'waiting_list_limit'   => [
+						'id'   => 'waiting_list_limit',
 						'name' => __('Limit', 'easy-event-registration'),
 						'type' => 'number',
 					],
 				],
 			]),
-			'pdfticket' => apply_filters('eer_ticket_settings_pdfticket', [
+			'pdfticket'    => apply_filters('eer_ticket_settings_pdfticket', [
 				'ptmain' => [
-					'pdfticket_enabled' => [
-						'id' => 'pdfticket_enabled',
-						'name' => __('Enable PDF ticket', 'easy-event-registration'),
-						'desc' => '',
-						'type' => 'checkbox',
-						'std' => true,
+					'pdfticket_enabled'            => [
+						'id'          => 'pdfticket_enabled',
+						'name'        => __('Enable PDF ticket', 'easy-event-registration'),
+						'desc'        => '',
+						'type'        => 'checkbox',
+						'std'         => true,
 						'field_class' => 'eer-input'
 					],
-					'pdfticket_design_background' => [
-						'id' => 'pdfticket_design_background',
-						'name' => __('Ticket background', 'easy-event-registration'),
-						'desc' => '',
-						'type' => 'text',
+					'pdfticket_design_background'  => [
+						'id'          => 'pdfticket_design_background',
+						'name'        => __('Ticket background', 'easy-event-registration'),
+						'desc'        => '',
+						'type'        => 'text',
 						'field_class' => 'eer-input'
 					],
 					'pdfticket_design_description' => [
-						'id' => 'pdfticket_design_description',
-						'name' => __('Ticket description', 'easy-event-registration'),
-						'desc' => '',
-						'type' => 'text',
+						'id'          => 'pdfticket_design_description',
+						'name'        => __('Ticket description', 'easy-event-registration'),
+						'desc'        => '',
+						'type'        => 'text',
 						'field_class' => 'eer-input'
 					],
-					'pdfticket_code_color' => [
-						'id' => 'pdfticket_code_color',
-						'name' => __('Code color', 'easy-event-registration'),
-						'type' => 'color_picker',
-						'std' => '#61c8da',
+					'pdfticket_code_color'         => [
+						'id'          => 'pdfticket_code_color',
+						'name'        => __('Code color', 'easy-event-registration'),
+						'type'        => 'color_picker',
+						'std'         => '#61c8da',
 						'field_class' => 'eer-input'
 					],
 				],
@@ -120,8 +117,7 @@ class EER_Ticket
 	}
 
 
-	public function eer_get_ticket_settings_fields_to_print($section_id, $sub_section_id)
-	{
+	public function eer_get_ticket_settings_fields_to_print($section_id, $sub_section_id) {
 		$sections = $this->eer_get_ticket_settings_fields();
 
 		if (isset($sections[$section_id][$sub_section_id])) {
@@ -132,9 +128,8 @@ class EER_Ticket
 	}
 
 
-	public function eer_get_ticket_settings_tabs()
-	{
-		$tabs = [];
+	public function eer_get_ticket_settings_tabs() {
+		$tabs            = [];
 		$tabs['general'] = __('General', 'easy-event-registration');
 		//$tabs['waiting_list'] = __('Waiting list', 'easy-event-registration');
 		$tabs['pdfticket'] = __('PDF ticket', 'easy-event-registration');
@@ -143,18 +138,16 @@ class EER_Ticket
 	}
 
 
-	public function eer_get_ticket_settings_tab($tab)
-	{
+	public function eer_get_ticket_settings_tab($tab) {
 		$tabs = $this->eer_get_ticket_settings_tabs();
 
 		return isset($tabs[$tab]) ? $tabs[$tab] : $tab;
 	}
 
 
-	public function eer_get_ticket_settings_tab_sections($tab = false)
-	{
+	public function eer_get_ticket_settings_tab_sections($tab = false) {
 
-		$tabs = false;
+		$tabs     = false;
 		$sections = $this->eer_get_ticket_settings_sections();
 
 		if ($tab && !empty($sections[$tab])) {
@@ -167,8 +160,7 @@ class EER_Ticket
 	}
 
 
-	public function eer_get_ticket_settings_sections()
-	{
+	public function eer_get_ticket_settings_sections() {
 
 		static $sections = false;
 
@@ -177,8 +169,8 @@ class EER_Ticket
 		}
 
 		$sections = [
-			'general' => apply_filters('eer_settings_sections_general', [
-				'gmain' => __('General', 'easy-event-registration'),
+			'general'   => apply_filters('eer_settings_sections_general', [
+				'gmain'  => __('General', 'easy-event-registration'),
 				'levels' => __('Levels', 'easy-event-registration'),
 			]),
 			/*'waiting_list' => apply_filters('eer_settings_sections_waiting_list', [
@@ -198,8 +190,7 @@ class EER_Ticket
 	/**
 	 * @return object
 	 */
-	public function get_fields()
-	{
+	public function get_fields() {
 		return $this->fields->get_fields();
 	}
 
@@ -208,8 +199,7 @@ class EER_Ticket
 	 * Loads all events
 	 * @return array|null|object
 	 */
-	public function load_tickets()
-	{
+	public function load_tickets() {
 		global $wpdb;
 		$return = [];
 
@@ -218,7 +208,7 @@ class EER_Ticket
 		foreach ($tickets as $id => $ticket) {
 			$settings = $ticket->ticket_settings;
 			unset($ticket->ticket_settings);
-			$ticket = (object)array_merge((array)$ticket, (array)json_decode($settings, true));
+			$ticket              = (object) array_merge((array) $ticket, (array) json_decode($settings, true));
 			$return[$ticket->id] = $ticket;
 		}
 
@@ -233,8 +223,7 @@ class EER_Ticket
 	 *
 	 * @return array|null|object
 	 */
-	public function get_tickets_by_event($event_id)
-	{
+	public function get_tickets_by_event($event_id) {
 		global $wpdb;
 		$return = [];
 
@@ -243,7 +232,7 @@ class EER_Ticket
 		foreach ($tickets as $id => $ticket) {
 			$settings = $ticket->ticket_settings;
 			unset($ticket->ticket_settings);
-			$ticket = (object)array_merge((array)$ticket, (array)json_decode($settings, true));
+			$ticket              = (object) array_merge((array) $ticket, (array) json_decode($settings, true));
 			$return[$ticket->id] = $ticket;
 		}
 
@@ -251,8 +240,7 @@ class EER_Ticket
 	}
 
 
-	public function get_max_number_of_tickets($ticket_id, $ticket_data = null)
-	{
+	public function get_max_number_of_tickets($ticket_id, $ticket_data = null) {
 		if (!$ticket_data) {
 			$ticket_data = $this->get_ticket_data($ticket_id);
 		}
@@ -265,8 +253,7 @@ class EER_Ticket
 	}
 
 
-	public function is_ticket_buy_enabled($ticket_id, $ticket_data = null)
-	{
+	public function is_ticket_buy_enabled($ticket_id, $ticket_data = null) {
 		if (!$ticket_data) {
 			$ticket_data = $this->get_ticket_data($ticket_id);
 		}
@@ -280,18 +267,26 @@ class EER_Ticket
 	}
 
 
-	public function get_ticket_data($ticket_id)
-	{
-		global $wpdb;
-		$ticket = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}eer_tickets WHERE id = %d", [(int)$ticket_id]), OBJECT);
-		$settings = $ticket->ticket_settings;
-		unset($ticket->ticket_settings);
+	public function get_ticket_data($ticket_id) {
+		if ($ticket_id !== null) {
+			global $wpdb;
+			$ticket = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}eer_tickets WHERE id = %d", [(int) $ticket_id]), OBJECT);
 
-		return (object)array_merge((array)$ticket, (array)json_decode($settings, true));
+			if ($ticket) {
+				$settings = $ticket->ticket_settings;
+				unset($ticket->ticket_settings);
+
+				return (object) array_merge((array) $ticket, (array) json_decode($settings, true));
+			}
+
+			return $ticket;
+		}
+
+		return null;
 	}
 
-	public function eer_is_solo($ticket_id, $ticket_data = NULL)
-	{
+
+	public function eer_is_solo($ticket_id, $ticket_data = null) {
 		if (!$ticket_data) {
 			$ticket_data = $this->get_ticket_data($ticket_id);
 		}
