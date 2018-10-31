@@ -42,7 +42,7 @@ class EER_Enqueue_Scripts {
 		if (self::check_page_base(EER_Template_Add_Over_Limit::MENU_SLUG)) {
 			wp_enqueue_style('eer_web_style', EER_PLUGIN_URL . 'inc/assets/web/css/eer-web.css', [], EER_VERSION);
 			wp_enqueue_style('eer_themify_icons_style', EER_PLUGIN_URL . 'libs/themify-icons/themify-icons.css', [], EER_VERSION);
-			wp_enqueue_script('eer_admin_events_script', EER_PLUGIN_URL . 'inc/assets/admin/js/eer-production.js', ['jquery']);
+			wp_enqueue_script('eer_admin_events_script', EER_PLUGIN_URL . 'inc/assets/admin/js/eer-production.js', ['jquery'], EER_VERSION);
 			wp_enqueue_script('eer_spin_js_script', EER_PLUGIN_URL . 'libs/spin/js/spin.min.js', ['jquery'], EER_VERSION);
 			self::eer_include_admin_scripts();
 		}
@@ -51,24 +51,24 @@ class EER_Enqueue_Scripts {
 
 	private static function eer_include_admin_scripts() {
 		wp_localize_script('eer_admin_events_script', 'eer_ajax_object', ['ajaxurl' => admin_url('admin-ajax.php')]);
-		wp_enqueue_style('eer_admin_style', EER_PLUGIN_URL . 'inc/assets/admin/css/eer-admin-settings.css');
+		wp_enqueue_style('eer_admin_style', EER_PLUGIN_URL . 'inc/assets/admin/css/eer-admin-settings.css', [], EER_VERSION);
 	}
 
 
 	private static function eer_include_datatable_scripts() {
-		wp_enqueue_script('eer_dataTables_script', EER_PLUGIN_URL . 'libs/datatable/js/jquery.dataTables.min.js', ['jquery']);
-		wp_enqueue_script('eer_dataTables_bootstrap_script', EER_PLUGIN_URL . 'libs/datatable/js/dataTables.bootstrap.min.js', ['jquery']);
-		wp_enqueue_script('eer_dataTables_button_script', EER_PLUGIN_URL . 'libs/datatable/js/dataTables.buttons.min.js', ['jquery']);
-		wp_enqueue_script('eer_dataTables_print_script', EER_PLUGIN_URL . 'libs/datatable/js/buttons.print.min.js', ['jquery']);
-		wp_enqueue_script('eer_dataTables_colvis_script', EER_PLUGIN_URL . 'libs/datatable/js/buttons.colVis.min.js', ['jquery']);
+		wp_enqueue_script('eer_dataTables_script', EER_PLUGIN_URL . 'libs/datatable/js/jquery.dataTables.min.js', ['jquery'], EER_VERSION);
+		wp_enqueue_script('eer_dataTables_bootstrap_script', EER_PLUGIN_URL . 'libs/datatable/js/dataTables.bootstrap.min.js', ['jquery'], EER_VERSION);
+		wp_enqueue_script('eer_dataTables_button_script', EER_PLUGIN_URL . 'libs/datatable/js/dataTables.buttons.min.js', ['jquery'], EER_VERSION);
+		wp_enqueue_script('eer_dataTables_print_script', EER_PLUGIN_URL . 'libs/datatable/js/buttons.print.min.js', ['jquery'], EER_VERSION);
+		wp_enqueue_script('eer_dataTables_colvis_script', EER_PLUGIN_URL . 'libs/datatable/js/buttons.colVis.min.js', ['jquery'], EER_VERSION);
 
-		wp_enqueue_style('eer_dataTables_bootstrap_style', EER_PLUGIN_URL . 'libs/datatable/css/dataTables.bootstrap.min.css');
-		wp_enqueue_style('eer_dataTables_min_style', EER_PLUGIN_URL . 'libs/datatable/css/jquery.dataTables.min.css');
-		wp_enqueue_style('eer_dataTables_button_style', EER_PLUGIN_URL . 'libs/datatable/css/buttons.dataTables.min.css');
-		wp_enqueue_style('eer_admin_bootstrap_style', EER_PLUGIN_URL . 'libs/bootstrap/css/bootstrap-ofic.css');
-		wp_enqueue_script('eer_bootstrap_script', EER_PLUGIN_URL . 'libs/bootstrap/js/bootstrap.min.js', ['jquery']);
+		wp_enqueue_style('eer_dataTables_bootstrap_style', EER_PLUGIN_URL . 'libs/datatable/css/dataTables.bootstrap.min.css', [], EER_VERSION);
+		wp_enqueue_style('eer_dataTables_min_style', EER_PLUGIN_URL . 'libs/datatable/css/jquery.dataTables.min.css', [], EER_VERSION);
+		wp_enqueue_style('eer_dataTables_button_style', EER_PLUGIN_URL . 'libs/datatable/css/buttons.dataTables.min.css', [], EER_VERSION);
+		wp_enqueue_style('eer_admin_bootstrap_style', EER_PLUGIN_URL . 'libs/bootstrap/css/bootstrap-ofic.css', [], EER_VERSION);
+		wp_enqueue_script('eer_bootstrap_script', EER_PLUGIN_URL . 'libs/bootstrap/js/bootstrap.min.js', ['jquery'], EER_VERSION);
 
-		wp_enqueue_style('eer_admin_font_awesome_style', EER_PLUGIN_URL . 'libs/font-awesome/css/font-awesome.css');
+		wp_enqueue_style('eer_admin_font_awesome_style', EER_PLUGIN_URL . 'libs/font-awesome/css/font-awesome.css', [], EER_VERSION);
 	}
 
 
