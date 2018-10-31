@@ -70,7 +70,7 @@ class EER_Ticket_Summary
 	public function eer_get_ticket_availability_by_levels($ticket_id)
 	{
 		global $wpdb;
-		return $wpdb->get_results($wpdb->prepare("SELECT level_id, max_leaders > registered_leaders AS leaders, max_followers > registered_followers AS followers, max_tickets > registered_tickets AS tickets FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d", [intval($ticket_id)]), OBJECT_K);
+		return $wpdb->get_results($wpdb->prepare("SELECT level_id, max_leaders > registered_leaders AS leaders, max_followers > registered_followers AS followers, max_tickets > registered_tickets AS tickets FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d AND level_id IS NOT NULL", [intval($ticket_id)]), OBJECT_K);
 	}
 
 

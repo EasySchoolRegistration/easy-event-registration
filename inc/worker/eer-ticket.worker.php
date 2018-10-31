@@ -36,7 +36,7 @@ class EER_Worker_Ticket {
 					'max_leaders'   => $ticket_data->max_leaders,
 					'max_followers' => $ticket_data->max_followers,
 					'max_tickets'   => $ticket_data->max_tickets,
-					'level_id' => NULL
+					'level_id'      => null
 				]);
 			} else {
 				foreach ($ticket_data->levels as $key => $level) {
@@ -63,42 +63,54 @@ class EER_Worker_Ticket {
 			'id' => $ticket_id,
 		]);
 
-
-
 		if (intval($ticket_settings->levels_enabled) < 1) {
-			$wpdb->update($wpdb->prefix . 'eer_ticket_summary', [
-				'max_leaders'   => $update_data['max_leaders'],
-				'max_followers' => $update_data['max_followers'],
-				'max_tickets'   => $update_data['max_tickets'],
-				'level_id' => NULL
-			], ['ticket_id' => $ticket_id]);
+			if (self::eer_ticket_summary_exists($ticket_id, null) !== 1) {
+				$wpdb->insert($wpdb->prefix . 'eer_ticket_summary', [
+					'ticket_id'     => $ticket_id,
+					'max_leaders'   => $update_data['max_leaders'],
+					'max_followers' => $update_data['max_followers'],
+					'max_tickets'   => $update_data['max_tickets'],
+					'level_id'      => null
+				]);
+			} else {
+				$wpdb->update($wpdb->prefix . 'eer_ticket_summary', [
+					'max_leaders'   => $update_data['max_leaders'],
+					'max_followers' => $update_data['max_followers'],
+					'max_tickets'   => $update_data['max_tickets'],
+				], ['ticket_id' => $ticket_id, 'level_id' => null]);
+			}
 		} else {
 			$old_summery = EER()->ticket_summary->eer_get_ticket_summaries($ticket_id);
 			foreach ($old_summery as $summary_key => $summary) {
-				if (isset($ticket_settings->levels->{$summary->level_id})) {
+				if ($summary->level_id !== null) {
 					$level = $ticket_settings->levels->{$summary->level_id};
-					$wpdb->update($wpdb->prefix . 'eer_ticket_summary', [
-						'max_leaders'   => (int) $level->leaders,
-						'max_followers' => (int) $level->followers,
-						'max_tickets'   => (int) $level->tickets,
-						'level_id'      => (int) $level->key
-					], ['id' => $summary->id]);
-					unset($ticket_settings->levels->{$summary->level_id});
-				} else {
-					$wpdb->delete($wpdb->prefix . 'eer_ticket_summary', [
-						'id' => $summary->id,
-					]);
+
+					if (isset($ticket_settings->levels->{$summary->level_id})) {
+						$wpdb->update($wpdb->prefix . 'eer_ticket_summary', [
+							'max_leaders'   => (int) $level->leaders,
+							'max_followers' => (int) $level->followers,
+							'max_tickets'   => (int) $level->tickets,
+							'level_id'      => (int) $level->key
+						], ['id' => $summary->id]);
+						unset($ticket_settings->levels->{$summary->level_id});
+					} else {
+						$wpdb->delete($wpdb->prefix . 'eer_ticket_summary', [
+							'id' => $summary->id,
+						]);
+					}
 				}
 			}
 
 			foreach ($ticket_settings->levels as $level_key => $level) {
-				$wpdb->insert($wpdb->prefix . 'eer_ticket_summary', [
-					'max_leaders'   => (int) $level->leaders,
-					'max_followers' => (int) $level->followers,
-					'max_tickets'   => (int) $level->tickets,
-					'level_id'      => (int) $level->key,
-					'ticket_id'     => $ticket_id
-				]);
+				if (self::eer_ticket_summary_exists($ticket_id, $level->key) !== 1) {
+					$wpdb->insert($wpdb->prefix . 'eer_ticket_summary', [
+						'max_leaders'   => (int) $level->leaders,
+						'max_followers' => (int) $level->followers,
+						'max_tickets'   => (int) $level->tickets,
+						'level_id'      => (int) $level->key,
+						'ticket_id'     => $ticket_id
+					]);
+				}
 			}
 		}
 
@@ -122,9 +134,7 @@ class EER_Worker_Ticket {
 					}
 					$data[$key]['levels'] = (object) $levels;
 				}
-				if (isset($data[$key]['levels_enabled']) && (intval($data[$key]['levels_enabled']) === 1)) {
-					$return_data['has_levels'] = true;
-				}
+				$return_data['has_levels'] = (isset($data[$key]['levels_enabled']) && (intval($data[$key]['levels_enabled']) === 1));
 
 				$return_data[$key] = json_encode(EER()->fields->eer_sanitize_ticket_settings($data[$key]), JSON_FORCE_OBJECT);
 			} else if (($field['type'] === 'boolean') && (!isset($data[$key]) || (isset($data[$key]) && !is_bool($data[$key])))) {
@@ -133,6 +143,18 @@ class EER_Worker_Ticket {
 				$return_data[$key] = EER()->fields->sanitize($field['type'], $data[$key]);
 			}
 		}
+
 		return $return_data;
+	}
+
+
+	public static function eer_ticket_summary_exists($ticket_id, $level_id = null) {
+		global $wpdb;
+
+		if ($level_id !== null) {
+			return intval($wpdb->get_var($wpdb->prepare("SELECT 1 FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d AND level_id = %d", [$ticket_id, $level_id])));
+		} else {
+			return intval($wpdb->get_var($wpdb->prepare("SELECT 1 FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d AND level_id IS NULL", [$ticket_id])));
+		}
 	}
 }
