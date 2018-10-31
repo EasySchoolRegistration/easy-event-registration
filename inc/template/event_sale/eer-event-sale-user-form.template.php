@@ -194,7 +194,7 @@ class EER_Template_Event_Sale_User_Form {
 		     data-id="<?php echo $ticket_id; ?>"
 		     data-separately="%eer-separately%">
 			<div class="eer-ticket-title eer-column">
-				<button class="eer-ticket-remove" type="button"><i class="ti-close"></i></button>
+				<button class="eer-ticket-remove" type="button"><i class="fa fa-minus"></i></button>
 				%eer-ticket-title%
 			</div>
 			<div class="eer-number-of-tickets eer-column">
