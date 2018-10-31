@@ -36,6 +36,7 @@ class EER_Database
 		include_once 'updates/eer-update.1.0.11.php';
 		include_once 'updates/eer-update.1.0.12.php';
 		include_once 'updates/eer-update.1.1.0.php';
+		include_once 'updates/eer-update.1.1.2.php';
 		update_option('eer_db_version', EER_VERSION);
 	}
 
@@ -71,6 +72,7 @@ class EER_Database
 			position int(10) NOT NULL DEFAULT FALSE,
 			pairing_mode int DEFAULT 1,
 			ticket_settings longtext,
+			to_remove tinyint(1) NOT NULL DEFAULT 0,
 			PRIMARY KEY id (id),
 			FOREIGN KEY (event_id) REFERENCES {$wpdb->prefix}eer_events(id) ON DELETE CASCADE
 		) $charset_collate;";

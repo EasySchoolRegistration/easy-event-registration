@@ -215,6 +215,34 @@ jQuery(function ($) {
 		$("body").on("click", ".actions.eer-events .eer-action.edit", function () {
 			showEditBox();
 			prepopulateEventData($(this).closest(".eer-row"), true);
+		}).on("click", ".actions.eer-tickets .eer-action.remove", function () {
+			var answer = confirm("Do you really want to delete this ticket?");
+			if (answer === true) {
+				var row = $(this).closest(".eer-row");
+				var data = {
+					"action": "eer_remove_ticket",
+					"ticket_id": $(row).data("id")
+				};
+				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+				/** global: eer_ajax_object */
+				$.post(eer_ajax_object.ajaxurl, data, function (response) {
+					location.reload();
+				});
+			}
+		}).on("click", ".actions.eer-tickets .eer-action.remove-forever", function () {
+			var answer = confirm("Do you really want to completely delete this ticket?");
+			if (answer === true) {
+				var row = $(this).closest(".eer-row");
+				var data = {
+					"action": "eer_remove_ticket_forever",
+					"ticket_id": $(row).data("id")
+				};
+				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+				/** global: eer_ajax_object */
+				$.post(eer_ajax_object.ajaxurl, data, function (response) {
+					location.reload();
+				});
+			}
 		}).on("click", ".actions.eer-tickets .eer-action.edit", function () {
 			showEditBox();
 			prepopulateTicketData($(this).closest(".eer-row"), true);

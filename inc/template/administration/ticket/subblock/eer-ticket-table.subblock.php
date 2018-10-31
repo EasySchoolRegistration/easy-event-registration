@@ -82,6 +82,18 @@ class EER_Subblock_Ticket_Table
 					<span><?php _e('Edit', 'easy-event-registration'); ?></span>
 				</a>
 			</li>
+			<li class="eer-action remove">
+				<a href="javascript:;">
+					<i class="fa fa-remove"></i>
+					<span><?php _e('Remove', 'easy-event-registration'); ?></span>
+				</a>
+			</li>
+			<li class="eer-action remove-forever">
+				<a href="javascript:;">
+					<i class="fa fa-remove"></i>
+					<span><?php _e('Remove Forever', 'easy-event-registration'); ?></span>
+				</a>
+			</li>
 		</ul>
 		<?php
 	}
@@ -112,8 +124,12 @@ class EER_Subblock_Ticket_Table
 	{
 		$classes = [
 			'eer-row',
-			'eer-event'
+			'eer-ticket'
 		];
+
+		if (intval($ticket->to_remove) === 1) {
+			$classes[] = 'eer-to-remove';
+		}
 
 		return implode(' ', $classes);
 	}

@@ -92,6 +92,18 @@ table.dataTable tbody tr.status-2 {
 .eer-datatable.eer-orders .eer-status-1 {
   background-color: #D46A6A; }
 
+.eer-datatable .eer-row.eer-ticket .remove {
+  display: inline-block; }
+
+.eer-datatable .eer-row.eer-ticket .remove-forever {
+  display: none; }
+
+.eer-datatable .eer-row.eer-ticket.eer-to-remove .actions .remove {
+  display: none; }
+
+.eer-datatable .eer-row.eer-ticket.eer-to-remove .actions .remove-forever {
+  display: inline-block; }
+
 .eer-settings.eer-add-over-limit .eer-ticket-shop-form {
   width: auto; }
 
