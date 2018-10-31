@@ -2,6 +2,11 @@
 
 Changelog
 -------
+1.1.2 - 31.10.2018
+
+- New: Admin can remove ticket
+- Update: Icons on frontend
+
 1.1.1 - 30.10.2018
 
 - New: Tests
