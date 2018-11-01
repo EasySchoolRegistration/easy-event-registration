@@ -9,6 +9,7 @@ class EER_Worker_Ajax {
 
 	public static function eer_remove_order_callback($order_id) {
 		if ($order_id) {
+			$order_id = intval($order_id);
 			global $wpdb;
 
 			$sold_tickets = EER()->sold_ticket->eer_get_sold_tickets_by_order($order_id);
@@ -37,10 +38,12 @@ class EER_Worker_Ajax {
 					}
 				}
 
-				$wpdb->update($wpdb->prefix . 'eer_ticket_summary', $update, [
-					'ticket_id' => $sold_ticket->ticket_id,
-					'level_id'  => $sold_ticket->level_id,
-				]);
+				if (count($update) > 0) {
+					$wpdb->update($wpdb->prefix . 'eer_ticket_summary', $update, [
+						'ticket_id' => $sold_ticket->ticket_id,
+						'level_id'  => $sold_ticket->level_id,
+					]);
+				}
 			}
 
 			return 1;
@@ -101,7 +104,7 @@ class EER_Worker_Ajax {
 			if (count($update) > 0) {
 				$wpdb->update($wpdb->prefix . 'eer_ticket_summary', $update, [
 					'ticket_id' => intval($sold_ticket_data->ticket_id),
-					'level_id'  => intval($sold_ticket_data->level_id),
+					'level_id'  => $sold_ticket_data->level_id,
 				]);
 			}
 
