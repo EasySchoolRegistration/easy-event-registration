@@ -105,10 +105,10 @@ class EER_Worker_Ajax {
 				]);
 			}
 
-			return true;
+			return 1;
 		}
 
-		return false;
+		return -1;
 	}
 
 
