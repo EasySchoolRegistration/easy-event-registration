@@ -2,6 +2,10 @@
 
 Changelog
 -------
+1.1.3 - 1.11.2018
+
+- Fix: Fixed ticket summery generation
+
 1.1.2 - 31.10.2018
 
 - New: Admin can remove ticket
