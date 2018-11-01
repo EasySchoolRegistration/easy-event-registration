@@ -152,9 +152,9 @@ class EER_Worker_Ticket {
 		global $wpdb;
 
 		if ($level_id !== null) {
-			return intval($wpdb->get_var($wpdb->prepare("SELECT 1 FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d AND level_id = %d", [$ticket_id, $level_id])));
+			return intval($wpdb->get_var($wpdb->prepare("SELECT EXISTS (SELECT * FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d AND level_id = %d)", [$ticket_id, $level_id])));
 		} else {
-			return intval($wpdb->get_var($wpdb->prepare("SELECT 1 FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d AND level_id IS NULL", [$ticket_id])));
+			return intval($wpdb->get_var($wpdb->prepare("SELECT EXISTS (SELECT * FROM {$wpdb->prefix}eer_ticket_summary WHERE ticket_id = %d AND level_id IS NULL)", [$ticket_id])));
 		}
 	}
 }
