@@ -45,7 +45,7 @@ class EER_Ticket_Summary
 	public function eer_get_ticket_by_event($event_id)
 	{
 		global $wpdb;
-		return $wpdb->get_results($wpdb->prepare("SELECT ets.*, et.title, et.has_levels, et.ticket_settings FROM {$wpdb->prefix}eer_ticket_summary AS ets LEFT JOIN {$wpdb->prefix}eer_tickets AS et ON ets.ticket_id = et.id WHERE et.event_id = %d ORDER BY ticket_id", [intval($event_id)]), OBJECT_K);
+		return $wpdb->get_results($wpdb->prepare("SELECT ets.*, et.title, et.is_solo, et.has_levels, et.ticket_settings FROM {$wpdb->prefix}eer_ticket_summary AS ets LEFT JOIN {$wpdb->prefix}eer_tickets AS et ON ets.ticket_id = et.id WHERE et.event_id = %d ORDER BY ticket_id", [intval($event_id)]), OBJECT_K);
 	}
 
 

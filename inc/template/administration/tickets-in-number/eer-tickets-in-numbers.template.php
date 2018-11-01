@@ -41,6 +41,7 @@ class EER_Template_Tickets_In_Numbers {
 				<tbody>
 				<?php
 				foreach (EER()->ticket_summary->eer_get_ticket_by_event($selected_event) as $id => $ticket_summary) {
+
 					if (((intval($ticket_summary->has_levels) === 1) && ($ticket_summary->level_id !== null)) || ((intval($ticket_summary->has_levels) !== 1) && ($ticket_summary->level_id === null))) {
 						?>
 						<tr>
@@ -48,9 +49,9 @@ class EER_Template_Tickets_In_Numbers {
 							<td><?php if ($ticket_summary->has_levels) {
 									echo json_decode($ticket_summary->ticket_settings)->levels->{$ticket_summary->level_id}->name;
 								} ?></td>
-							<td><?php echo $ticket_summary->registered_leaders . '/' . $ticket_summary->max_leaders . ' (' . $ticket_summary->waiting_leaders . ')'; ?></td>
-							<td><?php echo $ticket_summary->registered_followers . '/' . $ticket_summary->max_followers . ' (' . $ticket_summary->waiting_followers . ')'; ?></td>
-							<td><?php echo $ticket_summary->registered_tickets . '/' . $ticket_summary->max_tickets . ' (' . $ticket_summary->waiting_tickets . ')'; ?></td>
+							<td><?php echo !$ticket_summary->is_solo ? ($ticket_summary->registered_leaders . '/' . $ticket_summary->max_leaders . ' (' . $ticket_summary->waiting_leaders . ')') : ''; ?></td>
+							<td><?php echo !$ticket_summary->is_solo ? ($ticket_summary->registered_followers . '/' . $ticket_summary->max_followers . ' (' . $ticket_summary->waiting_followers . ')') : ''; ?></td>
+							<td><?php echo $ticket_summary->is_solo ? ($ticket_summary->registered_tickets . '/' . $ticket_summary->max_tickets . ' (' . $ticket_summary->waiting_tickets . ')') : ''; ?></td>
 						</tr>
 						<?php
 					}
