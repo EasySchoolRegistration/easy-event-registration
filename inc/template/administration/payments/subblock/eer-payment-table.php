@@ -5,16 +5,15 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Subblock_Template_Payment_Table
-{
+class EER_Subblock_Template_Payment_Table {
 
-	public function print_table($selected_event)
-	{
-		$enum_payment = new EER_Enum_Payment();
+	public function print_table($selected_event) {
+		$enum_payment  = new EER_Enum_Payment();
 		$user_can_edit = current_user_can('eer_payment_edit');
-		$event_data = EER()->event->get_event_data($selected_event);
+		$event_data    = EER()->event->get_event_data($selected_event);
 
 		$payments = EER()->payment->eer_get_payments_by_event($selected_event);
+		$ticket_unique = EER()->sold_ticket->eer_get_sold_ticket_unique_by_event($selected_event);
 
 		?>
 		<table id="datatable" class="eer-datatable table table-default table-bordered eer-payments-table">
@@ -39,12 +38,10 @@ class EER_Subblock_Template_Payment_Table
 			</thead>
 			<tbody class="list">
 			<?php
-			foreach ($payments
-
-			as $order_id => $payment) {
-			$user_data = get_userdata($payment->user_id);
-			$user_email = $user_data ? $user_data->user_email : '';
-			$user_name = $user_data ? $user_data->last_name . ' ' . $user_data->first_name : '';
+			foreach ($payments as $order_id => $payment) {
+			$user_data   = get_userdata($payment->user_id);
+			$user_email  = $user_data ? $user_data->user_email : '';
+			$user_name   = $user_data ? $user_data->last_name . ' ' . $user_data->first_name : '';
 			$paid_status = $enum_payment->get_status($payment);
 
 			?>
@@ -73,7 +70,13 @@ class EER_Subblock_Template_Payment_Table
 				<td class="student-surname"><?php echo $user_name; ?></td>
 				<td class="student-email"><?php echo $user_email; ?></td>
 				<td class="variable-symbol"><?php echo $payment->unique_key; ?></td>
-				<td class="variable-symbol"><?php echo ''; ?></td>
+				<td class="ticket-variable-symbol"><?php
+					if (isset($ticket_unique[$payment->order_id])) {
+						foreach ($ticket_unique[$payment->order_id] as $key => $ticket_key) {
+							echo $ticket_key . '<br>';
+						}
+					}
+					?></td>
 				<td><?php echo EER()->currency->eer_prepare_price($selected_event, $payment->to_pay, $event_data); ?></td>
 				<td class="student-paid"><?php echo(($payment && isset($payment->payment) && (!in_array($paid_status, [EER_Enum_Payment::NOT_PAYING, EER_Enum_Payment::VOUCHER]))) ? EER()->currency->eer_prepare_price($selected_event, $payment->payment, $event_data) : ''); ?></td>
 				<?php } ?>
@@ -83,8 +86,7 @@ class EER_Subblock_Template_Payment_Table
 	}
 
 
-	private function print_action_box($id)
-	{
+	private function print_action_box($id) {
 		?>
 		<ul class="eer-actions-box dropdown-menu" data-id="<?php echo $id; ?>">
 			<li class="eer-action confirm-payment">

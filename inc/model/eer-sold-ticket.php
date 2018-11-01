@@ -51,7 +51,7 @@ if (!class_exists('EER_Sold_Ticket')) {
 		public function eer_are_all_ordered_tickets_deleted($order_id) {
 			global $wpdb;
 
-			return filter_var($wpdb->get_var($wpdb->prepare("SELECT 1 FROM {$wpdb->prefix}eer_sold_tickets AS st WHERE st.order_id = %d AND st.status != %d", [intval($order_id), EER_Enum_Sold_Ticket_Status::DELETED])), FILTER_VALIDATE_BOOLEAN);
+			return $wpdb->get_var($wpdb->prepare("SELECT EXISTS(SELECT * FROM {$wpdb->prefix}eer_sold_tickets AS st WHERE st.order_id = %d AND st.status != %d)", [intval($order_id), EER_Enum_Sold_Ticket_Status::DELETED]));
 		}
 
 
@@ -68,11 +68,25 @@ if (!class_exists('EER_Sold_Ticket')) {
 			return $wpdb->get_var($wpdb->prepare("SELECT EXISTS(SELECT * FROM {$wpdb->prefix}eer_sold_tickets AS st JOIN {$wpdb->prefix}eer_events_orders AS eo ON st.order_id = eo.id WHERE st.ticket_id = %d AND eo.user_id = %d)", [intval($ticket_id), intval($user_id)]));
 		}
 
-		public function eer_get_sold_tickets_by_ticket($ticket_id)
-		{
+
+		public function eer_get_sold_tickets_by_ticket($ticket_id) {
 			global $wpdb;
 
 			return $wpdb->get_results($wpdb->prepare("SELECT st.* FROM {$wpdb->prefix}eer_sold_tickets AS st WHERE st.ticket_id = %d", [intval($ticket_id)]));
+		}
+
+
+		public function eer_get_sold_ticket_unique_by_event($event_id) {
+			global $wpdb;
+			$orders = [];
+
+			$results = $wpdb->get_results($wpdb->prepare("SELECT st.order_id, st.unique_key FROM {$wpdb->prefix}eer_sold_tickets AS st JOIN {$wpdb->prefix}eer_events_orders AS eo ON st.order_id = eo.id WHERE eo.event_id = %d", [$event_id]));
+
+			foreach ($results as $key => $result) {
+				$orders[$result->order_id][] = $result->unique_key;
+			}
+
+			return $orders;
 		}
 	}
 }
