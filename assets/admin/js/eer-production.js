@@ -306,6 +306,23 @@ jQuery(function ($) {
 					}
 				});
 			}
+		}).on("click", ".eer-orders .eer-action.remove-forever", function () {
+			var order = $(this).closest("tr");
+
+			var answer = confirm("Do you really want to delete this order with all tickets?");
+			if (answer === true) {
+				var data = {
+					"action": "eer_remove_order_forever",
+					"order_id": order.data("id")
+				};
+				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+				/** global: eer_ajax_object */
+				$.post(eer_ajax_object.ajaxurl, data, function (response) {
+					if (response === 1) {
+						order.remove();
+					}
+				});
+			}
 		}).on("click", ".eer-sold-tickets .eer-action.remove", function () {
 			var sold_ticket = $(this).closest("tr");
 
@@ -318,7 +335,7 @@ jQuery(function ($) {
 				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
 				/** global: eer_ajax_object */
 				$.post(eer_ajax_object.ajaxurl, data, function (response) {
-					if (response == 1) {
+					if (response === 1) {
 						sold_ticket.removeClass("eer-status-0").removeClass("eer-status-1").addClass("eer-status-2");
 					}
 				});
@@ -335,7 +352,7 @@ jQuery(function ($) {
 				// We can also pass the url value separately from ajaxurl for front end AJAX implementations
 				/** global: eer_ajax_object */
 				$.post(eer_ajax_object.ajaxurl, data, function (response) {
-					if (response == 1) {
+					if (response === 1) {
 						sold_ticket.remove();
 					}
 				});

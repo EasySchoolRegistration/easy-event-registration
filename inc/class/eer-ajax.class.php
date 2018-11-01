@@ -25,8 +25,17 @@ class EER_Ajax {
 
 	public static function eer_remove_order_callback() {
 		if (isset($_POST['order_id'])) {
-			$worker_ajax = new EER_Worker_Ajax();
-			echo $worker_ajax->remove_order($_POST['order_id']);
+			wp_send_json(apply_filters('eer_remove_order', $_POST['order_id']));
+			wp_die();
+		}
+		echo -1;
+		wp_die();
+	}
+
+
+	public static function eer_remove_order_forever_callback() {
+		if (isset($_POST['order_id'])) {
+			wp_send_json(apply_filters('eer_remove_order_forever', $_POST['order_id']));
 			wp_die();
 		}
 		echo -1;
@@ -36,7 +45,7 @@ class EER_Ajax {
 
 	public static function eer_remove_sold_ticket_callback() {
 		if (isset($_POST['sold_ticket_id'])) {
-			do_action('eer_remove_sold_ticket', $_POST['sold_ticket_id']);
+			wp_send_json(apply_filters('eer_remove_sold_ticket', $_POST['sold_ticket_id']));
 			wp_die();
 		}
 		echo -1;
@@ -95,7 +104,7 @@ class EER_Ajax {
 			$sold_ticket = EER()->sold_ticket->eer_get_sold_tickets_data($_POST['sold_ticket_id']);
 
 			if ($sold_ticket && ($sold_ticket->status == EER_Enum_Sold_Ticket_Status::DELETED)) {
-				do_action('eer_remove_sold_ticket_forever', $sold_ticket);
+				wp_send_json(apply_filters('eer_remove_sold_ticket_forever', $sold_ticket));
 				wp_die();
 			}
 		}
@@ -139,6 +148,7 @@ add_action('wp_ajax_nopriv_eer_process_order', ['EER_Ajax', 'eer_process_order_c
 //Backend
 add_action('wp_ajax_eer_send_tickets', ['EER_Ajax', 'eer_send_tickets_callback']);
 add_action('wp_ajax_eer_remove_order', ['EER_Ajax', 'eer_remove_order_callback']);
+add_action('wp_ajax_eer_remove_order_forever', ['EER_Ajax', 'eer_remove_order_forever_callback']);
 add_action('wp_ajax_eer_remove_sold_ticket', ['EER_Ajax', 'eer_remove_sold_ticket_callback']);
 add_action('wp_ajax_eer_confirm_sold_ticket', ['EER_Ajax', 'eer_confirm_sold_ticket_callback']);
 add_action('wp_ajax_eer_save_payment', ['EER_Ajax', 'eer_save_payment_callback']);

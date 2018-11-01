@@ -4,19 +4,17 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Subblock_Order_Table
-{
+class EER_Subblock_Order_Table {
 
-	public function print_block($event_id)
-	{
-		$orders = EER()->order->eer_get_orders_by_event($event_id);
+	public function print_block($event_id) {
+		$orders     = EER()->order->eer_get_orders_by_event($event_id);
 		$event_data = EER()->event->get_event_data($event_id);
 
 		$users_data = [];
 
-		$hosting_enabled = intval(EER()->event->eer_get_event_option($event_data, 'hosting_enabled', -1)) === 1;
-		$tshirts_enabled = intval(EER()->event->eer_get_event_option($event_data, 'tshirts_enabled', -1)) === 1;
-		$food_enabled = intval(EER()->event->eer_get_event_option($event_data, 'food_enabled', -1)) === 1;
+		$hosting_enabled       = intval(EER()->event->eer_get_event_option($event_data, 'hosting_enabled', -1)) === 1;
+		$tshirts_enabled       = intval(EER()->event->eer_get_event_option($event_data, 'tshirts_enabled', -1)) === 1;
+		$food_enabled          = intval(EER()->event->eer_get_event_option($event_data, 'food_enabled', -1)) === 1;
 		$offer_hosting_enabled = intval(EER()->event->eer_get_event_option($event_data, 'offer_hosting_enabled', -1)) === 1;
 
 		?>
@@ -62,10 +60,10 @@ class EER_Subblock_Order_Table
 				}
 
 				$user_data_exists = isset($users_data[$order->user_id]) && $users_data[$order->user_id];
-				$order_info = json_decode($order->order_info);
+				$order_info       = json_decode($order->order_info);
 
 				?>
-				<tr class="eer-row eer-status-<?php echo $order->status; ?>"
+				<tr class="<?php echo apply_filters('eer_get_order_row_classes', $order); ?>"
 				    data-id="<?php echo $order->id; ?>"
 				    data-phone="<?php echo(isset($order_info->phone) ? $order_info->phone : ''); ?>"
 				    data-country="<?php echo(isset($order_info->country) ? $order_info->country : ''); ?>"
@@ -112,8 +110,7 @@ class EER_Subblock_Order_Table
 	}
 
 
-	private function print_action_box($id)
-	{
+	private function print_action_box($id) {
 		?>
 		<ul class="eer-actions-box dropdown-menu" data-id="<?php echo $id; ?>">
 			<li class="eer-action edit">
@@ -128,6 +125,12 @@ class EER_Subblock_Order_Table
 					<span><?php _e('Remove', 'easy-event-registration'); ?></span>
 				</a>
 			</li>
+			<li class="eer-action remove-forever">
+				<a href="javascript:;">
+					<i class="fa fa-close"></i>
+					<span><?php _e('Remove forever', 'easy-event-registration'); ?></span>
+				</a>
+			</li>
 			<li class="eer-action send-tickets">
 				<a href="javascript:;">
 					<i class="fa fa-ticket"></i>
@@ -137,4 +140,17 @@ class EER_Subblock_Order_Table
 		</ul>
 		<?php
 	}
+
+
+	public static function eer_get_row_classes($order) {
+		$classes = [
+			'eer-row',
+			'eer-order',
+			'eer-status-' . $order->status
+		];
+
+		return implode(' ', $classes);
+	}
 }
+
+add_filter('eer_get_order_row_classes', ['EER_Subblock_Order_Table', 'eer_get_row_classes']);

@@ -104,6 +104,18 @@ table.dataTable tbody tr.status-2 {
 .eer-datatable .eer-row.eer-ticket.eer-to-remove .actions .remove-forever {
   display: inline-block; }
 
+.eer-datatable .eer-row.eer-order .remove {
+  display: inline-block; }
+
+.eer-datatable .eer-row.eer-order .remove-forever {
+  display: none; }
+
+.eer-datatable .eer-row.eer-order.eer-status-1 .actions .remove, .eer-datatable .eer-row.eer-order.eer-status-1 .actions .send-tickets {
+  display: none; }
+
+.eer-datatable .eer-row.eer-order.eer-status-1 .actions .remove-forever {
+  display: inline-block; }
+
 .eer-settings.eer-add-over-limit .eer-ticket-shop-form {
   width: auto; }
 

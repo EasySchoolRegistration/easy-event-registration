@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 
 class EER_Worker_Ajax {
 
-	public function remove_order($order_id) {
+	public static function eer_remove_order_callback($order_id) {
 		if ($order_id) {
 			global $wpdb;
 
@@ -43,10 +43,26 @@ class EER_Worker_Ajax {
 				]);
 			}
 
-			return true;
+			return 1;
 		}
 
-		return false;
+		return -1;
+	}
+
+
+	public static function eer_remove_order_forever_callback($order_id) {
+		global $wpdb;
+
+		if ($order_id !== null) {
+			$wpdb->delete($wpdb->prefix . 'eer_events_orders', [
+				'id'     => intval($order_id),
+				'status' => EER_Enum_Order_Status::DELETED,
+			]);
+
+			return 1;
+		}
+
+		return -1;
 	}
 
 
@@ -216,23 +232,27 @@ class EER_Worker_Ajax {
 	public static function eer_remove_ticket_callback($ticket_id) {
 		$sold_tickets = EER()->sold_ticket->eer_get_sold_tickets_by_ticket($ticket_id);
 		foreach ($sold_tickets as $key => $ticket) {
-			do_action('eer_remove_sold_ticket', $ticket->id);
+			apply_filters('eer_remove_sold_ticket', $ticket->id);
 		}
 
 		global $wpdb;
 		$wpdb->update("{$wpdb->prefix}eer_tickets", ['to_remove' => 1], ['id' => $ticket_id]);
+
+		return 1;
 	}
 
 
 	public static function eer_remove_ticket_forever_callback($ticket_id) {
 		$sold_tickets = EER()->sold_ticket->eer_get_sold_tickets_by_ticket($ticket_id);
 		foreach ($sold_tickets as $key => $ticket) {
-			do_action('eer_remove_sold_ticket_forever', $ticket->id);
+			apply_filters('eer_remove_sold_ticket_forever', $ticket->id);
 		}
 
 		global $wpdb;
 		$wpdb->delete("{$wpdb->prefix}eer_ticket_summary", ['ticket_id' => $ticket_id]);
 		$wpdb->delete("{$wpdb->prefix}eer_tickets", ['id' => $ticket_id]);
+
+		return 1;
 	}
 
 }
@@ -240,5 +260,7 @@ class EER_Worker_Ajax {
 add_filter('eer_add_over_limit', ['EER_Worker_Ajax', 'eer_add_over_limit_callback']);
 add_filter('eer_remove_ticket', ['EER_Worker_Ajax', 'eer_remove_ticket_callback']);
 add_filter('eer_remove_ticket_forever', ['EER_Worker_Ajax', 'eer_remove_ticket_forever_callback']);
-add_action('eer_remove_sold_ticket', ['EER_Worker_Ajax', 'eer_remove_sold_ticket_callback']);
-add_action('eer_remove_sold_ticket_forever', ['EER_Worker_Ajax', 'eer_remove_sold_ticket_forever_callback']);
+add_filter('eer_remove_order', ['EER_Worker_Ajax', 'eer_remove_order_callback']);
+add_filter('eer_remove_order_forever', ['EER_Worker_Ajax', 'eer_remove_order_forever_callback']);
+add_filter('eer_remove_sold_ticket', ['EER_Worker_Ajax', 'eer_remove_sold_ticket_callback']);
+add_filter('eer_remove_sold_ticket_forever', ['EER_Worker_Ajax', 'eer_remove_sold_ticket_forever_callback']);

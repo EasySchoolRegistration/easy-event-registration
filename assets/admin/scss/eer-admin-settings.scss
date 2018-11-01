@@ -162,6 +162,25 @@ table.dataTable tbody tr.status-2 {
 		}
 	  }
 	}
+	&.eer-order {
+	   .remove {
+		 display: inline-block;
+	   }
+	   .remove-forever {
+		 display: none;
+	   }
+	  
+	   &.eer-status-1 {
+		 .actions {
+		   .remove, .send-tickets {
+			 display: none;
+		   }
+		   .remove-forever {
+			 display: inline-block;
+		   }
+		 }
+	   }
+	 }
   }
 }
 
