@@ -14,7 +14,6 @@ class EER_Enqueue_Scripts {
 
 	private static function enqueue_web_style_scripts() {
 		wp_enqueue_style('eer_web_style', EER_PLUGIN_URL . 'inc/assets/web/css/eer-web.css', [], EER_VERSION);
-		wp_enqueue_style('eer_themify_icons_style', EER_PLUGIN_URL . 'libs/themify-icons/themify-icons.css', [], EER_VERSION);
 		wp_enqueue_style('eer_admin_font_awesome_style', EER_PLUGIN_URL . 'libs/font-awesome/css/font-awesome.css', [], EER_VERSION);
 	}
 
@@ -41,7 +40,6 @@ class EER_Enqueue_Scripts {
 
 		if (self::check_page_base(EER_Template_Add_Over_Limit::MENU_SLUG)) {
 			wp_enqueue_style('eer_web_style', EER_PLUGIN_URL . 'inc/assets/web/css/eer-web.css', [], EER_VERSION);
-			wp_enqueue_style('eer_themify_icons_style', EER_PLUGIN_URL . 'libs/themify-icons/themify-icons.css', [], EER_VERSION);
 			wp_enqueue_script('eer_admin_events_script', EER_PLUGIN_URL . 'inc/assets/admin/js/eer-production.js', ['jquery'], EER_VERSION);
 			wp_enqueue_script('eer_spin_js_script', EER_PLUGIN_URL . 'libs/spin/js/spin.min.js', ['jquery'], EER_VERSION);
 			self::eer_include_admin_scripts();
