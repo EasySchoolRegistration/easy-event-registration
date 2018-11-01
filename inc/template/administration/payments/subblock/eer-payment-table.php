@@ -32,6 +32,7 @@ class EER_Subblock_Template_Payment_Table
 				<th class="filter-disabled no-sort"><?php _e('Name', 'easy-event-registration') ?></th>
 				<th class="filter-disabled no-sort"><?php _e('Email', 'easy-event-registration') ?></th>
 				<th class="filter-disabled no-sort"><?php _e('Order code', 'easy-event-registration') ?></th>
+				<th class="filter-disabled no-sort"><?php _e('Ticket codes', 'easy-event-registration') ?></th>
 				<th class="no-sort"><?php _e('To pay', 'easy-event-registration') ?></th>
 				<th class="no-sort"><?php _e('Paid', 'easy-event-registration') ?></th>
 			</tr>
@@ -72,6 +73,7 @@ class EER_Subblock_Template_Payment_Table
 				<td class="student-surname"><?php echo $user_name; ?></td>
 				<td class="student-email"><?php echo $user_email; ?></td>
 				<td class="variable-symbol"><?php echo $payment->unique_key; ?></td>
+				<td class="variable-symbol"><?php echo ''; ?></td>
 				<td><?php echo EER()->currency->eer_prepare_price($selected_event, $payment->to_pay, $event_data); ?></td>
 				<td class="student-paid"><?php echo(($payment && isset($payment->payment) && (!in_array($paid_status, [EER_Enum_Payment::NOT_PAYING, EER_Enum_Payment::VOUCHER]))) ? EER()->currency->eer_prepare_price($selected_event, $payment->payment, $event_data) : ''); ?></td>
 				<?php } ?>
