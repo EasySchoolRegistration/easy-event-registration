@@ -65,7 +65,7 @@ if (!class_exists('EER_Sold_Ticket')) {
 		public function eer_ticket_order_exists($ticket_id, $user_id) {
 			global $wpdb;
 
-			return intval($wpdb->get_var($wpdb->prepare("SELECT 1 FROM {$wpdb->prefix}eer_sold_tickets AS st JOIN {$wpdb->prefix}eer_events_orders AS eo ON st.order_id = eo.id WHERE st.ticket_id = %d AND eo.user_id = %d", [intval($ticket_id), $user_id]))) > 0;
+			return $wpdb->get_var($wpdb->prepare("SELECT EXISTS(SELECT * FROM {$wpdb->prefix}eer_sold_tickets AS st JOIN {$wpdb->prefix}eer_events_orders AS eo ON st.order_id = eo.id WHERE st.ticket_id = %d AND eo.user_id = %d)", [intval($ticket_id), intval($user_id)]));
 		}
 
 		public function eer_get_sold_tickets_by_ticket($ticket_id)

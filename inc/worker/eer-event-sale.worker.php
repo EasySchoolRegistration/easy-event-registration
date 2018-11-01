@@ -126,7 +126,7 @@ class EER_Worker_Event_Sale
 				$user = get_user_by('email', $data->user_info->email);
 				foreach ($data->tickets as $ticket_id => $ticket) {
 					$ticket_data = EER()->ticket->get_ticket_data($ticket_id);
-					if ($ticket_data->once_per_user && EER()->sold_ticket->eer_ticket_order_exists($ticket_id, $user->ID)) {
+					if ((intval($ticket_data->once_per_user) === 1) && EER()->sold_ticket->eer_ticket_order_exists($ticket_id, $user->ID)) {
 						$eer_reg_errors->add('tickets.' . $ticket_id . '.once_per_user', __('You already registered this ticket on given email. You can register this ticket just once per user.', 'easy-event-registration'));
 					}
 				}
