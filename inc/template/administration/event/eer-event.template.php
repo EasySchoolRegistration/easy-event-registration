@@ -15,7 +15,12 @@ class EER_Template_Event
 		if (isset($_POST['eer_event_submit'])) {
 			$worker_event = new EER_Worker_Event();
 			$worker_event->process_event($_POST);
+			if (isset($_GET['event_id']) && (intval($_GET['event_id']) === -1)) {
+				unset($_GET['event_id']);
+			}
 		}
+
+		$eer_edited_event_id = isset($_GET['event_id']) ? sanitize_text_field($_GET['event_id']) : null;
 
 		$subblock_events_edit_form = new EER_Subblock_Event_Editor();
 		$subblock_events_table = new EER_Subblock_Event_Table();
@@ -23,11 +28,13 @@ class EER_Template_Event
 		ob_start();
 		?>
 		<div class="wrap tabbable boxed parentTabs">
-			<h1 class="wp-heading-inline"><?php _e('Events', 'easy-event-registration'); ?></h1>
-			<a href="#" class="eer-add-new page-title-action"><?php _e('Add new event', 'easy-event-registration'); ?></a>
 			<?php
-			$subblock_events_edit_form->print_block();
-			$subblock_events_table->print_block();
+			$event = EER()->event->get_event_data($eer_edited_event_id);
+			if ($eer_edited_event_id && !empty($event)) {
+				$subblock_events_edit_form->print_block($eer_edited_event_id);
+			} else {
+				$subblock_events_table->print_block();
+			}
 			?>
 		</div><!-- #tab_container-->
 		<?php

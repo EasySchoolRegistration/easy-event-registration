@@ -4,13 +4,13 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Subblock_Event_Table
-{
+class EER_Subblock_Event_Table {
 
-	public function print_block()
-	{
+	public function print_block() {
 		$events = EER()->event->load_events();
 		?>
+		<h1 class="wp-heading-inline"><?php _e('Events', 'easy-event-registration'); ?></h1>
+		<a href="<?php echo esc_url(add_query_arg('event_id', -1)) ?>" class="eer-add-new page-title-action"><?php _e('Add new event', 'easy-event-registration'); ?></a>
 		<table id="datatable" class="table table-default table-bordered eer-datatable" data-eer-columns="<?php do_action('eer_get_event_columns'); ?>">
 			<colgroup>
 				<col width="10">
@@ -51,12 +51,11 @@ class EER_Subblock_Event_Table
 	}
 
 
-	private function print_action_box($id)
-	{
+	private function print_action_box($id) {
 		?>
 		<ul class="eer-actions-box dropdown-menu" data-id="<?php echo $id; ?>">
 			<li class="eer-action edit">
-				<a href="javascript:;">
+				<a href="<?php echo esc_url(add_query_arg('event_id', $id)) ?>">
 					<i class="fa fa-edit"></i>
 					<span><?php _e('Edit', 'easy-event-registration'); ?></span>
 				</a>
@@ -66,14 +65,12 @@ class EER_Subblock_Event_Table
 	}
 
 
-	public static function get_columns()
-	{
-		echo implode(';', array_keys((array)EER()->event->get_fields()));
+	public static function get_columns() {
+		echo implode(';', array_keys((array) EER()->event->get_fields()));
 	}
 
 
-	public static function print_event_data($data)
-	{
+	public static function print_event_data($data) {
 		$fields = EER()->event->get_fields();
 		foreach ($data as $name => $value) {
 			if ((is_array($fields) && isset($fields[$name]) && ($fields[$name]['type'] == 'timestamp')) || (is_object($fields) && isset($fields->$name) && ($fields->$name['type'] == 'timestamp'))) {
@@ -87,8 +84,7 @@ class EER_Subblock_Event_Table
 	}
 
 
-	public static function get_row_classes($event)
-	{
+	public static function get_row_classes($event) {
 		$classes = [
 			'eer-row',
 			'eer-event'

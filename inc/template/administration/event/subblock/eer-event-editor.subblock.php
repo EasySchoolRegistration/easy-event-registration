@@ -16,22 +16,23 @@ class EER_Subblock_Event_Editor
 	}
 
 
-	public function print_block()
+	public function print_block($event_id)
 	{
 		$settings_tabs = EER()->event->eer_get_event_settings_tabs();
 		$settings_tabs = empty($settings_tabs) ? [] : $settings_tabs;
 		$active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'event_general';
 		$active_tab = array_key_exists($active_tab, $settings_tabs) ? $active_tab : 'event_general';
 		$sections = EER()->event->eer_get_event_settings_sections();
-		?>
-		<div class="eer-edit-box">
-			<span class="close"><i class="fa fa-close"></i></span>
 
+		$event = EER()->event->get_event_data($event_id);
+		?>
+		<div>
+			<h1 class="wp-heading-inline"><?php _e('Edit Event', 'easy-event-registration'); ?></h1>
 			<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" class="tab-content">
 				<h3><?php _e('Main info', 'easy-event-registration'); ?></h3>
 				<table>
 					<?php
-					do_action('eer_event_edit_form_input');
+						do_action('eer_event_edit_form_input', $event);
 					?>
 				</table>
 				<h3><?php _e('Settings', 'easy-event-registration'); ?></h3>
@@ -77,7 +78,7 @@ class EER_Subblock_Event_Editor
 									?>
 									<table id="<?php echo $sub_section_id; ?>" class="tab-pane form-table<?php echo($number === 0 ? ' active' : '') ?>">
 										<?php
-										$this->eer_print_events_settings_tab($section_id, $sub_section_id);
+										$this->eer_print_events_settings_tab($section_id, $sub_section_id, $event);
 										?>
 									</table>
 									<?php
@@ -91,7 +92,7 @@ class EER_Subblock_Event_Editor
 				}
 				?>
 				<?php
-				do_action('eer_event_edit_form_submit');
+				do_action('eer_event_edit_form_submit', $event_id);
 				?>
 			</form>
 		</div>
@@ -99,59 +100,61 @@ class EER_Subblock_Event_Editor
 	}
 
 
-	public static function input_title()
+	public static function input_title($event)
 	{
 		?>
 		<tr>
 			<th><?php _e('Title', 'easy-event-registration'); ?></th>
-			<td><input id="title" required type="text" name="title" class="eer-input"></td>
+			<td><input id="title" required type="text" name="title" class="eer-input" value="<?php echo !empty((array) $event) ? $event->title : ''; ?>"></td>
 		</tr>
 		<?php
 	}
 
 
-	public static function input_sale_start()
+	public static function input_sale_start($event)
 	{
 		?>
 		<tr>
 			<th><?php _e('Start date and time of sale', 'easy-event-registration'); ?></th>
 			<td>
-				<input id="sale_start" name="sale_start" type="datetime-local" class="eer-input">
+				<input id="sale_start" name="sale_start" type="datetime-local" class="eer-input" value="<?php echo !empty((array) $event) ? strftime('%Y-%m-%dT%H:%M:%S', strtotime($event->sale_start)) : ''; ?>">
 			</td>
 		</tr>
 		<?php
 	}
 
 
-	public static function input_sale_end()
+	public static function input_sale_end($event)
 	{
 		?>
 		<tr>
 			<th><?php _e('End date and time of sale', 'easy-event-registration'); ?></th>
 			<td>
-				<input id="sale_end" name="sale_end" type="datetime-local" class="eer-input">
+				<input id="sale_end" name="sale_end" type="datetime-local" class="eer-input" value="<?php echo !empty((array) $event) ? strftime('%Y-%m-%dT%H:%M:%S', strtotime($event->sale_end)) : ''; ?>">
 			</td>
 		</tr>
 		<?php
 	}
 
 
-	public static function input_submit()
+	public static function input_submit($event_id = -1)
 	{
 		?>
 		<tr>
 			<th></th>
 			<td>
-				<input type="hidden" name="event_id">
+				<?php if (intval($event_id) !== -1) { ?>
+					<input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
+				<?php } ?>
 				<input type="submit" name="eer_event_submit" value="<?php _e('Save', 'easy-event-registration'); ?>">
 			</td>
 		</tr>
 		<?php
 	}
 
-	public static function eer_print_events_settings_tab($section_id, $sub_section_id)
+	public static function eer_print_events_settings_tab($section_id, $sub_section_id, $data = [])
 	{
 		$model_settings = new EER_Models_Settings_Helper_Templater();
-		$model_settings->eer_print_settings_tab('event', EER()->event->eer_get_event_settings_fields_to_print($section_id, $sub_section_id));
+		$model_settings->eer_print_settings_tab('event', EER()->event->eer_get_event_settings_fields_to_print($section_id, $sub_section_id), $data);
 	}
 }
