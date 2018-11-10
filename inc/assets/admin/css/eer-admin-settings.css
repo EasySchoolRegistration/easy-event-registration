@@ -116,6 +116,29 @@ table.dataTable tbody tr.status-2 {
 .eer-datatable .eer-row.eer-order.eer-status-1 .actions .remove-forever {
   display: inline-block; }
 
+.eer-datatable .eer-note .far.fa-comment-alt {
+  margin: 0 auto;
+  display: block;
+  width: 14px;
+  cursor: pointer; }
+
+.eer-datatable .eer-note .fas.fa-comment-alt {
+  margin: 0 5px 0 0;
+  display: none;
+  width: 14px;
+  float: left;
+  cursor: pointer; }
+
+.eer-datatable .eer-note .eer-note-message {
+  display: none;
+  min-width: 150px; }
+
+.eer-datatable .eer-header-note .fa-comment-alt {
+  cursor: pointer; }
+
+.eer-datatable .eer-header-note .fas.fa-comment-alt.eer-hide-all-notes {
+  display: none; }
+
 .eer-settings.eer-add-over-limit .eer-ticket-shop-form {
   width: auto; }
 

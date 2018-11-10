@@ -27,7 +27,9 @@ class EER_Subblock_Template_Payment_Table {
 				<?php if ($user_can_edit) { ?>
 					<th class="filter-disabled no-sort eer-hide-print"><?php _e('Actions', 'easy-event-registration') ?></th>
 				<?php } ?>
-				<th class="filter-disabled no-sort"><?php _e('Note', 'easy-event-registration') ?></th>
+				<th class="filter-disabled no-sort eer-header-note"><?php _e('Note', 'easy-event-registration'); ?>
+					<i class="far fa-comment-alt eer-show-all-notes"></i>
+					<i class="fas fa-comment-alt eer-hide-all-notes"></i></th>
 				<th class="filter-disabled no-sort"><?php _e('Name', 'easy-event-registration') ?></th>
 				<th class="filter-disabled no-sort"><?php _e('Email', 'easy-event-registration') ?></th>
 				<th class="filter-disabled no-sort"><?php _e('Order code', 'easy-event-registration') ?></th>
@@ -64,8 +66,13 @@ class EER_Subblock_Template_Payment_Table {
 						</div>
 					</td>
 				<?php } ?>
-				<td>
 
+				<td class="eer-note">
+					<?php if (($payment->note !== null) && ($payment->note !== "")) { ?>
+						<i class="far fa-comment-alt eer-show-note" title="<?php echo $payment->note; ?>"></i>
+						<i class="fas fa-comment-alt eer-hide-note"></i>
+						<span class="eer-note-message"><?php echo $payment->note; ?></span>
+					<?php } ?>
 				</td>
 				<td class="student-surname"><?php echo $user_name; ?></td>
 				<td class="student-email"><?php echo $user_email; ?></td>

@@ -28,7 +28,9 @@ class EER_Subblock_Order_Table {
 			<tr>
 				<th class="filter-disabled"><?php _e('Order Time', 'easy-event-registration'); ?></th>
 				<th class="filter-disabled no-sort" data-key="eer_actions"><?php _e('Actions', 'easy-event-registration'); ?></th>
-				<th class="filter-disabled no-sort"><?php _e('Note', 'easy-event-registration'); ?></th>
+				<th class="filter-disabled eer-header-note"><?php _e('Note', 'easy-event-registration'); ?>
+					<i class="far fa-comment-alt eer-show-all-notes"></i>
+					<i class="fas fa-comment-alt eer-hide-all-notes"></i></th>
 				<th class="filter-disabled"><?php _e('Code', 'easy-event-registration'); ?></th>
 				<th class="no-sort"><?php _e('Name', 'easy-event-registration'); ?></th>
 				<th class="no-sort"><?php _e('Surname', 'easy-event-registration'); ?></th>
@@ -78,8 +80,13 @@ class EER_Subblock_Order_Table {
 							<?php $this->print_action_box($order->id); ?>
 						</div>
 					</td>
-					<td><?php if (($order_info->note !== null) && ($order_info->note !== "")) { ?><i
-							class="fa fa-commenting" title="<?php echo $order_info->note; ?>"></i><?php } ?></td>
+					<td class="eer-note">
+						<?php if (($order_info->note !== null) && ($order_info->note !== "")) { ?>
+							<i class="far fa-comment-alt eer-show-note" title="<?php echo $order_info->note; ?>"></i>
+							<i class="fas fa-comment-alt eer-hide-note"></i>
+							<span class="eer-note-message"><?php echo $order_info->note; ?></span>
+						<?php } ?>
+					</td>
 					<td><?php echo $order->unique_key; ?></td>
 					<td><?php echo($user_data_exists ? $users_data[$order->user_id]->first_name : ''); ?></td>
 					<td><?php echo($user_data_exists ? $users_data[$order->user_id]->last_name : ''); ?></td>

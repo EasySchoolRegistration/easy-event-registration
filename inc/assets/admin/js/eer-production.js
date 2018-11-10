@@ -483,6 +483,20 @@ jQuery(function ($) {
 					}, 2000);
 				}
 			});
+		}).on("click", ".eer-show-note", function () {
+			var parent = $(this).parent();
+			$(".fas.fa-comment-alt, .eer-note-message", parent).css("display", "block");
+			$(".far.fa-comment-alt", parent).hide();
+		}).on("click", ".eer-hide-note", function () {
+			var parent = $(this).parent();
+			$(".fas.fa-comment-alt, .eer-note-message", parent).hide();
+			$(".far.fa-comment-alt", parent).css("display", "block");
+		}).on("click", ".eer-show-all-notes", function () {
+			$(".eer-header-note .fas.fa-comment-alt, .eer-note .fas.fa-comment-alt, .eer-note .eer-note-message").css("display", "block");
+			$(".eer-header-note .far.fa-comment-alt, .eer-note .far.fa-comment-alt").hide();
+		}).on("click", ".eer-hide-all-notes", function () {
+			$(".eer-header-note .far.fa-comment-alt, .eer-note .far.fa-comment-alt").css("display", "block");
+			$(".eer-header-note .fas.fa-comment-alt, .eer-note .fas.fa-comment-alt, .eer-note .eer-note-message").hide();
 		});
 
 		$("input[name=\"eer-select-all\"]").on("change", function () {
