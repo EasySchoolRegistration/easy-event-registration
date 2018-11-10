@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_PDF_Ticket
+class EER_PDF_Ticket_Generator
 {
 
 	public function generate_pdf($ticket_id, $code)
@@ -44,11 +44,11 @@ class EER_PDF_Ticket
 		$pdf->SetTextColor($r, $g, $b);
 		$pdf->SetFont('helvetica', '', 20, '', 'default', true);
 		$pdf->setCellPaddings(102, 10, 0, 0);
-		$pdf->MultiCell(200, 50, "Ticket number: " . $code, 0, 'L', false, 1, '', '', true, 0, false, true, 0, 'T', false);
+		$pdf->MultiCell(200, 20, "Ticket number: " . $code, 0, 'L', false, 1, '', '', true, 0, false, true, 0, 'T', false);
 
 		$pdf->SetTextColor(0, 0, 0);
 		$pdf->SetFont('helvetica', '', 10, '', 'default', true);
-		$pdf->setCellPaddings(10, 10, 0, 0);
+		$pdf->setCellPaddings(10, 50, 0, 0);
 		$pdf->MultiCell(150, 100, $ticket_data->pdfticket_design_description, 0, 'L', false, 1, '', '', true, 0, false, true, 0, 'T', false);
 		$pdf->Output(EER_PLUGIN_DIR . 'temp/' . $name, 'F');
 

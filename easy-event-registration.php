@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Easy Event Registration
- * Plugin URI: http://easyschoolregistrations.com/
+ * Plugin URI: https://easyschoolregistrations.com/
  * Description: System for Easy Event Registration
  * Version: 1.1.3
  * Author: Zbyněk Nedoma
- * Author URI: http://easyschoolregistrations.com/
+ * Author URI: https://easyschoolregistrations.com/
  * License: A "Slug" license name e.g. GPL12
  * Plugin Slug: eer
  */
@@ -87,7 +87,7 @@ if (!class_exists('Easy_Event_Registration')) {
 		public $payment;
 
 		/**
-		 * @var EER_PDF_Ticket
+		 * @var EER_PDF_Ticket_Generator
 		 */
 		public $pdf_ticket;
 
@@ -155,7 +155,7 @@ if (!class_exists('Easy_Event_Registration')) {
 				self::$instance->order              = new EER_Order();
 				self::$instance->order_status       = new EER_Enum_Order_Status();
 				self::$instance->payment            = new EER_Payment();
-				self::$instance->pdf_ticket         = new EER_PDF_Ticket();
+				self::$instance->pdf_ticket         = new EER_PDF_Ticket_Generator();
 				self::$instance->pairing_mode       = new EER_Enum_Pairing_Mode();
 				self::$instance->settings           = new EER_Settings();
 				self::$instance->sold_ticket        = new EER_Sold_Ticket();
