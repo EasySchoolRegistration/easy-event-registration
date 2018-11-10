@@ -21,7 +21,11 @@ class EER_Worker_Email {
 		$headers[] = "Content-Transfer-Encoding: base64";
 		$headers[] = "From: " . EER()->event->eer_get_event_option($event_data, 'from_name') . " <" . EER()->event->eer_get_event_option($event_data, 'from_email') . ">";
 
-		$body = base64_encode(wpautop($body));
+		if (ESR()->settings->esr_get_option('bcc_email')) {
+			$headers[] = "Bcc: " . EER()->event->eer_get_event_option($event_data, 'bcc_email');
+		}
+
+		$body = chunk_split(base64_encode(wpautop($body)));
 
 		$subject = "=?utf-8?B?" . base64_encode($subject) . "?=";
 
