@@ -50,7 +50,7 @@ class EER_Ticket {
 						'name'        => __('Enable levels', 'easy-event-registration'),
 						'desc'        => '',
 						'type'        => 'checkbox',
-						'std'         => true,
+						'std'         => false,
 						'field_class' => 'eer-input'
 					],
 					'levels'         => [
@@ -85,7 +85,7 @@ class EER_Ticket {
 						'name'        => __('Enable PDF ticket', 'easy-event-registration'),
 						'desc'        => '',
 						'type'        => 'checkbox',
-						'std'         => true,
+						'std'         => false,
 						'field_class' => 'eer-input'
 					],
 					'pdfticket_design_background'  => [
@@ -237,6 +237,20 @@ class EER_Ticket {
 		}
 
 		return $return;
+	}
+
+
+	/**
+	 * Check if ticket exists
+	 *
+	 * @param int $ticket_id
+	 *
+	 * @return boolean
+	 */
+	public function eer_check_ticket_exists($ticket_id) {
+		global $wpdb;
+
+		return intval($wpdb->get_var($wpdb->prepare("SELECT EXISTS(SELECT * FROM {$wpdb->prefix}eer_tickets WHERE id = %d)", [$ticket_id]))) === 1;
 	}
 
 

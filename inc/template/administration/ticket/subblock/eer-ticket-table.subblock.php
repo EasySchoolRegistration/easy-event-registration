@@ -11,6 +11,8 @@ class EER_Subblock_Ticket_Table
 	{
 		$tickets = EER()->ticket->load_tickets();
 		?>
+		<h1 class="wp-heading-inline"><?php _e('Tickets', 'easy-event-registration'); ?></h1>
+		<a href="<?php echo esc_url(add_query_arg('ticket_id', -1)) ?>" class="eer-add-new page-title-action"><?php _e('Add new ticket', 'easy-event-registration'); ?></a>
 		<table id="datatable" class="table table-default table-bordered eer-datatable" data-eer-columns="<?php do_action('eer_get_ticket_columns'); ?>">
 			<colgroup>
 				<col width="100">
@@ -31,7 +33,6 @@ class EER_Subblock_Ticket_Table
 			</thead>
 			<tbody class="list">
 			<?php foreach ($tickets as $ticket) {
-
 				?>
 				<tr class="<?php echo apply_filters('eer_get_ticket_row_classes', $ticket); ?>"
 					<?php apply_filters('eer_print_ticket_data', $ticket); ?>>
@@ -77,7 +78,7 @@ class EER_Subblock_Ticket_Table
 		?>
 		<ul class="eer-actions-box dropdown-menu" data-id="<?php echo $id; ?>">
 			<li class="eer-action edit">
-				<a href="javascript:;">
+				<a href="<?php echo esc_url(add_query_arg('ticket_id', $id)) ?>">
 					<i class="fa fa-edit"></i>
 					<span><?php _e('Edit', 'easy-event-registration'); ?></span>
 				</a>
