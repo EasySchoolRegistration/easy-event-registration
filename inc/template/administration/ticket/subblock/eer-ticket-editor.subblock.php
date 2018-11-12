@@ -33,7 +33,7 @@ class EER_Subblock_Ticket_Editor {
 		?>
 		<div>
 			<h1 class="wp-heading-inline"><?php _e('Edit Ticket', 'easy-event-registration'); ?></h1>
-			<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" class="tab-content">
+			<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" class="tab-content eer-edit-form" data-id="<?php echo $ticket_id; ?>">
 				<h3><?php _e('Main info', 'easy-event-registration'); ?></h3>
 				<table>
 					<?php
