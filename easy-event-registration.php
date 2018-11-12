@@ -3,7 +3,7 @@
  * Plugin Name: Easy Event Registration
  * Plugin URI: https://easyschoolregistrations.com/
  * Description: System for Easy Event Registration
- * Version: 1.1.3
+ * Version: 1.1.4
  * Author: Zbyněk Nedoma
  * Author URI: https://easyschoolregistrations.com/
  * License: A "Slug" license name e.g. GPL12
@@ -201,7 +201,7 @@ if (!class_exists('Easy_Event_Registration')) {
 			global $wpdb;
 
 			define('EER_SLUG', 'eer');
-			define('EER_VERSION', '1.1.3');
+			define('EER_VERSION', '1.1.4');
 			// Plugin Root File.
 			if (!defined('EER_PLUGIN_FILE')) {
 				define('EER_PLUGIN_FILE', __FILE__);
@@ -340,7 +340,6 @@ $edd_updater = new EER_SL_Plugin_Updater(EER_SL_STORE_URL, EER_PLUGIN_FILE, [
 	'version'   => EER_VERSION,        // current version number
 	'license'   => $license_key,    // license key (used get_option above to retrieve from DB)
 	'item_name' => EER_PLUGIN_NAME,
-	//'item_id'   => 1358,    // id of this product in EER
 	'author'    => 'zbynek',  // author of this plugin
 	'url'       => home_url(),
 	'beta'      => false

@@ -2,6 +2,16 @@
 
 Changelog
 -------
+1.1.4 - 12.11.2018
+
+- New: Added ticket codes to payments
+- New: Remove order forever
+- New: Bcc email support
+- New: Support for new PDF generation module
+- Update: Notes are working much better
+- Update: New edit pages for events and tickets
+- Fix: Lots of small fixed and updates
+
 1.1.3 - 1.11.2018
 
 - Fix: Fixed ticket summery generation
