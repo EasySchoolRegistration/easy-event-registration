@@ -8,12 +8,11 @@ if (!defined('ABSPATH')) {
 class EER_PDF_Ticket_Generator
 {
 
-	public function generate_pdf($ticket_id, $code)
+	public function eer_generate_pdf_callback($ticket_id, $code)
 	{
 		include_once(EER_PLUGIN_DIR . '/libs/tcpdf/tcpdf.php');
 
 		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
 		// set document information
 
 		$ticket_data = EER()->ticket->get_ticket_data($ticket_id);
@@ -55,4 +54,11 @@ class EER_PDF_Ticket_Generator
 		return EER_PLUGIN_DIR . 'temp/' . $name;
 	}
 
+
+	public static function eer_get_generate_pdf_filter_callback() {
+		return 'eer_generate_pdf';
+	}
 }
+
+add_filter('eer_get_generate_pdf_filter', ['EER_PDF_Ticket_Generator', 'eer_get_generate_pdf_filter_callback']);
+add_filter('eer_generate_pdf', ['EER_PDF_Ticket_Generator', 'eer_generate_pdf_callback'], 10, 2);

@@ -27,6 +27,7 @@ class EER_Models_Settings_Helper_Templater {
 				'tooltip_title' => false,
 				'tooltip_desc'  => false,
 				'field_class'   => '',
+				'template'      => 'EER_Models_Settings_Helper_Templater',
 				'data'          => $data
 			]);
 			$callback = 'eer_' . $field['type'] . '_callback';
@@ -34,8 +35,8 @@ class EER_Models_Settings_Helper_Templater {
 			<tr>
 				<th><?php echo $field['name']; ?></th>
 				<td><?php
-					if (method_exists($this, $callback)) {
-						call_user_func([$this, $callback], $args);
+					if (method_exists($args['template'], $callback)) {
+						call_user_func([$args['template'], $callback], $args);
 					}
 					?></td>
 			</tr>

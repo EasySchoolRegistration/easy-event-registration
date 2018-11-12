@@ -49,8 +49,9 @@ class EER_Template_Ticket_Email
 			}
 
 			$attachments = [];
+			$filter_function = apply_filters('eer_get_generate_pdf_filter', true);
 			foreach ($sold_tickets as $key => $sold_ticket) {
-				$attachments[] = EER()->pdf_ticket->generate_pdf($sold_ticket->ticket_id, $sold_ticket->unique_key);
+				$attachments[] = apply_filters($filter_function, $sold_ticket->ticket_id, $sold_ticket->unique_key);
 			}
 
 			$status = $this->worker_email->send_ticket_email($user->user_email, $subject, $body, $event_data, $attachments);

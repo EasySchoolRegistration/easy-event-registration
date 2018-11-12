@@ -46,8 +46,9 @@ class EER_Template_Payment_Confirmation_Email
 			if (intval(EER()->event->eer_get_event_option($event_data, 'payment_confirmation_send_tickets', -1)) === 1) {
 				$sold_tickets = EER()->sold_ticket->eer_get_confirmed_sold_tickets_by_order($order_id);
 				$attachments = [];
+				$filter_function = apply_filters('eer_get_generate_pdf_filter', true);
 				foreach ($sold_tickets as $key => $sold_ticket) {
-					$attachments[] = EER()->pdf_ticket->generate_pdf($sold_ticket->ticket_id, $sold_ticket->unique_key);
+					$attachments[] = apply_filters($filter_function, $sold_ticket->ticket_id, $sold_ticket->unique_key);
 				}
 
 				$status = $this->worker_email->send_ticket_email($user->user_email, $subject, $body, $event_data, $attachments);

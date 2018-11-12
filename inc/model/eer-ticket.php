@@ -113,7 +113,7 @@ class EER_Ticket {
 			]),
 		];
 
-		return apply_filters('eer_registered_events_settings', $eer_ticket_settings);
+		return apply_filters('eer_registered_ticket_settings', $eer_ticket_settings);
 	}
 
 
@@ -306,5 +306,12 @@ class EER_Ticket {
 		}
 
 		return $ticket_data->is_solo;
+	}
+
+
+	public function eer_get_ticket_option($ticket_data, $key = '', $default = false) {
+		$value = !empty($ticket_data->$key) ? $ticket_data->$key : $default;
+
+		return apply_filters('eer_get_ticket_option_' . $key, $value, $key, $default);
 	}
 }
