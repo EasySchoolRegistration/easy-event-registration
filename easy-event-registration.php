@@ -145,6 +145,8 @@ if (!class_exists('Easy_Event_Registration')) {
 
 				self::$instance->includes();
 
+				self::$instance->load_textdomain();
+
 				self::$instance->currency           = new EER_Currency();
 				self::$instance->dancing_as         = new EER_Enum_Dancing_As();
 				self::$instance->email              = new EER_Email();
@@ -327,6 +329,27 @@ if (!class_exists('Easy_Event_Registration')) {
 
 			$settings_class = new EER_Settings();
 			$eer_settings   = $settings_class->eer_get_settings();
+		}
+
+
+
+
+		public function load_textdomain() {
+			// This filter is already documented in WordPress core
+			$locale = apply_filters('plugin_locale', get_locale(), 'easy-event-registration');
+
+			$mofile = sprintf('%1$s-%2$s.mo', 'easy-event-registration', $locale);
+
+			$mofile_local  = trailingslashit(EER_PLUGIN_URL . 'languages') . $mofile;
+			$mofile_global = WP_LANG_DIR . '/easy-event-registration/' . $mofile;
+
+			if (file_exists($mofile_global)) {
+				return load_textdomain('easy-event-registration', $mofile_global);
+			} else if (file_exists($mofile_local)) {
+				return load_textdomain('easy-event-registration', $mofile_local);
+			} else {
+				return load_plugin_textdomain('easy-event-registration', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+			}
 		}
 
 	}
