@@ -17,6 +17,12 @@ class EER_Subblock_Add_Over_Limit_Form {
 				     class="eer-ticket-to-buy eer-clearfix"
 				     data-id="<?php echo $ticket_id; ?>">
 					<div class="eer-partner eer-column">
+						<span class="eer-info-row-label"><?php _e('Number tickets', 'easy-event-registration'); ?></span>
+						<div class="eer-number-of-tickets eer-column">
+							<input type="number" min="1"
+							       name="number_of_tickets" class="eer-number eer-form-control"
+							       value="1">
+						</div>
 						<?php if (intval($ticket_data->levels_enabled) !== -1) { ?>
 							<div class="eer-info-row">
 								<select class="eer-info-row-input eer-levels" required name="level_id">
@@ -25,7 +31,7 @@ class EER_Subblock_Add_Over_Limit_Form {
 								</select>
 							</div>
 						<?php } ?>
-						<?php if (intval($ticket_data->is_solo) === -1) { ?>
+						<?php if (intval($ticket_data->is_solo) < 1) { ?>
 							<div class="eer-info-row">
 								<span class="eer-info-row-label"><?php _e('Dancing as?', 'easy-event-registration'); ?></span>
 								<div class="eer-info-row-input eer-dancing-as">

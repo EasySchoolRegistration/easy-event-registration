@@ -497,6 +497,9 @@ jQuery(function ($) {
 		}).on("click", ".eer-hide-all-notes", function () {
 			$(".eer-header-note .far.fa-comment-alt, .eer-note .far.fa-comment-alt").css("display", "block");
 			$(".eer-header-note .fas.fa-comment-alt, .eer-note .fas.fa-comment-alt, .eer-note .eer-note-message").hide();
+		}).on("click", ".eer-hide-all-notes", function () {
+			$(".eer-header-note .far.fa-comment-alt, .eer-note .far.fa-comment-alt").css("display", "block");
+			$(".eer-header-note .fas.fa-comment-alt, .eer-note .fas.fa-comment-alt, .eer-note .eer-note-message").hide();
 		});
 
 		$("input[name=\"eer-select-all\"]").on("change", function () {

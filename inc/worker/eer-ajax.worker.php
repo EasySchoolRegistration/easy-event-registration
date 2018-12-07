@@ -25,7 +25,6 @@ class EER_Worker_Ajax {
 					if (EER()->ticket->eer_is_solo($sold_ticket->ticket_id)) {
 						$update['registered_tickets'] = $summary->registered_tickets - 1;
 					} else if (EER()->dancing_as->eer_is_follower($sold_ticket->dancing_as)) {
-
 						$update['registered_followers'] = $summary->registered_followers - 1;
 					} else if (EER()->dancing_as->eer_is_leader($sold_ticket->dancing_as)) {
 						$update['registered_leaders'] = $summary->registered_leaders - 1;
