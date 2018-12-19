@@ -54,15 +54,14 @@ class EER_Enqueue_Scripts {
 
 
 	private static function eer_include_datatable_scripts() {
-		wp_enqueue_script('eer_dataTables_script', EER_PLUGIN_URL . 'libs/datatable/js/jquery.dataTables.min.js', ['jquery'], EER_VERSION);
-		wp_enqueue_script('eer_dataTables_bootstrap_script', EER_PLUGIN_URL . 'libs/datatable/js/dataTables.bootstrap.min.js', ['jquery'], EER_VERSION);
-		wp_enqueue_script('eer_dataTables_button_script', EER_PLUGIN_URL . 'libs/datatable/js/dataTables.buttons.min.js', ['jquery'], EER_VERSION);
-		wp_enqueue_script('eer_dataTables_print_script', EER_PLUGIN_URL . 'libs/datatable/js/buttons.print.min.js', ['jquery'], EER_VERSION);
-		wp_enqueue_script('eer_dataTables_colvis_script', EER_PLUGIN_URL . 'libs/datatable/js/buttons.colVis.min.js', ['jquery'], EER_VERSION);
+		wp_enqueue_script('eer_dataTables_script', EER_PLUGIN_URL . 'libs/datatable/js/jquery.dataTables.js', ['jquery'], EER_VERSION);
+		wp_enqueue_script('eer_dataTables_bootstrap_script', EER_PLUGIN_URL . 'libs/datatable/js/dataTables.bootstrap.js', ['jquery'], EER_VERSION);
+		wp_enqueue_script('eer_dataTables_button_script', EER_PLUGIN_URL . 'libs/datatable/js/dataTables.buttons.js', ['jquery'], EER_VERSION);
+		wp_enqueue_script('eer_dataTables_print_script', EER_PLUGIN_URL . 'libs/datatable/js/buttons.print.js', ['jquery'], EER_VERSION);
+		wp_enqueue_script('eer_dataTables_colvis_script', EER_PLUGIN_URL . 'libs/datatable/js/buttons.colVis.js', ['jquery'], EER_VERSION);
 
-		wp_enqueue_style('eer_dataTables_bootstrap_style', EER_PLUGIN_URL . 'libs/datatable/css/dataTables.bootstrap.min.css', [], EER_VERSION);
-		wp_enqueue_style('eer_dataTables_min_style', EER_PLUGIN_URL . 'libs/datatable/css/jquery.dataTables.min.css', [], EER_VERSION);
-		wp_enqueue_style('eer_dataTables_button_style', EER_PLUGIN_URL . 'libs/datatable/css/buttons.dataTables.min.css', [], EER_VERSION);
+		wp_enqueue_style('eer_dataTables_bootstrap_style', EER_PLUGIN_URL . 'libs/datatable/css/dataTables.bootstrap.css', [], EER_VERSION);
+		wp_enqueue_style('eer_dataTables_button_style', EER_PLUGIN_URL . 'libs/datatable/css/buttons.dataTables.css', [], EER_VERSION);
 		wp_enqueue_style('eer_admin_bootstrap_style', EER_PLUGIN_URL . 'libs/bootstrap/css/bootstrap-ofic.css', [], EER_VERSION);
 		wp_enqueue_script('eer_bootstrap_script', EER_PLUGIN_URL . 'libs/bootstrap/js/bootstrap.min.js', ['jquery'], EER_VERSION);
 
