@@ -166,7 +166,7 @@ class EER_Template_Event_Sale_User_Form {
 			<div class="text-center">
 				<input class="btn btn-default" type="submit"
 				       name="eer-event-registration-submitted"
-				       value="<?php _e('Send order', 'easy-event-registration'); ?>"></div>
+				       value="<?php _e('Submit', 'easy-event-registration'); ?>"></div>
 			<input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
 		</form>
 		<div class="eer-ticket-default-form-row">
