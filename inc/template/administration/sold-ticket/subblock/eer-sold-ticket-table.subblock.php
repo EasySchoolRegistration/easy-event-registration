@@ -23,19 +23,19 @@ class EER_Subblock_Sold_Ticket_Table
 		$offer_hosting_enabled = intval(EER()->event->eer_get_event_option($event_data, 'offer_hosting_enabled', -1)) === 1;
 
 		?>
-		<table id="datatable" class="table table-default table-bordered eer-datatable eer-sold-tickets">
+		<table id="datatable" class="table table-default table-bordered eer-datatable eer-sold-tickets eer-add-email-export eer-copy-table eer-excel-export">
 			<colgroup>
 				<col width="100">
 			</colgroup>
 			<thead>
 			<tr>
 				<th class="filter-disabled"><?php _e('Order Time', 'easy-event-registration'); ?></th>
-				<th class="filter-disabled no-sort"
+				<th class="filter-disabled no-sort eer-hide-print"
 				    data-key="eer_actions"><?php _e('Actions', 'easy-event-registration'); ?></th>
 				<th class="no-sort"><?php _e('Status', 'easy-event-registration'); ?></th>
 				<th class="no-sort"><?php _e('Ticket', 'easy-event-registration'); ?></th>
 				<th class="no-sort"><?php _e('Name', 'easy-event-registration'); ?></th>
-				<th class="no-sort"><?php _e('Email', 'easy-event-registration'); ?></th>
+				<th class="no-sort eer-student-email"><?php _e('Email', 'easy-event-registration'); ?></th>
 				<th class="filter-disabled no-sort"><?php _e('Code', 'easy-event-registration'); ?></th>
 				<th class="no-sort"><?php _e('Level', 'easy-event-registration'); ?></th>
 				<th class="no-sort"><?php _e('Dancing As', 'easy-event-registration'); ?></th>

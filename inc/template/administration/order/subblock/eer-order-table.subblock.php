@@ -18,7 +18,7 @@ class EER_Subblock_Order_Table {
 		$offer_hosting_enabled = intval(EER()->event->eer_get_event_option($event_data, 'offer_hosting_enabled', -1)) === 1;
 
 		?>
-		<table id="datatable" class="table table-default table-bordered eer-datatable eer-orders">
+		<table id="datatable" class="table table-default table-bordered eer-datatable eer-orders eer-add-email-export eer-copy-table eer-excel-export">
 			<colgroup>
 				<col width="150">
 				<col width="100">
@@ -27,14 +27,14 @@ class EER_Subblock_Order_Table {
 			<thead>
 			<tr>
 				<th class="filter-disabled"><?php _e('Order Time', 'easy-event-registration'); ?></th>
-				<th class="filter-disabled no-sort" data-key="eer_actions"><?php _e('Actions', 'easy-event-registration'); ?></th>
+				<th class="filter-disabled no-sort eer-hide-print" data-key="eer_actions"><?php _e('Actions', 'easy-event-registration'); ?></th>
 				<th class="filter-disabled eer-header-note"><?php _e('Note', 'easy-event-registration'); ?>
 					<i class="far fa-comment-alt eer-show-all-notes"></i>
 					<i class="fas fa-comment-alt eer-hide-all-notes"></i></th>
 				<th class="filter-disabled"><?php _e('Code', 'easy-event-registration'); ?></th>
 				<th class="no-sort"><?php _e('Name', 'easy-event-registration'); ?></th>
 				<th class="no-sort"><?php _e('Surname', 'easy-event-registration'); ?></th>
-				<th class="no-sort"><?php _e('Email', 'easy-event-registration'); ?></th>
+				<th class="no-sort eer-student-email"><?php _e('Email', 'easy-event-registration'); ?></th>
 				<th class="no-sort"><?php _e('Phone', 'easy-event-registration'); ?></th>
 				<th class="no-sort"><?php _e('Country', 'easy-event-registration'); ?></th>
 				<?php if ($hosting_enabled) {

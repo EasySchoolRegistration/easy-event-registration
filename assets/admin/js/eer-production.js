@@ -577,7 +577,9 @@ jQuery(function ($) {
 		}
 
 		if ($(".eer-datatable").length) {
-			$(".eer-datatable").DataTable({
+			var table = $(".eer-datatable");
+			var exportEmails = [];
+			var settings = {
 				aLengthMenu: [
 					[25, 50, 100, 200, -1],
 					[25, 50, 100, 200, "All"]
@@ -591,13 +593,17 @@ jQuery(function ($) {
 				buttons: [
 					"colvis"
 				],
-				columnDefs: [{
-					"targets": "no-sort",
-					"orderable": false
-				}],
+				columnDefs: [
+					{
+						width: "20%",
+						targets: 0
+					}
+				],
 				initComplete: function () {
 					this.api().columns().every(function () {
 						var column = this;
+
+						$(column.header()).data("label", $(column.header()).text());
 						if (!$(column.header()).hasClass("filter-disabled")) {
 							var select = $("<select><option value=\"\">" + $(column.header()).text() + "</option></select>")
 							.appendTo($(column.header()).empty())
@@ -617,7 +623,62 @@ jQuery(function ($) {
 						}
 					});
 				}
-			});
+			};
+
+			if ($(table).hasClass("eer-add-email-export")) {
+				settings.buttons.push({
+					extend: "copyHtml5",
+					text: "Copy Emails",
+					title: '',
+					header: false,
+					exportOptions: {
+						columns: [".eer-student-email:visible:not(.eer-hide-print)"],
+						format: {
+							body: function (data, row, column, node) {
+								if ($.inArray(data, exportEmails) > -1) {
+									return null;
+								}
+								exportEmails.push(data);
+								return data;
+							}
+						}
+					}
+				});
+			}
+
+			if ($(table).hasClass("eer-copy-table")) {
+				settings.buttons.push({
+					extend: "copyHtml5",
+					text: "Copy Table",
+					title: '',
+					exportOptions: {
+						columns: [":visible:not(.eer-hide-print)"],
+						format: {
+							header: function (data, row, column, node) {
+								return $(column).data("label");
+							}
+						}
+					}
+				});
+			}
+
+			if ($(table).hasClass("eer-excel-export")) {
+				settings.buttons.push({
+					extend: "excel",
+					text: "Excel",
+					title: '',
+					exportOptions: {
+						columns: [":visible:not(.eer-hide-print)"],
+						format: {
+							header: function (data, row, column, node) {
+								return $(column).data("label");
+							}
+						}
+					}
+				});
+			}
+
+			var dataTable = $(table).DataTable(settings);
 		}
 		if ($(".eer-color-picker").length > 0) {
 			$(".eer-color-picker").wpColorPicker();
