@@ -629,18 +629,20 @@ jQuery(function ($) {
 				settings.buttons.push({
 					extend: "copyHtml5",
 					text: "Copy Emails",
-					title: '',
+					title: "",
 					header: false,
 					exportOptions: {
 						columns: [".eer-student-email:visible:not(.eer-hide-print)"],
-						format: {
-							body: function (data, row, column, node) {
-								if ($.inArray(data, exportEmails) > -1) {
-									return null;
+						customizeData: function (data) {
+							var outputArray = [];
+							var outputEmails = [];
+							$.each(data.body, function (key, email) {
+								if ($.inArray(email[0], outputEmails) === -1) {
+									outputArray.push(email);
+									outputEmails.push(email[0]);
 								}
-								exportEmails.push(data);
-								return data;
-							}
+							});
+							data.body = outputArray;
 						}
 					}
 				});
@@ -650,7 +652,7 @@ jQuery(function ($) {
 				settings.buttons.push({
 					extend: "copyHtml5",
 					text: "Copy Table",
-					title: '',
+					title: "",
 					exportOptions: {
 						columns: [":visible:not(.eer-hide-print)"],
 						format: {
@@ -666,7 +668,7 @@ jQuery(function ($) {
 				settings.buttons.push({
 					extend: "excel",
 					text: "Excel",
-					title: '',
+					title: "",
 					exportOptions: {
 						columns: [":visible:not(.eer-hide-print)"],
 						format: {
