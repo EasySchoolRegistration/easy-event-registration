@@ -2,6 +2,13 @@
 
 Changelog
 -------
+1.1.5 - 21.12.2018
+
+- New: cs-CZ translation
+- New: New table buttons like Copy emails, Excel export
+- Update: Datatables libs
+- Update: Text Send order changed to Submit
+
 1.1.4 - 12.11.2018
 
 - New: Added ticket codes to payments
