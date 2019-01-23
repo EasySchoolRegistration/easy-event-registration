@@ -16,9 +16,9 @@ class EER_Subblock_Template_Payment_Table {
 		$ticket_unique = EER()->sold_ticket->eer_get_sold_ticket_unique_by_event($selected_event);
 
 		?>
-		<table id="datatable" class="eer-datatable table table-default table-bordered eer-payments-table">
+		<table id="datatable" class="eer-datatable table table-default table-bordered eer-payments-table eer-copy-table eer-excel-export">
 			<colgroup>
-				<col width="10">
+				<col width="120">
 				<col width="100">
 			</colgroup>
 			<thead>
@@ -47,7 +47,7 @@ class EER_Subblock_Template_Payment_Table {
 			$paid_status = $enum_payment->get_status($payment);
 
 			?>
-			<tr class="eer-row <?php echo 'paid-status-' . $paid_status; ?>"
+			<tr class="eer-row <?php echo 'eer-status-' . $paid_status; ?>"
 				<?php if ($user_can_edit) { ?>
 					data-id="<?php echo $payment->id; ?>"
 					data-order_id="<?php echo $payment->order_id; ?>"

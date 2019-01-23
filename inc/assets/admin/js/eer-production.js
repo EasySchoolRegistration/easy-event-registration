@@ -401,10 +401,21 @@ jQuery(function ($) {
 			// We can also pass the url value separately from ajaxurl for front end AJAX implementations
 			/** global: ajaxurl */
 			$.post(ajaxurl, data, function (response) {
-				if (response !== -1) {
+				if ((response !== -1) && ($.type(response) === "object")) {
 					var editBox = $(".eer-edit-box");
 					cleanInputs(editBox);
 					editBox.hide();
+
+					var payment_row = $("tr[data-id=\"" + response.order_id + "\"]");
+
+					payment_row.find(".status").text(response.exp_status_title);
+					payment_row.find(".student-paid").html(response.payment);
+
+					//change class
+					var classes = payment_row[0].className.match(/eer\-status\-[0-9]/gi);
+					if (classes.length > 0) {
+						$(payment_row).removeClass(classes[0]).addClass("eer-status-" + response.exp_status)
+					}
 
 					if ($(".eer-payments-table tr").length > 1) {
 						//$(".eer-payments-table").ddTableFilter();

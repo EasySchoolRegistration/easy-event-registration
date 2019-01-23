@@ -217,7 +217,10 @@ class EER_Worker_Ajax {
 				}
 			}
 
-			return is_int($data['payment']) ? $price : $data['payment'];
+			$payment = EER()->payment->eer_get_payment_by_order($data['order_id']);
+			$payment->exp_status = EER()->enum_payment->get_status($payment);
+			$payment->exp_status_title = EER()->enum_payment->get_title($payment->exp_status);
+			return $payment;
 		}
 
 		return false;

@@ -32,6 +32,14 @@ class EER_Payment
 	}
 
 
+	public function eer_get_payment_by_order($order_id)
+	{
+		global $wpdb;
+
+		return $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}eer_events_payments WHERE order_id = %d", [intval($order_id)]));
+	}
+
+
 	public function eer_get_not_payed_payments_by_event($event_id)
 	{
 		global $wpdb;

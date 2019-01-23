@@ -56,13 +56,13 @@
   margin-top: 15px;
   position: relative; }
 
-table.dataTable tbody tr.status-0 {
+table.dataTable tbody tr.eer-status-0 {
   background-color: #B8C2D8; }
 
-table.dataTable tbody tr.status-1 {
+table.dataTable tbody tr.eer-status-1 {
   background-color: #A5C663; }
 
-table.dataTable tbody tr.status-2 {
+table.dataTable tbody tr.eer-status-2 {
   background-color: #D46A6A; }
 
 .eer-relative {

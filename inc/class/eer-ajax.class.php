@@ -90,10 +90,10 @@ class EER_Ajax {
 		$data = $_POST;
 		if (isset($data['order_id'])) {
 			$worker_ajax = new EER_Worker_Ajax();
-			echo $worker_ajax->save_payment($_POST);
+			wp_send_json($worker_ajax->save_payment($_POST));
 			wp_die();
 		}
-		echo -1;
+		wp_send_json(false);
 		wp_die();
 	}
 
