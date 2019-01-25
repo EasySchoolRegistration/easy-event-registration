@@ -114,6 +114,19 @@ class EER_Event {
 						'type' => 'checkbox',
 					],
 				],
+				'form_texts'       => [
+					'note_description'    => [
+						'id'   => 'note_description',
+						'name' => __('Note description', 'easy-event-registration'),
+						'type' => 'full_editor',
+					],
+					'registration_button' => [
+						'id'   => 'registration_button',
+						'name' => __('Registration Button', 'easy-event-registration'),
+						'type' => 'text',
+						'std'  => 'Submit',
+					],
+				],
 				'terms_conditions' => [
 					'terms_conditions_enabled'  => [
 						'id'   => 'terms_conditions_enabled',
@@ -424,6 +437,7 @@ class EER_Event {
 			]),
 			'registration_form' => apply_filters('eer_event_settings_sections_registration_form', [
 				'rfmain'           => __('Main', 'easy-event-registration'),
+				'form_texts'       => __('Form Texts', 'easy-event-registration'),
 				'thank_you_text'   => __('Thank you text', 'easy-event-registration'),
 				'terms_conditions' => __('Terms & Conditions', 'easy-event-registration'),
 				'hosting'          => __('Hosting', 'easy-event-registration'),
