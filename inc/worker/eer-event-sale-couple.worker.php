@@ -198,6 +198,7 @@ class EER_Event_Sale_Couple_Worker {
 					}
 
 					$worker_payment->eer_update_user_payment($order_id);
+					$return_tickets['paired'][$ticket_id][] = (int) $sold_ticket_id;
 				} else {
 					if (EER()->dancing_as->eer_is_leader($dancing_as)) {
 						EER()->ticket_summary->eer_update_ticket_summary($ticket_id, $level_id, [
