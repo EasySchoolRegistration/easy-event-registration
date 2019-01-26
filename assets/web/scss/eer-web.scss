@@ -209,6 +209,15 @@
           font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
           background: none;
         }
+        .eer-event-note-description {
+          width: 100%;
+          letter-spacing: 1px;
+          font-weight: 300;
+          font-size: 11px;
+          line-height: 11px;
+          color: #000;
+          margin-bottom: 8px;
+        }
       }
       &.eer-form-checkbox {
         .eer-form-group {

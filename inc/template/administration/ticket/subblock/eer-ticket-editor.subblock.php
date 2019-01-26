@@ -34,12 +34,22 @@ class EER_Subblock_Ticket_Editor {
 		<div>
 			<h1 class="wp-heading-inline"><?php _e('Edit Ticket', 'easy-event-registration'); ?></h1>
 			<form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>" class="tab-content eer-edit-form" data-id="<?php echo $ticket_id; ?>">
-				<h3><?php _e('Main info', 'easy-event-registration'); ?></h3>
-				<table>
-					<?php
-					do_action('eer_ticket_edit_form_input', $ticket);
-					?>
-				</table>
+				<div class="eer-form-column">
+					<h3><?php _e('Main info', 'easy-event-registration'); ?></h3>
+					<table>
+						<?php
+						do_action('eer_ticket_edit_form_input', $ticket);
+						?>
+					</table>
+				</div>
+				<div class="eer-form-column">
+					<h3><?php _e('Additional Info', 'easy-event-registration'); ?></h3>
+					<table>
+						<?php
+						do_action('eer_ticket_edit_additional_form_input', $ticket);
+						?>
+					</table>
+				</div>
 				<h3><?php _e('Settings', 'easy-event-registration'); ?></h3>
 				<ul class="nav nav-tabs">
 					<?php
@@ -125,7 +135,7 @@ class EER_Subblock_Ticket_Editor {
 					<?php foreach (EER()->event->load_events_without_data() as $key => $event) { ?>
 						<option
 								value="<?php echo $event->id; ?>"
-							<?php echo (!empty((array) $ticket) && ($ticket->event_id == $event->id) ? 'selected' : '') ?>><?php echo $event->title; ?></option>
+							<?php echo(!empty((array) $ticket) && ($ticket->event_id == $event->id) ? 'selected' : '') ?>><?php echo $event->title; ?></option>
 						<?php
 					}
 					?>
@@ -140,7 +150,7 @@ class EER_Subblock_Ticket_Editor {
 		?>
 		<tr>
 			<th><?php _e('Is solo', 'easy-event-registration'); ?></th>
-			<td><input id="is_solo" type="checkbox" name="is_solo" <?php echo (!empty((array) $ticket) && $ticket->is_solo ? 'checked' : '') ?> class="eer-input" data-show=".max_tickets, .max_level_tickets" data-hide=".max_leaders, .max_followers, .max_level_followers, .max_level_leaders" value="1"></td>
+			<td><input id="is_solo" type="checkbox" name="is_solo" <?php echo(!empty((array) $ticket) && $ticket->is_solo ? 'checked' : '') ?> class="eer-input" data-show=".max_tickets, .max_level_tickets" data-hide=".max_leaders, .max_followers, .max_level_followers, .max_level_leaders" value="1"></td>
 		</tr>
 		<?php
 	}
@@ -195,7 +205,7 @@ class EER_Subblock_Ticket_Editor {
 		?>
 		<tr>
 			<th><?php _e('Sold separately', 'easy-event-registration'); ?></th>
-			<td><input id="sold_separately" type="checkbox" <?php echo (!empty((array) $ticket) && $ticket->sold_separately ? 'checked' : '') ?> name="sold_separately" class="eer-input" value="1"></td>
+			<td><input id="sold_separately" type="checkbox" <?php echo(!empty((array) $ticket) && $ticket->sold_separately ? 'checked' : '') ?> name="sold_separately" class="eer-input" value="1"></td>
 		</tr>
 		<?php
 	}
@@ -205,7 +215,7 @@ class EER_Subblock_Ticket_Editor {
 		?>
 		<tr>
 			<th><?php _e('Once per user', 'easy-event-registration'); ?></th>
-			<td><input id="once_per_user" type="checkbox" <?php echo (!empty((array) $ticket) && $ticket->once_per_user ? 'checked' : '') ?> name="once_per_user" class="eer-input" value="1"></td>
+			<td><input id="once_per_user" type="checkbox" <?php echo(!empty((array) $ticket) && $ticket->once_per_user ? 'checked' : '') ?> name="once_per_user" class="eer-input" value="1"></td>
 		</tr>
 		<?php
 	}
@@ -236,8 +246,28 @@ class EER_Subblock_Ticket_Editor {
 	}
 
 
+	public static function eer_input_pairing_mode($ticket) {
+		?>
+		<tr>
+			<th><?php _e('Pairing Mode', 'easy-event-registration'); ?></th>
+			<td>
+				<?php foreach (EER()->pairing_mode->get_items() as $key => $mode) {
+					?>
+					<label>
+						<input type="radio" name="pairing_mode" <?php if ($key == $ticket->pairing_mode) {echo 'checked';} ?> value="<?php echo $key; ?>" class="<?php if ($mode['is_default']) {echo 'eer-default';} ?>"> <?php echo $mode['title']; ?>
+					</label><br>
+				<?php } ?>
+			</td>
+		</tr>
+		<?php
+	}
+
+
+
 	public static function eer_print_tickets_settings_tab($section_id, $sub_section_id, $data) {
 		$model_settings = new EER_Models_Settings_Helper_Templater();
 		$model_settings->eer_print_settings_tab('ticket', EER()->ticket->eer_get_ticket_settings_fields_to_print($section_id, $sub_section_id), $data);
 	}
 }
+
+add_action('eer_ticket_edit_additional_form_input', ['EER_Subblock_Ticket_Editor', 'eer_input_pairing_mode']);

@@ -24,6 +24,7 @@ class EER_Ticket {
 		$this->fields->add_field('max_followers', 'int', false);
 		$this->fields->add_field('max_tickets', 'int', false);
 		$this->fields->add_field('ticket_settings', 'json', false);
+		$this->fields->add_field('pairing_mode', 'int', false);
 	}
 
 

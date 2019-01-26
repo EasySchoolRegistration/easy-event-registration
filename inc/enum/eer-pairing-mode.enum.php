@@ -22,14 +22,17 @@ class EER_Enum_Pairing_Mode
 			self::AUTOMATIC => [
 				'title' => __('Automatic', 'easy-event-registration'),
 				'tooltip' => __('Students will be automatically paired after registration until the course it\'s full.', 'easy-event-registration'),
+				'is_default' => true,
 			],
 			self::MANUAL => [
 				'title' => __('Manual', 'easy-event-registration'),
 				'tooltip' => __('Students will be on a Waiting List until they are manually confirmed. Pairing is disabled.', 'easy-event-registration'),
+				'is_default' => false,
 			],
 			self::CONFIRM_ALL => [
 				'title' => __('Confirm All', 'easy-event-registration'),
 				'tooltip' => __('Students will be automatically confirmed after registration until the course it\'s full. Pairing is disabled.', 'easy-event-registration'),
+				'is_default' => false,
 			],
 		];
 	}

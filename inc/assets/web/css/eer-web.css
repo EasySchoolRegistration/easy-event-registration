@@ -157,6 +157,14 @@
       transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
       font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
       background: none; }
+    .eer-ticket-shop-form .eer-user-form .eer-row .eer-form-group .eer-event-note-description {
+      width: 100%;
+      letter-spacing: 1px;
+      font-weight: 300;
+      font-size: 11px;
+      line-height: 11px;
+      color: #000;
+      margin-bottom: 8px; }
   .eer-ticket-shop-form .eer-user-form .eer-row.eer-form-checkbox .eer-form-group input {
     float: left;
     display: block;

@@ -182,3 +182,7 @@ table.dataTable tbody tr.eer-status-2 {
   margin-bottom: 10px; }
   .eer-select-event .page-title-action {
     top: 0; }
+
+.eer-form-column {
+  width: 49%;
+  display: inline-block; }
