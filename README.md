@@ -2,6 +2,14 @@
 
 Changelog
 -------
+1.1.6 - 26.01.2019
+
+- New: Tickets pairing mode
+- New: Bcc email
+- New: Form confirm button text and note description settings
+- Update: Payment table
+- Fix: Few small bug fixes and improvements
+
 1.1.5 - 21.12.2018
 
 - New: cs-CZ translation

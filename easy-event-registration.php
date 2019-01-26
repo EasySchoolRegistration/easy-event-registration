@@ -3,7 +3,7 @@
  * Plugin Name: Easy Event Registration
  * Plugin URI: https://easyschoolregistration.com/
  * Description: System for Easy Event Registration
- * Version: 1.1.5
+ * Version: 1.1.6
  * Author: Zbyněk Nedoma
  * Author URI: https://easyschoolregistration.com/
  * License: A "Slug" license name e.g. GPL12
@@ -200,10 +200,8 @@ if (!class_exists('Easy_Event_Registration')) {
 
 
 		private function setup_constants() {
-			global $wpdb;
-
 			define('EER_SLUG', 'eer');
-			define('EER_VERSION', '1.1.5');
+			define('EER_VERSION', '1.1.6');
 			// Plugin Root File.
 			if (!defined('EER_PLUGIN_FILE')) {
 				define('EER_PLUGIN_FILE', __FILE__);
