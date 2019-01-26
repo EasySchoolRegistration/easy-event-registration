@@ -412,9 +412,11 @@ jQuery(function ($) {
 					payment_row.find(".student-paid").html(response.payment);
 
 					//change class
-					var classes = payment_row[0].className.match(/eer\-status\-[0-9]/gi);
-					if (classes.length > 0) {
-						$(payment_row).removeClass(classes[0]).addClass("eer-status-" + response.exp_status)
+					if (payment_row.length > 0) {
+						var classes = payment_row[0].className.match(/eer\-status\-[0-9]/gi);
+						if (classes.length > 0) {
+							$(payment_row).removeClass(classes[0]).addClass("eer-status-" + response.exp_status)
+						}
 					}
 
 					if ($(".eer-payments-table tr").length > 1) {
