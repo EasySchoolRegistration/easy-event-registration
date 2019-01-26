@@ -55,9 +55,8 @@ class EER_Subblock_Ticket_Editor {
 					<?php
 					$number = 0;
 					foreach (EER()->ticket->eer_get_ticket_settings_tabs() as $tab_id => $tab_name) {
-						$active = $active_tab == $tab_id ? ' nav-tab-active' : '';
 						echo '<li class="' . ($number === 0 ? 'active' : '') . '">';
-						echo '<a href="#' . $tab_id . '" class="nav-tab' . $active . '" data-toggle="tab">';
+						echo '<a href="#' . $tab_id . '" class="nav-tab" data-toggle="tab">';
 						echo esc_html($tab_name);
 						echo '</a>';
 						echo '</li>';
