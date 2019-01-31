@@ -7,15 +7,14 @@ if (!defined('ABSPATH')) {
 class EER_Template_Event_Sale
 {
 
-	public function print_content($event_id)
+	public function print_content($attr)
 	{
-
+		$event_id = (int) $attr['event'];
 		ob_start();
 
 		// check event sale started
-
 		echo '<div class="eer-tickets-sale-wrapper eer-event-' . $event_id . '">';
-		if (EER()->event->is_event_sale_active($event_id)) {
+		if (EER()->event->is_event_sale_active($event_id) || (isset($attr['test']) && (intval($attr['test']) === 1))) {
 			$templater_tickets = new EER_Template_Event_Sale_Tickets();
 			$templater_user_form = new EER_Template_Event_Sale_User_Form();
 

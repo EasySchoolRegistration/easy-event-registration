@@ -61,6 +61,20 @@ class EER_Ticket {
 						'singular' => __('Level', 'easy-event-registration'),
 					],
 				],
+				'related_tickets'  => [
+					'enable_related_tickets' => [
+						'id'          => 'enable_related_tickets',
+						'name'        => __('Enable Related Tickets', 'easy-event-registration'),
+						'type'        => 'checkbox',
+						'std'         => false,
+						'field_class' => 'eer-input'
+					],
+					'related_tickets' => [
+						'id'          => 'related_tickets',
+						'name'        => __('Related tickets', 'easy-event-registration'),
+						'type'        => 'related_tickets',
+					],
+				],
 			]),
 			'waiting_list' => apply_filters('eer_ticket_settings_waiting_list', [
 				'wlmain' => [
@@ -173,6 +187,7 @@ class EER_Ticket {
 			'general'   => apply_filters('eer_settings_sections_general', [
 				'gmain'  => __('General', 'easy-event-registration'),
 				'levels' => __('Levels', 'easy-event-registration'),
+				'related_tickets' => __('Related tickets', 'easy-event-registration'),
 			]),
 			/*'waiting_list' => apply_filters('eer_settings_sections_waiting_list', [
 				'wlmain' => __('General', 'easy-event-registration'),

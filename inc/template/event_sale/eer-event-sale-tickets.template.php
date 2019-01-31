@@ -4,11 +4,9 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Event_Sale_Tickets
-{
+class EER_Template_Event_Sale_Tickets {
 
-	public function print_content($event_id, $for_sale = true, $always_enabled = false)
-	{
+	public function print_content($event_id, $for_sale = true, $always_enabled = false) {
 		$tickets = EER()->ticket->get_tickets_by_event($event_id);
 
 		if ($tickets) {
@@ -22,7 +20,7 @@ class EER_Template_Event_Sale_Tickets
 					$classes = [
 						'eer-ticket'
 					];
-					$levels = NULL;
+					$levels  = null;
 
 					if (!$ticket_buy_enabled) {
 						$classes[] = 'eer-sold';
@@ -30,7 +28,7 @@ class EER_Template_Event_Sale_Tickets
 
 					if ($ticket->has_levels) {
 						$classes[] = 'eer-has-levels';
-						$levels = EER()->ticket_summary->eer_get_ticket_availability_by_levels($ticket->id);
+						$levels    = EER()->ticket_summary->eer_get_ticket_availability_by_levels($ticket->id);
 						foreach ($levels as $level_id => $level) {
 							$level->name = $ticket->levels[$level_id]['name'];
 						}
@@ -44,6 +42,9 @@ class EER_Template_Event_Sale_Tickets
 					     data-max="<?php echo $ticket->max_per_order; ?>"
 					     data-sold_separately="<?php echo $ticket->sold_separately; ?>"
 					     data-levels="<?php echo htmlspecialchars(json_encode($levels)); ?>"
+						<?php if (isset($ticket->related_tickets) && ($ticket->related_tickets !== NULL)) { ?>
+							data-related-tickets="<?php echo htmlspecialchars(json_encode(explode(',', $ticket->related_tickets))); ?>"
+						<?php } ?>
 						<?php if (!$ticket->is_solo) { ?>
 							data-leader-enabled="<?php echo EER()->dancing_as->eer_is_leader_registration_enabled($ticket->id); ?>"
 							data-follower-enabled="<?php echo EER()->dancing_as->eer_is_followers_registration_enabled($ticket->id); ?>"

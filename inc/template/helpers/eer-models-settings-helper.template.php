@@ -159,6 +159,25 @@ class EER_Models_Settings_Helper_Templater {
 	}
 
 
+	public static function eer_related_tickets_callback($args) {
+		$values = isset($args['data']->related_tickets) ? explode(',', $args['data']->related_tickets) : [];
+
+		$class = self::eer_sanitize_html_class($args['field_class']);
+		$name = 'name="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . '][]"';
+
+		$html = '';
+		foreach (EER()->ticket->get_tickets_by_event(intval($args['data']->event_id)) as $key => $ticket) {
+			if (intval($args['data']->id) !== intval($ticket->id)) {
+				$html .= '<label for="' . $args['model'] . '_settings[' . self::eer_sanitize_key($args['id']) . ']">';
+				$html .= '<input type="checkbox" ' . (in_array($ticket->id, $values) ? 'checked' : '') . ' id="' . self::eer_sanitize_key($args['id']) . '"' . $name . ' value="' . $ticket->id . '" ' . ' class="' . $class . ' eer-input"/>';
+				$html .= $ticket->title . '</label><br>';
+			}
+		}
+
+		echo apply_filters('eer_after_setting_output', $html, $args);
+	}
+
+
 	public static function eer_add_list_levels_callback($args) {
 		$values = self::eer_check_default_value($args, $args['id']);
 

@@ -62,10 +62,19 @@ jQuery(function ($) {
 					ticket_row.find(".eer-info-row .eer-levels").remove();
 				}
 
-				if (ticket.data("sold_separately") === 1) {
-					sale_wrapper.find(".eer-tickets .eer-ticket").addClass("eer-ticket-remove");
+				if ((typeof ticket.data("related-tickets") !== "undefined") && (ticket.data("related-tickets").length > 0)) {
+					var related_tickets = ticket.data("related-tickets");
+					$.each($(".eer-ticket:not([data-id=" + ticket.data("id") + "])"), function (key, rticket) {
+						if ($.inArray($(rticket).data("id").toString(), related_tickets) === -1) {
+							$(rticket).addClass("eer-ticket-remove");
+						}
+					});
 				} else {
-					sale_wrapper.find(".eer-tickets .eer-ticket[data-sold_separately=1]").addClass("eer-ticket-remove");
+					if (ticket.data("sold_separately") === 1) {
+						sale_wrapper.find(".eer-tickets .eer-ticket").addClass("eer-ticket-remove");
+					} else {
+						sale_wrapper.find(".eer-tickets .eer-ticket[data-sold_separately=1]").addClass("eer-ticket-remove");
+					}
 				}
 
 				ticket.addClass("eer-ticket-remove");
@@ -81,6 +90,20 @@ jQuery(function ($) {
 
 			if ($(".eer-form-tickets .eer-ticket-to-buy", $(sale_wrapper)).size() === 0) {
 				$(".eer-tickets .eer-ticket").removeClass("eer-ticket-remove");
+			} else {
+				if (ticket.data("related-tickets").length > 0) {
+					var other_related = [];
+					$.each($(".eer-ticket-shop-form .eer-ticket-to-buy"), function (key, value) {
+						other_related = $.merge(other_related, sale_wrapper.find(".eer-ticket[data-id=" + $(value).data("id") + "]").data("related-tickets"));
+					});
+					var related_tickets = ticket.data("related-tickets");
+					$.each($(".eer-ticket:not([data-id=" + ticket.data("id") + "])"), function (key, rticket) {
+						if (($(".eer-ticket-to-buy[data-id=" + $(rticket).data("id") + "]").length < 1) &&
+							($.inArray($(rticket).data("id").toString(), other_related) !== -1)) {
+							$(rticket).removeClass("eer-ticket-remove");
+						}
+					});
+				}
 			}
 		}).on("change", ".eer-number-of-tickets input[type=number]", function () {
 			if (parseInt($(this).val()) > parseInt($(this).attr("max"))) {

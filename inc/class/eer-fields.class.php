@@ -89,6 +89,9 @@ class EER_Fields
 							case 'color_picker':
 								$ret[$key] = addslashes(stripcslashes($values[$key]));
 								break;
+							case 'related_tickets':
+								$ret[$key] = sanitize_text_field(implode(',', $values[$key]));
+								break;
 							default:
 								$ret[$key] = sanitize_text_field($values[$key]);
 								break;
