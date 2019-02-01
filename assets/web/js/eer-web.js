@@ -93,10 +93,26 @@ jQuery(function ($) {
 			} else {
 				if (ticket.data("related-tickets").length > 0) {
 					var other_related = [];
+					var i = 1;
 					$.each($(".eer-ticket-shop-form .eer-ticket-to-buy"), function (key, value) {
-						other_related = $.merge(other_related, sale_wrapper.find(".eer-ticket[data-id=" + $(value).data("id") + "]").data("related-tickets"));
+						if (i === 1) {
+							other_related = sale_wrapper.find(".eer-ticket[data-id=" + $(value).data("id") + "]").data("related-tickets");
+						} else {
+							var new_related = [];
+							$.each(sale_wrapper.find(".eer-ticket[data-id=" + $(value).data("id") + "]").data("related-tickets"), function (rk, rv) {
+								if ($.inArray(rv, other_related) >= 0) {
+									new_related.push(rv);
+								}
+							});
+							other_related = new_related;
+						}
+
+						if (other_related.length === 0) {
+							return true;
+						}
+						++i;
 					});
-					var related_tickets = ticket.data("related-tickets");
+
 					$.each($(".eer-ticket:not([data-id=" + ticket.data("id") + "])"), function (key, rticket) {
 						if (($(".eer-ticket-to-buy[data-id=" + $(rticket).data("id") + "]").length < 1) &&
 							($.inArray($(rticket).data("id").toString(), other_related) !== -1)) {
