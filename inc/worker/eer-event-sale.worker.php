@@ -4,23 +4,20 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Worker_Event_Sale
-{
+class EER_Worker_Event_Sale {
 
 	private $worker_registration_couple;
 	private $worker_registration_solo;
 
 
-	public function __construct()
-	{
+	public function __construct() {
 		$this->worker_registration_couple = new EER_Event_Sale_Couple_Worker();
-		$this->worker_registration_solo = new EER_Event_Sale_Solo_Worker();
+		$this->worker_registration_solo   = new EER_Event_Sale_Solo_Worker();
 	}
 
 
-	public function process_registration($data, $limit_validation = true)
-	{
-		$status = false;
+	public function process_registration($data, $limit_validation = true) {
+		$status      = false;
 		$return_data = [];
 
 		if ($this->eer_registration_form_validation($data)) {
@@ -28,7 +25,7 @@ class EER_Worker_Event_Sale
 		}
 
 		if ($status) {
-			$template_thank_you_page = new EER_Template_Event_Sale_Thank_You_Page();
+			$template_thank_you_page       = new EER_Template_Event_Sale_Thank_You_Page();
 			$return_data['thank_you_text'] = $template_thank_you_page->print_content($data->event_id, $status);
 		}
 
@@ -36,17 +33,17 @@ class EER_Worker_Event_Sale
 		if (count($eer_reg_errors->get_error_messages()) !== 0) {
 			$return_data['errors'] = $eer_reg_errors;
 		}
+
 		return $return_data;
 	}
 
 
-	private function eer_complete_registration($data, $limit_validation = true)
-	{
+	private function eer_complete_registration($data, $limit_validation = true) {
 		$eer_data = $this->eer_get_valid_data($data, $limit_validation);
 
 		global $eer_reg_errors, $wpdb;
 		$return_tickets = [];
-		$order_id = NULL;
+		$order_id       = null;
 
 		if (count($eer_reg_errors->get_error_messages()) === 0) {
 
@@ -83,6 +80,7 @@ class EER_Worker_Event_Sale
 
 			EER()->email->eer_send_order_email($order_id, $return_tickets);
 
+
 			if (!isset($data->user_info->eer_disable_confirmation_email) || (isset($data->user_info->eer_disable_confirmation_email) && !$data->user_info->eer_disable_confirmation_email)) {
 				if (isset($return_tickets['paired']) && $return_tickets['paired']) {
 					EER()->email->eer_send_order_confirmation_email($data->event_id, $return_tickets['paired']);
@@ -96,8 +94,7 @@ class EER_Worker_Event_Sale
 	}
 
 
-	private function eer_registration_form_validation($data)
-	{
+	private function eer_registration_form_validation($data) {
 		global $eer_reg_errors;
 		$eer_reg_errors = new WP_Error;
 
@@ -137,21 +134,20 @@ class EER_Worker_Event_Sale
 	}
 
 
-	private function eer_get_valid_data($data, $limit_validation = true)
-	{
+	private function eer_get_valid_data($data, $limit_validation = true) {
 		global $eer_reg_errors;
 		$return_data = [];
-		$test_full = false;
+		$test_full   = false;
 
 		foreach ($data->tickets as $ticket_id => $ticket) {
 			if ($limit_validation) {
 				if (EER()->ticket->eer_is_solo($ticket_id)) {
-					$test_full = EER()->dancing_as->eer_is_solo_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : NULL));
+					$test_full = EER()->dancing_as->eer_is_solo_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : null));
 				} else {
 					if (EER()->dancing_as->eer_is_leader($ticket->dancing_as)) {
-						$test_full = EER()->dancing_as->eer_is_leader_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : NULL));
+						$test_full = EER()->dancing_as->eer_is_leader_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : null));
 					} else if (EER()->dancing_as->eer_is_follower($ticket->dancing_as)) {
-						$test_full = EER()->dancing_as->eer_is_followers_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : NULL));
+						$test_full = EER()->dancing_as->eer_is_followers_registration_enabled($ticket_id, ((isset($ticket->level_id) && ($ticket->level_id !== '')) ? $ticket->level_id : null));
 					}
 				}
 
@@ -170,8 +166,7 @@ class EER_Worker_Event_Sale
 	}
 
 
-	private function eer_check_required($key, $data)
-	{
+	private function eer_check_required($key, $data) {
 		return !isset($data->$key) || trim($data->$key) == '';
 	}
 }

@@ -56,6 +56,11 @@ WHERE ticket_id = %d", [$ticket_summary->ticket_id, EER_Enum_Dancing_As::FOLLOWE
 JOIN (SELECT COUNT(id) AS new_count FROM {$wpdb->prefix}eer_sold_tickets WHERE ticket_id = %d AND dancing_as = %d AND status = %d) AS summary
 SET ets.registered_tickets = summary.new_count
 WHERE ticket_id = %d", [$ticket_summary->ticket_id, EER_Enum_Dancing_As::SOLO, EER_Enum_Sold_Ticket_Status::CONFIRMED, $ticket_summary->ticket_id]));
+
+				$wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}eer_ticket_summary AS ets
+JOIN (SELECT COUNT(id) AS new_count FROM {$wpdb->prefix}eer_sold_tickets WHERE ticket_id = %d AND dancing_as = %d AND status = %d) AS summary
+SET ets.waiting_tickets = summary.new_count
+WHERE ticket_id = %d", [$ticket_summary->ticket_id, EER_Enum_Dancing_As::SOLO, EER_Enum_Sold_Ticket_Status::WAITING, $ticket_summary->ticket_id]));
 			}
 		}
 	}

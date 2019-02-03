@@ -139,15 +139,36 @@ class EER_Worker_Ajax {
 	public function confirm_sold_ticket($sold_ticket_id) {
 		if ($sold_ticket_id) {
 			global $wpdb;
+			$return_tickets = [];
 			$worker_payment = new EER_Worker_Payment();
 
 			$sold_ticket_data = EER()->sold_ticket->eer_get_sold_tickets_data($sold_ticket_id);
+			$ticket_data = EER()->ticket->get_ticket_data($sold_ticket_data->ticket_id);
+			$event_data = EER()->event->get_event_data($ticket_data->event_id);
 
 			$wpdb->update($wpdb->prefix . 'eer_sold_tickets', [
 				'status' => EER_Enum_Sold_Ticket_Status::CONFIRMED
 			], ['id' => $sold_ticket_id]);
 
+			if (intval(EER()->event->eer_get_event_option($event_data, 'floating_price_enabled', -1)) !== -1) {
+				$payment = apply_filters('eer_get_order_payment', $sold_ticket_data->order_id)->to_pay;
+
+				if ($payment) {
+					$return_tickets[$sold_ticket_data->ticket_id]['user']['previous_price'] = $payment;
+				}
+			}
+
 			$worker_payment->eer_update_user_payment($sold_ticket_data->order_id);
+
+			if (intval(EER()->event->eer_get_event_option($event_data, 'floating_price_enabled', -1)) !== -1) {
+				$payment = apply_filters('eer_get_order_payment', $sold_ticket_data->order_id)->to_pay;
+
+				if ($payment) {
+					$return_tickets[$sold_ticket_data->ticket_id]['user']['actual_price'] = $payment;
+				}
+			}
+
+			$return_tickets[$sold_ticket_data->ticket_id]['user']['sold_ticket_id'] = (int) $sold_ticket_id;
 
 			$update  = [];
 			$summary = EER()->ticket_summary->eer_get_ticket_summary($sold_ticket_data->ticket_id, $sold_ticket_data->level_id);
@@ -183,7 +204,8 @@ class EER_Worker_Ajax {
 
 			$order = EER()->order->eer_get_order($sold_ticket_data->order_id);
 
-			EER()->email->eer_send_ticket_confirmation_email($order->event_id, $sold_ticket_data->id);
+			//EER()->email->eer_send_ticket_confirmation_email($order->event_id, $sold_ticket_data->id);
+			EER()->email->eer_send_order_confirmation_email($order->event_id, $return_tickets);
 
 			return 1;
 		}
@@ -217,9 +239,10 @@ class EER_Worker_Ajax {
 				}
 			}
 
-			$payment = EER()->payment->eer_get_payment_by_order($data['order_id']);
-			$payment->exp_status = EER()->enum_payment->get_status($payment);
+			$payment                   = EER()->payment->eer_get_payment_by_order($data['order_id']);
+			$payment->exp_status       = EER()->enum_payment->get_status($payment);
 			$payment->exp_status_title = EER()->enum_payment->get_title($payment->exp_status);
+
 			return $payment;
 		}
 

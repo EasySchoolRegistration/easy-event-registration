@@ -56,4 +56,12 @@ class EER_Payment
 		return $payments;
 	}
 
+	public static function eer_get_payment_by_order_callback($order_id)
+	{
+		global $wpdb;
+
+		return $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}eer_events_payments WHERE order_id = %d", [intval($order_id)]));
+	}
 }
+
+add_filter('eer_get_order_payment', ['EER_Payment', 'eer_get_payment_by_order_callback']);

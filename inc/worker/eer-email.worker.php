@@ -11,11 +11,12 @@ class EER_Worker_Email {
 	 * @param string $email
 	 * @param string $subject
 	 * @param string $body
+	 * @param array $event_data
 	 *
 	 * @return bool
 	 * @codeCoverageIgnore
 	 */
-	public function send_email($email, $subject, $body, $event_data) {
+	public static function eer_send_email_callback($email, $subject, $body, $event_data) {
 		$headers[] = "MIME-Version: 1.0";
 		$headers[] = "Content-type: text/html; charset=utf-8";
 		$headers[] = "Content-Transfer-Encoding: base64";
@@ -59,3 +60,5 @@ class EER_Worker_Email {
 	}
 
 }
+
+add_filter('eer_send_email', ['EER_Worker_Email', 'eer_send_email_callback'], 10, 4);

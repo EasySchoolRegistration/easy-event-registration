@@ -57,7 +57,7 @@ class EER_Template_Payment_Confirmation_Email
 					unlink($file_path);
 				}
 			} else {
-				$status = $this->worker_email->send_email($user->user_email, $subject, $body, $event_data);
+				return apply_filters('eer_send_email', $user->user_email, $subject, $body, $event_data);
 			}
 
 			return $status;

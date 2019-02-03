@@ -5,21 +5,18 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Order_Email
-{
+class EER_Template_Order_Email {
 
 	private $worker_email;
 
 
-	public function __construct()
-	{
+	public function __construct() {
 		$this->worker_email = new EER_Worker_Email();
 	}
 
 
-	public function send_email($order_id, $registration_data)
-	{
-		$order = EER()->order->eer_get_order($order_id);
+	public function send_email($order_id, $registration_data) {
+		$order      = EER()->order->eer_get_order($order_id);
 		$order_info = json_decode($order->order_info);
 
 		$event_data = EER()->event->get_event_data($order->event_id);
@@ -27,7 +24,7 @@ class EER_Template_Order_Email
 		$user = get_user_by('ID', $order->user_id);
 
 		$subject = stripcslashes(EER()->event->eer_get_event_option($event_data, 'order_email_subject', ''));
-		$body = stripcslashes(EER()->event->eer_get_event_option($event_data, 'order_email_body', null));
+		$body    = stripcslashes(EER()->event->eer_get_event_option($event_data, 'order_email_body', null));
 
 		if (!empty($body)) {
 			$tags = EER()->tags->get_tags('order_email');
@@ -77,9 +74,8 @@ class EER_Template_Order_Email
 				}
 			}
 
-			$status = $this->worker_email->send_email($user->user_email, $subject, $body, $event_data);
-
-			return $status;
+			//$status = $this->worker_email->send_email($user->user_email, $subject, $body, $event_data);
+			return apply_filters('eer_send_email', $user->user_email, $subject, $body, $event_data);
 		}
 
 		return false;

@@ -14,6 +14,15 @@ class EER_Event_Sale_Solo_Worker
 		$return_tickets = [];
 
 		$level_id = (isset($order_data->level_id) && ($order_data->level_id !== '')) ? intval($order_data->level_id) : null;
+		$event_data = EER()->event->get_event_data($event_id);
+
+		if (intval(EER()->event->eer_get_event_option($event_data, 'floating_price_enabled', -1)) !== -1) {
+			$payment = apply_filters('eer_get_order_payment', $order_id)->to_pay;
+
+			if ($payment) {
+				$return_tickets['paired'][$ticket_id]['user']['previous_price'] = $payment;
+			}
+		}
 
 		for ($i = 0; $i < $number_of_registrations; $i++) {
 			$status = $wpdb->query($wpdb->prepare("INSERT INTO {$wpdb->prefix}eer_sold_tickets(order_id, ticket_id, unique_key, dancing_as, dancing_with, status, position)
@@ -29,19 +38,25 @@ class EER_Event_Sale_Solo_Worker
 						'registered_tickets' => intval($summary->registered_tickets) + 1,
 					]);
 
-					$return_tickets['paired'][$ticket_id][] = $registration_id;
-
 					$worker_payment = new EER_Worker_Payment();
 					$worker_payment->eer_update_user_payment($order_id);
+
+					$return_tickets['paired'][$ticket_id]['user']['sold_ticket_id'] = $registration_id;
 				} else {
 					EER()->ticket_summary->eer_update_ticket_summary($ticket_id, $level_id, [
-						'waiting_solo' => intval($summary->waiting_solo) + 1,
+						'waiting_tickets' => intval($summary->waiting_tickets) + 1,
 					]);
 				}
 			}
 		}
 
+		if (intval(EER()->event->eer_get_event_option($event_data, 'floating_price_enabled', -1)) !== -1) {
+			$payment = apply_filters('eer_get_order_payment', $order_id)->to_pay;
 
+			if ($payment) {
+				$return_tickets['paired'][$ticket_id]['user']['actual_price'] = $payment;
+			}
+		}
 
 		return $return_tickets;
 	}

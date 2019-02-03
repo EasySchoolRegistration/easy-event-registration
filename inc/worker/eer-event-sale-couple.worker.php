@@ -11,13 +11,14 @@ class EER_Event_Sale_Couple_Worker {
 		global $wpdb;
 		$worker_payment = new EER_Worker_Payment();
 
-		$return_tickets = [];
+		$return_tickets    = [];
 		$email             = get_user_by('ID', $user_id)->user_email;
 		$dancing_as        = (isset($order_data->dancing_as) && ($order_data->dancing_as !== '')) ? intval($order_data->dancing_as) : null;
 		$dancing_with_name = (isset($order_data->dancing_with_name) && ($order_data->dancing_with_name !== '')) ? trim($order_data->dancing_with_name) : null;
 		$dancing_with      = (isset($order_data->dancing_with) && ($order_data->dancing_with !== '')) ? filter_var(strtolower(trim($order_data->dancing_with)), FILTER_SANITIZE_EMAIL) : null;
 		$level_id          = (isset($order_data->level_id) && ($order_data->level_id !== '')) ? intval($order_data->level_id) : null;
 		$summary           = EER()->ticket_summary->eer_get_ticket_summary($ticket_id, $level_id);
+		$event_data = EER()->event->get_event_data($event_id);
 
 		$leaders_enabled   = EER()->dancing_as->eer_is_leader_registration_enabled($ticket_id, $level_id);
 		$followers_enabled = EER()->dancing_as->eer_is_followers_registration_enabled($ticket_id, $level_id);
@@ -177,8 +178,40 @@ class EER_Event_Sale_Couple_Worker {
 					]);
 
 					$sold_ticket = EER()->sold_ticket->eer_get_sold_tickets_data($partner_reg[0]->id);
+
+					if (intval(EER()->event->eer_get_event_option($event_data, 'floating_price_enabled', -1)) !== -1) {
+						$payment = apply_filters('eer_get_order_payment', $order_id)->to_pay;
+
+						if ($payment) {
+							$return_tickets['paired'][$ticket_id]['user']['previous_price'] = $payment;
+						}
+
+						$payment = apply_filters('eer_get_order_payment', $sold_ticket->order_id)->to_pay;
+
+						if ($payment) {
+							$return_tickets['paired'][$ticket_id]['partner']['previous_price'] = $payment;
+						}
+					}
+
 					$worker_payment->eer_update_user_payment($order_id);
 					$worker_payment->eer_update_user_payment($sold_ticket->order_id);
+
+					if (intval(EER()->event->eer_get_event_option($event_data, 'floating_price_enabled', -1)) !== -1) {
+						$payment = apply_filters('eer_get_order_payment', $order_id)->to_pay;
+
+						if ($payment) {
+							$return_tickets['paired'][$ticket_id]['user']['actual_price'] = $payment;
+						}
+
+						$payment = apply_filters('eer_get_order_payment', $sold_ticket->order_id)->to_pay;
+
+						if ($payment) {
+							$return_tickets['paired'][$ticket_id]['partner']['actual_price'] = $payment;
+						}
+					}
+
+					$return_tickets['paired'][$ticket_id]['user']['sold_ticket_id'] = (int) $sold_ticket_id;
+					$return_tickets['paired'][$ticket_id]['partner']['sold_ticket_id'] = (int) $partner_reg[0]->id;
 				} else if (EER()->pairing_mode->is_auto_confirmation_enabled($ticket_data->pairing_mode)) {
 					// Confirm all registrations until course is full
 					$wpdb->update($wpdb->prefix . 'eer_sold_tickets', [
@@ -197,8 +230,26 @@ class EER_Event_Sale_Couple_Worker {
 						]);
 					}
 
+
+					if (intval(EER()->event->eer_get_event_option($event_data, 'floating_price_enabled', -1)) !== -1) {
+						$payment = apply_filters('eer_get_order_payment', $order_id)->to_pay;
+
+						if ($payment) {
+							$return_tickets['paired'][$ticket_id]['user']['previous_price'] = $payment;
+						}
+					}
+
 					$worker_payment->eer_update_user_payment($order_id);
-					$return_tickets['paired'][$ticket_id][] = (int) $sold_ticket_id;
+
+					if (intval(EER()->event->eer_get_event_option($event_data, 'floating_price_enabled', -1)) !== -1) {
+						$payment = apply_filters('eer_get_order_payment', $order_id)->to_pay;
+
+						if ($payment) {
+							$return_tickets['paired'][$ticket_id]['user']['actual_price'] = $payment;
+						}
+					}
+
+					$return_tickets['paired'][$ticket_id]['user']['sold_ticket_id'] = (int) $sold_ticket_id;;
 				} else {
 					if (EER()->dancing_as->eer_is_leader($dancing_as)) {
 						EER()->ticket_summary->eer_update_ticket_summary($ticket_id, $level_id, [
@@ -209,11 +260,6 @@ class EER_Event_Sale_Couple_Worker {
 							'waiting_followers' => intval($summary->waiting_followers) + 1,
 						]);
 					}
-				}
-
-				if ($partner_reg) {
-					$return_tickets['paired'][$ticket_id][] = (int) $sold_ticket_id;
-					$return_tickets['paired'][$ticket_id][] = (int) $partner_reg[0]->id;
 				}
 			}
 

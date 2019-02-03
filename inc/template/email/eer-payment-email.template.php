@@ -88,7 +88,7 @@ class EER_Template_Payment_Email
 				}
 			}
 
-			$status = $this->worker_email->send_email($user->user_email, $subject, $body, $event_data);
+			$status = apply_filters('eer_send_email', $user->user_email, $subject, $body, $event_data);
 
 			if ($status) {
 				$this->worker_payment_email->eer_update_payment_email_timestamp($payment_id);

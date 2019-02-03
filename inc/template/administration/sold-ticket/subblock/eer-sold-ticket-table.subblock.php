@@ -116,7 +116,7 @@ class EER_Subblock_Sold_Ticket_Table
 					} ?>
 					<?php if ($food_enabled) {
 						?>
-						<td><?php echo ($order_info->food === '') || !isset($event_data->food_options[$order_info->food]) ? __('No', 'easy-event-registration') : $event_data->food_options[$order_info->food]['option']; ?></td><?php
+						<td><?php echo (!isset($order_info->food) || ($order_info->food === '') || !isset($event_data->food_options[$order_info->food])) ? __('No', 'easy-event-registration') : $event_data->food_options[$order_info->food]['option']; ?></td><?php
 					} ?>
 					<?php if ($offer_hosting_enabled) {
 						?>

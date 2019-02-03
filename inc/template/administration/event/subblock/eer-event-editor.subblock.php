@@ -154,6 +154,6 @@ class EER_Subblock_Event_Editor
 	public static function eer_print_events_settings_tab($section_id, $sub_section_id, $data = [])
 	{
 		$model_settings = new EER_Models_Settings_Helper_Templater();
-		$model_settings->eer_print_settings_tab('event', EER()->event->eer_get_event_settings_fields_to_print($section_id, $sub_section_id), $data);
+		$model_settings->eer_print_settings_tab('event', EER()->event->eer_get_event_settings_fields_to_print($section_id, $sub_section_id, $data), $data);
 	}
 }

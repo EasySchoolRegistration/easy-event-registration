@@ -24,7 +24,7 @@ class EER_Event {
 	 *
 	 * @return array
 	 */
-	public function eer_get_event_settings_fields() {
+	public function eer_get_event_settings_fields($event_data = []) {
 		$template_settings_tag = new EER_Template_Settings_Tag();
 
 		$eer_event_settings = [
@@ -66,7 +66,7 @@ class EER_Event {
 					'sale_not_opened' => [
 						'id'          => 'sale_not_opened',
 						'name'        => __('Sale Not Opened Yet', 'easy-event-registration'),
-						'desc'        => __('Available template tags:', 'easy-school-registration'),
+						'desc'        => __('Available template tags:', 'easy-event-registration'),
 						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('sale_not_opened')),
 						'type'        => 'full_editor',
 						'field_class' => 'eer-input'
@@ -150,7 +150,7 @@ class EER_Event {
 					'thank_you' => [
 						'id'          => 'thank_you',
 						'name'        => __('Thank you text', 'easy-event-registration'),
-						'desc'        => __('Available template tags:', 'easy-school-registration'),
+						'desc'        => __('Available template tags:', 'easy-event-registration'),
 						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('thank_you_page')),
 						'type'        => 'full_editor',
 						'field_class' => 'eer-input'
@@ -224,7 +224,7 @@ class EER_Event {
 			/** Emails Settings */
 			'emails'            => apply_filters('eer_event_settings_emails', [
 				'emain'                      => [
-					'from_name'  => [
+					'from_name'              => [
 						'id'          => 'from_name',
 						'name'        => __('From Name', 'easy-event-registration'),
 						'desc'        => __('The name emails are said to come from. This should probably be your site name.', 'easy-event-registration'),
@@ -232,7 +232,7 @@ class EER_Event {
 						'std'         => get_bloginfo('name'),
 						'allow_blank' => false,
 					],
-					'from_email' => [
+					'from_email'             => [
 						'id'          => 'from_email',
 						'name'        => __('From Email', 'easy-event-registration'),
 						'desc'        => __('Email to send emails from. This will act as the "from" and "reply-to" address.', 'easy-event-registration'),
@@ -240,12 +240,19 @@ class EER_Event {
 						'std'         => get_bloginfo('admin_email'),
 						'allow_blank' => false,
 					],
-					'bcc_email'  => [
+					'bcc_email'              => [
 						'id'          => 'bcc_email',
 						'name'        => __('Bcc Email Address', 'easy-event-registration'),
 						'desc'        => __('Email address to receive a secret copy of every email sent by the system. Allows you to back up and re-send any email.', 'easy-event-registration'),
 						'type'        => 'email',
 						'allow_blank' => true
+					],
+					'floating_price_enabled' => [
+						'id'   => 'floating_price_enabled',
+						'name' => __('Enable Floating Price', 'easy-event-registration'),
+						'desc' => __('If enabled, floting_price tag will be available for Event Confirmation Emails.', 'easy-event-registration'),
+						'type' => 'checkbox',
+						'std'  => false,
 					],
 				],
 				'order_email'                => [
@@ -266,7 +273,7 @@ class EER_Event {
 						'id'          => 'order_email_body',
 						'name'        => __('Email Body', 'easy-event-registration'),
 						'desc'        => __('Available template tags:', 'easy-event-registration'),
-						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('order_email')),
+						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('order_email', $event_data)),
 						'type'        => 'full_editor',
 						'field_class' => 'eer-input'
 					],
@@ -289,7 +296,7 @@ class EER_Event {
 						'id'          => 'order_confirmation_email_body',
 						'name'        => __('Email Body', 'easy-event-registration'),
 						'desc'        => __('Available template tags:', 'easy-event-registration'),
-						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('order_confirmation_email')),
+						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('order_confirmation_email', $event_data)),
 						'type'        => 'full_editor',
 						'field_class' => 'eer-input'
 					],
@@ -312,7 +319,7 @@ class EER_Event {
 						'id'          => 'payment_reminder_email_body',
 						'name'        => __('Email Body', 'easy-event-registration'),
 						'desc'        => __('Available template tags:', 'easy-event-registration'),
-						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('payment_reminder_email')),
+						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('payment_reminder_email', $event_data)),
 						'type'        => 'full_editor',
 						'field_class' => 'eer-input'
 					],
@@ -343,7 +350,7 @@ class EER_Event {
 						'id'          => 'payment_confirmation_email_body',
 						'name'        => __('Email Body', 'easy-event-registration'),
 						'desc'        => __('Available template tags:', 'easy-event-registration'),
-						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('payment_confirmation_email')),
+						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('payment_confirmation_email', $event_data)),
 						'type'        => 'full_editor',
 						'field_class' => 'eer-input'
 					],
@@ -366,7 +373,7 @@ class EER_Event {
 						'id'          => 'tickets_email_body',
 						'name'        => __('Email Body', 'easy-event-registration'),
 						'desc'        => __('Available template tags:', 'easy-event-registration'),
-						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('email_tickets')),
+						'desc_tags'   => $template_settings_tag->print_content(EER()->tags->get_tags('email_tickets', $event_data)),
 						'type'        => 'full_editor',
 						'field_class' => 'eer-input'
 					],
@@ -378,8 +385,8 @@ class EER_Event {
 	}
 
 
-	public function eer_get_event_settings_fields_to_print($section_id, $sub_section_id) {
-		$sections = $this->eer_get_event_settings_fields();
+	public function eer_get_event_settings_fields_to_print($section_id, $sub_section_id, $event_data) {
+		$sections = $this->eer_get_event_settings_fields($event_data);
 
 		if (isset($sections[$section_id][$sub_section_id])) {
 			return $sections[$section_id][$sub_section_id];
