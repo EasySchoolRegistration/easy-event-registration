@@ -7,14 +7,10 @@ if (!defined('ABSPATH')) {
 
 class EER_Template_Payment_Email
 {
-
-	private $worker_email;
-
 	private $worker_payment_email;
 
 	public function __construct()
 	{
-		$this->worker_email = new EER_Worker_Email();
 		$this->worker_payment_email = new EER_Worker_Payment_Email();
 	}
 

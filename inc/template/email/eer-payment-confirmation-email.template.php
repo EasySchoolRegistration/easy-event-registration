@@ -5,25 +5,23 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
-class EER_Template_Payment_Confirmation_Email
-{
+class EER_Template_Payment_Confirmation_Email {
 
 	private $worker_email;
 
-	public function __construct()
-	{
+
+	public function __construct() {
 		$this->worker_email = new EER_Worker_Email();
 	}
 
 
-	public function send_email($order_id)
-	{
-		$order = EER()->order->eer_get_order($order_id);
+	public function send_email($order_id) {
+		$order      = EER()->order->eer_get_order($order_id);
 		$event_data = EER()->event->get_event_data($order->event_id);
-		$user = get_user_by('ID', $order->user_id);
+		$user       = get_user_by('ID', $order->user_id);
 
 		$subject = stripcslashes(EER()->event->eer_get_event_option($event_data, 'payment_confirmation_email_subject', ''));
-		$body = stripcslashes(EER()->event->eer_get_event_option($event_data, 'payment_confirmation_email_body', null));
+		$body    = stripcslashes(EER()->event->eer_get_event_option($event_data, 'payment_confirmation_email_body', null));
 
 		if (!empty($body)) {
 			$tags = EER()->tags->get_tags('payment_confirmation_email');
@@ -44,8 +42,8 @@ class EER_Template_Payment_Confirmation_Email
 			}
 
 			if (intval(EER()->event->eer_get_event_option($event_data, 'payment_confirmation_send_tickets', -1)) === 1) {
-				$sold_tickets = EER()->sold_ticket->eer_get_confirmed_sold_tickets_by_order($order_id);
-				$attachments = [];
+				$sold_tickets    = EER()->sold_ticket->eer_get_confirmed_sold_tickets_by_order($order_id);
+				$attachments     = [];
 				$filter_function = apply_filters('eer_get_generate_pdf_filter', true);
 				foreach ($sold_tickets as $key => $sold_ticket) {
 					$attachments[] = apply_filters($filter_function, $sold_ticket->ticket_id, $sold_ticket->unique_key);

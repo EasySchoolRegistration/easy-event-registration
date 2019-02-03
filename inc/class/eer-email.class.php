@@ -57,14 +57,6 @@ class EER_Email {
 	}
 
 
-	/**
-	 * @param array $tickets
-	 */
-	public function eer_send_ticket_confirmation_email($event_id, $sold_ticket) {
-		$this->template_order_confirmation_email->send_confirmation_email($event_id, $sold_ticket);
-	}
-
-
 	public function eer_send_payment_email($payment_id, $event_data) {
 		return $this->template_payment_email->send_email($payment_id, $event_data);
 	}

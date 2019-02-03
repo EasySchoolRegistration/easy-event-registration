@@ -7,14 +7,6 @@ if (!defined('ABSPATH')) {
 
 class EER_Template_Order_Email {
 
-	private $worker_email;
-
-
-	public function __construct() {
-		$this->worker_email = new EER_Worker_Email();
-	}
-
-
 	public function send_email($order_id, $registration_data) {
 		$order      = EER()->order->eer_get_order($order_id);
 		$order_info = json_decode($order->order_info);
@@ -74,7 +66,6 @@ class EER_Template_Order_Email {
 				}
 			}
 
-			//$status = $this->worker_email->send_email($user->user_email, $subject, $body, $event_data);
 			return apply_filters('eer_send_email', $user->user_email, $subject, $body, $event_data);
 		}
 

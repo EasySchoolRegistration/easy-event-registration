@@ -7,14 +7,6 @@ if (!defined('ABSPATH')) {
 
 class EER_Template_Order_Confirmation_Email {
 
-	private $worker_email;
-
-
-	public function __construct() {
-		$this->worker_email = new EER_Worker_Email();
-	}
-
-
 	public function send_email($event_id, $tickets) {
 		$event_data = EER()->event->get_event_data($event_id);
 
